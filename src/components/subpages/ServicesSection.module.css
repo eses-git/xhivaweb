@@ -1,0 +1,213 @@
+/* ServicesSection.module.css */
+
+.servicesSection {
+  position: relative;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  margin-top:30px;
+}
+
+/* --- Header --- */
+.header { text-align: center; margin-bottom: 3rem; max-width: 960px; margin-left: auto; margin-right: auto; padding: 0 2rem; }
+.subtitle {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  background-color: rgba(230, 230, 230, 0.5);
+  border: 1px solid rgba(0, 44, 84, 0.1);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #2D5F9B;
+  margin-bottom: 3rem;
+  font-family: var(--font-headings);
+  margin-top: 70px;
+ }
+
+/* CHANGED: Font weight adjusted to match other sections */
+.title { 
+font-size: 4.375rem;
+  font-weight: 400; /* Was 600 */
+  color: #002c54; 
+  letter-spacing: -0.025em; 
+}
+
+/* --- Main Layout --- */
+.serviceLayout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
+  max-width: 1420px; /* Centralizes content */
+  padding-bottom:50px;
+
+
+}
+@media (min-width: 1024px) {
+  .serviceLayout {
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+  }
+}
+
+/* --- Left Side: Interactive List --- */
+.serviceListWrapper {
+  position: relative;
+  border: 1px solid #e5e7eb;
+  background-color: #FFFFFF;
+}
+
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(215, 194, 134, 0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.serviceButton {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 80px;
+  padding: 1rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.serviceButton:last-child {
+  border-bottom: none;
+}
+.serviceButton:hover:not(.active) {
+  background-color: #F8F9FA;
+}
+
+.buttonIcon {
+  font-size: 1.5rem;
+  color: #adb5bd;
+  transition: color 0.3s ease;
+}
+.buttonTitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #4b5563;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+.serviceButton.active .buttonIcon {
+  color: #002c54;
+}
+.serviceButton.active .buttonTitle {
+  color: #002c54;
+}
+.titleIcon {
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+} 
+
+/* --- Right Side: Details Panel --- */
+/* CHANGED: Panel now has a white background and blue border */
+.detailsPanel {
+  position: relative;
+  min-height: 420px;
+  background-color: #FFFFFF; /* Was blue */
+  border: 2px solid #90b4d4; /* Added blue border */
+  padding: 2rem;
+}
+
+/* CHANGED: Text colors updated for light background */
+.detailsSubtitle { 
+  color: #90b4d4; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em; 
+  font-size: 0.875rem; 
+  margin-bottom: 0.5rem; 
+}
+.detailsTitle { 
+  font-size: 2rem; 
+  font-weight: 500; 
+  margin-bottom: 1rem; 
+  color: #002c54; 
+}
+.detailsDescription { 
+   font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  
+  /* --- FIX 1: Remove quotes --- */
+  text-align: center;
+
+  /* --- FIX 2: Center the block --- */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CHANGED: Grid no longer needs a separate background */
+.detailsGrid { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+  border-top: 1px solid #e5e7eb; /* Changed to a light gray border */
+  padding-top: 1.5rem;
+}
+
+/* Add this to your .module.css file */
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* Adds space between the icon and the title below it */
+}
+
+/* In your .module.css file */
+
+
+
+/* Step B: Apply the animation to your icon's class */
+.titleIcon {
+  width: 100px;
+  height: 100px;
+
+}
+
+@media (min-width: 768px) { .detailsGrid { grid-template-columns: repeat(3, 1fr); } }
+
+.gridTitle { 
+  color: #d7c286; 
+  font-size: 0.8rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em; 
+  margin-bottom: 0.5rem; 
+}
+.gridText { 
+  font-size: 0.9rem; 
+  color: #4b5563; 
+  line-height: 1.6; 
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 1023px) {
+  .detailsPanel {
+    min-height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .title { font-size: 2.5rem; }
+  .detailsTitle { font-size: 1.75rem; }
+}

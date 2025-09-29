@@ -1,0 +1,157 @@
+/* src/components/AboutUs.module.css */
+
+:root {
+  --dark-blue: #0D2C54;
+  --medium-blue: #2D5F9B;
+  --light-blue: #90B4D4;
+  --background-light: #FFFFFF;
+  --background-panel: #F1F1F1;
+  --background-panel-hover: #e9ecef;
+  --dark-gray: #5A5A5A;
+  --gold: #D7C286;
+  --font-body: 'Lato', sans-serif;
+  --font-headings: 'Montserrat', sans-serif;
+}
+
+.aboutUsSection {
+  /* --- FIXES --- */
+  background-color: transparent; /* Allows the animated background to be visible */
+  position: relative; /* Creates a stacking context for z-index to work */
+
+  /* --- Original Styles --- */
+  font-family: var(--font-body);
+  padding: 85px 20px;
+}
+
+.container { 
+  /* --- FIXES --- */
+  position: relative; /* Ensures content is on a new layer */
+  z-index: 2; /* Places content ABOVE the background animation */
+
+  /* --- Original Styles --- */
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+/* --- HEADER --- */
+.header { text-align: center; margin-bottom: 80px; }
+.preTitle { display: inline-block; padding: 1.5rem 3rem; background-color:  #d7c18641; border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
+.mainTitle {  font-size: 4.375rem; line-height: 0.85; font-weight: 400; color: #002C54; letter-spacing: -0.025em; font-family: var(--font-headings);  }
+
+/* --- Two Pillars Layout --- */
+.preludeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-bottom: 80px;
+}
+
+.preludeColumn {
+  border-left: 2px solid var(--gold);
+  padding-left: 2.5rem;
+}
+.preludeColumn h3 {
+  font-family: var(--font-headings);
+  font-size: 1.75rem;
+  color: var(--dark-blue);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+.preludeColumn p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--dark-gray);
+}
+.preludeColumn p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --- Transition Text --- */
+.transitionText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  font-size: 1.25rem;
+  font-family: var(--font-headings);
+  color: var(--dark-blue);
+  font-weight: 600;
+}
+
+/* --- INTERACTIVE HARMONY PANELS --- */
+.harmonyContainer {
+  display: flex;
+  gap: 2px;
+  height: 350px;
+  margin-bottom: 100px;
+}
+
+.harmonyPanel {
+  flex: 1;
+  background-color: var(--background-panel);
+  padding: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: flex 0.5s cubic-bezier(0.87, 0, 0.13, 1), background-color 0.3s ease;
+}
+
+.harmonyPanel:hover,
+.harmonyPanel.active {
+  background-color: var(--background-panel-hover);
+}
+
+.harmonyPanel.active {
+  flex: 3;
+}
+
+.harmonyPanel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--gold);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+}
+.harmonyPanel:hover::after,
+.harmonyPanel.active::after {
+  transform: translateY(0);
+}
+
+.panelHeader { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.panelIcon { width: 50px; height: 50px; margin-bottom: 20px; background-color: transparent; border: 2px solid var(--medium-blue); transition: all 0.3s ease; }
+
+.harmonyPanel:hover .panelIcon,
+.harmonyPanel.active .panelIcon {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+.harmonyPanel h3 { font-family: var(--font-headings); font-size: 1.5rem; color: var(--dark-blue); margin: 0; }
+.panelContent { margin-top: 20px; opacity: 0; max-height: 0; transition: opacity 0.4s ease-out 0.2s, max-height 0.4s ease-out 0.2s; }
+.harmonyPanel.active .panelContent { opacity: 1; max-height: 200px; }
+.panelContent p { font-size: 1rem; line-height: 1.7; color: var(--dark-gray); margin: 0; }
+
+/* --- CAPSTONE / MISSION STATEMENT --- */
+.capstoneSection { text-align: center; padding: 60px 20px; background-color: var(--dark-blue); color: white; }
+.capstoneSection h2 { font-family: var(--font-headings); font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+.capstoneSection p { font-size: 1.2rem; line-height: 1.8; color: var(--light-blue); max-width: 800px; margin: 0 auto; }
+
+/* --- RESPONSIVE DESIGN --- */
+@media screen and (max-width: 992px) {
+  .preludeContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .harmonyContainer { flex-direction: column; height: auto; gap: 2px; }
+  .harmonyPanel { flex-basis: auto; }
+  .harmonyPanel.active { flex: 1; }
+  .panelHeader { flex-direction: row; text-align: left; align-items: center; }
+  .panelIcon { margin-bottom: 0; margin-right: 15px; width: 40px; height: 40px; }
+  .harmonyPanel h3 { font-size: 1.2rem; }
+}

@@ -1,0 +1,199 @@
+/* Homepage.module.css */
+
+:root {
+  --xhiva-dark-blue: #0D2C54;
+  --xhiva-medium-blue: #2D5F9B;
+  --xhiva-dark-gray: #5A5A5A;
+  --xhiva-light-gray: #ADB5BD;
+  --xhiva-off-white: #F1F1F1;
+  --xhiva-gold: #D7C286;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.homepageWrapper {
+  background-color: #FFFFFF;
+  font-family: var(--font-sans);
+  overflow-x: hidden; /* Prevents horizontal scroll caused by full-width sections */
+}
+
+/* --- Section 1: Vision --- */
+.visionSection {
+  text-align: center;
+  /* Using 100% width is safer for responsiveness than 100vw */
+  width: 100%; 
+}
+
+/* ... (gradient animations remain the same) ... */
+
+.visionContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+.visionSubtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--xhiva-gold);
+  margin-bottom: 1rem;
+} 
+
+.visionTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  color: var(--xhiva-dark-blue);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.visionDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--xhiva-dark-gray);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 2rem auto 0 auto;
+}
+
+/* --- Section 2: Ecosystem --- */
+.ecosystemSection {
+  background-color: #F1F1F1;
+  padding: 5rem 0; /* Increased padding for better spacing */
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ecosystemContentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Give more space to content on desktop */
+  align-items: center;
+  gap: 4rem; /* Increased gap */
+  padding: 0 2rem;
+}
+
+.ecosystemNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ecosystemTab {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem; /* Increased padding */
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--xhiva-dark-gray);
+  transition: all 0.3s ease;
+}
+
+.ecosystemIcon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.6);
+  transition: filter 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ecosystemTab:hover .ecosystemIcon,
+.ecosystemTab.active .ecosystemIcon {
+  filter: grayscale(0) opacity(1);
+}
+
+.ecosystemTab:hover {
+  background-color: #FFFFFF;
+  color: var(--xhiva-gold);
+}
+
+.ecosystemTab.active {
+  background-color: #FFFFFF;
+  color: var(--xhiva-dark-blue);
+  border-left-color: var(--xhiva-gold);
+}
+
+.ecosystemContent {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--xhiva-dark-gray);
+  min-height: 200px; /* Increased min-height to prevent layout shifts */
+}
+
+
+/* --- RESPONSIVE STYLES --- */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 1024px) {
+  .ecosystemContentWrapper {
+    /* Stacks the layout to a single column */
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .ecosystemNav {
+    /* Changes the nav to a horizontal row */
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 2rem;
+  }
+  .ecosystemContent {
+    text-align: center;
+    padding: 0 1rem;
+    min-height: auto;
+  }
+  .ecosystemTab {
+    /* Replaces side border with bottom border for horizontal layout */
+    border-left: none;
+    border-bottom: 4px solid transparent;
+  }
+  .ecosystemTab.active {
+    border-bottom-color: var(--xhiva-gold);
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 768px) {
+  .visionContent { padding: 4rem 1.5rem; }
+  .ecosystemSection { padding: 3rem 0; }
+  
+  .ecosystemContentWrapper {
+    padding: 0 1.5rem;
+  }
+  .ecosystemTab {
+    flex-direction: column; /* Stack icon on top of text for smaller tabs */
+    gap: 0.75rem;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  .ecosystemContent {
+    font-size: 1.1rem;
+  }
+}
+
+/* For Small Mobile Phones */
+@media (max-width: 480px) {
+  .visionContent { padding: 3rem 1rem; }
+  .visionDescription { font-size: 1rem; }
+
+  .ecosystemSection { padding: 2.5rem 0; }
+  .ecosystemContentWrapper { padding: 0 1rem; }
+  
+  .ecosystemNav { padding-bottom: 1.5rem; }
+  .ecosystemTab { padding: 0.75rem; }
+  .ecosystemIcon { width: 45px; height: 45px; }
+  
+  .ecosystemContent { font-size: 1rem; }
+}
+
+/* ... (Keyframes for animations remain the same) ... */

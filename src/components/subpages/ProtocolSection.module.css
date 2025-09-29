@@ -1,0 +1,144 @@
+/* src/components/ProtocolSection.module.css */
+
+:root {
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+  --dark-blue: #0D2C54;
+  --medium-blue: #2D5F9B;
+  --gold: #D7C286;
+  --background-light: #F8F9FA;
+  --text-dark: #212529;
+  --border-color: #DEE2E6;
+  --white: #FFFFFF;
+}
+
+.section {
+  background-color: var(--background-light);
+  padding: 6rem 2rem;
+  font-family: var(--font-primary);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.preTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--medium-blue);
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-headings);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--dark-blue);
+  line-height: 1.2;
+}
+
+/* --- Timeline Styles --- */
+.timelineContainer {
+  position: relative;
+  /* The vertical timeline bar */
+  --line-width: 3px;
+  --node-size: 50px;
+}
+
+/* The main vertical line of the timeline */
+.timelineContainer::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--node-size) / 2);
+  left: calc(var(--node-size) / 2);
+  transform: translateX(-50%);
+  height: calc(100% - var(--node-size));
+  width: var(--line-width);
+  background-color: var(--border-color);
+}
+
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-left: calc(var(--node-size) + 2rem);
+  min-height: 120px;
+}
+
+.timelineItem:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+/* The circular node on the timeline */
+.timelineGraphic {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--node-size);
+  height: var(--node-size);
+  background-color: var(--white);
+  border: var(--line-width) solid var(--medium-blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.timelineIcon {
+  color: var(--medium-blue);
+}
+.timelineIcon svg {
+  width: calc(var(--node-size) * 0.5);
+  height: calc(var(--node-size) * 0.5);
+}
+
+/* The content card for each step */
+.timelineContent {
+  background-color: var(--white);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  width: 100%;
+}
+
+.stepTitle {
+  font-family: var(--font-headings);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--dark-blue);
+  margin: 0 0 0.5rem 0;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --node-size: 40px;
+    }
+    .timelineItem {
+        padding-left: calc(var(--node-size) + 1.5rem);
+    }
+}

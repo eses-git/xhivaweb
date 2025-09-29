@@ -1,0 +1,167 @@
+/* src/components/InvestmentSection.module.css (Master-Detail Redesign) */
+
+:root {
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+  --dark-blue: #0D2C54;
+  --medium-blue: #2D5F9B;
+  --gold: #D7C286;
+  --background-light: #F8F9FA;
+  --text-dark: #212529;
+  --text-muted: #6C757D;
+  --border-color: #DEE2E6;
+  --white: #FFFFFF;
+}
+
+.section {
+  background-color: var(--background-light);
+  padding: 120px 2rem 6rem 2rem;
+  font-family: var(--font-primary);
+}
+
+.header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 5rem auto;
+}
+
+.preTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--medium-blue);
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-headings);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--dark-blue);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  margin-top: 2rem;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+/* --- Two-Column Layout --- */
+.mainContent {
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Fixed width for nav, flexible for content */
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* --- Navigation (Left Column) --- */
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--border-color);
+}
+
+.navItem button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: block;
+  padding: 1.25rem 1.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: color 0.3s ease, border-left-color 0.3s ease, background-color 0.3s ease;
+}
+
+.navItem button:hover {
+  color: var(--dark-blue);
+  background-color: rgba(0,0,0,0.02);
+}
+
+.navItem.active button {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  font-weight: 600;
+}
+
+/* --- Content Panel (Right Column) --- */
+.contentPanel {
+  min-height: 500px; /* Set a min-height to prevent layout shifts */
+  position: relative;
+}
+
+.programDetails {
+  padding: 2.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.programTitle {
+  font-family: var(--font-headings);
+  font-size: 2.25rem;
+  color: var(--dark-blue);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.detailItem {
+  line-height: 1.7;
+}
+
+.detailTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--medium-blue);
+  margin-bottom: 0.5rem;
+}
+
+.detailItem p {
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .mainContent {
+    grid-template-columns: 1fr; /* Stack columns */
+  }
+
+  .navigation {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}

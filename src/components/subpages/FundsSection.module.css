@@ -1,0 +1,256 @@
+/* FundsSection.module.css */
+
+/* --- Main Section & Layout --- */
+.sectionWrapper { 
+  position: relative; /* This is required for the ::before element to be positioned correctly */
+  isolation: isolate; /* This prevents z-index issues with the background layer */
+  padding: 2.7rem 0; 
+  background-color: #FFFFFF; 
+  overflow: hidden;
+}
+
+.sectionWrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0; /* Makes the layer cover the entire section */
+  z-index: -1; /* Puts this layer behind the content */
+  
+  /* All your background styles are moved here */
+  /*background-image: url('/public/neuralcon2.png');*/
+  background-size: cover;
+  background-position: center center;
+  background-attachment:local; 
+  
+  /* This is where you apply the opacity */
+  opacity: 0.7; /* Adjust this value from 0 (invisible) to 1 (fully visible) */
+}
+
+.contentContainer { 
+  position: relative;
+  z-index: 1; /* Ensures content is on top of decorations */
+  padding: 0 2rem; 
+  max-width: 1420px; /* Centralizes content */
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+
+/* --- Header & Description --- */
+.headerText { text-align: center; max-width: 64rem; margin: 0 auto 3rem auto; }
+.subtitle { display: inline-block; padding: 1.5rem 3rem; background-color: rgba(230, 230, 230, 0.5); border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
+.title { font-size: 4.375rem; line-height: 0.85; font-weight: 400; color: #002C54; letter-spacing: -0.025em; font-family: var(--font-headings); }
+.descriptionWrapper { 
+  width: auto;
+  max-width: 960px;
+  margin: 4rem auto 0 auto;
+  background-color: #ae9c6bb1; /* Equivalent to #D7C286 with 80% opacity */
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); 
+}
+.descriptionContent { padding: 3rem 2rem; max-width: 60rem; margin: 0 auto; }
+.descriptionText { font-size: 1.2rem; color: #FFFFFF; line-height: 1.625; font-weight: 300; font-family: var(--font-body); }
+
+/* --- Interactive Container --- */
+.interactiveContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  align-items: stretch;
+}
+
+/* --- Buttons Column --- */
+.buttonsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 33%;
+}
+
+/* --- Grid of Square Buttons --- */
+.fundButton { 
+  cursor: pointer; 
+  width: 100%; 
+  height: auto; 
+  padding: 1rem; 
+  background-color: #FFFFFF; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+  transition: all 0.3s ease-in-out; 
+  border: 2px solid #90b4d4; 
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: flex-start; 
+  gap: 1rem;
+}
+.fundButton:hover { transform: translateY(-6px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.fundButton.active { transform: translateY(-6px); border-color: #d7c286; }
+.buttonIconWrapper { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 44, 84, 0.2); transition: all 0.3s ease-in-out; }
+.fundButton.active .buttonIconWrapper { border-color: #d7c286; background-color: rgba(215, 194, 134, 0.1); }
+.buttonIcon { width: 1.25rem; height: 1.25rem; color: #002c54; }
+.buttonTitle { font-size: 0.875rem; font-weight: 400; color: #002c54; margin: 0; text-align: left; line-height: 1.2; flex: 1; font-family: var(--font-headings); }
+
+
+/* --- WAVE DETAILED CARD DESIGN --- */
+.cardContainer {
+  flex: 2;
+  max-width: 67%;
+  display: flex;
+  flex-direction: column;
+}
+.waveCard {
+  position: relative;
+  background-color: #F8F9FA;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.waveCard::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgba(215, 194, 134, 0.5);
+  z-index: 1;
+}
+.waveCard::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(173, 181, 189, 0.1);
+  z-index: 1;
+}
+.waveContent {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CHANGED: Wave colors are now gold shades */
+.waveContent::before {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -50%;
+  width: 200%;
+  height: 200px;
+  background-color: #d7c286; /* Main gold color */
+  opacity: 0.15;
+  animation: wave-animation 10s infinite ease-in-out alternate;
+}
+.waveContent::after {
+  content: '';
+  position: absolute;
+  bottom: -170px;
+  left: -50%;
+  width: 200%;
+  height: 200px;
+  background-color: #d7c286; /* Main gold color */
+  opacity: 0.2; /* A slightly different opacity for a layered feel */
+  animation: wave-animation 12s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes wave-animation {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+.waveHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.waveIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 44, 84, 0.05);
+  color: #002c54;
+  font-size: 1.5rem;
+}
+.waveTitle { font-size: 1.5rem; font-weight: 600; color: #002c54; font-family: var(--font-headings); }
+.waveSubtitle { font-size: 0.9rem; color: #adb5bd; font-family: var(--font-body); }
+.waveBody { font-size: 1rem; line-height: 1.75; color: #4b5563; flex: 1; font-family: var(--font-body); }
+.waveTabNav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; }
+.waveTabButton { background: transparent; border: none; padding: 0.5rem 0; margin-bottom: -1px; margin-right: 1.5rem; font-size: 0.9rem; font-weight: 500; color: #adb5bd; cursor: pointer; transition: all 0.3s ease; border-bottom: 2px solid transparent; font-family: var(--font-body); }
+.waveTabButton:hover { color: #002c54; }
+.waveTabButton.active { color: #002c54; border-bottom-color: #d7c286; }
+.waveTabContent { min-height: 150px; }
+.contentHeading { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #90b4d4; font-weight: 600; margin-bottom: 0.5rem; font-family: var(--font-headings); }
+.contentHeading:not(:first-child) { margin-top: 1.5rem; }
+.waveFinancialsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+.waveMetric { }
+.waveMetricLabel { display: block; font-size: 0.8rem; color: #adb5bd; margin-bottom: 0.25rem; font-family: var(--font-body); }
+.waveMetricValue { font-size: 1.1rem; font-weight: 600; color: #002c54; font-family: var(--font-headings); }
+
+
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+  /* Hide background decorations on mobile */
+  .sectionWrapper::before,
+  .sectionWrapper::after,
+  .contentContainer::before,
+  .contentContainer::after {
+    display: none;
+  }
+
+  /* Adjust Spacing */
+  .sectionWrapper { padding: 2rem 0; }
+  .contentContainer { padding: 0 1rem; }
+  .subtitle { padding: 1rem 1.5rem; }
+  .descriptionContent { padding: 2rem 1.5rem; }
+  .waveContent { padding: 1.5rem; }
+
+  /* Adjust Typography */
+  .title { font-size: 2.5rem; }
+  .descriptionText { font-size: 1rem; }
+  .waveTitle { font-size: 1.25rem; }
+  .waveSubtitle { font-size: 0.875rem; }
+  .waveBody { font-size: 0.9rem; }
+  
+  /* Adjust Layouts */
+  .waveHeader { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .waveTabNav { flex-wrap: wrap; justify-content: flex-start; gap: 0; }
+  .waveTabButton { margin-right: 1rem; }
+
+  /* Interactive Container on Mobile */
+  .interactiveContainer {
+    flex-direction: column;
+  }
+  .buttonsColumn {
+    max-width: 100%;
+    flex: auto;
+  }
+  .cardContainer {
+    max-width: 100%;
+    flex: auto;
+  }
+
+  /* Fund Button on Mobile */
+  .fundButton {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    padding: 1rem;
+  }
+  .buttonTitle {
+    font-size: 0.875rem;
+  }
+}

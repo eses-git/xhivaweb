@@ -1,0 +1,183 @@
+/* src/components/ImpactSection.module.css (Pivoting Perspectives Design) */
+
+:root {
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+  --dark-blue: #0D2C54;
+  --gold: #D7C286;
+  --text-dark: #343a40;
+  --text-muted: #6c757d;
+  --background-light: #f8f9fa;
+  --background-card: #FFFFFF;
+  --border-color: #dee2e6;
+}
+
+.section {
+  /* --- CORRECTED STYLES --- */
+  background-color: transparent; /* Allows the canvas behind it to be visible */
+  min-height: 100vh; /* Ensures the container has height, even with little content */
+  
+  /* --- Original Styles --- */
+  padding: 4.5rem 2rem;
+  font-family: var(--font-primary);
+  color: var(--text-dark);
+  box-sizing: border-box; /* Good practice for layout consistency */
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+.preTitle {
+ display: inline-block; padding: 1.5rem 3rem; background-color: #d7c18641; border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
+
+.title {
+  font-family: var(--font-headings);
+  font-size: 3.5rem;
+  color: var(--dark-blue);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* --- 3D Flip Interaction --- */
+.perspectiveContainer {
+  perspective: 1500px;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 500px; /* CHANGED: Increased height from 400px */
+}
+
+.flipperCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.flipperCard.isFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Added to handle potential overflow */
+}
+
+.cardFaceFront {
+  /* No rotation needed */
+}
+
+.cardFaceBack {
+  transform: rotateY(180deg);
+}
+
+.cardContent {
+  padding: 3rem;
+  text-align: center;
+  max-width: 650px; /* Increased max-width for content */
+}
+
+.icon {
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.pillarTitle {
+  font-family: var(--font-headings);
+  font-size: 2.2rem;
+  color: var(--dark-blue);
+  margin-bottom: 1rem;
+}
+
+.pillarDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* --- Toggle Controls --- */
+.pillarToggles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem auto 4rem auto;
+}
+
+.toggleButton {
+  font-family: var(--font-headings);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.toggleButton::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.toggleButton:hover {
+  color: var(--dark-blue);
+}
+
+.toggleButton.active {
+  color: var(--dark-blue);
+}
+.toggleButton.active::after {
+  transform: scaleX(1);
+}
+
+/* --- Conclusion --- */
+.conclusionText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .title { font-size: 2.5rem; }
+  .perspectiveContainer { 
+    height: 520px; /* CHANGED: Increased responsive height */
+  }
+  .pillarTitle { font-size: 1.8rem; }
+  .pillarDescription { font-size: 1rem; }
+}
