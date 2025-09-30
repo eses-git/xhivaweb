@@ -9,8 +9,8 @@
   --background-panel-hover: #e9ecef;
   --dark-gray: #5A5A5A;
   --gold: #D7C286;
-  --font-body: 'Lato', sans-serif;
-  --font-headings: 'Montserrat', sans-serif;
+  --font-body: 'Lato';
+  --font-headings: 'Montserrat';
 }
 
 .aboutUsSection {
@@ -21,6 +21,7 @@
   /* --- Original Styles --- */
   font-family: var(--font-body);
   padding: 85px 20px;
+  margin-top:100px;
 }
 
 .container { 
@@ -31,6 +32,8 @@
   /* --- Original Styles --- */
   max-width: 1200px; 
   margin: 0 auto; 
+  margin-top:85px;
+  margin-bottom:85px;
 }
 
 /* --- HEADER --- */
@@ -121,12 +124,39 @@
 }
 
 .panelHeader { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.panelIcon { width: 50px; height: 50px; margin-bottom: 20px; background-color: transparent; border: 2px solid var(--medium-blue); transition: all 0.3s ease; }
+
+/* --- MODIFIED & NEW STYLES FOR ICONS --- */
+.panelIcon { 
+  width: 50px; 
+  height: 50px; 
+  margin-bottom: 20px; 
+  background-color: transparent; 
+  border: 2px solid var(--medium-blue); 
+  transition: all 0.3s ease; 
+  
+  /* Add flex to center the SVG */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panelIcon svg {
+  width: 55%; /* Size the icon relative to its container */
+  height: 55%;
+  stroke: var(--medium-blue); /* Set initial icon color */
+  transition: stroke 0.3s ease;
+}
 
 .harmonyPanel:hover .panelIcon,
 .harmonyPanel.active .panelIcon {
   background-color: var(--gold);
   border-color: var(--gold);
+}
+
+/* Change icon color on hover/active for better contrast */
+.harmonyPanel:hover .panelIcon svg,
+.harmonyPanel.active .panelIcon svg {
+  stroke: var(--dark-blue);
 }
 
 .harmonyPanel h3 { font-family: var(--font-headings); font-size: 1.5rem; color: var(--dark-blue); margin: 0; }
@@ -135,7 +165,7 @@
 .panelContent p { font-size: 1rem; line-height: 1.7; color: var(--dark-gray); margin: 0; }
 
 /* --- CAPSTONE / MISSION STATEMENT --- */
-.capstoneSection { text-align: center; padding: 60px 20px; background-color: var(--dark-blue); color: white; }
+.capstoneSection { text-align: center; padding: 60px 20px; background-color: #0d2c54d3; color: white; }
 .capstoneSection h2 { font-family: var(--font-headings); font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
 .capstoneSection p { font-size: 1.2rem; line-height: 1.8; color: var(--light-blue); max-width: 800px; margin: 0 auto; }
 

@@ -1,15 +1,21 @@
 // src/components/AboutUsSection.tsx
 
-import React, { useState } from 'react';
+import React, { useState, ComponentType } from 'react';
 import styles from './AboutUs.module.css';
 import { useLanguage } from '../LanguageContext';
-import { AnimatedBackgroundWrapper } from '../background/isometric-background/AnimatedBackgroundWrapperGold';
+import { InteractiveConnectionsBackgroundLight } from '../background/interactive-connections-background-light/interactive-connections-background-light';
+
+// --- IMPORT THE NEW ICONS ---
+import { DueDiligenceIcon } from '../icons/DueDiligenceIcon';
+import { TransparencyIcon } from '../icons/TransparencyIcon';
+import { ComplianceIcon } from '../icons/ComplianceIcon';
+
 
 type Principle = {
   id: number;
   title: string;
   text: string;
-  icon?: string;
+  IconComponent: ComponentType; // Use ComponentType for React components
 };
 
 export function AboutUsSection() {
@@ -17,15 +23,13 @@ export function AboutUsSection() {
   const [activePanelId, setActivePanelId] = useState<number>(1);
 
   const principles: Principle[] = [
-    { id: 1, title: t('about.principles.item1.title'), text: t('about.principles.item1.text'), icon: 'Icon1' },
-    { id: 2, title: t('about.principles.item2.title'), text: t('about.principles.item2.text'), icon: 'Icon2' },
-    { id: 3, title: t('about.principles.item3.title'), text: t('about.principles.item3.text'), icon: 'Icon3' },
+    { id: 1, title: t('about.principles.item1.title'), text: t('about.principles.item1.text'), IconComponent: DueDiligenceIcon },
+    { id: 2, title: t('about.principles.item2.title'), text: t('about.principles.item2.text'), IconComponent: TransparencyIcon },
+    { id: 3, title: t('about.principles.item3.title'), text: t('about.principles.item3.text'), IconComponent: ComplianceIcon },
   ];
 
-  // The AnimatedBackgroundWrapper now IS the main section.
-  // The extra <section> tag has been removed.
   return (
-    <AnimatedBackgroundWrapper className={styles.aboutUsSection}>
+    <InteractiveConnectionsBackgroundLight>
       <div className={styles.container}>
         
         <header className={styles.header}>
@@ -62,7 +66,10 @@ export function AboutUsSection() {
               tabIndex={0}
             >
               <div className={styles.panelHeader}>
-                <div className={styles.panelIcon}></div>
+                {/* --- RENDER THE ICON --- */}
+                <div className={styles.panelIcon}>
+                  <principle.IconComponent />
+                </div>
                 <h3>{principle.title}</h3>
               </div>
               <div className={styles.panelContent}>
@@ -79,6 +86,6 @@ export function AboutUsSection() {
         </div>
         
       </div>
-    </AnimatedBackgroundWrapper>
+    </InteractiveConnectionsBackgroundLight>
   );
 }

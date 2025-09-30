@@ -55,22 +55,28 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
 
       constructor(canvasElement: HTMLCanvasElement) {
         this.z = Math.random() * 0.7 + 0.3;
-        this.x = Math.random() * canvasElement.width;
-        this.y = Math.random() * canvasElement.height;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.vx = (Math.random() * 1.2 - 0.6) * this.z;
-        this.vy = (Math.random() * 1.2 - 0.6) * this.z;
+        this.baseX = Math.random() * canvasElement.width;
+        this.baseY = Math.random() * canvasElement.height;
+        const offset = 200; // Offscreen amount for initial slide-in
+        if (Math.random() > 0.5) {
+          this.x = -offset + Math.random() * 50;
+          this.vx = (1 + Math.random() * 3) * this.z; // Move right from left side
+        } else {
+          this.x = canvasElement.width + offset - Math.random() * 50;
+          this.vx = (-1 - Math.random() * 3) * this.z; // Move left from right side
+        }
+        this.y = this.baseY + (Math.random() * 100 - 50); // Initial offset for y movement
+        this.vy = (Math.random() * 4 - 2) * this.z; // Initial velocity range for y
         this.size = (Math.random() * 3 + 2) * this.z;
-        this.color = Math.random() > 0.5 ? '#B88A4E' : '#CACDCE';
+        this.color = Math.random() > 0.5 ? '#ecc24eff' : '#cececaff';
       }
 
       update(canvasElement: HTMLCanvasElement) {
-        const springFactor = 0.001;
+        const springFactor = 0.002; // Slightly increased for more responsive movement
         this.vx += (this.baseX - this.x) * springFactor;
         this.vy += (this.baseY - this.y) * springFactor;
-        this.vx *= 0.99;
-        this.vy *= 0.99;
+        this.vx *= 0.95;
+        this.vy *= 0.95;
 
         this.x += this.vx;
         this.y += this.vy;
@@ -90,8 +96,8 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      // ~400 particles for dense network
-      const particleCount = Math.min(300, Math.floor((canvasElement.width * canvasElement.height) / 3000));
+      // ~700 particles for dense network
+      const particleCount = Math.min(700, Math.floor((canvasElement.width * canvasElement.height) / 3000));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
     };
 
@@ -122,7 +128,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     };
 
     const handleConnections = () => {
-      bufferCtx.shadowColor = '#f8e786ff'; // Vivid gold for neon glow
+      bufferCtx.shadowColor = '#f4e383ff'; // Vivid gold for neon glow
       bufferCtx.shadowBlur = 5; // Increased for neon effect
       bufferCtx.lineWidth = 0.5;
 
@@ -137,8 +143,9 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       }
 
       const gradient = bufferCtx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, 'rgba(223, 180, 124, 0.8)'); // Slightly higher opacity
-      gradient.addColorStop(1, 'rgba(211, 196, 176, 0.4)');
+      gradient.addColorStop(0, 'rgba(246, 205, 152, 0.8)'); // Slightly higher opacity
+      gradient.addColorStop(1, 'rgba(221, 182, 129, 0.56)');
+      bufferCtx.globalAlpha = 0.4;
 
       bufferCtx.beginPath();
       for (const p1 of particles) {
@@ -156,8 +163,8 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
                 const distanceSq = dx * dx + dy * dy;
                 if (distanceSq < connectDistanceSq) {
                   // Minimum opacity to prevent disappearing
-                  const opacity = Math.max(0.4, 1 - Math.sqrt(distanceSq) / 120);
-                  bufferCtx.globalAlpha = opacity;
+                  // const opacity = Math.max(0.4, 1 - Math.sqrt(distanceSq) / 120);
+                  // bufferCtx.globalAlpha = opacity;
                   bufferCtx.moveTo(p1.x, p1.y);
                   bufferCtx.lineTo(p2.x, p2.y);
                   connections++;
@@ -180,7 +187,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     const animate = () => {
       bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-      bufferCtx.shadowColor = '#ddba8cff';
+      bufferCtx.shadowColor = '#d7c186eb';
       bufferCtx.shadowBlur = 12; // Increased for neon particle glow
       bufferCtx.beginPath();
       particles.forEach(particle => {
@@ -190,7 +197,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       bufferCtx.fill();
 
       bufferCtx.globalAlpha = 1.0;
-      bufferCtx.shadowBlur = 0;
+      // bufferCtx.shadowBlur = 0;
       handleMouseInteraction();
       handleConnections();
 
@@ -216,7 +223,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
   return (
     <section
       className="relative overflow-hidden"
-      style={{background: 'linear-gradient(135deg, rgba(200, 170, 90, 0.85) 0%, rgba(180, 130, 45, 0.85) 33%, rgba(200, 170, 90, 0.85) 66%, rgba(140, 100, 40, 0.85) 100%)'
+      style={{background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.85) 66%, rgba(255, 255, 255, 0.85) 100%)'
  }}
     >
       <canvas
