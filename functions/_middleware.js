@@ -1,5 +1,5 @@
 // functions/_middleware.js
-
+/*
 // The onRequest function is the entry point for Pages Functions Middleware
 export async function onRequest(context) {
     
@@ -69,4 +69,4 @@ export async function onRequest(context) {
             },
         });
     }
-}
+}*/
