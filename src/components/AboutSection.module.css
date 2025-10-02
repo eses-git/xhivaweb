@@ -31,6 +31,10 @@
   will-change: transform, opacity;
   /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
   transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
 }
 .title {
   font-size: 3.5rem;
@@ -103,6 +107,10 @@
   will-change: transform, opacity;
   /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
   transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
 }
 
 .pillarCard:hover {
@@ -150,6 +158,11 @@
   .title { font-size: 2.5rem; }
   .description { font-size: 1rem; }
   .pillarsWrapper { padding-left: 0; }
+  .darkPanel,
+  .pillarCard {
+    transition: none; /* Disable CSS transitions */
+    animation: none; /* If any implicit animations */
+  }
 }
 
 @media (max-width: 480px) {
