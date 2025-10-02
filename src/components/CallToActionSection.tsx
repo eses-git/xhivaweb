@@ -18,11 +18,10 @@ export function CallToActionSection() {
         whileInView={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }} // CHANGED
       >
         <div className={styles.backgroundDiamonds}>
           {[...Array(6)].map((_, i) => (
-            // --- THIS IS THE CORRECTED CODE BLOCK ---
             <motion.div
               key={i}
               className={styles.diamond}
@@ -31,10 +30,8 @@ export function CallToActionSection() {
                 top: `${i * 15}%`,
               }}
               initial={{ scale: 0, rotate: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }} // CHANGED
               exit={{ scale: 0, rotate: 0 }}
-
-              // The "whileInView" animation and its specific transition
               whileInView={{
                 scale: 1,
                 rotate: 45,
@@ -43,8 +40,6 @@ export function CallToActionSection() {
                   delay: i * 0.3 
                 }
               }}
-              
-              // The perpetual "animate" loop and its specific transition
               animate={{ 
                 rotate: [45, 135, 45],
                 scale: [1, 1.1, 1],
@@ -55,7 +50,6 @@ export function CallToActionSection() {
                 }
               }}
             />
-            // --- END OF CORRECTION ---
           ))}
         </div>
       </motion.div>
@@ -69,7 +63,7 @@ export function CallToActionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }} // CHANGED
         >
           <motion.h2 
             className={styles.title}
@@ -77,7 +71,7 @@ export function CallToActionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }} // CHANGED
           >
             {t('cta.title.line1')}
             <br />
@@ -90,7 +84,7 @@ export function CallToActionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }} // CHANGED
           >
             {t('cta.description')}
           </motion.p>
@@ -101,7 +95,7 @@ export function CallToActionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }} // CHANGED
           >
              <Link to="/contact" className={`${styles.primaryButton} group`}>
               <span>{t('cta.button.primary')}</span>
@@ -122,7 +116,7 @@ export function CallToActionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }} // CHANGED
         >
          
         </motion.div>
@@ -134,7 +128,7 @@ export function CallToActionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }} // CHANGED
         >
           <div className={styles.noticeWrapper}>
             <h3 className={styles.noticeTitle}>{t('cta.notice.title')}</h3>

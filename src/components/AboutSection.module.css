@@ -11,7 +11,7 @@
   grid-template-columns: 1fr;
   max-width: 1440px;
   margin: 0 auto;
-  align-items: stretch; /* Ensure both columns stretch to fill grid height */
+  align-items: stretch;
 }
 
 @media (min-width: 1024px) {
@@ -28,7 +28,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* REMOVED: max-height:400px; to prevent clipping and improve responsiveness */
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 .title {
   font-size: 3.5rem;
@@ -75,35 +76,31 @@
 /* ========================================= */
 .lightPanel {
   background-color: #FFFFFF;
-  /* CHANGED: Adjusted padding for a better fit */
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* REMOVED: max-height:400px; to prevent clipping and improve responsiveness */
 }
 
 .pillarsWrapper {
   display: flex;
   flex-direction: column;
-  /* CHANGED: Reduced gap for a tighter fit */
   gap: 1rem; 
   flex-grow: 1;
   justify-content: center;
-  /* REMOVED: max-height:400px; to prevent clipping and improve responsiveness */
 }
 
 .pillarCard {
-  /* CHANGED: Reduced vertical padding and added align-items */
   padding: 1rem 1.5rem; 
-  align-items: center; /* This vertically centers the icon with the text */
-
+  align-items: center;
   border: 2px solid #d7c286;
   display: flex;
   gap: 1.25rem;
   background-color: #FFFFFF;
   box-shadow: 0 4px 10px rgba(0, 44, 84, 0.05);
   transition: all 0.3s ease;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .pillarCard:hover {
@@ -141,10 +138,6 @@
   .darkPanel {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    /* CHANGED: Ensure no max-height restriction */
-  }
-  .lightPanel {
-    /* CHANGED: Ensure no max-height restriction */
   }
 }
 @media (max-width: 768px) {
@@ -156,7 +149,6 @@
   .pillarsWrapper { padding-left: 0; }
 }
 
-/* ADDED: Extra breakpoint for very small screens (e.g., mobile portrait <480px) */
 @media (max-width: 480px) {
   .darkPanel {
     padding: 2rem 1rem;
@@ -184,7 +176,6 @@
 
 
 /* --- BRIDGE SECTION STYLES --- */
-/* (Unchanged, as it's not used in the TSX but preserved for completeness) */
 .bridgeSection {
   background-color: #FFFFFF;
   padding: 3rem 2rem;

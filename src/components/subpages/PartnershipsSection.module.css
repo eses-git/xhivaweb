@@ -33,10 +33,12 @@
 }
 
 .title { 
-font-size: 4.375rem;
-  font-weight: 400; /* Was 600 */
-  color: #002c54; 
-  letter-spacing: -0.025em; 
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
 }
 
 /* --- Accordion Container --- */

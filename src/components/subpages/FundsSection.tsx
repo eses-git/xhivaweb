@@ -13,7 +13,7 @@ export function FundsSection() {
   const [showReplay, setShowReplay] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // MOVED: The funds array is now inside the component to access t()
+  // The funds array remains the same
   const funds = [
     { icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
     { icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
@@ -39,27 +39,29 @@ export function FundsSection() {
   const handleFundChange = (index: number) => {
     setCurrentIndex(index);
     if (cardRef.current) {
-      const headerHeight = 50; // Adjust this value based on your fixed header height
+      const headerHeight = 50;
       const top = cardRef.current.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
+  // UPDATED: handleReplay is now cleaner.
+  // The onPlay event on the video will handle hiding the button.
   const handleReplay = () => {
     if (videoRef.current) {
       videoRef.current.play();
-      setShowReplay(false);
     }
   };
 
   return (
-    <section className={styles.sectionWrapper} style={{ position: 'relative', overflow: 'hidden' }}>
+    <section className={styles.sectionWrapper}>
       <video 
         ref={videoRef} 
         autoPlay 
         muted 
-        playsInline 
-        onEnded={() => setShowReplay(true)}
+        playsInline
+        onPlay={() => setShowReplay(false)} // ADDED: Hides button on play
+        onEnded={() => setShowReplay(true)} // Shows button on end
         style={{ 
           position: 'fixed', 
           top: '50px', 
@@ -75,6 +77,12 @@ export function FundsSection() {
         {t('funds.videoFallback')}
       </video>
  
+      {/* ADDED: Conditionally rendered replay button */}
+      {showReplay && (
+        <button onClick={handleReplay} className={styles.replayButton}>
+        </button>
+      )}
+
       <div className={styles.contentContainer}>
         {/* Header Section */}
         <motion.div className={styles.headerText} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }} viewport={{ once: true }}>
@@ -142,21 +150,7 @@ export function FundsSection() {
                   <p>{currentFund.strategy}</p>
                   <h4 className={styles.contentHeading}>{t('funds.details.allocation')}</h4>
                   <p>{currentFund.allocation}</p>
-                  <h4 className={styles.contentHeading}>{t('funds.details.financials')}</h4>
-                  <div className={styles.waveFinancialsGrid}>
-                    <div className={styles.waveMetric}>
-                      <span className={styles.waveMetricLabel}>{t('funds.details.riskProfile')}</span>
-                      <span className={styles.waveMetricValue}>{currentFund.riskProfile}</span>
-                    </div>
-                    <div className={styles.waveMetric}>
-                      <span className={styles.waveMetricLabel}>{t('funds.details.horizon')}</span>
-                      <span className={styles.waveMetricValue}>{currentFund.investmentHorizon}</span>
-                    </div>
-                    <div className={styles.waveMetric}>
-                      <span className={styles.waveMetricLabel}>{t('funds.details.targetIRR')}</span>
-                      <span className={styles.waveMetricValue}>{currentFund.targetIRR}</span>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>

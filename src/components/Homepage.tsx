@@ -34,7 +34,7 @@ export function Homepage() {
     return () => {
       if (pillarIntervalRef.current) clearInterval(pillarIntervalRef.current);
     };
-  }, []); // Note: useEffect dependency array is empty, which is correct for this use case.
+  }, []);
 
   const handlePillarClick = (index: number) => {
     setActivePillarIndex(index);
@@ -63,7 +63,7 @@ export function Homepage() {
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] as const }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }} // CHANGED
           >
             <h3 className={styles.visionSubtitle}>{t('homepage.leadership.subtitle')}</h3>
             <h1 className={styles.visionTitle}>{t('homepage.leadership.title')}</h1>
@@ -73,13 +73,6 @@ export function Homepage() {
           </motion.div>
         </section>
       </NeuralConnections>
-
-      {/* This section is still in your code but not rendered due to the missing map function. 
-          If you want to display it, you would map over the `ecosystemPillars` here. */}
-      {/* <section className={styles.ecosystemSection}>
-        ...
-      </section>
-      */}
       
     </main>
   );

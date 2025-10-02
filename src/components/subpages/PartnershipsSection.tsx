@@ -97,7 +97,7 @@ export function PartnershipsSection() {
           <p className={styles.ctaSubtitle}>
             {t('partnerships.cta.subtitle')}
           </p>
-          <Link to="/#contact" className={styles.ctaButton}>
+          <Link to="/contact" className={styles.ctaButton}>
             <span>{t('partnerships.cta.button')}</span>
           </Link>
         </div>

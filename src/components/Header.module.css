@@ -19,8 +19,8 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 0;
+  padding-right: 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -31,6 +31,9 @@
   justify-content: space-between;
   height: 4rem;
   width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
 }
 
 .logoLink {
@@ -72,7 +75,9 @@
   transition: color 200ms;
   position: relative;
   letter-spacing: 0.05em;
-  text-decoration: none;
+  text-decoration:none;
+  text-transform: uppercase; 
+
 }
 
 .navLink:hover {
@@ -201,12 +206,16 @@
   .mobileRightSection {
     display: none;
   }
+  .innerContainer {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
   .companyName {
     font-size: 1.25rem;
@@ -217,5 +226,7 @@
   }
   .innerContainer {
     height: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

@@ -3,7 +3,7 @@ import { Menu, X, Globe } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "./LanguageContext";
 import { Link } from "react-router-dom"; // Ensure Link is imported for routing
-import logo from './assets/logo-thick.png'; // Assuming you have a logo image
+import logo from './assets/tri-logo-tr.png'; // Assuming you have a logo image
 import styles from './Header.module.css';
 
 export function Header() {
@@ -17,6 +17,7 @@ export function Header() {
     { name: t('nav.services'), href: "/services" },
     { name: t('nav.partnerships'), href: "/partnership" },
     { name: t('nav.impact'), href: "/impact" },
+    { name: t('nav.careers'), href: "/career" },
     { name: t('nav.contact'), href: "/contact" }
  /*   { name: t('nav.protocol'), href: "/protocol" },*/
 

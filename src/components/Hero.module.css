@@ -50,6 +50,8 @@
   align-items: center;
   width: 100%;
   gap: 3rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 /* Left Container (Title) */
@@ -74,6 +76,8 @@
   line-height: 0.95;
   letter-spacing: -0.025em;
   animation: textGlow 4s ease-in-out infinite;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .title > span {
@@ -96,6 +100,8 @@
   border-right: 2px solid var(--gold-color);
   padding-right: 1.5rem;
   max-width: 400px;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 /* Actions (Buttons) */
@@ -105,6 +111,8 @@
   gap: 1rem;
   width: 100%;
   justify-content: flex-end;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 /* Button Styles */
@@ -199,7 +207,7 @@
 /* Responsive: Tablets/small desktops (max-width: 768px) */
 @media (max-width: 768px) {
   .container {
-    padding: 3.5rem 1rem 4.5rem;
+  padding: 4.5rem 1rem 5rem;
   }
   .description {
     font-size: 0.975rem;

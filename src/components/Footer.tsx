@@ -250,11 +250,11 @@ export function Footer() {
               <div className={styles.regulatedContainer}>
                 <span className={styles.regulatedLabel}>{t('footer.regulatedBy')}</span>
                 <div className={styles.regulatedList}>
-                  <span>SEC</span>
+                  <a href="https://www.sec.gov/" target="_blank" rel="noopener noreferrer" className={styles.regulatedLink}>SEC</a>
                   <span>•</span>
-                  <span>FCA</span>
+                  <a href="https://www.fca.org.uk/" target="_blank" rel="noopener noreferrer" className={styles.regulatedLink}>FCA</a>
                   <span>•</span>
-                  <span>FINMA</span>
+                  <a href="https://www.finma.ch/en/" target="_blank" rel="noopener noreferrer" className={styles.regulatedLink}>FINMA</a>
                 </div>
               </div>
             </div>

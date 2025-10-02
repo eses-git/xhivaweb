@@ -30,8 +30,8 @@ const translations = {
 
     // Homepage (Leadership Section)
     'homepage.leadership.subtitle': 'Our Leadership',
-    'homepage.leadership.title': 'The Stewards of Your Capital',
-    'homepage.leadership.description': 'Trust is the foundation of every relationship we build. We believe it is essential for our partners to know the individuals who are personally committed to safeguarding their interests and upholding our firm\'s principles.',
+    'homepage.leadership.title': 'The Stewards of Capital',
+    'homepage.leadership.description': 'Trust is the foundation of every relationship we build. We believe it is essential for our partners to know those who are personally committed to safeguarding their interests and upholding our firm\'s principles.',
     
     // About Us Section (Homepage)
     'about.subtitle': 'Architects of Global Progress',
@@ -107,7 +107,7 @@ const translations = {
     // Footer Translations
     'footer.company': 'Company',
     'footer.investorRelations': 'Investor Relations',
-    'footer.services': 'Services',
+    'footer.services': 'Organisation',
     'footer.globalFunds': 'Global Funds',
     'footer.legal': 'Legal',
     'footer.compliance': 'Compliance',
@@ -191,6 +191,7 @@ const translations = {
     // About Us Subpage
     'about.page.preTitle': 'About Us',
     'about.page.mainTitle': 'Architects of Stability and Value at the Apex of Global Finance',
+    'about.page.title':'Our Position in Global Finance',
     'about.page.intro1': 'Welcome. We operate at the confluence of central banking, sovereign government initiatives, and private capital. With an operational presence in over 63 jurisdictions, our firm serves a critical role in the global financial architecture.',
     'about.page.intro2': 'Our engagements frequently require us to act in fiduciary capacities such as an escrow agent, compliance overseer, or structuring partner for sovereign entities and premier regulated financial institutions. This unique position grants us privileged access to opportunities that are, by their nature, wholly unavailable in the public markets.',
     'about.philosophy.title': 'A Philosophy of Stewardship',
@@ -385,6 +386,54 @@ const translations = {
     'strategy.governance.item4.description': 'Access to mechanisms such as third-party oversight, indemnities, and other institutional safeguards.',
     'strategy.conclusion.text': 'Where required, our team is equipped to advise upon and establish the appropriate legal and financial entities to meet specific jurisdictional or strategic objectives, ensuring our clients are perfectly positioned for participation.',
 
+
+    //career 
+
+ "careers.preTitle": "CAREER OPPORTUNITIES",
+  "careers.title": "Advance Your Career with an Industry Leader",
+  "careers.introText": "We invite qualified, dedicated professionals to explore career opportunities with our firm. We are committed to attracting and developing top talent to drive innovation and maintain our standard of excellence in the global financial sector.",
+
+  "careers.block1.title": "Commitment to Innovation",
+  "careers.block1.text": "Engage with industry experts in the development of cutting-edge financial technologies and strategic solutions.",
+
+  "careers.block2.title": "Significant Global Influence",
+  "careers.block2.text": "Your contributions will directly support a platform integral to international economic stability and sustainable growth.",
+
+  "careers.block3.title": "A Foundation of Integrity",
+  "careers.block3.text": "We operate within a framework of rigorous ethical standards, ensuring a transparent and principled professional environment for all employees.",
+
+  "careers.form.heading": "Submit Your Application",
+  "careers.form.nameLabel": "Full Name",
+  "careers.form.emailLabel": "Email Address",
+  "careers.form.positionLabel": "Position of Interest",
+  "careers.form.coverLetterLabel": "Cover Letter",
+  "careers.form.fileTitle": "Attach Supporting Documents (Max 5)",
+  "careers.form.selectFiles": "Select Files",
+  "careers.form.limitReached": "File Limit Reached",
+  "careers.form.submitButton": "Submit Application",
+  "careers.form.sendingButton": "Submitting...",
+  "careers.form.dragDrop": "Drag and drop documents here, or",
+  "careers.form.browseFiles": "select from your device",
+  "careers.form.fileSupport": "Supported formats",
+  "careers.form.maxSize": "Maximum size",
+  "careers.form.perFile": "per file",
+
+  "careers.modal.limitTitle": "File Limit Exceeded",
+  "careers.modal.limitMessage": "The maximum number of attachments (5) has been reached. Please remove a file to add another.",
+  "careers.modal.fileTypeTitle": "Unsupported File Type",
+  "careers.modal.fileTypeMessage": "The file",
+  "careers.modal.fileTypeMessage2": "is not a supported format.",
+  "careers.modal.fileSizeTitle": "File Size Exceeded",
+  "careers.modal.fileSizeMessage": "The file",
+  "careers.modal.fileSizeMessage2": "exceeds the maximum size",
+  "careers.modal.fileSizeMessage3": "limit.",
+  "careers.modal.successTitle": "Application Received",
+  "careers.modal.successMessage": "Your application has been successfully submitted. We appreciate your interest. Qualified candidates will be contacted by our human resources department.",
+  "careers.modal.errorTitle": "Submission Error",
+  "careers.modal.errorMessage": "An error occurred while submitting your application. Please verify your information and try again.",
+
+
+
     // Contact Subpage
     'contact.preTitle': 'Contact',
     'contact.title': 'Let\'s Connect',
@@ -393,9 +442,14 @@ const translations = {
     'contact.form.emailLabel': 'Email Address',
     'contact.form.messageLabel': 'Message',
     'contact.form.submitButton': 'Send Message',
-    'contact.details.email': 'inquiries@domain.com',
+    'contact.details.email': 'contact@xhiva.org',
     'contact.details.phone': 'Available upon request',
-    'contact.details.office': 'Capital City, Principal Office',   
+    'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',   
+     'contact.form.sendingButton': 'Sending...',
+    'contact.modal.successTitle': 'Message Sent!',
+    'contact.modal.successMessage': 'Thank you for contacting us. We will get back to you shortly.',
+    'contact.modal.errorTitle': 'Submission Failed',
+    'contact.modal.errorMessage': 'Oops! Something went wrong and your message could not be sent. Please try again or contact us directly.',
 
     // Footer Modals
     'footer.modal.disclaimer.title': 'Legal Disclaimer',
@@ -407,12 +461,14 @@ const translations = {
     'footer.modal.privacy.p1': 'This policy outlines how Xhiva Capital ("we", "us", "our") collects, uses, and safeguards the personal data you provide to us through our website. We act as the \'data controller\' for the purposes of the UK General Data Protection Regulation (UK GDPR).',
     'footer.modal.privacy.p2': 'We may collect information you provide via enquiry forms (name, email, investor status) and technical data (IP address, browser type). We use your data based on legitimate interests to respond to enquiries, consent for marketing, and legal obligation for AML/KYC requirements.',
     'footer.modal.privacy.p3': 'We do not sell your data but may share it with trusted third parties such as professional advisers, regulators, and service providers. Your data may be transferred outside the UK with appropriate safeguards in place.',
-    'footer.modal.privacy.p4': 'We have implemented appropriate security measures and will retain data only as long as necessary. Under UK GDPR, you have rights to access, correct, erase, or object to the processing of your data, and to withdraw consent. For questions, please contact privacy@xhivacapital.com.',
+    'footer.modal.privacy.p4': 'We have implemented appropriate security measures and will retain data only as long as necessary. Under UK GDPR, you have rights to access, correct, erase, or object to the processing of your data, and to withdraw consent. For questions, please contact contact@xhiva.org.',
     'footer.modal.terms.title': 'Terms and Conditions',
     'footer.modal.terms.effectiveDate': 'Effective Date: 7 August 2025',
     'footer.modal.terms.p1': 'By accessing this website, you agree to be bound by these Terms and Conditions. The content is for informational purposes only and does not constitute financial, investment, legal, or other professional advice. Nothing on this site constitutes an offer or solicitation.',
     'footer.modal.terms.p2': 'All intellectual property is the property of Xhiva Capital. We shall not be liable for any loss or damage arising from your use of the site. All investments involve risk, and past performance is not indicative of future results.',
     'footer.modal.terms.p3': 'These terms are governed by the laws of England and Wales. For questions, contact info@xhiva.com.',
+
+
 
     // Disclaimer Modal
     'disclaimer.title': 'Legal Disclaimer',
@@ -523,7 +579,7 @@ const translations = {
     // Footer Translations
     'footer.company': 'Empresa',
     'footer.investorRelations': 'Relaciones con Inversores',
-    'footer.services': 'Servicios',
+    'footer.services': 'Organizaciones',
     'footer.globalFunds': 'Fondos Globales',
     'footer.legal': 'Legal',
     'footer.compliance': 'Cumplimiento',
@@ -607,6 +663,7 @@ const translations = {
     // About Us Subpage
     'about.page.preTitle': 'Sobre Nosotros',
     'about.page.mainTitle': 'Arquitectos de Estabilidad y Valor en la Cima de las Finanzas Globales',
+    'about.page.title':'Nuestra Posición en las Finanzas Globales',
     'about.page.intro1': 'Bienvenidos. Operamos en la confluencia de la banca central, las iniciativas de gobiernos soberanos y el capital privado. Con una presencia operativa en más de 63 jurisdicciones, nuestra firma desempeña un papel fundamental en la arquitectura financiera global.',
     'about.page.intro2': 'Nuestros compromisos requieren con frecuencia que actuemos en capacidades fiduciarias como agente de depósito en garantía, supervisor de cumplimiento o socio estructurador para entidades soberanas e instituciones financieras reguladas de primer nivel. Esta posición única nos otorga un acceso privilegiado a oportunidades que, por su naturaleza, no están disponibles en los mercados públicos.',
     'about.philosophy.title': 'Una Filosofía de Administración',
@@ -621,6 +678,8 @@ const translations = {
     'about.principles.item3.title': 'Cumplimiento Inflexible',
     'about.principles.item3.text': 'La adhesión a los más altos estándares internacionales de cumplimiento normativo no es simplemente una política, es la base de nuestras operaciones.',
     'about.page.footer': 'Somos más que gestores de activos; somos administradores de confianza del capital, dedicados a construir un valor resiliente para nuestra selecta clientela.',
+
+
 
     // Services Subpage
     'services.preTitle': 'SERVICIOS INSTITUCIONALES',
@@ -750,6 +809,40 @@ const translations = {
     'funds.item9.investmentHorizon': '8-12 Años',
     'funds.item9.targetIRR': '22-28% (neto)',
 
+    
+"careers.preTitle": "ÚNETE A LA REVOLUCIÓN",
+"careers.title": "Forja el Futuro de las Finanzas con Nosotros",
+"careers.introText": "Buscamos profesionales ambiciosos y con visión de futuro, listos para desafiar el status quo. Si prosperas en un entorno definido por la confianza, la innovación y el impacto global, tu próximo paso profesional está aquí.",
+
+"careers.block1.title": "Ambiente Innovador",
+"careers.block1.text": "Trabaja junto a mentes pioneras desarrollando soluciones y tecnologías financieras de próxima generación.",
+
+"careers.block2.title": "Impacto Global",
+"careers.block2.text": "Contribuye a una plataforma que influye en el crecimiento económico real y la estabilidad en todos los continentes.",
+
+"careers.block3.title": "Cultura de Confianza",
+"careers.block3.text": "Benefíciate de un lugar de trabajo de apoyo, ético y transparente donde la integridad es primordial.",
+
+"careers.form.heading": "Aplica Hoy",
+"careers.form.nameLabel": "Nombre Completo",
+"careers.form.emailLabel": "Correo Electrónico",
+"careers.form.positionLabel": "Puesto Deseado",
+"careers.form.coverLetterLabel": "Carta de Presentación / Mensaje",
+"careers.form.fileTitle": "Adjuntar Documentos (Máx. 5)",
+"careers.form.selectFiles": "Seleccionar Archivos",
+"careers.form.limitReached": "Límite Alcanzado",
+"careers.form.submitButton": "Enviar Solicitud",
+"careers.form.sendingButton": "Enviando...",
+
+"careers.modal.limitTitle": "Límite de Archivos Alcanzado",
+"careers.modal.limitMessage": "Solo puedes subir un máximo de 5 archivos.",
+"careers.modal.successTitle": "¡Solicitud Enviada!",
+"careers.modal.successMessage": "Gracias por tu interés. Hemos recibido tu solicitud.",
+"careers.modal.errorTitle": "Fallo en la Solicitud",
+"careers.modal.errorMessage": "Ocurrió un error al enviar tu solicitud. Por favor, inténtalo de nuevo.",
+
+
+
     // Partnerships Subpage
     'partnerships.preTitle': 'MÁS ALLÁ DE LAS FRONTERAS',
     'partnerships.title': 'Red Global de Alianzas',
@@ -809,9 +902,16 @@ const translations = {
     'contact.form.emailLabel': 'Dirección de Correo Electrónico',
     'contact.form.messageLabel': 'Mensaje',
     'contact.form.submitButton': 'Enviar Mensaje',
-    'contact.details.email': 'consultas@dominio.com',
+    'contact.details.email': 'contact@xhiva.org ',
     'contact.details.phone': 'Disponible bajo petición',
-    'contact.details.office': 'Capital City, Oficina Principal',
+    'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
+    
+    'contact.form.sendingButton': 'Enviando...',
+    'contact.modal.successTitle': '¡Mensaje Enviado!',
+    'contact.modal.successMessage': 'Gracias por contactarnos. Nos pondremos en contacto contigo en breve.',
+    'contact.modal.errorTitle': 'Envío Fallido',
+    'contact.modal.errorMessage': '¡Ups! Algo salió mal y tu mensaje no pudo ser enviado. Por favor, inténtalo de nuevo o contáctanos directamente.',
+
 
     // Footer Modals
     'footer.modal.disclaimer.title': 'Aviso Legal',
@@ -823,7 +923,7 @@ const translations = {
     'footer.modal.privacy.p1': 'Esta política describe cómo Xhiva Capital ("nosotros", "nuestro") recopila, utiliza y protege los datos personales que nos proporciona a través de nuestro sitio web. Actuamos como el "controlador de datos" a los efectos del Reglamento General de Protección de Datos del Reino Unido (UK GDPR).',
     'footer.modal.privacy.p2': 'Podemos recopilar la información que proporciona a través de formularios de consulta (nombre, correo electrónico, estado del inversor) y datos técnicos (dirección IP, tipo de navegador). Utilizamos sus datos en función de intereses legítimos para responder a las consultas, el consentimiento para el marketing y la obligación legal para los requisitos de AML/KYC.',
     'footer.modal.privacy.p3': 'No vendemos sus datos, pero podemos compartirlos con terceros de confianza como asesores profesionales, reguladores y proveedores de servicios. Sus datos pueden ser transferidos fuera del Reino Unido con las salvaguardias adecuadas.',
-    'footer.modal.privacy.p4': 'Hemos implementado medidas de seguridad adecuadas y retendremos los datos solo el tiempo que sea necesario. Según el UK GDPR, tiene derecho a acceder, corregir, borrar u oponerse al procesamiento de sus datos, y a retirar el consentimiento. Si tiene preguntas, comuníquese con privacy@xhivacapital.com.',
+    'footer.modal.privacy.p4': 'Hemos implementado medidas de seguridad adecuadas y retendremos los datos solo el tiempo que sea necesario. Según el UK GDPR, tiene derecho a acceder, corregir, borrar u oponerse al procesamiento de sus datos, y a retirar el consentimiento. Si tiene preguntas, comuníquese con contact@xhiva.org.',
     'footer.modal.terms.title': 'Términos y Condiciones',
     'footer.modal.terms.effectiveDate': 'Fecha de Entrada en Vigor: 7 de agosto de 2025',
     'footer.modal.terms.p1': 'Al acceder a este sitio web, usted acepta estar sujeto a estos Términos y Condiciones. El contenido es solo para fines informativos y no constituye asesoramiento financiero, de inversión, legal u otro profesional. Nada en este sitio constituye una oferta o solicitud.',

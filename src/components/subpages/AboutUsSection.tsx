@@ -40,7 +40,9 @@ export function AboutUsSection() {
         {/* --- Two Pillars Layout --- */}
         <div className={styles.preludeContainer}>
           <div className={styles.preludeColumn}>
-            <h3>Our Position in Global Finance</h3>
+            <h3>
+                  {t('about.page.title')}
+            </h3>
             <p>{t('about.page.intro1')}</p>
             <p>{t('about.page.intro2')}</p>
           </div>

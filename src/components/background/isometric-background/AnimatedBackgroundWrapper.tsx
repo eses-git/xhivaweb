@@ -23,6 +23,8 @@ const colors = [lightBlue, darkBlue];
 export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps> = ({ children, className }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameId = useRef<number | null>(null);
+  // ADDED: A ref to track if the initial animation has already run
+  const isInitialized = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,21 +34,17 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     if (!ctx) return;
 
     // --- CONFIGURATION ---
-    const hexSize = 50; // Increased size (radius) of the hexagons for bigger shapes
-    const pointRadius = 4; // Increased radius of the dots at the vertices for better visibility
-    // --- ANIMATION SPEED CONTROL ---
-    // A smaller value here makes the slide-in and other movements slower and smoother.
+    const hexSize = 50;
+    const pointRadius = 4;
     const easingFactor = 0.04; 
-
 
     let points: GridPoint[] = [];
     let connections: { p1: GridPoint, p2: GridPoint }[] = [];
 
-    // Mouse position tracker
     const mouse = {
       x: null as number | null,
       y: null as number | null,
-      radius: 200 // Increased interaction radius for bigger mouse effect area
+      radius: 200
     };
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -63,7 +61,6 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseout', handleMouseOut);
 
-    // Function to set canvas size and initialize the grid
     const initialize = () => {
       const parent = canvas.parentElement;
       if (parent) {
@@ -91,7 +88,6 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           const centerPoint = { x, y };
           const hexPoints: GridPoint[] = [];
 
-          // Create the 6 vertices for each hexagon
           for (let i = 0; i < 6; i++) {
             const angle = (Math.PI / 180) * (60 * i - 30);
             const px = centerPoint.x + hexSize * Math.cos(angle);
@@ -99,17 +95,18 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
             const key = `${Math.round(px)},${Math.round(py)}`;
 
             if (!pointMap.has(key)) {
-              // --- MODIFICATION FOR SLIDE-IN EFFECT ---
-              // Determine if the point belongs to the left or right side of the screen
-              const isLeft = px < canvas.width / 2;
-              // Set the initial x-position off-screen to the left or right
-              const initialX = isLeft ? px - canvas.width : px + canvas.width;
+              // --- CHANGED: MODIFIED LOGIC FOR ONE-TIME ANIMATION ---
+              // The slide-in effect only happens if isInitialized.current is false.
+              // For all subsequent resizes, points are created in their final position.
+              const startX = !isInitialized.current
+                ? (px < canvas.width / 2 ? px - canvas.width : px + canvas.width)
+                : px;
 
               const newPoint: GridPoint = {
-                x: initialX, // Start off-screen
-                y: py,       // Keep original y position
-                originX: px, // Set the final destination X
-                originY: py, // Set the final destination Y
+                x: startX, // Use the conditional starting position
+                y: py,
+                originX: px,
+                originY: py,
                 color: colors[Math.floor(Math.random() * colors.length)]
               };
               pointMap.set(key, newPoint);
@@ -118,41 +115,38 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
             hexPoints.push(pointMap.get(key)!);
           }
           
-          // Create connections for the hexagon edges
           for (let i = 0; i < 6; i++) {
             connections.push({ p1: hexPoints[i], p2: hexPoints[(i + 1) % 6] });
           }
         }
       }
+      
+      // --- ADDED: Set the flag to true after the first initialization ---
+      if (!isInitialized.current) {
+        isInitialized.current = true;
+      }
     };
 
     let frameCount = 0;
 
-    // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       frameCount++;
 
-      // --- SPECTACULAR CONNECTION EFFECT ---
-      // Draw lines between connected points, making them fade in as they get closer.
       ctx.lineWidth = 0.5;
       connections.forEach(conn => {
         const dx = conn.p1.x - conn.p2.x;
         const dy = conn.p1.y - conn.p2.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Only draw lines when points are reasonably close to their final connected distance
         if (distance < hexSize * 2) {
-            // As points get closer to their ideal distance (hexSize), the line becomes more opaque
             const opacity = Math.max(0, 1 - (distance - hexSize) / hexSize);
-
             if (opacity > 0) {
                 ctx.beginPath();
                 ctx.moveTo(conn.p1.x, conn.p1.y);
                 ctx.lineTo(conn.p2.x, conn.p2.y);
                 const avgColor = conn.p1.color === conn.p2.color ? conn.p1.color : lightBlue;
                 
-                // Convert hex color to rgba to apply the dynamic opacity
                 const r = parseInt(avgColor.slice(1, 3), 16);
                 const g = parseInt(avgColor.slice(3, 5), 16);
                 const b = parseInt(avgColor.slice(5, 7), 16);
@@ -163,12 +157,10 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
         }
       });
 
-      // Update and draw each point
       points.forEach(p => {
         let targetX = p.originX;
-        let targetY = p.originY + Math.sin(frameCount * 0.015 + p.originX * 0.01) * 10; // Increased waving amplitude for bigger motion
+        let targetY = p.originY + Math.sin(frameCount * 0.015 + p.originX * 0.01) * 10;
 
-        // Mouse interaction
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
@@ -177,16 +169,14 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           if (distance < mouse.radius) {
             const force = (mouse.radius - distance) / mouse.radius;
             const angle = Math.atan2(dy, dx);
-            targetX -= Math.cos(angle) * force * 50; // Increased displacement strength for stronger interactions
-            targetY -= Math.sin(angle) * force * 50; // Increased displacement strength for stronger interactions
+            targetX -= Math.cos(angle) * force * 50;
+            targetY -= Math.sin(angle) * force * 50;
           }
         }
         
-        // Easing will handle both the initial slide-in and the subsequent animations
         p.x += (targetX - p.x) * easingFactor;
         p.y += (targetY - p.y) * easingFactor;
 
-        // Draw the point
         ctx.beginPath();
         ctx.arc(p.x, p.y, pointRadius, 0, Math.PI * 2, false);
         ctx.fillStyle = p.color;
@@ -199,13 +189,11 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     initialize();
     animate();
 
-    // Resize event listener
     const handleResize = () => {
       initialize();
     };
     window.addEventListener('resize', handleResize);
 
-    // Cleanup function
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -227,7 +215,7 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           zIndex: 0,
           width: '100%',
           height: '100%',
-          opacity: 0.3, // Added opacity to make the background lighter and blend better with content
+          opacity: 0.3,
         }}
       />
       <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
@@ -236,4 +224,3 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     </div>
   );
 };
-

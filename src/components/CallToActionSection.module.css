@@ -6,20 +6,21 @@
   padding-top: 8rem;
   padding-bottom: 8rem;
   background: linear-gradient(to bottom right, #002C54, #234e83, #002C54);
-  overflow: hidden; /* This is a good first-level defense */
+  overflow: hidden;
 }
 
-/* THE FIX: Add overflow: hidden to the background containers */
 .backgroundOverlay {
   position: absolute;
   inset: 0;
-  overflow: hidden; /* ADD THIS LINE: This will clip the overflowing diamonds */
+  overflow: hidden;
+  /* ADDED FOR PERFORMANCE */
+  will-change: opacity;
 }
 .backgroundDiamonds {
   position: absolute;
   inset: 0;
   opacity: 0.1;
-  overflow: hidden; /* ADD THIS LINE: This is a backup clip for the diamonds */
+  overflow: hidden;
 }
 
 .diamond {
@@ -29,6 +30,8 @@
   border-width: 2px;
   border-color: #D7C286;
   transform: rotate(45deg);
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform;
 }
 
 .container {
@@ -44,9 +47,10 @@
   text-align: center;
   max-width: 1536px;
   margin: 0 auto 5rem auto;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
-/* REFINED: Using clamp() for fluid typography that scales smoothly */
 .title {
   font-size: clamp(3.5rem, 12vw + 1rem, 10rem);
   font-weight: 400;
@@ -54,13 +58,14 @@
   color: #FFFFFF;
   margin-bottom: 3rem;
   letter-spacing: -0.025em;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .accentText {
   color: #D7C286;
 }
 
-/* REFINED: Using clamp() for the description as well */
 .description {
   font-size: clamp(1.25rem, 2vw, 1.75rem);
   color: rgba(255, 255, 255, 0.9);
@@ -68,6 +73,8 @@
   max-width: 1280px;
   margin: 0 auto 4rem auto;
   font-weight: 300;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .buttonGroup {
@@ -76,6 +83,8 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .primaryButton, .secondaryButton {
@@ -124,6 +133,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 5rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .contactCard {
@@ -162,6 +173,8 @@
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .noticeWrapper {
@@ -189,7 +202,6 @@
 
 /* --- RESPONSIVE STYLES --- */
 
-/* For Tablets and smaller devices */
 @media (max-width: 1024px) {
   .section {
     padding: 6rem 1.5rem;
@@ -204,7 +216,6 @@
   }
 }
 
-/* For Mobile Phones */
 @media (max-width: 768px) {
   .section {
     padding: 5rem 1rem;

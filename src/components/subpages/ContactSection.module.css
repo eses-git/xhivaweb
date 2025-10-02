@@ -1,6 +1,5 @@
 /* src/components/ContactSection.module.css */
 
-/* ... (your :root variables remain the same) ... */
 :root {
   --dark-blue: #0D2C54;
   --text-dark: #343a40;
@@ -14,36 +13,26 @@
 
 
 .contactSection {
-  /* CHANGED: Make the background transparent to see the animation */
   background-color: transparent;
-  
-  /* ADDED: This is crucial for layering */
   position: relative; 
-  
   font-family: var(--font-primary);
   padding: 8rem 2rem;
   line-height: 1.7;
-  overflow: hidden; /* Ensures nothing spills out */
+  overflow: hidden;
 }
 
 .contentWrapper {
-  /* ADDED: Position this content above the background */
   position: relative;
   z-index: 2; 
-
-  /* You can add a semi-transparent background to the content if you want */
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  /* padding: 2rem; */
-  
   max-width: 750px;
   margin: 0 auto;
 }
 
-/* ... (All other styles for .header, .contactForm, .footerDetails, etc. remain the same) ... */
 .header {
   text-align: center;
   margin-bottom: 4rem;
 }
+
 .preTitle {
   color: var(--gold);
   font-weight: 600;
@@ -51,6 +40,7 @@
   text-transform: uppercase;
   font-size: 0.9rem;
 }
+
 .title {
   font-family: var(--font-headings);
   font-size: 4rem;
@@ -59,6 +49,7 @@
   font-weight: 500;
   margin: 0.5rem 0 1.5rem 0;
 }
+
 .introText {
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -66,8 +57,11 @@
   margin: 0 auto;
 }
 
+/* === STEP 1: The full-width line is placed here === */
 .contactForm {
-  margin-bottom: 4rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .formRow {
@@ -123,23 +117,44 @@
   color: var(--dark-blue);
 }
 
+/* === FIX: Replaced grid with flexbox for better height handling and spacing === */
 .footerDetails {
   display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
+  justify-content: space-between; /* Spreads the items across the width */
+  gap: 1.5rem; /* Adds space between items */
+  width: 100%;
   color: var(--text-muted);
 }
 
 .detailItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Aligns items to the top (important for multiline text) */
   gap: 0.75rem;
   font-size: 0.9rem;
+  /* Allow the text content to take up the space it needs */
+  flex: 1 1 0%; /* Allows items to grow/shrink equally, and sets base to 0 */
+  /* Allow text inside the span to wrap */
+  word-break: break-word;
 }
+
+/* === Removed old grid alignment steps which are no longer necessary with justify-content: space-between === */
+/*
+.detailItem:first-child {
+  justify-content: flex-start;
+}
+.detailItem:nth-child(2) {
+  justify-content: center;
+}
+.detailItem:last-child {
+  justify-content: flex-end;
+}
+*/
+
 .detailItem svg {
-  flex-shrink: 0;
+  flex-shrink: 0; /* Ensures the icon doesn't shrink */
+  /* Adjusted alignment for the icon to match the text baseline for better aesthetics */
+  position: relative;
+  top: 0.15rem; 
 }
 
 @media (max-width: 768px) {
@@ -153,9 +168,16 @@
     grid-template-columns: 1fr;
     gap: 0;
   }
+  
+  /* Revert to a simple flex column for mobile */
   .footerDetails {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align all items to the start on mobile */
     gap: 1.5rem;
+  }
+
+  .detailItem {
+    flex: none; /* Disable flex growth on mobile */
   }
 }

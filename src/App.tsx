@@ -13,6 +13,7 @@ import { DisclaimerModal } from "./components/DisclaimerModal";
 import ScrollToTop from './components/hooks/ScrollToTop'; // Import the new component
 import { Funds } from "./components/subpages/Funds";
 import { Contact } from "./components/subpages/Contact";
+import { Career } from "./components/subpages/Career";
 
 
 export default function App() {
@@ -100,6 +101,19 @@ export default function App() {
           <div className="min-h-screen">
             <Header />
             <Contact />
+            <Footer  />
+            <DisclaimerModal 
+              isOpen={isDisclaimerOpen} 
+              onClose={() => setIsDisclaimerOpen(false)} 
+            />
+          </div>
+        } />
+
+          {/* Contact Subpage Route */}
+        <Route path="/career" element={
+          <div className="min-h-screen">
+            <Header />
+            <Career />
             <Footer  />
             <DisclaimerModal 
               isOpen={isDisclaimerOpen} 

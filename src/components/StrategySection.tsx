@@ -43,7 +43,6 @@ export function StrategySection() {
   const { t } = useLanguage();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // --- UPDATED: strategies array now uses the t() function ---
   const strategies: Strategy[] = [
     { icon: BarChart2, title: t('strategy.card1.title'), description: t('strategy.card1.description'), emphasis: "" },
     { icon: ShieldCheck, title: t('strategy.card2.title'), description: t('strategy.card2.description'), emphasis: "" },
@@ -60,9 +59,8 @@ export function StrategySection() {
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }} // CHANGED
         >
-          {/* --- UPDATED: Hardcoded text replaced with t() calls --- */}
           <div className={styles.subtitle}>{t('strategy.subtitle')}</div>
           <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: t('strategy.title').replace('<br></br>', '<br/>') }} />
           <p className={styles.description}>{t('strategy.description')}</p>
@@ -78,7 +76,7 @@ export function StrategySection() {
               initial="hidden"
               whileInView="visible"
               exit="hidden"
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }} // CHANGED
             >
               {strategies.map((strategy, index) => {
                 const isHovered = hoveredIndex === index;
@@ -125,7 +123,7 @@ export function StrategySection() {
               whileInView={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 100 }}
               transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }} // CHANGED
             >
               <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage} />
               <div className={styles.imageCaption}>

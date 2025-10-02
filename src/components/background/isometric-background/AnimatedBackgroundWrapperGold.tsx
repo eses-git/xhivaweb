@@ -23,6 +23,8 @@ const colors = [lightGold, darkGold];
 export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps> = ({ children, className }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameId = useRef<number | null>(null);
+  // ADDED: A ref to track if the initial animation has already run
+  const isInitialized = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -36,9 +38,7 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     const easingFactor = 0.04; // Controls animation speed (smaller is slower)
     
     // --- DATA STRUCTURES ---
-    // A single list of all unique points (vertices)
     let points: GridPoint[] = []; 
-    // A list of hexagons, where each hexagon is an array of its 6 vertex points
     let hexagons: GridPoint[][] = [];
 
     // Mouse position tracker
@@ -70,7 +70,6 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
         canvas.height = parent.clientHeight;
       }
 
-      // Reset data structures
       points = [];
       hexagons = [];
       const pointMap = new Map<string, GridPoint>();
@@ -91,7 +90,6 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           const centerPoint = { x, y };
           const hexPoints: GridPoint[] = [];
 
-          // Create or retrieve the 6 vertices for this hexagon
           for (let i = 0; i < 6; i++) {
             const angle = (Math.PI / 180) * (60 * i - 30);
             const px = centerPoint.x + hexSize * Math.cos(angle);
@@ -99,15 +97,16 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
             const key = `${Math.round(px)},${Math.round(py)}`;
 
             if (!pointMap.has(key)) {
-              // --- SLIDE-IN EFFECT ---
-              const isLeft = px < canvas.width / 2;
-              const initialX = isLeft ? px - canvas.width : px + canvas.width;
+              // --- CHANGED: MODIFIED LOGIC FOR ONE-TIME ANIMATION ---
+              const startX = !isInitialized.current
+                ? (px < canvas.width / 2 ? px - canvas.width : px + canvas.width)
+                : px;
 
               const newPoint: GridPoint = {
-                x: initialX, // Start off-screen
+                x: startX, // Use the conditional starting position
                 y: py,
-                originX: px, // Final destination X
-                originY: py, // Final destination Y
+                originX: px,
+                originY: py,
                 color: colors[Math.floor(Math.random() * colors.length)]
               };
               pointMap.set(key, newPoint);
@@ -116,26 +115,26 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
             hexPoints.push(pointMap.get(key)!);
           }
           
-          // Store the completed hexagon (as an array of its 6 points)
           hexagons.push(hexPoints);
         }
+      }
+
+      // --- ADDED: Set the flag to true after the first initialization ---
+      if (!isInitialized.current) {
+        isInitialized.current = true;
       }
     };
 
     let frameCount = 0;
 
-    // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       frameCount++;
 
-      // 1. First, update the position of every single point
       points.forEach(p => {
         let targetX = p.originX;
-        // Waving motion effect
         let targetY = p.originY + Math.sin(frameCount * 0.015 + p.originX * 0.01) * 10;
 
-        // Mouse interaction effect
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
@@ -149,13 +148,11 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           }
         }
         
-        // Ease the point towards its target position (handles slide-in, waving, and mouse effects)
         p.x += (targetX - p.x) * easingFactor;
         p.y += (targetY - p.y) * easingFactor;
       });
 
-      // 2. Now, draw the solid hexagons using the updated point positions
-      ctx.lineWidth = 1; // Set line width for the hexagons
+      ctx.lineWidth = 1;
       hexagons.forEach(hex => {
         ctx.beginPath();
         ctx.moveTo(hex[0].x, hex[0].y);
@@ -164,7 +161,6 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
         }
         ctx.closePath();
         
-        // Use the color of the first vertex for the entire hexagon's stroke
         ctx.strokeStyle = hex[0].color;
         ctx.stroke();
       });
@@ -175,13 +171,11 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     initialize();
     animate();
 
-    // Resize event listener
     const handleResize = () => {
       initialize();
     };
     window.addEventListener('resize', handleResize);
 
-    // Cleanup function
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -203,7 +197,7 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           zIndex: 0,
           width: '100%',
           height: '100%',
-          opacity: 0.3, // Opacity for the background
+          opacity: 0.3,
         }}
       />
       <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>

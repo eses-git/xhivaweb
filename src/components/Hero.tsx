@@ -6,11 +6,8 @@ import { InteractiveConnectionsBackground } from './background/interactive-conne
 import styles from './Hero.module.css';
 import { Link } from "react-router-dom";
 
-
-
 export function Hero() {
   const { t } = useLanguage();
-
 
   return (
     <section className={styles.heroSection}>
@@ -21,9 +18,9 @@ export function Hero() {
               className={styles.content}
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }} // Smooth exit for scroll-up
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: false, amount: 0.3 }} // Replay animation on scroll
+              viewport={{ once: true, amount: 0.3 }} // CHANGED
             >
               {/* Left side: Main title */}
               <div className={styles.leftContainer}>
@@ -31,9 +28,9 @@ export function Hero() {
                   className={styles.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 30 }} // Smooth exit for scroll-up
+                  exit={{ opacity: 0, y: 30 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }} // CHANGED
                 >
                   <span>{t('hero.title')}</span>
                   <span>{t('hero.title1')}</span>
@@ -47,9 +44,9 @@ export function Hero() {
                   className={styles.description}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }} // Smooth exit for scroll-up
+                  exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }} // CHANGED
                 >
                   {t('hero.description')}
                 </motion.p>
@@ -58,13 +55,13 @@ export function Hero() {
                   className={styles.actions}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }} // Smooth exit for scroll-up
+                  exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }} // CHANGED
                 >
                   <Link to="/impact" className={styles.ctaButton}>
-      <span>{t('hero.cta')}</span>
-    </Link>
+                    <span>{t('hero.cta')}</span>
+                  </Link>
                   <button
                     className={styles.demoButton}
                     onClick={() => {

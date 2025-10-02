@@ -14,22 +14,16 @@
 }
 
 .aboutUsSection {
-  /* --- FIXES --- */
-  background-color: transparent; /* Allows the animated background to be visible */
-  position: relative; /* Creates a stacking context for z-index to work */
-
-  /* --- Original Styles --- */
+  background-color: transparent;
+  position: relative;
   font-family: var(--font-body);
   padding: 85px 20px;
   margin-top:100px;
 }
 
 .container { 
-  /* --- FIXES --- */
-  position: relative; /* Ensures content is on a new layer */
-  z-index: 2; /* Places content ABOVE the background animation */
-
-  /* --- Original Styles --- */
+  position: relative;
+  z-index: 2;
   max-width: 1200px; 
   margin: 0 auto; 
   margin-top:85px;
@@ -39,7 +33,15 @@
 /* --- HEADER --- */
 .header { text-align: center; margin-bottom: 80px; }
 .preTitle { display: inline-block; padding: 1.5rem 3rem; background-color:  #d7c18641; border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
-.mainTitle {  font-size: 4.375rem; line-height: 0.85; font-weight: 400; color: #002C54; letter-spacing: -0.025em; font-family: var(--font-headings);  }
+.mainTitle { 
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
+
+  }
 
 /* --- Two Pillars Layout --- */
 .preludeContainer {
@@ -64,6 +66,7 @@
   font-size: 1.1rem;
   line-height: 1.9;
   color: var(--dark-gray);
+  text-align: justify;
 }
 .preludeColumn p:last-of-type {
   margin-bottom: 0;
@@ -125,7 +128,6 @@
 
 .panelHeader { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-/* --- MODIFIED & NEW STYLES FOR ICONS --- */
 .panelIcon { 
   width: 50px; 
   height: 50px; 
@@ -133,17 +135,15 @@
   background-color: transparent; 
   border: 2px solid var(--medium-blue); 
   transition: all 0.3s ease; 
-  
-  /* Add flex to center the SVG */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .panelIcon svg {
-  width: 55%; /* Size the icon relative to its container */
+  width: 55%;
   height: 55%;
-  stroke: var(--medium-blue); /* Set initial icon color */
+  stroke: var(--medium-blue);
   transition: stroke 0.3s ease;
 }
 
@@ -153,7 +153,6 @@
   border-color: var(--gold);
 }
 
-/* Change icon color on hover/active for better contrast */
 .harmonyPanel:hover .panelIcon svg,
 .harmonyPanel.active .panelIcon svg {
   stroke: var(--dark-blue);
@@ -162,12 +161,12 @@
 .harmonyPanel h3 { font-family: var(--font-headings); font-size: 1.5rem; color: var(--dark-blue); margin: 0; }
 .panelContent { margin-top: 20px; opacity: 0; max-height: 0; transition: opacity 0.4s ease-out 0.2s, max-height 0.4s ease-out 0.2s; }
 .harmonyPanel.active .panelContent { opacity: 1; max-height: 200px; }
-.panelContent p { font-size: 1rem; line-height: 1.7; color: var(--dark-gray); margin: 0; }
+.panelContent p { font-size: 1rem; line-height: 1.7; color: var(--dark-gray); margin: 0; text-align: justify; }
 
 /* --- CAPSTONE / MISSION STATEMENT --- */
 .capstoneSection { text-align: center; padding: 60px 20px; background-color: #0d2c54d3; color: white; }
 .capstoneSection h2 { font-family: var(--font-headings); font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
-.capstoneSection p { font-size: 1.2rem; line-height: 1.8; color: var(--light-blue); max-width: 800px; margin: 0 auto; }
+.capstoneSection p { font-size: 1.2rem; line-height: 1.8; color: var(--light-blue); max-width: 800px; margin: 0 auto; text-align: justify; }
 
 /* --- RESPONSIVE DESIGN --- */
 @media screen and (max-width: 992px) {
@@ -184,4 +183,20 @@
   .panelHeader { flex-direction: row; text-align: left; align-items: center; }
   .panelIcon { margin-bottom: 0; margin-right: 15px; width: 40px; height: 40px; }
   .harmonyPanel h3 { font-size: 1.2rem; }
+
+  /* --- NEW: Symmetrical layout for text columns on mobile --- */
+  .preludeColumn {
+    border-left: none; /* Remove asymmetric border */
+    padding-left: 0; /* Remove asymmetric padding */
+    padding: 2rem 1rem 0 1rem; /* Add symmetric padding and top spacing */
+    border-top: 2px solid var(--gold); /* Add a top border for separation */
+  }
+
+  /* --- TEXT ALIGNMENT FOR MOBILE --- */
+  .preludeColumn h3, /* Center headings */
+  .preludeColumn p,
+  .panelContent p,
+  .capstoneSection p {
+    text-align: center; /* Center all text */
+  }
 }

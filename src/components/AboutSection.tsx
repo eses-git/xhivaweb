@@ -4,7 +4,6 @@ import { useLanguage } from "./LanguageContext";
 import styles from './AboutSection.module.css';
 import { Link } from 'react-router-dom';
 
-
 const featureIcons = [Star, Shield, Users];
 
 export function AboutSection() {
@@ -33,9 +32,9 @@ export function AboutSection() {
           className={styles.darkPanel}
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }} // Added exit for smooth re-entry on scroll up
+          exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.5 }} // Changed to false for re-animation on scroll up
+          viewport={{ once: true, amount: 0.5 }}
         >
           <p className={styles.description}>
             {t('about.description')}
@@ -55,11 +54,17 @@ export function AboutSection() {
                 <motion.div
                   key={feature.title}
                   className={styles.pillarCard}
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: 0, x: 80 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }} // Added exit for smooth re-entry on scroll up
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: false, amount: 0.5 }} // Changed to false for re-animation on scroll up
+                  exit={{ opacity: 0, x: 80 }}
+                  // CHANGED: Replaced duration/ease with a spring transition for a more fluid feel
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300, 
+                    damping: 25,
+                    delay: index * 0.2 
+                  }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                   <div className={styles.pillarIcon}>
                     <Icon />

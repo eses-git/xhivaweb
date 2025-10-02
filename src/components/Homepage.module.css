@@ -13,22 +13,21 @@
 .homepageWrapper {
   background-color: #FFFFFF;
   font-family: var(--font-sans);
-  overflow-x: hidden; /* Prevents horizontal scroll caused by full-width sections */
+  overflow-x: hidden;
 }
 
 /* --- Section 1: Vision --- */
 .visionSection {
   text-align: center;
-  /* Using 100% width is safer for responsiveness than 100vw */
   width: 100%; 
 }
-
-/* ... (gradient animations remain the same) ... */
 
 .visionContent {
   max-width: 900px;
   margin: 0 auto;
   padding: 6rem 2rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
 }
 
 .visionSubtitle {
@@ -39,11 +38,13 @@
 } 
 
 .visionTitle {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 400;
-  color: var(--xhiva-dark-blue);
-  letter-spacing: -0.03em;
+  font-family: var(--font-headings);
+  /* CHANGED: Replaced fixed size with a fluid, responsive size */
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--dark-blue);
   line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
 }
 
 .visionDescription {
@@ -58,7 +59,7 @@
 /* --- Section 2: Ecosystem --- */
 .ecosystemSection {
   background-color: #F1F1F1;
-  padding: 5rem 0; /* Increased padding for better spacing */
+  padding: 5rem 0;
   width: 100%;
   border-top: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
@@ -68,9 +69,9 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 2fr; /* Give more space to content on desktop */
+  grid-template-columns: 1fr 2fr;
   align-items: center;
-  gap: 4rem; /* Increased gap */
+  gap: 4rem;
   padding: 0 2rem;
 }
 
@@ -84,7 +85,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1rem 1.5rem; /* Increased padding */
+  padding: 1rem 1.5rem;
   background: transparent;
   border: none;
   border-left: 4px solid transparent;
@@ -126,21 +127,17 @@
   line-height: 1.8;
   font-weight: 300;
   color: var(--xhiva-dark-gray);
-  min-height: 200px; /* Increased min-height to prevent layout shifts */
+  min-height: 200px;
 }
 
 
 /* --- RESPONSIVE STYLES --- */
-
-/* For Tablets and smaller desktops */
 @media (max-width: 1024px) {
   .ecosystemContentWrapper {
-    /* Stacks the layout to a single column */
     grid-template-columns: 1fr;
     gap: 3rem;
   }
   .ecosystemNav {
-    /* Changes the nav to a horizontal row */
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
@@ -153,7 +150,6 @@
     min-height: auto;
   }
   .ecosystemTab {
-    /* Replaces side border with bottom border for horizontal layout */
     border-left: none;
     border-bottom: 4px solid transparent;
   }
@@ -161,8 +157,6 @@
     border-bottom-color: var(--xhiva-gold);
   }
 }
-
-/* For Mobile Phones */
 @media (max-width: 768px) {
   .visionContent { padding: 4rem 1.5rem; }
   .ecosystemSection { padding: 3rem 0; }
@@ -171,7 +165,7 @@
     padding: 0 1.5rem;
   }
   .ecosystemTab {
-    flex-direction: column; /* Stack icon on top of text for smaller tabs */
+    flex-direction: column;
     gap: 0.75rem;
     padding: 1rem;
     font-size: 0.9rem;
@@ -180,8 +174,6 @@
     font-size: 1.1rem;
   }
 }
-
-/* For Small Mobile Phones */
 @media (max-width: 480px) {
   .visionContent { padding: 3rem 1rem; }
   .visionDescription { font-size: 1rem; }
@@ -195,5 +187,3 @@
   
   .ecosystemContent { font-size: 1rem; }
 }
-
-/* ... (Keyframes for animations remain the same) ... */

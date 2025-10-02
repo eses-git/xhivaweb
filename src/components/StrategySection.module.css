@@ -7,22 +7,23 @@
 
 /* --- Section Styles --- */
 .strategySection {
-  padding: 4rem 0 0 0; /* Adjusted padding for mobile first */
+  padding: 4rem 0 0 0;
   background-color: #FFFFFF;
-  overflow-x: hidden; /* This is the key fix for preventing horizontal overflow */
+  overflow-x: hidden;
 }
 
 /* --- Main Container --- */
 .contentContainer {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1.5rem; /* Default padding for mobile */
+  padding: 0 1.5rem;
 }
 
 /* --- Header Styles --- */
 .header { 
   text-align: center; 
   margin-bottom: 3.5rem; 
+  will-change: transform, opacity;
 }
 .subtitle { 
   display: inline-block; 
@@ -35,13 +36,17 @@
   margin-bottom: 1.5rem; 
 }
 .title { 
-  font-size: clamp(2.5rem, 6vw, 4rem); /* Fluid typography */
-  font-weight: 400; 
-  color: #002c54; 
-  letter-spacing: -0.025em; 
+  font-family: var(--font-headings);
+  /* CHANGED: Replaced fixed size with a fluid, responsive size */
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
+  /* REMOVED: overflow-wrap is no longer needed with a responsive font size */
 }
 .description { 
-  font-size: clamp(1rem, 2.5vw, 1.15rem); /* Fluid typography */
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   color: #4b5563; 
   line-height: 1.7; 
   max-width: 800px; 
@@ -57,8 +62,8 @@
 
 /* --- Layout Container --- */
 .layoutContainer {
-  display: grid; /* Changed to grid for better control */
-  grid-template-columns: 1fr; /* Default to single column for mobile */
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 3rem;
   align-items: center;
 }
@@ -66,13 +71,14 @@
 /* --- Strategy Grid --- */
 .strategyGrid {
   display: grid;
-  grid-template-columns: 1fr; /* Default to single column */
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
 /* --- Image Container --- */
 .imageContainer {
   text-align: center;
+  will-change: transform, opacity;
 }
 .strategyImage {
   max-width: 250px;
@@ -103,7 +109,7 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(144, 180, 212, 0.2);
   padding: 1.75rem;
-  min-height: 220px; /* Adjusted min-height */
+  min-height: 220px;
   cursor: pointer;
   position: relative;
   display: flex;
@@ -113,6 +119,7 @@
   text-align: center;
   transition: all 0.4s ease;
   height:300px;
+  will-change: transform, opacity;
 }
 .strategyCard.isHovered {
   align-items: flex-start;
@@ -192,25 +199,21 @@
 
 
 /* --- RESPONSIVE BREAKPOINTS --- */
-
-/* Tablets and small desktops */
 @media (min-width: 768px) {
   .contentContainer {
     padding: 0 2rem;
   }
   .strategyGrid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns for cards */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* Large desktops */
 @media (min-width: 1200px) {
   .layoutContainer {
-    grid-template-columns: 2fr 1fr; /* Two columns: cards on left, image on right */
+    grid-template-columns: 2fr 1fr;
     align-items: flex-start;
   }
   .imageContainer {
     position: sticky;
-    top: 100px; /* Makes the image stick on scroll */
+    top: 100px;
   }
 }
