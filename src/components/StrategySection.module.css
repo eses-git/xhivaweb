@@ -24,6 +24,10 @@
   text-align: center; 
   margin-bottom: 3.5rem; 
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
 }
 .subtitle { 
   display: inline-block; 
@@ -79,6 +83,10 @@
 .imageContainer {
   text-align: center;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
 }
 .strategyImage {
   max-width: 250px;
@@ -120,6 +128,10 @@
   transition: all 0.4s ease;
   height:300px;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
 }
 .strategyCard.isHovered {
   align-items: flex-start;
@@ -215,5 +227,14 @@
   .imageContainer {
     position: sticky;
     top: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header,
+  .imageContainer,
+  .strategyCard {
+    transition: none; /* Disable CSS transitions */
+    animation: none; /* If any implicit animations */
   }
 }

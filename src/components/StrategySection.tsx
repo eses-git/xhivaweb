@@ -1,5 +1,5 @@
 // StrategySection.tsx
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants, useReducedMotion } from "framer-motion";
 import { BarChart2, ShieldCheck, Globe, Sun, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 import { useState } from "react";
@@ -36,12 +36,12 @@ const cardVariants: Variants = {
       damping: 15,
     },
   },
-  exit: { opacity: 0, y: 50, scale: 0.95 },
 };
 
 export function StrategySection() {
   const { t } = useLanguage();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const strategies: Strategy[] = [
     { icon: BarChart2, title: t('strategy.card1.title'), description: t('strategy.card1.description'), emphasis: "" },
@@ -55,11 +55,14 @@ export function StrategySection() {
       <div className={styles.contentContainer}>
         <motion.div 
           className={styles.header}
-          initial={{ opacity: 0, y: 50 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true, amount: 0.3 }} // CHANGED
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 25 
+          }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <div className={styles.subtitle}>{t('strategy.subtitle')}</div>
           <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: t('strategy.title').replace('<br></br>', '<br/>') }} />
@@ -75,8 +78,7 @@ export function StrategySection() {
               variants={gridVariants}
               initial="hidden"
               whileInView="visible"
-              exit="hidden"
-              viewport={{ once: true, amount: 0.1 }} // CHANGED
+              viewport={{ once: true, amount: 0.1 }}
             >
               {strategies.map((strategy, index) => {
                 const isHovered = hoveredIndex === index;
@@ -89,6 +91,8 @@ export function StrategySection() {
                     layout 
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     variants={cardVariants}
+                    initial={shouldReduceMotion ? "visible" : "hidden"}
+                    whileInView="visible"
                   >
                     <ArrowUpRight className={styles.cardIndicatorIcon} />
                     
@@ -119,11 +123,15 @@ export function StrategySection() {
 
             <motion.div 
               className={styles.imageContainer}
-              initial={{ opacity: 0, x: 100 }}
+              initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }} // CHANGED
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 25,
+                delay: 0.3 
+              }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage} />
               <div className={styles.imageCaption}>
