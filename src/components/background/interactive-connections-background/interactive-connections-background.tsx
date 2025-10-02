@@ -94,8 +94,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 6000 : 3000; // Less dense on mobile
-      const particleCount = Math.min(isMobile ? 200 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      const densityFactor = isMobile ? 4000 : 3000; // Slightly denser on mobile as requested
+      const particleCount = Math.min(isMobile ? 300 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
       cellSize = isMobile ? 200 : 150; // Larger cells on mobile for fewer checks
     };
@@ -232,12 +232,12 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     requestAnimationFrame(animate);
 
     window.addEventListener('resize', resizeCanvas);
-    canvas.addEventListener('mousemove', handlePointerMove as EventListener);
+    window.addEventListener('mousemove', handlePointerMove as EventListener);
     canvas.addEventListener('touchmove', handlePointerMove as EventListener, { passive: true });
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      canvas.removeEventListener('mousemove', handlePointerMove as EventListener);
+      window.removeEventListener('mousemove', handlePointerMove as EventListener);
       canvas.removeEventListener('touchmove', handlePointerMove as EventListener);
       cancelAnimationFrame(animationFrameId);
     };
