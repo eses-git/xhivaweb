@@ -31,32 +31,44 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     const mouse = { x: -300, y: -300, radius: 150 };
     const mouseRadiusSq = mouse.radius * mouse.radius;
     let cellSize = 150;
-    let grid: Map<string, Particle[]> = new Map();
-    let lastResize = 0;
+    const grid: Map<string, Particle[]> = new Map();
     let lastFrameTime = 0;
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     const targetFPS = isMobile ? 30 : 60;
     const frameInterval = 1000 / targetFPS;
 
+    // NEW: Debounce function for resize events
+    function debounce(func: (...args: any[]) => void, delay: number) {
+      let timeout: NodeJS.Timeout | null = null;
+      return function(...args: any[]) {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+      };
+    }
+
     const resizeCanvas = () => {
       try {
-        const now = Date.now();
-        if (now - lastResize < 100) return;
-        lastResize = now;
-
         const parent = containerRef.current;
         if (parent) {
+          const oldWidth = canvas.width;
+          const oldHeight = canvas.height;
           canvas.width = parent.offsetWidth;
           canvas.height = parent.offsetHeight;
           bufferCanvas.width = canvas.width;
           bufferCanvas.height = canvas.height;
-          createParticles(canvas);
-          console.log(`Resized canvas to ${canvas.width}x${canvas.height}, particles: ${particles.length}`); // Debug
+          // MODIFIED: Only recreate particles if size actually changed (prevents "refresh" on mobile scroll)
+          if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
+            createParticles(canvas);
+            console.log(`Resized canvas to ${canvas.width}x${canvas.height}, particles: ${particles.length}`); // Debug
+          }
         }
       } catch (error) {
         console.error('Resize error:', error);
       }
     };
+
+    // MODIFIED: Debounced versions of resize
+    const debouncedResize = debounce(resizeCanvas, 200); // 200ms delay; adjust if needed
 
     class Particle {
       x: number;
@@ -155,7 +167,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       bufferCtx.lineWidth = 0.5;
 
       const connectDistanceSq = isMobile ? 80 * 80 : 120 * 120;
-      grid = new Map();
+      grid.clear(); // NEW: Clear grid each frame (wasn't cleared before; minor fix)
       for (const p of particles) {
         const gridX = Math.floor(p.x / cellSize);
         const gridY = Math.floor(p.y / cellSize);
@@ -218,6 +230,12 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       handlePointerMove(event);
     };
 
+    // NEW: Handle touch end/cancel to reset mouse pos
+    const handleTouchEnd = () => {
+      mouse.x = -300;
+      mouse.y = -300;
+    };
+
     const animate = (timestamp: number) => {
       try {
         if (timestamp - lastFrameTime < frameInterval) {
@@ -257,25 +275,29 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     // Immediate resize on mount
     resizeCanvas();
 
-    // Use ResizeObserver for better mobile resize detection
-    const resizeObserver = new ResizeObserver(resizeCanvas);
+    // MODIFIED: Use ResizeObserver with debounced callback
+    const resizeObserver = new ResizeObserver(debouncedResize);
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
 
     requestAnimationFrame(animate);
 
-    window.addEventListener('resize', resizeCanvas); // Fallback
+    window.addEventListener('resize', debouncedResize); // MODIFIED: Fallback now debounced
     window.addEventListener('mousemove', handlePointerMove as EventListener);
     canvas.addEventListener('touchmove', handlePointerMove as EventListener, { passive: true });
     canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+    canvas.addEventListener('touchend', handleTouchEnd, { passive: true }); // NEW
+    canvas.addEventListener('touchcancel', handleTouchEnd, { passive: true }); // NEW
 
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', debouncedResize);
       window.removeEventListener('mousemove', handlePointerMove as EventListener);
       canvas.removeEventListener('touchmove', handlePointerMove as EventListener);
       canvas.removeEventListener('touchstart', handleTouchStart);
+      canvas.removeEventListener('touchend', handleTouchEnd);
+      canvas.removeEventListener('touchcancel', handleTouchEnd);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

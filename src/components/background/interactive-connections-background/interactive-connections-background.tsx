@@ -7,6 +7,7 @@ type InteractiveConnectionsBackgroundProps = {
 export function InteractiveConnectionsBackground({ children }: InteractiveConnectionsBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bufferCanvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
+  const containerRef = useRef<HTMLElement>(null); // NEW: Ref for container to use with ResizeObserver
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,7 +27,6 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     const mouseRadiusSq = mouse.radius * mouse.radius;
     let cellSize = 150;
     let grid: Map<string, Particle[]> = new Map();
-    let lastResize = 0;
     let lastFrameTime = 0;
     const isMobile = /Mobi|Android/i.test(navigator.userAgent); // Simple mobile detection
     const targetFPS = isMobile ? 30 : 60; // Lower FPS on mobile
@@ -35,6 +35,16 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     let resetTimer: NodeJS.Timeout | null = null; // For fading out after interaction
     let avgFrameTime = frameInterval; // Track average frame time for dynamic FPS
 
+    // NEW: Debounce function (replaces throttle for better burst handling)
+    function debounce(func: (...args: any[]) => void, delay: number) {
+      let timeout: NodeJS.Timeout | null = null;
+      return function(...args: any[]) {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+      };
+    }
+
+    // FIXED: Define throttle function (was missing in previous modification)
     const throttle = (fn: Function, delay: number) => {
       let lastCall = 0;
       return function (...args: any[]) {
@@ -47,19 +57,23 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     };
 
     const resizeCanvas = () => {
-      const now = Date.now();
-      if (now - lastResize < 100) return; // Debounce
-      lastResize = now;
-
-      const parent = canvas.parentElement;
+      const parent = containerRef.current;
       if (parent) {
+        const oldWidth = canvas.width;
+        const oldHeight = canvas.height;
         canvas.width = parent.offsetWidth;
         canvas.height = parent.offsetHeight;
         bufferCanvas.width = canvas.width;
         bufferCanvas.height = canvas.height;
-        createParticles(canvas);
+        // MODIFIED: Only recreate particles if size actually changed (prevents "refresh" on mobile scroll)
+        if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
+          createParticles(canvas);
+        }
       }
     };
+
+    // MODIFIED: Debounced resize
+    const debouncedResize = debounce(resizeCanvas, 200); // 200ms delay; adjust if needed
 
     class Particle {
       x: number;
@@ -235,79 +249,97 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       }, 1500); // Even longer timeout for visible tap effect
     };
 
+    // NEW: Handle touch cancel (e.g., interrupted gesture)
+    const handleTouchCancel = () => {
+      handleTouchEnd();
+    };
+
     const animate = (timestamp: number) => {
-      const delta = timestamp - lastFrameTime;
-      if (delta < frameInterval) {
+      try { // NEW: Add try-catch for error handling
+        const delta = timestamp - lastFrameTime;
+        if (delta < frameInterval) {
+          animationFrameId = requestAnimationFrame(animate);
+          return;
+        }
+        lastFrameTime = timestamp;
+        avgFrameTime = avgFrameTime * 0.9 + delta * 0.1;
+
+        // Dynamic FPS adjustment if lagging
+        if (avgFrameTime > frameInterval * 1.5 && isMobile) {
+          frameInterval = Math.min(1000 / 20, frameInterval + 1);
+        }
+
+        // Smooth mouse position (lerp)
+        const lerpFactor = isMobile ? 0.3 : 0.5; // Lower on mobile for smoother scrolling interaction
+        mouse.x = mouse.x * (1 - lerpFactor) + targetMouse.x * lerpFactor;
+        mouse.y = mouse.y * (1 - lerpFactor) + targetMouse.y * lerpFactor;
+
+        bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (!isMobile) {
+          bufferCtx.shadowColor = 'rgba(166, 122, 65, 0.8)';
+          bufferCtx.shadowBlur = 12;
+        } else {
+          bufferCtx.shadowColor = 'transparent';
+          bufferCtx.shadowBlur = 0;
+        }
+
+        particles.forEach(particle => {
+          particle.update(canvas);
+          particle.draw();
+        });
+
+        // Build grid
+        grid = new Map();
+        for (const p of particles) {
+          const gridX = Math.floor(p.x / cellSize);
+          const gridY = Math.floor(p.y / cellSize);
+          const key = `${gridX},${gridY}`;
+          if (!grid.has(key)) grid.set(key, []);
+          grid.get(key)!.push(p);
+        }
+
+        bufferCtx.globalAlpha = 1.0;
+        handleMouseInteraction();
+        handleConnections();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bufferCanvas, 0, 0);
+
         animationFrameId = requestAnimationFrame(animate);
-        return;
+      } catch (error) {
+        console.error('Animation error:', error);
       }
-      lastFrameTime = timestamp;
-      avgFrameTime = avgFrameTime * 0.9 + delta * 0.1;
-
-      // Dynamic FPS adjustment if lagging
-      if (avgFrameTime > frameInterval * 1.5 && isMobile) {
-        frameInterval = Math.min(1000 / 20, frameInterval + 1);
-      }
-
-      // Smooth mouse position (lerp)
-      const lerpFactor = isMobile ? 0.3 : 0.5; // Lower on mobile for smoother scrolling interaction
-      mouse.x = mouse.x * (1 - lerpFactor) + targetMouse.x * lerpFactor;
-      mouse.y = mouse.y * (1 - lerpFactor) + targetMouse.y * lerpFactor;
-
-      bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (!isMobile) {
-        bufferCtx.shadowColor = 'rgba(166, 122, 65, 0.8)';
-        bufferCtx.shadowBlur = 12;
-      } else {
-        bufferCtx.shadowColor = 'transparent';
-        bufferCtx.shadowBlur = 0;
-      }
-
-      particles.forEach(particle => {
-        particle.update(canvas);
-        particle.draw();
-      });
-
-      // Build grid
-      grid = new Map();
-      for (const p of particles) {
-        const gridX = Math.floor(p.x / cellSize);
-        const gridY = Math.floor(p.y / cellSize);
-        const key = `${gridX},${gridY}`;
-        if (!grid.has(key)) grid.set(key, []);
-        grid.get(key)!.push(p);
-      }
-
-      bufferCtx.globalAlpha = 1.0;
-      handleMouseInteraction();
-      handleConnections();
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(bufferCanvas, 0, 0);
-
-      animationFrameId = requestAnimationFrame(animate);
     };
 
     resizeCanvas();
     requestAnimationFrame(animate);
 
-    window.addEventListener('resize', resizeCanvas);
+    // MODIFIED: Use ResizeObserver with debounced callback as primary
+    const resizeObserver = new ResizeObserver(debouncedResize);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    window.addEventListener('resize', debouncedResize); // MODIFIED: Fallback now debounced
     const throttledUpdate = throttle(updatePointerPosition, 60); // 60ms = ~16Hz, adjustable
     if (isMobile) {
       window.addEventListener('touchstart', handleTouchStart, { passive: true });
       window.addEventListener('touchmove', throttledUpdate, { passive: true });
       window.addEventListener('touchend', handleTouchEnd, { passive: true });
+      window.addEventListener('touchcancel', handleTouchCancel, { passive: true }); // NEW
     } else {
       window.addEventListener('mousemove', updatePointerPosition as EventListener);
     }
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      resizeObserver.disconnect(); // NEW: Cleanup observer
+      window.removeEventListener('resize', debouncedResize);
       if (isMobile) {
         window.removeEventListener('touchstart', handleTouchStart);
         window.removeEventListener('touchmove', throttledUpdate);
         window.removeEventListener('touchend', handleTouchEnd);
+        window.removeEventListener('touchcancel', handleTouchCancel);
       } else {
         window.removeEventListener('mousemove', updatePointerPosition as EventListener);
       }
@@ -318,6 +350,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
 
   return (
     <section
+      ref={containerRef} // NEW: Add ref for ResizeObserver
       className="relative overflow-hidden"
       style={{ background: `linear-gradient(135deg, #040424 0%, #002c54 100%)` }}
     >
