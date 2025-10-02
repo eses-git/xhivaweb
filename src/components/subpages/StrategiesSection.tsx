@@ -1,115 +1,153 @@
-// src/components/StrategiesSection.tsx
-
-import { motion, Variants } from "framer-motion";
+// StrategySection.tsx
+import { motion, AnimatePresence, Variants, useReducedMotion } from "framer-motion";
+import { BarChart2, ShieldCheck, Globe, Sun, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
-import styles from './StrategiesSection.module.css';
-import { Fingerprint, Scale, Target, Search, Eye, DraftingCompass, ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import styles from './StrategySection.module.css';
 
-// Framer Motion variants for animations
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut",
-      staggerChildren: 0.1
-    } 
-  }
+const imageUrl = '/strategy1.png';
+
+type Strategy = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  emphasis: string;
 };
 
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+const gridVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
 };
 
-export function StrategiesSection() {
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 20,
+    },
+  },
+};
+
+export function StrategySection() {
   const { t } = useLanguage();
+  // UPDATED: Changed state to track the active (tapped) card index
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
-  // A single, unified array for all strategy cards
-  const strategies = [
-    { section: 'approach', icon: <Fingerprint />, titleKey: 'strategy.approach.item1.title', descriptionKey: 'strategy.approach.item1.description' },
-    { section: 'approach', icon: <Scale />, titleKey: 'strategy.approach.item2.title', descriptionKey: 'strategy.approach.item2.description' },
-    { section: 'approach', icon: <Target />, titleKey: 'strategy.approach.item3.title', descriptionKey: 'strategy.approach.item3.description' },
-    { section: 'governance', icon: <Search />, titleKey: 'strategy.governance.item1.title', descriptionKey: 'strategy.governance.item1.description' },
-    { section: 'governance', icon: <Eye />, titleKey: 'strategy.governance.item2.title', descriptionKey: 'strategy.governance.item2.description' },
-    { section: 'governance', icon: <DraftingCompass />, titleKey: 'strategy.governance.item3.title', descriptionKey: 'strategy.governance.item3.description' },
-    { section: 'governance', icon: <ShieldCheck />, titleKey: 'strategy.governance.item4.title', descriptionKey: 'strategy.governance.item4.description' },
+  const strategies: Strategy[] = [
+    { icon: BarChart2, title: t('strategy.card1.title'), description: t('strategy.card1.description'), emphasis: "" },
+    { icon: ShieldCheck, title: t('strategy.card2.title'), description: t('strategy.card2.description'), emphasis: "" },
+    { icon: Globe, title: t('strategy.card3.title'), description: t('strategy.card3.description'), emphasis: "" },
+    { icon: Sun, title: t('strategy.card4.title'), description: t('strategy.card4.description'), emphasis: "" },
   ];
 
   return (
-    <div className={styles.strategyPage}>
-      
-      {/* --- Hero Section --- */}
-      <motion.header 
-        className={styles.hero}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={sectionVariants}
-      >
-        <motion.p variants={itemVariants} className={styles.preTitle}>{t('strategy.page.preTitle')}</motion.p>
-        <motion.h1 variants={itemVariants} className={styles.title}>{t('strategy.page.title')}</motion.h1>
-        <motion.h2 variants={itemVariants} className={styles.subtitle}>{t('strategy.page.subtitle')}</motion.h2>
-        <motion.p variants={itemVariants} className={styles.introText}>{t('strategy.page.intro')}</motion.p>
-        <motion.p variants={itemVariants} className={styles.disclaimerText}>{t('strategy.page.disclaimer')}</motion.p>
-      </motion.header>
-
-      <main>
-        {/* --- All Strategies Section --- */}
-        <motion.section 
-          className={styles.section}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={sectionVariants}
-        >
-          <motion.h3 variants={itemVariants} className={styles.sectionHeader}>{t('strategy.approach.title')}</motion.h3>
-          <motion.p variants={itemVariants} className={styles.sectionIntro}>{t('strategy.approach.intro')}</motion.p>
-          
-          <div className={styles.grid}>
-            {strategies.filter(s => s.section === 'approach').map((item, index) => (
-              <motion.div key={index} className={styles.strategyCardWrapper} variants={itemVariants}>
-                <div className={styles.strategyCard}>
-                  <div className={styles.cardIcon}>{item.icon}</div>
-                  <h4 className={styles.cardTitle}>{t(item.titleKey as any)}</h4>
-                  <div className={styles.cardOverlay}></div>
-                  <p className={styles.cardDescription}>{t(item.descriptionKey as any)}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.h3 variants={itemVariants} className={styles.sectionHeader} style={{ marginTop: '6rem' }}>{t('strategy.governance.title')}</motion.h3>
-          <motion.p variants={itemVariants} className={styles.sectionIntro}>{t('strategy.governance.intro')}</motion.p>
-
-           <div className={styles.grid}>
-            {strategies.filter(s => s.section === 'governance').map((item, index) => (
-              <motion.div key={index} className={styles.strategyCardWrapper} variants={itemVariants}>
-                <div className={styles.strategyCard}>
-                  <div className={styles.cardIcon}>{item.icon}</div>
-                  <h4 className={styles.cardTitle}>{t(item.descriptionKey as any)}</h4>
-                  <div className={styles.cardOverlay}></div>
-                  <p className={styles.cardDescription}>{t(item.descriptionKey as any)}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* --- Concluding Section --- */}
-        <motion.section 
-          className={styles.section}
-          initial="hidden"
-          whileInView="visible"
+    <section id="strategy" className={styles.strategySection}>
+      <div className={styles.contentContainer}>
+        <motion.div
+          className={styles.header}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 30
+          }}
           viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
         >
-           <p className={styles.conclusionText}>{t('strategy.conclusion.text')}</p>
-        </motion.section>
-      </main>
+          <div className={styles.subtitle}>{t('strategy.subtitle')}</div>
+          <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: t('strategy.title').replace('<br></br>', '<br/>') }} />
+          <p className={styles.description}>{t('strategy.description')}</p>
+        </motion.div>
+      </div>
 
-    </div>
+      <div className={styles.gridWrapper}>
+        <div className={styles.contentContainer}>
+          <div className={styles.layoutContainer}>
+            <motion.div
+              className={styles.strategyGrid}
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              {strategies.map((strategy, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <motion.div
+                    key={strategy.title}
+                    // UPDATED: Using .isActive class now
+                    className={`${styles.strategyCard} ${isActive ? styles.isActive : ''}`}
+                    // UPDATED: Changed from hover events to a tap event
+                    onTap={() => setActiveIndex(isActive ? null : index)}
+                    layout
+                    transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                    variants={cardVariants}
+                    initial={shouldReduceMotion ? "visible" : "hidden"}
+                    whileInView="visible"
+                  >
+                    <ArrowUpRight className={styles.cardIndicatorIcon} />
+
+                    <motion.div layout="position" className={styles.cardHeader}>
+                      <strategy.icon className={styles.cardIcon} />
+                      <motion.h3 layout="position" className={styles.cardTitle}>
+                        {strategy.title}
+                      </motion.h3>
+                    </motion.div>
+
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          className={styles.cardContent}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto', transition: { delay: 0.1, duration: 0.5 } }}
+                          exit={{ opacity: 0, height: 0 }}
+                        >
+                          <p className={styles.cardEmphasis}>{strategy.emphasis}</p>
+                          <p className={styles.cardDescription}>{strategy.description}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            <motion.div
+              className={styles.imageContainer}
+              initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 30,
+                delay: 0.3
+              }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage} />
+              <div className={styles.imageCaption}>
+                <h3 dangerouslySetInnerHTML={{ __html: t('strategy.image.title').replace('<br></br>', '<br/>') }} />
+                <p>{t('strategy.image.description')}</p>
+
+                <a href="/strategies" className={styles.discoverButton}>
+                  {t('strategy.image.button')}
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

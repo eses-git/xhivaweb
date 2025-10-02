@@ -1,3 +1,4 @@
+// FundsSection.tsx
 'use client';
 
 import { motion } from "framer-motion";
@@ -5,6 +6,7 @@ import { ArrowRight, TrendingUp, Building2, Heart, Brain, Shield, Coins, Globe, 
 import { useLanguage } from "../LanguageContext";
 import { useState, useEffect, useRef } from "react";
 import styles from './FundsSection.module.css';
+import { isMobile } from 'react-device-detect';  // Import for mobile detection; install if needed: npm install react-device-detect
 
 export function FundsSection() {
   const { t } = useLanguage();
@@ -27,6 +29,29 @@ export function FundsSection() {
   ];
 
   const currentFund = funds[currentIndex];
+
+  // Variants for button states (hover and active)
+  const buttonVariants = {
+    rest: { y: 0, boxShadow: "0 1px 3px rgba(0,0,0,0.1)", borderColor: "#90b4d4" },
+    hover: { y: -6, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" },
+    active: { y: -6, borderColor: "#d7c286" }
+  };
+
+  // Variants for staggered appearance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  // Mobile-optimized child variants
+  const animationDuration = isMobile ? 0.3 : 0.5;
+  const childVariants = {
+    hidden: { opacity: 0, y: isMobile ? 10 : 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: animationDuration } }
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -53,32 +78,52 @@ export function FundsSection() {
     }
   };
 
+  // Mobile-optimized background: Use image fallback on mobile
+  const backgroundContent = isMobile ? (
+    <img 
+      src="/images/gold-world-fallback.jpg"  // Ensure this static image exists (e.g., screenshot from video)
+      style={{ 
+        position: 'fixed', 
+        top: '50px', 
+        left: 0, 
+        width: '100%', 
+        height: '80%', 
+        objectFit: 'cover', 
+        filter: 'brightness(1.2) opacity(0.5)',
+        zIndex: -1 
+      }}
+      alt="Background"
+    />
+  ) : (
+    <video 
+      ref={videoRef} 
+      autoPlay 
+      muted 
+      playsInline
+      onPlay={() => setShowReplay(false)} // ADDED: Hides button on play
+      onEnded={() => setShowReplay(true)} // Shows button on end
+      style={{ 
+        position: 'fixed', 
+        top: '50px', 
+        left: 0, 
+        width: '100%', 
+        height: '80%', 
+        objectFit: 'cover', 
+        filter: 'brightness(1.2) opacity(0.5)',
+        zIndex: -1 ,
+      }}
+    >
+      <source src="/videos/gold-world.mp4" type="video/mp4" />
+      {t('funds.videoFallback')}
+    </video>
+  );
+
   return (
     <section className={styles.sectionWrapper}>
-      <video 
-        ref={videoRef} 
-        autoPlay 
-        muted 
-        playsInline
-        onPlay={() => setShowReplay(false)} // ADDED: Hides button on play
-        onEnded={() => setShowReplay(true)} // Shows button on end
-        style={{ 
-          position: 'fixed', 
-          top: '50px', 
-          left: 0, 
-          width: '100%', 
-          height: '80%', 
-          objectFit: 'cover', 
-          filter: 'brightness(1.2) opacity(0.5)',
-          zIndex: -1 ,
-        }}
-      >
-        <source src="/videos/gold-world.mp4" type="video/mp4" />
-        {t('funds.videoFallback')}
-      </video>
+      {backgroundContent}
  
-      {/* ADDED: Conditionally rendered replay button */}
-      {showReplay && (
+      {/* ADDED: Conditionally rendered replay button (only for non-mobile, since video is replaced) */}
+      {!isMobile && showReplay && (
         <button onClick={handleReplay} className={styles.replayButton}>
         </button>
       )}
@@ -107,23 +152,28 @@ export function FundsSection() {
 
         {/* Main Content Area */}
         <div className={styles.interactiveContainer}>
-          {/* Buttons Column */}
-          <div className={styles.buttonsColumn}>
+          {/* Buttons Column with staggered animations */}
+          <motion.div 
+            className={styles.buttonsColumn}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {funds.map((fund, index) => (
               <motion.div 
                 key={fund.name} 
                 className={`${styles.fundButton} ${currentIndex === index ? styles.active : ''}`} 
                 onClick={() => handleFundChange(index)} 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
+                variants={{ ...childVariants, ...buttonVariants }}  // Combine appearance and state variants
+                animate={currentIndex === index ? "active" : "rest"}
+                whileHover="hover"
               >
                 <div className={styles.buttonIconWrapper}><fund.icon className={styles.buttonIcon} /></div>
                 <h3 className={styles.buttonTitle}>{fund.name}</h3>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Detailed Card */}
           <motion.div 

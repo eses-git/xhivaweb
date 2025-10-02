@@ -34,9 +34,9 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     if (!ctx) return;
 
     // --- CONFIGURATION ---
-    const hexSize = 50;
     const pointRadius = 4;
     const easingFactor = 0.04; 
+    let hexSize = 50; // NEW: Declare hexSize in outer scope (defaults to desktop value)
 
     let points: GridPoint[] = [];
     let connections: { p1: GridPoint, p2: GridPoint }[] = [];
@@ -47,10 +47,29 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
       radius: 200
     };
 
+    // NEW: Debounce function for resize
+    function debounce(func: (...args: any[]) => void, delay: number) {
+      let timeout: NodeJS.Timeout | null = null;
+      return function(...args: any[]) {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+      };
+    }
+
+    // MODIFIED: Handle mouse move (now on canvas parent for better containment)
     const handleMouseMove = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouse.x = event.clientX - rect.left;
       mouse.y = event.clientY - rect.top;
+    };
+
+    // NEW: Handle touch move for mobile interaction
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = event.touches[0].clientX - rect.left;
+        mouse.y = event.touches[0].clientY - rect.top;
+      }
     };
 
     const handleMouseOut = () => {
@@ -58,8 +77,18 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
       mouse.y = null;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseout', handleMouseOut);
+    // NEW: Handle touch end/cancel
+    const handleTouchEnd = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
+    // Attach to window for mouse, but add touch to canvas parent
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseout', handleMouseOut, { passive: true });
+    canvas.parentElement?.addEventListener('touchmove', handleTouchMove, { passive: true });
+    canvas.parentElement?.addEventListener('touchend', handleTouchEnd, { passive: true });
+    canvas.parentElement?.addEventListener('touchcancel', handleTouchEnd, { passive: true });
 
     const initialize = () => {
       const parent = canvas.parentElement;
@@ -71,7 +100,8 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
       points = [];
       connections = [];
       const pointMap = new Map<string, GridPoint>();
-
+      // NEW: Dynamic hexSize based on screen width for fewer points on mobile (update the outer hexSize)
+      hexSize = window.innerWidth < 768 ? 100 : 50; // Larger on mobile = fewer hexes/points for perf
       const hexHeight = Math.sqrt(3) * hexSize;
       const hexWidth = 2 * hexSize;
       const horizSpacing = hexWidth * 3 / 4;
@@ -79,6 +109,9 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
 
       const cols = Math.ceil(canvas.width / horizSpacing) + 2;
       const rows = Math.ceil(canvas.height / vertSpacing) + 2;
+
+      // NEW: Set to track unique connections (deduplicate to avoid redundant draws)
+      const connectionSet = new Set<string>();
 
       for (let row = -1; row < rows; row++) {
         for (let col = -1; col < cols; col++) {
@@ -116,7 +149,14 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
           }
           
           for (let i = 0; i < 6; i++) {
-            connections.push({ p1: hexPoints[i], p2: hexPoints[(i + 1) % 6] });
+            const p1 = hexPoints[i];
+            const p2 = hexPoints[(i + 1) % 6];
+            // NEW: Unique key for connection (sort by reference or coords to dedupe)
+            const connKey = [p1, p2].sort((a, b) => a.originX - b.originX || a.originY - b.originY).map(p => `${p.originX},${p.originY}`).join('-');
+            if (!connectionSet.has(connKey)) {
+              connectionSet.add(connKey);
+              connections.push({ p1, p2 });
+            }
           }
         }
       }
@@ -139,7 +179,7 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
         const dy = conn.p1.y - conn.p2.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < hexSize * 2) {
+        if (distance < hexSize * 2) { // FIXED: hexSize is now in outer scope
             const opacity = Math.max(0, 1 - (distance - hexSize) / hexSize);
             if (opacity > 0) {
                 ctx.beginPath();
@@ -189,15 +229,31 @@ export const AnimatedBackgroundWrapper: React.FC<AnimatedBackgroundWrapperProps>
     initialize();
     animate();
 
+    // MODIFIED: Debounced resize with size change check
     const handleResize = () => {
-      initialize();
+      const oldWidth = canvas.width;
+      const oldHeight = canvas.height;
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
+      if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
+        initialize();
+      }
     };
-    window.addEventListener('resize', handleResize);
+    const debouncedResize = debounce(handleResize, 200);
+    window.addEventListener('resize', debouncedResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', debouncedResize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseout', handleMouseOut);
+      if (canvas.parentElement) {
+        canvas.parentElement.removeEventListener('touchmove', handleTouchMove);
+        canvas.parentElement.removeEventListener('touchend', handleTouchEnd);
+        canvas.parentElement.removeEventListener('touchcancel', handleTouchEnd);
+      }
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }

@@ -35,6 +35,17 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     let resetTimer: NodeJS.Timeout | null = null; // For fading out after interaction
     let avgFrameTime = frameInterval; // Track average frame time for dynamic FPS
 
+    const throttle = (fn: Function, delay: number) => {
+      let lastCall = 0;
+      return function (...args: any[]) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+          lastCall = now;
+          return fn(...args);
+        }
+      };
+    };
+
     const resizeCanvas = () => {
       const now = Date.now();
       if (now - lastResize < 100) return; // Debounce
@@ -124,7 +135,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
               if (distanceSq < mouseRadiusSq) {
                 const distance = Math.sqrt(distanceSq);
                 const force = (1 - distanceSq / mouseRadiusSq) * 0.5;
-                const forceMultiplier = (isMobile ? 2.0 : 3) * forceBoost; // Boost on tap
+                const forceMultiplier = (isMobile ? 3.0 : 3) * forceBoost; // Boost on tap
                 const directionX = (dx / distance) * force * forceMultiplier * particle.z;
                 const directionY = (dy / distance) * force * forceMultiplier * particle.z;
                 particle.vx += directionX;
@@ -147,14 +158,6 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       bufferCtx.lineWidth = 0.5;
 
       const connectDistanceSq = isMobile ? 50 * 50 : 120 * 120; // Smaller on mobile to reduce drawing
-      grid = new Map();
-      for (const p of particles) {
-        const gridX = Math.floor(p.x / cellSize);
-        const gridY = Math.floor(p.y / cellSize);
-        const key = `${gridX},${gridY}`;
-        if (!grid.has(key)) grid.set(key, []);
-        grid.get(key)!.push(p);
-      }
 
       bufferCtx.globalAlpha = 0.4;
       bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient();
@@ -213,12 +216,12 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
 
     const handleTouchStart = (event: TouchEvent) => {
       updatePointerPosition(event);
-      mouse.radius = 200; // Larger for tap/move
+      mouse.radius = 250; // Larger for tap/move
       // Immediate position set for quick tap response
       mouse.x = targetMouse.x;
       mouse.y = targetMouse.y;
       // Apply boosted interaction multiple times for visible tap effect
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 4; i++) {
         handleMouseInteraction(1.5); // Boost force for tap
       }
     };
@@ -266,9 +269,19 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
         particle.draw();
       });
 
+      // Build grid
+      grid = new Map();
+      for (const p of particles) {
+        const gridX = Math.floor(p.x / cellSize);
+        const gridY = Math.floor(p.y / cellSize);
+        const key = `${gridX},${gridY}`;
+        if (!grid.has(key)) grid.set(key, []);
+        grid.get(key)!.push(p);
+      }
+
       bufferCtx.globalAlpha = 1.0;
       handleMouseInteraction();
-      handleConnections(); // Draw every frame on mobile, optimized with fewer connections
+      handleConnections();
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(bufferCanvas, 0, 0);
@@ -280,10 +293,11 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     requestAnimationFrame(animate);
 
     window.addEventListener('resize', resizeCanvas);
+    const throttledUpdate = throttle(updatePointerPosition, 60); // 60ms = ~16Hz, adjustable
     if (isMobile) {
-      canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
-      canvas.addEventListener('touchmove', updatePointerPosition, { passive: true });
-      canvas.addEventListener('touchend', handleTouchEnd, { passive: true });
+      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('touchmove', throttledUpdate, { passive: true });
+      window.addEventListener('touchend', handleTouchEnd, { passive: true });
     } else {
       window.addEventListener('mousemove', updatePointerPosition as EventListener);
     }
@@ -291,9 +305,9 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       if (isMobile) {
-        canvas.removeEventListener('touchstart', handleTouchStart);
-        canvas.removeEventListener('touchmove', updatePointerPosition);
-        canvas.removeEventListener('touchend', handleTouchEnd);
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', throttledUpdate);
+        window.removeEventListener('touchend', handleTouchEnd);
       } else {
         window.removeEventListener('mousemove', updatePointerPosition as EventListener);
       }
@@ -310,7 +324,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full opacity-80 z-0"
-        style={{ willChange: 'transform' }}
+        style={{ willChange: 'transform', transform: 'translateZ(0)' }}
       />
       <div className="relative z-10">{children}</div>
     </section>

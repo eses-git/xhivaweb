@@ -34,7 +34,6 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
 
         // --- All the animation logic from the original component is placed here ---
         let particles: ParticleType[] = [];
-        const particleCount = 420;
         const maxDistance = 200;
         const particleColor = 'rgba(45, 95, 155,';
         
@@ -48,6 +47,11 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
             canvas.width = container.offsetWidth;
             canvas.height = container.offsetHeight;
         }
+
+        // NEW: Function to get dynamic particle count based on screen width
+        const getParticleCount = () => {
+            return window.innerWidth < 768 ? 150 : 420; // Reduce to ~1/3 on mobile (adjust as needed; 100-200 is a good range for perf)
+        };
 
         class Particle implements ParticleType {
             x: number;
@@ -98,6 +102,7 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
         
         const init = () => {
             particles = [];
+            const particleCount = getParticleCount(); // Use dynamic count here
             const midPoint = canvas.width / 2;
             for (let i = 0; i < particleCount; i++) {
                 let x: number, vx: number;
@@ -161,12 +166,29 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
             animationFrameId = requestAnimationFrame(animate);
         }
 
-        // --- Event Listeners ---
-        const handleResize = () => {
-            setCanvasSize();
-            init();
+        // NEW: Debounce function to throttle resize events
+        function debounce(func: (...args: any[]) => void, delay: number) {
+            let timeout: NodeJS.Timeout | null = null;
+            return function(...args: any[]) {
+                if (timeout) clearTimeout(timeout);
+                timeout = setTimeout(() => func(...args), delay);
+            };
         }
 
+        // MODIFIED: Handle resize with debounce and size-change check
+        const handleResize = () => {
+            const oldWidth = canvas.width;
+            const oldHeight = canvas.height;
+            setCanvasSize();
+            // Only re-init if size actually changed (prevents unnecessary "refresh" on mobile scroll)
+            if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
+                init();
+            }
+        };
+
+        const debouncedResize = debounce(handleResize, 200); // 200ms delay; adjust if needed
+
+        // MODIFIED: Handle mouse move (add { passive: true } for better scroll perf on touch devices)
         const handleMouseMove = (event: MouseEvent) => {
             const rect = container.getBoundingClientRect();
             mouse.x = event.clientX - rect.left;
@@ -178,9 +200,10 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
             mouse.y = undefined;
         }
 
-        window.addEventListener('resize', handleResize);
-        container.addEventListener('mousemove', handleMouseMove);
-        container.addEventListener('mouseout', handleMouseOut);
+        // Add listeners with passive option where possible
+        window.addEventListener('resize', debouncedResize);
+        container.addEventListener('mousemove', handleMouseMove, { passive: true });
+        container.addEventListener('mouseout', handleMouseOut, { passive: true });
 
         // Initial setup
         setCanvasSize();
@@ -189,7 +212,7 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
 
         // Cleanup function to remove event listeners when the component unmounts
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', debouncedResize);
             container.removeEventListener('mousemove', handleMouseMove);
             container.removeEventListener('mouseout', handleMouseOut);
             cancelAnimationFrame(animationFrameId);
@@ -209,4 +232,3 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
     );
     
 };
-

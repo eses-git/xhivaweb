@@ -95,17 +95,18 @@
   padding: 1rem; 
   background-color: #FFFFFF; 
   box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
-  transition: all 0.3s ease-in-out; 
   border: 2px solid #90b4d4; 
   display: flex; 
   flex-direction: row; 
   align-items: center; 
   justify-content: flex-start; 
   gap: 1rem;
+  will-change: transform, opacity; /* Added for performance hint */
 }
-.fundButton:hover { transform: translateY(-6px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.fundButton.active { transform: translateY(-6px); border-color: #d7c286; }
-.buttonIconWrapper { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 44, 84, 0.2); transition: all 0.3s ease-in-out; }
+/* Removed hover and active transforms/box-shadows (handled by Framer Motion) */
+/* .fundButton:hover { transform: translateY(-6px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); } */
+/* .fundButton.active { transform: translateY(-6px); border-color: #d7c286; } */
+.buttonIconWrapper { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 44, 84, 0.2); }
 .fundButton.active .buttonIconWrapper { border-color: #d7c286; background-color: rgba(215, 194, 134, 0.1); }
 .buttonIcon { width: 1.25rem; height: 1.25rem; color: #002c54; }
 .buttonTitle { font-size: 0.875rem; font-weight: 400; color: #002c54; margin: 0; text-align: left; line-height: 1.2; flex: 1; font-family: var(--font-headings); }
