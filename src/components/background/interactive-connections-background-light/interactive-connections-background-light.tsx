@@ -7,38 +7,54 @@ type InteractiveConnectionsBackgroundProps = {
 export function InteractiveConnectionsBackgroundLight({ children }: InteractiveConnectionsBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bufferCanvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
+  const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d')!;
-    if (!ctx) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      console.error('Failed to get canvas context');
+      return;
+    }
 
     const bufferCanvas = bufferCanvasRef.current;
-    const bufferCtx = bufferCanvas.getContext('2d')!;
-    if (!bufferCtx) return;
+    const bufferCtx = bufferCanvas.getContext('2d');
+    if (!bufferCtx) {
+      console.error('Failed to get buffer context');
+      return;
+    }
 
     let animationFrameId: number;
     let particles: Particle[] = [];
     const mouse = { x: -300, y: -300, radius: 150 };
     const mouseRadiusSq = mouse.radius * mouse.radius;
-    const cellSize = 150;
+    let cellSize = 150;
     let grid: Map<string, Particle[]> = new Map();
     let lastResize = 0;
+    let lastFrameTime = 0;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const targetFPS = isMobile ? 30 : 60;
+    const frameInterval = 1000 / targetFPS;
 
     const resizeCanvas = () => {
-      const now = Date.now();
-      if (now - lastResize < 100) return; // Debounce resize
-      lastResize = now;
+      try {
+        const now = Date.now();
+        if (now - lastResize < 100) return;
+        lastResize = now;
 
-      const parent = canvas.parentElement;
-      if (parent) {
-        canvas.width = parent.offsetWidth;
-        canvas.height = parent.offsetHeight;
-        bufferCanvas.width = canvas.width;
-        bufferCanvas.height = canvas.height;
-        createParticles(canvas);
+        const parent = containerRef.current;
+        if (parent) {
+          canvas.width = parent.offsetWidth;
+          canvas.height = parent.offsetHeight;
+          bufferCanvas.width = canvas.width;
+          bufferCanvas.height = canvas.height;
+          createParticles(canvas);
+          console.log(`Resized canvas to ${canvas.width}x${canvas.height}, particles: ${particles.length}`); // Debug
+        }
+      } catch (error) {
+        console.error('Resize error:', error);
       }
     };
 
@@ -57,26 +73,26 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
         this.z = Math.random() * 0.7 + 0.3;
         this.baseX = Math.random() * canvasElement.width;
         this.baseY = Math.random() * canvasElement.height;
-        const offset = 200; // Offscreen amount for initial slide-in
+        const offset = 50; // Reduced offset for faster appearance
         if (Math.random() > 0.5) {
-          this.x = -offset + Math.random() * 50;
-          this.vx = (1 + Math.random() * 3) * this.z; // Move right from left side
+          this.x = -offset + Math.random() * 20; // Smaller random
+          this.vx = (3 + Math.random() * 4) * this.z; // Increased velocity for faster slide-in
         } else {
-          this.x = canvasElement.width + offset - Math.random() * 50;
-          this.vx = (-1 - Math.random() * 3) * this.z; // Move left from right side
+          this.x = canvasElement.width + offset - Math.random() * 20;
+          this.vx = (-3 - Math.random() * 4) * this.z;
         }
-        this.y = this.baseY + (Math.random() * 100 - 50); // Initial offset for y movement
-        this.vy = (Math.random() * 4 - 2) * this.z; // Initial velocity range for y
+        this.y = this.baseY + (Math.random() * 50 - 25); // Reduced y offset
+        this.vy = (Math.random() * 4 - 2) * this.z;
         this.size = (Math.random() * 3 + 2) * this.z;
         this.color = Math.random() > 0.5 ? '#ecc24eff' : '#cececaff';
       }
 
       update(canvasElement: HTMLCanvasElement) {
-        const springFactor = 0.002; // Slightly increased for more responsive movement
+        const springFactor = 0.01; // Increased for faster settling
         this.vx += (this.baseX - this.x) * springFactor;
         this.vy += (this.baseY - this.y) * springFactor;
-        this.vx *= 0.95;
-        this.vy *= 0.95;
+        this.vx *= 0.98; // Slightly less damping for quicker movement
+        this.vy *= 0.98;
 
         this.x += this.vx;
         this.y += this.vy;
@@ -96,9 +112,10 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      // ~700 particles for dense network
-      const particleCount = Math.min(700, Math.floor((canvasElement.width * canvasElement.height) / 3000));
+      const densityFactor = isMobile ? 4000 : 3000;
+      const particleCount = Math.min(isMobile ? 300 : 700, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
+      cellSize = isMobile ? 200 : 150;
     };
 
     const handleMouseInteraction = () => {
@@ -115,7 +132,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
               if (distanceSq < mouseRadiusSq) {
                 const distance = Math.sqrt(distanceSq);
                 const force = 1 - distanceSq / mouseRadiusSq;
-                const forceMultiplier = 3;
+                const forceMultiplier = isMobile ? 1.5 : 3;
                 const directionX = (dx / distance) * force * forceMultiplier * particle.z;
                 const directionY = (dy / distance) * force * forceMultiplier * particle.z;
                 particle.vx += directionX;
@@ -128,11 +145,16 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     };
 
     const handleConnections = () => {
-      bufferCtx.shadowColor = '#f4e383ff'; // Vivid gold for neon glow
-      bufferCtx.shadowBlur = 5; // Increased for neon effect
+      if (isMobile) {
+        bufferCtx.shadowColor = 'transparent';
+        bufferCtx.shadowBlur = 0;
+      } else {
+        bufferCtx.shadowColor = '#f4e383ff';
+        bufferCtx.shadowBlur = 5;
+      }
       bufferCtx.lineWidth = 0.5;
 
-      const connectDistanceSq = 120 * 120;
+      const connectDistanceSq = isMobile ? 80 * 80 : 120 * 120;
       grid = new Map();
       for (const p of particles) {
         const gridX = Math.floor(p.x / cellSize);
@@ -142,29 +164,25 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
         grid.get(key)!.push(p);
       }
 
-      const gradient = bufferCtx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, 'rgba(246, 205, 152, 0.8)'); // Slightly higher opacity
-      gradient.addColorStop(1, 'rgba(221, 182, 129, 0.56)');
       bufferCtx.globalAlpha = 0.4;
+      bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient();
 
       bufferCtx.beginPath();
       for (const p1 of particles) {
         const gridX = Math.floor(p1.x / cellSize);
         const gridY = Math.floor(p1.y / cellSize);
         let connections = 0;
-        for (let i = -1; i <= 1 && connections < 10; i++) {
-          for (let j = -1; j <= 1 && connections < 10; j++) {
+        const maxConnections = isMobile ? 5 : 10;
+        for (let i = -1; i <= 1 && connections < maxConnections; i++) {
+          for (let j = -1; j <= 1 && connections < maxConnections; j++) {
             const key = `${gridX + i},${gridY + j}`;
             if (grid.has(key)) {
               for (const p2 of grid.get(key)!) {
-                if (p1 === p2 || connections >= 10) continue;
+                if (p1 === p2 || connections >= maxConnections) continue;
                 const dx = p1.x - p2.x;
                 const dy = p1.y - p2.y;
                 const distanceSq = dx * dx + dy * dy;
                 if (distanceSq < connectDistanceSq) {
-                  // Minimum opacity to prevent disappearing
-                  // const opacity = Math.max(0.4, 1 - Math.sqrt(distanceSq) / 120);
-                  // bufferCtx.globalAlpha = opacity;
                   bufferCtx.moveTo(p1.x, p1.y);
                   bufferCtx.lineTo(p2.x, p2.y);
                   connections++;
@@ -174,61 +192,104 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
           }
         }
       }
-      bufferCtx.strokeStyle = gradient;
       bufferCtx.stroke();
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
+    const createGradient = () => {
+      const gradient = bufferCtx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, 'rgba(246, 205, 152, 0.8)');
+      gradient.addColorStop(1, 'rgba(221, 182, 129, 0.56)');
+      return gradient;
+    };
+
+    const handlePointerMove = (event: MouseEvent | TouchEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.x = event.clientX - rect.left;
-      mouse.y = event.clientY - rect.top;
+      if ('touches' in event) {
+        const touch = event.touches[0];
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
+      } else {
+        mouse.x = event.clientX - rect.left;
+        mouse.y = event.clientY - rect.top;
+      }
     };
 
-    const animate = () => {
-      bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-      bufferCtx.shadowColor = '#d7c186eb';
-      bufferCtx.shadowBlur = 12; // Increased for neon particle glow
-      bufferCtx.beginPath();
-      particles.forEach(particle => {
-        particle.update(canvas);
-        particle.draw();
-      });
-      bufferCtx.fill();
-
-      bufferCtx.globalAlpha = 1.0;
-      // bufferCtx.shadowBlur = 0;
-      handleMouseInteraction();
-      handleConnections();
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(bufferCanvas, 0, 0);
-
-      animationFrameId = requestAnimationFrame(animate);
+    const handleTouchStart = (event: TouchEvent) => {
+      handlePointerMove(event);
     };
 
+    const animate = (timestamp: number) => {
+      try {
+        if (timestamp - lastFrameTime < frameInterval) {
+          animationFrameId = requestAnimationFrame(animate);
+          return;
+        }
+        lastFrameTime = timestamp;
+
+        bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (!isMobile) {
+          bufferCtx.shadowColor = '#d7c186eb';
+          bufferCtx.shadowBlur = 12;
+        } else {
+          bufferCtx.shadowColor = 'transparent';
+          bufferCtx.shadowBlur = 0;
+        }
+
+        particles.forEach(particle => {
+          particle.update(canvas);
+          particle.draw();
+        });
+
+        bufferCtx.globalAlpha = 1.0;
+        handleMouseInteraction();
+        handleConnections();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bufferCanvas, 0, 0);
+
+        animationFrameId = requestAnimationFrame(animate);
+      } catch (error) {
+        console.error('Animation error:', error);
+      }
+    };
+
+    // Immediate resize on mount
     resizeCanvas();
-    animate();
 
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
+    // Use ResizeObserver for better mobile resize detection
+    const resizeObserver = new ResizeObserver(resizeCanvas);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    requestAnimationFrame(animate);
+
+    window.addEventListener('resize', resizeCanvas); // Fallback
+    window.addEventListener('mousemove', handlePointerMove as EventListener);
+    canvas.addEventListener('touchmove', handlePointerMove as EventListener, { passive: true });
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handlePointerMove as EventListener);
+      canvas.removeEventListener('touchmove', handlePointerMove as EventListener);
+      canvas.removeEventListener('touchstart', handleTouchStart);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
     <section
+      ref={containerRef}
       className="relative overflow-hidden"
       style={{background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.85) 66%, rgba(255, 255, 255, 0.85) 100%)'
  }}
     >
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full opacity-80 z-0"
+        className="absolute top-0 left-0 w-full h-full opacity-80 z-0 pointer-events-auto"
         style={{ willChange: 'transform' }}
       />
       <div className="relative z-10">{children}</div>

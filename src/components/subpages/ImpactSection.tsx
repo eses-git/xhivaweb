@@ -12,13 +12,13 @@ export function ImpactSection() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setActivePillar(currentPillar => 
+      setActivePillar(currentPillar =>
         currentPillar === 'economic' ? 'humanitarian' : 'economic'
       );
     }, 6000);
 
     return () => clearInterval(intervalId);
-  }, [activePillar]);
+  }, []);
 
   const pillars = {
     economic: {
@@ -37,7 +37,6 @@ export function ImpactSection() {
 
   return (
    <AnimatedBackgroundWrapper className={styles.section}>
-      {/* The section tag now just provides semantic structure */}
       <section>
         <header className={styles.header}>
           <p className={styles.preTitle}>{t('impact.preTitle')}</p>
@@ -45,9 +44,25 @@ export function ImpactSection() {
           <p className={styles.introText}>{t('impact.intro1')}</p>
         </header>
 
+        {/* --- MOBILE CARD CONTAINER (Updated for equal height) --- */}
+        <div className={styles.cardContainerForMobile}>
+          {/* We render BOTH cards and use CSS to show/hide them */}
+          {Object.values(pillars).map(pillar => (
+            <div
+              key={pillar.id}
+              className={`${styles.mobileCardContent} ${activePillar === pillar.id ? styles.active : ''}`}
+            >
+              <div className={styles.icon}>{pillar.icon}</div>
+              <h3 className={styles.pillarTitle}>{t(pillar.titleKey as any)}</h3>
+              <p className={styles.pillarDescription}>{t(pillar.descriptionKey as any)}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* --- 3D FLIPPER FOR DESKTOP --- */}
         <div className={styles.perspectiveContainer}>
           <div className={`${styles.flipperCard} ${activePillar === 'humanitarian' ? styles.isFlipped : ''}`}>
-            
+            {/* Front Face */}
             <div className={`${styles.cardFace} ${styles.cardFaceFront}`}>
               <div className={styles.cardContent}>
                 <div className={styles.icon}>{pillars.economic.icon}</div>
@@ -55,7 +70,7 @@ export function ImpactSection() {
                 <p className={styles.pillarDescription}>{t(pillars.economic.descriptionKey as any)}</p>
               </div>
             </div>
-
+            {/* Back Face */}
             <div className={`${styles.cardFace} ${styles.cardFaceBack}`}>
               <div className={styles.cardContent}>
                 <div className={styles.icon}>{pillars.humanitarian.icon}</div>
@@ -63,7 +78,6 @@ export function ImpactSection() {
                 <p className={styles.pillarDescription}>{t(pillars.humanitarian.descriptionKey as any)}</p>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -72,13 +86,13 @@ export function ImpactSection() {
             <button
               key={pillar.id}
               className={`${styles.toggleButton} ${activePillar === pillar.id ? styles.active : ''}`}
-              onClick={() => setActivePillar(pillar.id as any)}
+              onClick={() => setActivePillar(pillar.id as 'economic' | 'humanitarian')}
             >
               {t(pillar.titleKey as any)}
             </button>
           ))}
         </div>
-        
+
         <p className={styles.conclusionText}>
           {t('impact.conclusion')}
         </p>

@@ -22,6 +22,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     let animationFrameId: number;
     let particles: Particle[] = [];
     const mouse = { x: -300, y: -300, radius: 150 };
+    const targetMouse = { x: -300, y: -300 }; // For smoothing
     const mouseRadiusSq = mouse.radius * mouse.radius;
     let cellSize = 150;
     let grid: Map<string, Particle[]> = new Map();
@@ -29,7 +30,10 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     let lastFrameTime = 0;
     const isMobile = /Mobi|Android/i.test(navigator.userAgent); // Simple mobile detection
     const targetFPS = isMobile ? 30 : 60; // Lower FPS on mobile
-    const frameInterval = 1000 / targetFPS;
+    let frameInterval = 1000 / targetFPS;
+    let isInteracting = false; // Track if interacting (tap or move)
+    let resetTimer: NodeJS.Timeout | null = null; // For fading out after interaction
+    let avgFrameTime = frameInterval; // Track average frame time for dynamic FPS
 
     const resizeCanvas = () => {
       const now = Date.now();
@@ -70,11 +74,16 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       }
 
       update(canvasElement: HTMLCanvasElement) {
-        const springFactor = 0.003;
+        const springFactor = isMobile ? 0.002 : 0.003;
         this.vx += (this.baseX - this.x) * springFactor;
         this.vy += (this.baseY - this.y) * springFactor;
-        this.vx *= 0.99;
-        this.vy *= 0.99;
+        this.vx *= isMobile ? 0.98 : 0.99;
+        this.vy *= isMobile ? 0.98 : 0.99;
+
+        // Clamp velocity to prevent jittery overshoots
+        const maxVel = isMobile ? 2 : 4;
+        this.vx = Math.max(-maxVel, Math.min(maxVel, this.vx));
+        this.vy = Math.max(-maxVel, Math.min(maxVel, this.vy));
 
         this.x += this.vx;
         this.y += this.vy;
@@ -94,13 +103,14 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 4000 : 3000; // Slightly denser on mobile as requested
-      const particleCount = Math.min(isMobile ? 300 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      const densityFactor = isMobile ? 3000 : 3000; // Fewer on mobile
+      const particleCount = Math.min(isMobile ? 380 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
-      cellSize = isMobile ? 200 : 150; // Larger cells on mobile for fewer checks
+      cellSize = isMobile ? 250 : 150; // Larger cells on mobile
     };
 
-    const handleMouseInteraction = () => {
+    const handleMouseInteraction = (forceBoost = 1) => {
+      if (!isInteracting) return;
       const gridX = Math.floor(mouse.x / cellSize);
       const gridY = Math.floor(mouse.y / cellSize);
       for (let i = -1; i <= 1; i++) {
@@ -113,8 +123,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
               const distanceSq = dx * dx + dy * dy;
               if (distanceSq < mouseRadiusSq) {
                 const distance = Math.sqrt(distanceSq);
-                const force = 1 - distanceSq / mouseRadiusSq;
-                const forceMultiplier = isMobile ? 1.5 : 3; // Weaker force on mobile
+                const force = (1 - distanceSq / mouseRadiusSq) * 0.5;
+                const forceMultiplier = (isMobile ? 2.0 : 3) * forceBoost; // Boost on tap
                 const directionX = (dx / distance) * force * forceMultiplier * particle.z;
                 const directionY = (dy / distance) * force * forceMultiplier * particle.z;
                 particle.vx += directionX;
@@ -128,7 +138,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
 
     const handleConnections = () => {
       if (isMobile) {
-        bufferCtx.shadowColor = 'transparent'; // Disable shadows on mobile
+        bufferCtx.shadowColor = 'transparent';
         bufferCtx.shadowBlur = 0;
       } else {
         bufferCtx.shadowColor = 'rgba(19, 17, 11, 0.8)';
@@ -136,7 +146,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       }
       bufferCtx.lineWidth = 0.5;
 
-      const connectDistanceSq = isMobile ? 80 * 80 : 120 * 120; // Shorter connections on mobile
+      const connectDistanceSq = isMobile ? 50 * 50 : 120 * 120; // Smaller on mobile to reduce drawing
       grid = new Map();
       for (const p of particles) {
         const gridX = Math.floor(p.x / cellSize);
@@ -147,14 +157,14 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       }
 
       bufferCtx.globalAlpha = 0.4;
-      bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient(); // Simple color on mobile, gradient on desktop
+      bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient();
 
       bufferCtx.beginPath();
       for (const p1 of particles) {
         const gridX = Math.floor(p1.x / cellSize);
         const gridY = Math.floor(p1.y / cellSize);
         let connections = 0;
-        const maxConnections = isMobile ? 5 : 10; // Fewer on mobile
+        const maxConnections = isMobile ? 3 : 10; // Fewer on mobile to prevent blinking/perf issues
         for (let i = -1; i <= 1 && connections < maxConnections; i++) {
           for (let j = -1; j <= 1 && connections < maxConnections; j++) {
             const key = `${gridX + i},${gridY + j}`;
@@ -184,24 +194,62 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       return gradient;
     };
 
-    const handlePointerMove = (event: MouseEvent | TouchEvent) => {
+    const updatePointerPosition = (event: MouseEvent | TouchEvent) => {
       const rect = canvas.getBoundingClientRect();
+      let clientX, clientY;
       if ('touches' in event) {
         const touch = event.touches[0];
-        mouse.x = touch.clientX - rect.left;
-        mouse.y = touch.clientY - rect.top;
+        clientX = touch.clientX;
+        clientY = touch.clientY;
       } else {
-        mouse.x = event.clientX - rect.left;
-        mouse.y = event.clientY - rect.top;
+        clientX = event.clientX;
+        clientY = event.clientY;
+      }
+      targetMouse.x = clientX - rect.left;
+      targetMouse.y = clientY - rect.top;
+      isInteracting = true;
+      if (resetTimer) clearTimeout(resetTimer);
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      updatePointerPosition(event);
+      mouse.radius = 200; // Larger for tap/move
+      // Immediate position set for quick tap response
+      mouse.x = targetMouse.x;
+      mouse.y = targetMouse.y;
+      // Apply boosted interaction multiple times for visible tap effect
+      for (let i = 0; i < 3; i++) {
+        handleMouseInteraction(1.5); // Boost force for tap
       }
     };
 
+    const handleTouchEnd = () => {
+      resetTimer = setTimeout(() => {
+        isInteracting = false;
+        targetMouse.x = -300;
+        targetMouse.y = -300;
+        mouse.radius = 150;
+      }, 1500); // Even longer timeout for visible tap effect
+    };
+
     const animate = (timestamp: number) => {
-      if (timestamp - lastFrameTime < frameInterval) {
+      const delta = timestamp - lastFrameTime;
+      if (delta < frameInterval) {
         animationFrameId = requestAnimationFrame(animate);
         return;
       }
       lastFrameTime = timestamp;
+      avgFrameTime = avgFrameTime * 0.9 + delta * 0.1;
+
+      // Dynamic FPS adjustment if lagging
+      if (avgFrameTime > frameInterval * 1.5 && isMobile) {
+        frameInterval = Math.min(1000 / 20, frameInterval + 1);
+      }
+
+      // Smooth mouse position (lerp)
+      const lerpFactor = isMobile ? 0.3 : 0.5; // Lower on mobile for smoother scrolling interaction
+      mouse.x = mouse.x * (1 - lerpFactor) + targetMouse.x * lerpFactor;
+      mouse.y = mouse.y * (1 - lerpFactor) + targetMouse.y * lerpFactor;
 
       bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -220,7 +268,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
 
       bufferCtx.globalAlpha = 1.0;
       handleMouseInteraction();
-      handleConnections();
+      handleConnections(); // Draw every frame on mobile, optimized with fewer connections
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(bufferCanvas, 0, 0);
@@ -232,14 +280,25 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     requestAnimationFrame(animate);
 
     window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handlePointerMove as EventListener);
-    canvas.addEventListener('touchmove', handlePointerMove as EventListener, { passive: true });
+    if (isMobile) {
+      canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+      canvas.addEventListener('touchmove', updatePointerPosition, { passive: true });
+      canvas.addEventListener('touchend', handleTouchEnd, { passive: true });
+    } else {
+      window.addEventListener('mousemove', updatePointerPosition as EventListener);
+    }
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handlePointerMove as EventListener);
-      canvas.removeEventListener('touchmove', handlePointerMove as EventListener);
+      if (isMobile) {
+        canvas.removeEventListener('touchstart', handleTouchStart);
+        canvas.removeEventListener('touchmove', updatePointerPosition);
+        canvas.removeEventListener('touchend', handleTouchEnd);
+      } else {
+        window.removeEventListener('mousemove', updatePointerPosition as EventListener);
+      }
       cancelAnimationFrame(animationFrameId);
+      if (resetTimer) clearTimeout(resetTimer);
     };
   }, []);
 

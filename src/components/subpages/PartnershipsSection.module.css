@@ -28,8 +28,9 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #2D5F9B;
-  margin-bottom: 3rem;
-  font-family: var(--font-headings);
+   margin-bottom: 3rem;
+        margin-top: 3rem;
+          font-family: var(--font-headings);
 }
 
 .title { 

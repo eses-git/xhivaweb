@@ -1,4 +1,4 @@
-/* src/components/ImpactSection.module.css (Pivoting Perspectives Design) */
+/* src/components/ImpactSection.module.css */
 
 :root {
   --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -13,15 +13,12 @@
 }
 
 .section {
-  /* --- CORRECTED STYLES --- */
-  background-color: transparent; /* Allows the canvas behind it to be visible */
-  min-height: 100vh; /* Ensures the container has height, even with little content */
-  
-  /* --- Original Styles --- */
+  background-color: transparent;
+  min-height: 100vh;
   padding: 4.5rem 2rem;
   font-family: var(--font-primary);
   color: var(--text-dark);
-  box-sizing: border-box; /* Good practice for layout consistency */
+  box-sizing: border-box;
   width: 100%;
 }
 
@@ -32,7 +29,18 @@
 }
 
 .preTitle {
- display: inline-block; padding: 1.5rem 3rem; background-color: #d7c18641; border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
+ display: inline-block; padding: 1.5rem 3rem;
+  background-color: #d7c18641;
+   border: 1px solid rgba(0, 44, 84, 0.1);
+    font-size: 1rem;
+     font-weight: 400; 
+     letter-spacing: 0.3em;
+      text-transform: uppercase;
+       color: #2D5F9B; 
+          margin-bottom: 3rem;
+        margin-top: 3rem;
+        font-family: var(--font-headings);
+}
 
 .title {
   font-family: var(--font-headings);
@@ -49,12 +57,24 @@
   color: var(--text-muted);
 }
 
-/* --- 3D Flip Interaction --- */
+/* --- MOBILE & DESKTOP CARD CONTENT (Shared Styles) --- */
+.cardContent {
+  padding: 3rem;
+  text-align: center;
+  max-width: 650px;
+}
+
+/* --- NEW: Simple Card for Mobile --- */
+.cardContainerForMobile {
+  display: none; /* Hidden by default on desktop */
+}
+
+/* --- 3D Flip Interaction (for Desktop) --- */
 .perspectiveContainer {
   perspective: 1500px;
   max-width: 900px;
   margin: 0 auto;
-  height: 500px; /* CHANGED: Increased height from 400px */
+  height: 500px;
 }
 
 .flipperCard {
@@ -81,21 +101,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Added to handle potential overflow */
+  overflow: hidden;
 }
 
-.cardFaceFront {
-  /* No rotation needed */
-}
+.cardFaceFront { /* No rotation needed */ }
 
 .cardFaceBack {
   transform: rotateY(180deg);
-}
-
-.cardContent {
-  padding: 3rem;
-  text-align: center;
-  max-width: 650px; /* Increased max-width for content */
 }
 
 .icon {
@@ -175,10 +187,69 @@
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-  .title { font-size: 2.5rem; }
-  .perspectiveContainer { 
-    height: 520px; /* CHANGED: Increased responsive height */
+  /* NEW: Adjust the main section for mobile */
+  .section {
+    padding-left: 0; /* Remove side padding */
+    padding-right: 0; /* Remove side padding */
+    overflow-x: hidden; /* Prevent any accidental horizontal scrolling */
   }
-  .pillarTitle { font-size: 1.8rem; }
-  .pillarDescription { font-size: 1rem; }
+
+  /* NEW: Add padding back to the text containers */
+  .header,
+  .pillarToggles,
+  .conclusionText {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Hide the 3D flipper on mobile */
+  .perspectiveContainer {
+    display: none;
+  }
+
+  /* Show and style our new simple container on mobile */
+  .cardContainerForMobile {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: none; /* UPDATED: Allow card to be full width */
+    margin: 0 0 2rem 0; /* UPDATED: Remove side margins */
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    /* NEW: Remove the border on the sides for an edge-to-edge look */
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Style for the stacked content cards */
+  .mobileCardContent {
+    grid-area: 1 / 1;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    text-align: center;
+    padding: 2.5rem;
+  }
+  
+  /* Show the active card */
+  .mobileCardContent.active {
+    opacity: 1;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .cardContent {
+    padding: 2rem;
+  }
+
+  .pillarTitle {
+    font-size: 1.8rem;
+  }
+
+  .pillarDescription {
+    font-size: 1rem;
+    text-align: justify;
+  }
 }

@@ -33,8 +33,9 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
+   margin-bottom: 3rem;
+        margin-top: 3rem;
+      }
 
 .title {
   font-family: var(--font-headings);

@@ -32,16 +32,29 @@
 
 /* --- HEADER --- */
 .header { text-align: center; margin-bottom: 80px; }
-.preTitle { display: inline-block; padding: 1.5rem 3rem; background-color:  #d7c18641; border: 1px solid rgba(0, 44, 84, 0.1); font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: #2D5F9B; margin-bottom: 3rem; font-family: var(--font-headings); }
+.preTitle { 
+  display: inline-block;
+   padding: 1.5rem 3rem;
+   background-color:  #d7c18641;
+    border: 1px solid rgba(0, 44, 84, 0.1); 
+    font-size: 1rem; 
+    font-weight: 400;
+     letter-spacing: 0.3em;
+      text-transform: uppercase;
+       color: #2D5F9B;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+
+         font-family: var(--font-headings); }
 .mainTitle { 
   font-family: var(--font-headings);
-  font-size: 4rem;
+  /* CHANGED: Replaced fixed size with a fluid, responsive size */
+  font-size: clamp(2.5rem, 8vw, 4rem);
   color: var(--dark-blue);
   line-height: 1.1;
   font-weight: 500;
   margin: 0.5rem 0 1.5rem 0;
-
-  }
+}
 
 /* --- Two Pillars Layout --- */
 .preludeContainer {
@@ -184,19 +197,17 @@
   .panelIcon { margin-bottom: 0; margin-right: 15px; width: 40px; height: 40px; }
   .harmonyPanel h3 { font-size: 1.2rem; }
 
-  /* --- NEW: Symmetrical layout for text columns on mobile --- */
   .preludeColumn {
-    border-left: none; /* Remove asymmetric border */
-    padding-left: 0; /* Remove asymmetric padding */
-    padding: 2rem 1rem 0 1rem; /* Add symmetric padding and top spacing */
-    border-top: 2px solid var(--gold); /* Add a top border for separation */
+    border-left: none;
+    padding-left: 0;
+    padding: 2rem 1rem 0 1rem;
+    border-top: 2px solid var(--gold);
   }
 
-  /* --- TEXT ALIGNMENT FOR MOBILE --- */
-  .preludeColumn h3, /* Center headings */
+  .preludeColumn h3,
   .preludeColumn p,
   .panelContent p,
   .capstoneSection p {
-    text-align: center; /* Center all text */
+    text-align: center;
   }
 }

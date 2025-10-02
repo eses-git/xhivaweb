@@ -12,6 +12,7 @@ export function Header() {
 
   const menuItems = [
    /* { name: t('nav.investment'), href: "/Investment" },*/
+    { name: t('nav.home'), href: "/" },
     { name: t('nav.about'), href: "/about-us" },
     { name: t('nav.funds'), href: "/funds" },
     { name: t('nav.services'), href: "/services" },

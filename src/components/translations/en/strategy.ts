@@ -1,0 +1,28 @@
+// src/translations/en/strategy.ts
+
+export const strategyEnTranslations = {
+  'strategy.page.preTitle': 'Our Strategies',
+  'strategy.page.title': 'Our Investment Strategy',
+  'strategy.page.subtitle': 'A Disciplined Framework for Exclusive Opportunities',
+  'strategy.page.intro': 'Our investment strategy is devised for qualified private investors, family offices, and high-net-worth individuals who seek access to institutional-grade programmes within a framework of robust compliance, capital preservation, and exceptional, risk-adjusted performance.',
+  'strategy.page.disclaimer': 'These structured programmes are not publicly advertised and are accessible only through a formal engagement protocol.',
+  'strategy.approach.title': 'Our Strategic Approach',
+  'strategy.approach.intro': 'Our strategy is not based on market speculation but upon disciplined access to pre-vetted, high-level financial programmes. Each potential engagement is evaluated on its own merits, with a focus on:',
+  'strategy.approach.item1.title': 'Asset Provenance & Security',
+  'strategy.approach.item1.description': 'We begin by verifying the origin and integrity of all assets, ensuring a clean and compliant foundation for any transaction.',
+  'strategy.approach.item2.title': 'Regulatory Alignment',
+  'strategy.approach.item2.description': 'Our structures are tailored to meet and exceed the regulatory obligations of all participating jurisdictions, ensuring a smooth and secure execution.',
+  'strategy.approach.item3.title': 'Strategic Objective Matching',
+  'strategy.approach.item3.description': 'We work to understand the core goals of our counterparties—be they sovereign wealth stabilisation or private capital growth—and align our programmes accordingly.',
+  'strategy.governance.title': 'Governance, Risk, and Structuring',
+  'strategy.governance.intro': 'Whilst no investment is entirely without risk, our entire operational model is designed to mitigate such risks. All programmes we arrange are structured in direct collaboration with regulated financial institutions, licensed platform operators, and, in many cases, governmental entities. Our commitment to protecting client interests includes:',
+  'strategy.governance.item1.title': 'Robust Due Diligence',
+  'strategy.governance.item1.description': 'Comprehensive background checks and compliance protocols on all parties.',
+  'strategy.governance.item2.title': 'Transparent Funding Protocols',
+  'strategy.governance.item2.description': 'Clear verification of fund origin and ownership (KYC/AML).',
+  'strategy.governance.item3.title': 'Bespoke Capital Structuring',
+  'strategy.governance.item3.description': 'Tailored legal and financial vehicles designed for optimal regulatory compliance and asset protection.',
+  'strategy.govergannce.item4.title': 'Optional Risk Mitigation',
+  'strategy.governance.item4.description': 'Access to mechanisms such as third-party oversight, indemnities, and other institutional safeguards.',
+  'strategy.conclusion.text': 'Where required, our team is equipped to advise upon and establish the appropriate legal and financial entities to meet specific jurisdictional or strategic objectives, ensuring our clients are perfectly positioned for participation.',
+};
