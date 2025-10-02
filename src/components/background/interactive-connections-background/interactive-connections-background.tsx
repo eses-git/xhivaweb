@@ -128,8 +128,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 3000 : 3000; // Fewer on mobile
-      const particleCount = Math.min(isMobile ? 380 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      const densityFactor = isMobile ? 3500 : 3000; // Fewer on mobile
+      const particleCount = Math.min(isMobile ? 470 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
       cellSize = isMobile ? 250 : 150; // Larger cells on mobile
     };
