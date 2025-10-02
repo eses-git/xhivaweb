@@ -200,6 +200,10 @@
   letter-spacing: 0.1em; 
   margin-bottom: 0.5rem; 
 }
+.servicesSection{
+  margin-bottom:0;
+  padding-bottom:0;
+}
 .gridText { 
   font-size: 0.9rem; 
   color: #4b5563; 
