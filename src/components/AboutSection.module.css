@@ -28,8 +28,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* ADDED FOR PERFORMANCE */
   will-change: transform, opacity;
+  /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
+  transform: translateZ(0);
 }
 .title {
   font-size: 3.5rem;
@@ -99,13 +100,15 @@
   background-color: #FFFFFF;
   box-shadow: 0 4px 10px rgba(0, 44, 84, 0.05);
   transition: all 0.3s ease;
-  /* ADDED FOR PERFORMANCE */
   will-change: transform, opacity;
+  /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
+  transform: translateZ(0);
 }
 
 .pillarCard:hover {
   box-shadow: 0 8px 15px rgba(0, 44, 84, 0.1);
-  transform: translateY(-3px);
+  /* MODIFIED: Combined transforms to preserve the hardware acceleration hint on hover */
+  transform: translateY(-3px) translateZ(0);
 }
 
 .pillarIcon {
