@@ -110,7 +110,7 @@ export default function App() {
         } />
 
           {/* Contact Subpage Route */}
-        <Route path="/career" element={
+        <Route path="/careers" element={
           <div className="min-h-screen">
             <Header />
             <Career />

@@ -18,7 +18,7 @@ export function Header() {
     { name: t('nav.services'), href: "/services" },
     { name: t('nav.partnerships'), href: "/partnership" },
     { name: t('nav.impact'), href: "/impact" },
-    { name: t('nav.careers'), href: "/career" },
+    { name: t('nav.careers'), href: "/careers" },
     { name: t('nav.contact'), href: "/contact" }
  /*   { name: t('nav.protocol'), href: "/protocol" },*/
 

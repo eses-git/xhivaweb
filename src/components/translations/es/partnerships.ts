@@ -2,7 +2,7 @@
 
 export const partnershipsEsTranslations = {
   'partnerships.preTitle': 'MÁS ALLÁ DE LAS FRONTERAS',
-  'partnerships.title': 'Red Global de Alianzas',
+  'partnerships.title': 'Red de Socios Globales',
   'partnerships.item1.category': 'FONDOS SOBERANOS DE RIQUEZA',
   'partnerships.item1.description': 'Alianzas estratégicas con autoridades de inversión nacionales y entidades soberanas en las principales economías.',
   'partnerships.item1.focus': 'Relaciones Gubernamentales',
