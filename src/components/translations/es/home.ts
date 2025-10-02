@@ -17,8 +17,7 @@ export const homeEsTranslations = {
 
   // About Us Section (Homepage)
   'about.subtitle': 'Arquitectos del Progreso Global',
-  'about.description': "El capital es una corriente. La política es un timón. La innovación es el viento. XHIVA opera en la confluencia de estos tres elementos, navegando la complejidad global para redefinir industrias y construir valor generacional. No solo participamos en el mercado, aspiramos a moldearlo.",
-  'about.learnMore': 'Saber Más',
+'about.description': "El capital es la corriente. La política es el timón. La innovación es el viento. XHIVA opera en la confluencia de estas tres facetas, navegando la complejidad global para redefinir industrias y construir valor generacional. No solo participamos en el mercado, le damos forma.",  'about.learnMore': 'Saber Más',
   'about.feature1-title': "Liderazgo Global",
   'about.feature1-desc': "Liderando estrategias de inversión a nivel mundial con una inteligencia de mercado inigualable.",
   'about.feature2-title': "Excelencia Institucional",
