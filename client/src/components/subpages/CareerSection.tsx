@@ -29,7 +29,7 @@ export function CareerSection() {
   const [isDragging, setIsDragging] = useState(false);
 
   const MAX_FILE_COUNT = 5;
-  const MAX_FILE_SIZE_MB = 10;
+  const MAX_FILE_SIZE_MB = 8;
   const ALLOWED_FILE_TYPES = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png'];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
