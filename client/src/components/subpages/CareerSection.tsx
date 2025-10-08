@@ -101,6 +101,8 @@ export function CareerSection() {
 
     // 1. Create a FormData object to hold all form fields and files
     const formData = new FormData(formRef.current);
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 
     // 2. Append each selected file to the FormData object
     // The key 'attachments' must match the key used in the server's multer middleware
@@ -110,7 +112,7 @@ export function CareerSection() {
 
     try {
       // 3. Send the FormData to your new server endpoint
-      const response = await fetch('http://localhost:3001/api/career-application', {
+      const response = await fetch(`${apiUrl}/api/career-application`, {
         method: 'POST',
         body: formData, 
         // NOTE: Do NOT set the 'Content-Type' header yourself.
