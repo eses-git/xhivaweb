@@ -253,7 +253,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display:none;
+  display: none !important; 
 }
 
 .replayButton:hover {

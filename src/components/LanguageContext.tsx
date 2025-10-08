@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { en } from './translations/en'; // <-- NEW
-import { es } from './translations/es'; // <-- NEW
-
+import { en } from './translations/en';
+import { es } from './translations/es'; 
+export type Language = 'en' | 'es';
 const translations = {
   en,
   es,

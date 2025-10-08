@@ -17,7 +17,7 @@ export const homeEnTranslations = {
 
   // About Us Section (Homepage)
   'about.subtitle': 'Architects of Global Progress',
-  'about.description': "Capital is a current. Policy is a rudder. Innovation is the wind. XHIVA operates at the confluence of all three, navigating global complexity to redefine industries and build generational value. We don't just participate in the market—we aim to shape it.",
+  'about.description': "Capital is the current. Policy is the rudder. Innovation is the wind. XHIVA operates at the confluence of all three of these facets, navigating global complexity to redefine industries and build generational value. We don't just participate in the market—we shape it.",
   'about.learnMore': 'Learn More',
   'about.feature1-title': "Global Leadership",
   'about.feature1-desc': "Leading investment strategies worldwide with unparalleled market intelligence.",

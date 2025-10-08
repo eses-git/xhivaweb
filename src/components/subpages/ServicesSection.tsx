@@ -1,14 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, PieChart, Users, Shield, Leaf, Handshake } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from './ServicesSection.module.css';
 import NeuralConnections from '../background/interactive-network-small/interactive-network-small';
 
 export function ServicesSection() {
   const { t } = useLanguage();
   
-  // MOVED: The services array is now inside the component to access t()
   const services = [
     { id: 'asset-management', icon: PieChart, title: t('services.item1.title'), subtitle: t('services.item1.subtitle'), description: t('services.item1.description'), details: { focus: t('services.item1.details.focus'), approach: t('services.item1.details.approach'), delivery: t('services.item1.details.delivery') } },
     { id: 'portfolio-construction', icon: Briefcase, title: t('services.item2.title'), subtitle: t('services.item2.subtitle'), description: t('services.item2.description'), details: { focus: t('services.item2.details.focus'), approach: t('services.item2.details.approach'), delivery: t('services.item2.details.delivery') } },
@@ -21,6 +20,10 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = services[activeIndex];
 
+  const [spotlightY, setSpotlightY] = useState(0);
+  const listWrapperRef = useRef<HTMLDivElement>(null);
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setActiveIndex(prevIndex => (prevIndex + 1) % services.length);
@@ -29,13 +32,16 @@ export function ServicesSection() {
     return () => clearInterval(intervalId);
   }, [services.length]);
 
-  const listItemHeight = 80; 
+  useEffect(() => {
+    const currentButton = buttonRefs.current[activeIndex];
+    if (currentButton) {
+      setSpotlightY(currentButton.offsetTop);
+    }
+  }, [activeIndex]);
 
   return (
     <section id="services" className={styles.servicesSection}>
       <NeuralConnections>
-
-        {/* Header */}
         <motion.div 
           className={styles.header}
           initial={{ opacity: 0, y: 50 }}
@@ -50,16 +56,18 @@ export function ServicesSection() {
         </motion.div>
 
         <div className={styles.serviceLayout}>
-          {/* Left Side: Interactive List */}
-          <div className={styles.serviceListWrapper}>
+          <div ref={listWrapperRef} className={styles.serviceListWrapper}>
             <motion.div
               className={styles.spotlight}
-              animate={{ y: activeIndex * listItemHeight }}
+              animate={{ y: spotlightY }}
               transition={{ type: 'spring', stiffness: 200, damping: 25 }}
             />
             {services.map((service, index) => (
               <button
                 key={service.id}
+                // --- THIS IS THE FIX ---
+                // Wrap the function body in curly braces to ensure a void return type
+                ref={el => { buttonRefs.current[index] = el; }} 
                 className={`${styles.serviceButton} ${activeIndex === index ? styles.active : ''}`}
                 onClick={() => setActiveIndex(index)}
               >
@@ -69,7 +77,6 @@ export function ServicesSection() {
             ))}
           </div>
 
-          {/* Right Side: Details Panel */}
           <div className={styles.detailsPanel}>
             <AnimatePresence mode="wait">
               <motion.div
