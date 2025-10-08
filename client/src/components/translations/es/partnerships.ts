@@ -1,0 +1,27 @@
+// src/translations/es/partnerships.ts
+
+export const partnershipsEsTranslations = {
+  'partnerships.preTitle': 'MÁS ALLÁ DE LAS FRONTERAS',
+  'partnerships.title': 'Red de Socios Globales',
+  'partnerships.item1.category': 'FONDOS SOBERANOS DE RIQUEZA',
+  'partnerships.item1.description': 'Alianzas estratégicas con autoridades de inversión nacionales y entidades soberanas en las principales economías.',
+  'partnerships.item1.focus': 'Relaciones Gubernamentales',
+  'partnerships.item2.category': 'INVERSORES INSTITUCIONALES',
+  'partnerships.item2.description': 'Relaciones de colaboración con fondos de pensiones, dotaciones y compañías de seguros en todo el mundo.',
+  'partnerships.item2.focus': 'Capital Institucional',
+  'partnerships.item3.category': 'BANCOS GLOBALES',
+  'partnerships.item3.description': 'Alianzas bancarias centrales con instituciones financieras de primer nivel para el acceso a los mercados de capitales.',
+  'partnerships.item3.focus': 'Infraestructura Bancaria',
+  'partnerships.item4.category': 'SOCIOS TECNOLÓGICOS',
+  'partnerships.item4.description': 'Alianzas de innovación con empresas líderes de fintech y proveedores de infraestructura tecnológica.',
+  'partnerships.item4.focus': 'Innovación Digital',
+  'partnerships.item5.category': 'ORGANISMOS REGULADORES',
+  'partnerships.item5.description': 'Alianzas de cumplimiento con las autoridades reguladoras financieras en todas las jurisdicciones operativas.',
+  'partnerships.item5.focus': 'Excelencia Regulatoria',
+  'partnerships.item6.category': 'INSTITUCIONES DE INVESTIGACIÓN',
+  'partnerships.item6.description': 'Alianzas académicas con universidades y think tanks líderes para la investigación y el análisis de mercado.',
+  'partnerships.item6.focus': 'Excelencia en Investigación',
+  'partnerships.cta.title': '¿Listo para Construir el Futuro?',
+  'partnerships.cta.subtitle': "Colaboremos y creemos valor juntos. Buscamos socios innovadores para unirse a nuestra misión.",
+  'partnerships.cta.button': 'Conviértase en Socio',
+};

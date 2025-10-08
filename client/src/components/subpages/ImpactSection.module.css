@@ -1,0 +1,254 @@
+/* src/components/ImpactSection.module.css */
+
+:root {
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+  --dark-blue: #0D2C54;
+  --gold: #D7C286;
+  --text-dark: #343a40;
+  --text-muted: #6c757d;
+  --background-light: #f8f9fa;
+  --background-card: #FFFFFF;
+  --border-color: #dee2e6;
+}
+
+.section {
+  background-color: transparent;
+  min-height: 100vh;
+  padding: 4.5rem 2rem;
+  font-family: var(--font-primary);
+  color: var(--text-dark);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+.preTitle {
+ display: inline-block; padding: 1.5rem 3rem;
+  background-color: #d7c18641;
+   border: 1px solid rgba(0, 44, 84, 0.1);
+    font-size: 1rem;
+     font-weight: 400; 
+     letter-spacing: 0.3em;
+      text-transform: uppercase;
+       color: #2D5F9B; 
+          margin-bottom: 3rem;
+        margin-top: 3rem;
+        font-family: var(--font-headings);
+}
+
+.title {
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* --- MOBILE & DESKTOP CARD CONTENT (Shared Styles) --- */
+.cardContent {
+  padding: 3rem;
+  text-align: center;
+  max-width: 650px;
+}
+
+/* --- NEW: Simple Card for Mobile --- */
+.cardContainerForMobile {
+  display: none; /* Hidden by default on desktop */
+}
+
+/* --- 3D Flip Interaction (for Desktop) --- */
+.perspectiveContainer {
+  perspective: 1500px;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 500px;
+}
+
+.flipperCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.flipperCard.isFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cardFaceFront { /* No rotation needed */ }
+
+.cardFaceBack {
+  transform: rotateY(180deg);
+}
+
+.icon {
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.pillarTitle {
+  font-family: var(--font-headings);
+  font-size: 2.2rem;
+  color: var(--dark-blue);
+  margin-bottom: 1rem;
+}
+
+.pillarDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* --- Toggle Controls --- */
+.pillarToggles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem auto 4rem auto;
+}
+
+.toggleButton {
+  font-family: var(--font-headings);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.toggleButton::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.toggleButton:hover {
+  color: var(--dark-blue);
+}
+
+.toggleButton.active {
+  color: var(--dark-blue);
+}
+.toggleButton.active::after {
+  transform: scaleX(1);
+}
+
+/* --- Conclusion --- */
+.conclusionText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  /* NEW: Adjust the main section for mobile */
+  .section {
+    padding-left: 0; /* Remove side padding */
+    padding-right: 0; /* Remove side padding */
+    overflow-x: hidden; /* Prevent any accidental horizontal scrolling */
+  }
+
+  /* NEW: Add padding back to the text containers */
+  .header,
+  .pillarToggles,
+  .conclusionText {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Hide the 3D flipper on mobile */
+  .perspectiveContainer {
+    display: none;
+  }
+
+  /* Show and style our new simple container on mobile */
+  .cardContainerForMobile {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: none; /* UPDATED: Allow card to be full width */
+    margin: 0 0 2rem 0; /* UPDATED: Remove side margins */
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    /* NEW: Remove the border on the sides for an edge-to-edge look */
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Style for the stacked content cards */
+  .mobileCardContent {
+    grid-area: 1 / 1;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    text-align: center;
+    padding: 2.5rem;
+  }
+  
+  /* Show the active card */
+  .mobileCardContent.active {
+    opacity: 1;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .cardContent {
+    padding: 2rem;
+  }
+
+  .pillarTitle {
+    font-size: 1.8rem;
+  }
+
+  .pillarDescription {
+    font-size: 1rem;
+  }
+}

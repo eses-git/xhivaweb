@@ -1,0 +1,27 @@
+// src/translations/en/partnerships.ts
+
+export const partnershipsEnTranslations = {
+  'partnerships.preTitle': 'BEYOND BORDERS',
+  'partnerships.title': 'Global Partnership Network',
+  'partnerships.item1.category': 'SOVEREIGN WEALTH FUNDS',
+  'partnerships.item1.description': 'Strategic partnerships with national investment authorities and sovereign entities across major economies.',
+  'partnerships.item1.focus': 'Government Relations',
+  'partnerships.item2.category': 'INSTITUTIONAL INVESTORS',
+  'partnerships.item2.description': 'Collaborative relationships with pension funds, endowments, and insurance companies worldwide.',
+  'partnerships.item2.focus': 'Institutional Capital',
+  'partnerships.item3.category': 'GLOBAL BANKS',
+  'partnerships.item3.description': 'Core banking partnerships with tier-one financial institutions for capital markets access.',
+  'partnerships.item3.focus': 'Banking Infrastructure',
+  'partnerships.item4.category': 'TECHNOLOGY PARTNERS',
+  'partnerships.item4.description': 'Innovation alliances with leading fintech companies and technology infrastructure providers.',
+  'partnerships.item4.focus': 'Digital Innovation',
+  'partnerships.item5.category': 'REGULATORY BODIES',
+  'partnerships.item5.description': 'Compliance partnerships with financial regulatory authorities across all operating jurisdictions.',
+  'partnerships.item5.focus': 'Regulatory Excellence',
+  'partnerships.item6.category': 'RESEARCH INSTITUTIONS',
+  'partnerships.item6.description': 'Academic partnerships with leading universities and think tanks for market research and analysis.',
+  'partnerships.item6.focus': 'Research Excellence',
+  'partnerships.cta.title': 'Ready to Build the Future?',
+  'partnerships.cta.subtitle': "Let's collaborate and create value together. We're looking for innovative partners to join our mission.",
+  'partnerships.cta.button': 'Become a Partner',
+};

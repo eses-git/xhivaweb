@@ -1,0 +1,247 @@
+/* CallToActionSection.module.css */
+
+/* Base Styles */
+.section {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: linear-gradient(to bottom right, #002C54, #234e83, #002C54);
+  overflow: hidden;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* ADDED FOR PERFORMANCE */
+  will-change: opacity;
+}
+.backgroundDiamonds {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  overflow: hidden;
+}
+
+.diamond {
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-width: 2px;
+  border-color: #D7C286;
+  transform: rotate(45deg);
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform;
+}
+
+.container {
+  position: relative;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 1536px;
+  margin: 0 auto 5rem auto;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.title {
+  font-size: clamp(3.5rem, 12vw + 1rem, 10rem);
+  font-weight: 400;
+  line-height: 0.9;
+  color: #FFFFFF;
+  margin-bottom: 3rem;
+  letter-spacing: -0.025em;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.accentText {
+  color: #D7C286;
+}
+
+.description {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+  max-width: 1280px;
+  margin: 0 auto 4rem auto;
+  font-weight: 300;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.primaryButton, .secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  font-weight: 400;
+  font-size: 1.125rem;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+}
+
+.primaryButton {
+  background-color: #D7C286;
+  color: #002C54;
+  border: 2px solid #D7C286;
+}
+.primaryButton:hover {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+.secondaryButton:hover {
+  background-color: #FFFFFF;
+  color: #002C54;
+}
+
+.arrowIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s ease;
+}
+.primaryButton:hover .arrowIcon,
+.secondaryButton:hover .arrowIcon {
+  transform: translateX(0.5rem);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.contactCard {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  text-align: center;
+  transition: background-color 0.4s ease;
+}
+.contactCard:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.contactIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #D7C286;
+  margin: 0 auto 1.5rem auto;
+}
+
+.contactTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.contactText {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+}
+
+.noticeContainer {
+  text-align: center;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.noticeWrapper {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+}
+
+.noticeTitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #D7C286;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.noticeText {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+
+/* --- RESPONSIVE STYLES --- */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 6rem 1.5rem;
+  }
+  .buttonGroup {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1rem;
+  }
+  .ctaContent { margin-bottom: 4rem; }
+  .description { margin-bottom: 3rem; }
+  .title { margin-bottom: 2rem; }
+  
+  .primaryButton, .secondaryButton {
+    padding: 1.25rem 2.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
+
+  .contactCard { padding: 2rem; }
+  .contactIcon { width: 2.5rem; height: 2.5rem; }
+  .contactTitle { font-size: 1.25rem; }
+  .contactText { font-size: 1rem; }
+
+  .noticeWrapper { padding: 2rem; }
+  .noticeTitle { font-size: 1.1rem; }
+
+  .diamond {
+    width: 16rem;
+    height: 16rem;
+  }
+}

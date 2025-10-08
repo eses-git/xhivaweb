@@ -1,0 +1,212 @@
+/* AboutSection.module.css */
+
+.aboutSection {
+  background-color: #FFFFFF;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.dualToneGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1440px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .dualToneGrid {
+    grid-template-columns: 10fr 12fr;
+  }
+}
+
+/* --- Dark Left Panel --- */
+.darkPanel {
+  background-color: #002C54;
+  color: #FFFFFF;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  will-change: transform, opacity;
+  /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
+}
+.title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+.description {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: transparent;
+  color: #d7c286;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid #d7c286;
+  max-width: max-content;
+}
+.ctaButton:hover {
+  background-color: #d7c286;
+  color: #002C54;
+}
+.ctaButton .ctaIcon {
+  transition: transform 0.3s ease;
+}
+.ctaButton:hover .ctaIcon {
+  transform: translateX(5px);
+}
+
+
+/* ========================================= */
+/* --- LIGHT RIGHT PANEL DESIGN --- */
+/* ========================================= */
+.lightPanel {
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pillarsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.pillarCard {
+  padding: 1rem 1.5rem; 
+  align-items: center;
+  border: 2px solid #d7c286;
+  display: flex;
+  gap: 1.25rem;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(0, 44, 84, 0.05);
+  transition: all 0.3s ease;
+  will-change: transform, opacity;
+  /* ADDED: Forces hardware acceleration to prevent flickering on mobile */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For iOS Safari */
+  perspective: 1000px; /* Helps stabilize 3D context */
+  -webkit-transform: translate3d(0, 0, 0); /* Alternative to translateZ(0) for better WebKit compat */
+}
+
+.pillarCard:hover {
+  box-shadow: 0 8px 15px rgba(0, 44, 84, 0.1);
+  /* MODIFIED: Combined transforms to preserve the hardware acceleration hint on hover */
+  transform: translateY(-3px) translateZ(0);
+}
+
+.pillarIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #002c54;
+}
+
+.pillarTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #002c54;
+  margin-bottom: 0.5rem;
+}
+
+.pillarDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  font-weight: 300;
+}
+
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 1024px) {
+  .darkPanel {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .aboutSection { padding: 2rem 0; }
+  .darkPanel { padding: 2.5rem 1.5rem; }
+  .lightPanel { padding: 2.5rem 1.5rem; }
+  .title { font-size: 2.5rem; }
+  .description { font-size: 1rem; }
+  .pillarsWrapper { padding-left: 0; }
+  .darkPanel,
+  .pillarCard {
+    transition: none; /* Disable CSS transitions */
+    animation: none; /* If any implicit animations */
+  }
+}
+
+@media (max-width: 480px) {
+  .darkPanel {
+    padding: 2rem 1rem;
+  }
+  .lightPanel {
+    padding: 2rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 0.95rem;
+  }
+  .pillarTitle {
+    font-size: 1.1rem;
+  }
+  .pillarDescription {
+    font-size: 0.9rem;
+  }
+  .ctaButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* --- BRIDGE SECTION STYLES --- */
+.bridgeSection {
+  background-color: #FFFFFF;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.bridgeLine {
+  width: 80px;
+  height: 2px;
+  background-color: #d7c286;
+  margin: 0 auto 1.5rem auto;
+}
+.bridgeText {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #adb5bd;
+}

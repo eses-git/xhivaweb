@@ -1,0 +1,185 @@
+/* src/components/ContactSection.module.css */
+
+:root {
+  --dark-blue: #0D2C54;
+  --text-dark: #343a40;
+  --text-muted: #6c757d;
+  --background-light: #FFFFFF;
+  --border-color: #dee2e6;
+  --gold: #D7C286;
+  --font-primary: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+}
+
+
+.contactSection {
+  background-color: transparent;
+  position: relative; 
+  font-family: var(--font-primary);
+  padding: 5rem 2rem;
+  line-height: 1.7;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 2; 
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.preTitle {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+     margin-bottom: 3rem;
+        margin-top: 3rem;
+}
+
+.title {
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.introText {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* === STEP 1: The full-width line is placed here === */
+.contactForm {
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.formGroup label {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.formGroup input,
+.formGroup textarea {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  padding: 0.75rem 0;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-bottom: 2px solid var(--dark-blue);
+}
+
+.submitButton {
+  background-color: var(--dark-blue);
+  color: white;
+  border: 2px solid var(--dark-blue);
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: transparent;
+  color: var(--dark-blue);
+}
+
+/* === FIX: Replaced grid with flexbox for better height handling and spacing === */
+.footerDetails {
+  display: flex;
+  justify-content: space-between; /* Spreads the items across the width */
+  gap: 1.5rem; /* Adds space between items */
+  width: 100%;
+  color: var(--text-muted);
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start; /* Aligns items to the top (important for multiline text) */
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  /* Allow the text content to take up the space it needs */
+  flex: 1 1 0%; /* Allows items to grow/shrink equally, and sets base to 0 */
+  /* Allow text inside the span to wrap */
+  word-break: break-word;
+}
+
+/* === Removed old grid alignment steps which are no longer necessary with justify-content: space-between === */
+/*
+.detailItem:first-child {
+  justify-content: flex-start;
+}
+.detailItem:nth-child(2) {
+  justify-content: center;
+}
+.detailItem:last-child {
+  justify-content: flex-end;
+}
+*/
+
+.detailItem svg {
+  flex-shrink: 0; /* Ensures the icon doesn't shrink */
+  /* Adjusted alignment for the icon to match the text baseline for better aesthetics */
+  position: relative;
+  top: 0.15rem; 
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 5rem 1rem;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  /* Revert to a simple flex column for mobile */
+  .footerDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align all items to the start on mobile */
+    gap: 1.5rem;
+  }
+
+  .detailItem {
+    flex: none; /* Disable flex growth on mobile */
+  }
+}

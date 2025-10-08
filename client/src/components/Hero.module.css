@@ -1,0 +1,215 @@
+/* Hero.module.css */
+
+/* Glowing text animation */
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 12px var(--gold-color);
+  }
+  50% {
+    text-shadow: 0 0 24px var(--gold-color), 0 0 32px var(--gold-color);
+  }
+}
+
+/* CSS Variables */
+:root {
+  --primary-bg: #0f172a; 
+  --gold-color: #c0a062; /* Refined, desaturated gold */
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Main Container */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 1rem 5rem;
+}
+
+/* Layout Container */
+.layoutContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* Content Flexbox */
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+/* Left Container (Title) */
+.leftContainer {
+  flex: 3;
+}
+
+/* Right Container (Description + Buttons) */
+.rightContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+/* Title Styles */
+.title {
+  font-family: var(--font-headings);
+  font-size: clamp(3.5rem, 10vw, 8rem); 
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  animation: textGlow 4s ease-in-out infinite;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+.title > span {
+  display: block;
+}
+
+.title > span:last-child {
+  white-space: nowrap;
+}
+
+/* Description Styles */
+.description {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-weight: 300;
+  text-align: right;
+  position: relative;
+  border-right: 2px solid var(--gold-color);
+  padding-right: 1.5rem;
+  max-width: 400px;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+/* Actions (Buttons) */
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-end;
+  /* ADDED FOR PERFORMANCE */
+  will-change: transform, opacity;
+}
+
+/* Button Styles */
+.ctaButton, .demoButton {
+  font-family: var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid var(--gold-color);
+  color: var(--gold-color);
+}
+
+.ctaButton:hover {
+  background-color: var(--gold-color);
+  color: var(--primary-bg);
+  box-shadow: 0 0 20px rgba(192, 160, 98, 0.4);
+}
+
+.demoButton:hover {
+  background-color: rgba(192, 160, 98, 0.1);
+}
+
+/* Icon Styles */
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: color 0.25s ease-in-out;
+}
+
+.demoIcon {
+  transition: transform 0.3s ease;
+}
+
+.demoButton:hover .demoIcon {
+  transform: translateX(4px);
+}
+
+/* Responsive: Tablets and below (max-width: 900px) */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+  .leftContainer, .rightContainer {
+    flex: none;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .description {
+    text-align: left;
+    border-right: none;
+    border-left: 2px solid var(--gold-color);
+    padding-right: 0;
+    padding-left: 1.5rem;
+  }
+  .actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Responsive: Small mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 3rem 0.75rem 4rem;
+  }
+  .title {
+    font-size: clamp(2.8rem, 10vw, 6rem);
+  }
+  .description {
+    font-size: 0.95rem;
+    max-width: none;
+    padding-left: 1rem;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .ctaButton, .demoButton {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive: Tablets/small desktops (max-width: 768px) */
+@media (max-width: 768px) {
+  .container {
+  padding: 4.5rem 1rem 5rem;
+  }
+  .description {
+    font-size: 0.975rem;
+  }
+}
