@@ -178,6 +178,7 @@
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -186,6 +187,8 @@
     width: 100%; /* Ensure full width without overflow */
     margin: 0; /* Reset any default margins */
     padding: 0; /* Reset any default padding */
+    scroll-behavior: smooth;
+
   }
 
   hr {
@@ -733,7 +736,11 @@
       max-width: 96rem;
     }
   }
-
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
   .-mx-1 {
     margin-inline: calc(var(--spacing) * -1);
   }

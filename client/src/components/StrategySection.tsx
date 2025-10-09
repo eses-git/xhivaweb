@@ -19,7 +19,7 @@ const gridVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -32,8 +32,8 @@ const cardVariants: Variants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 80,
-      damping: 20,
+      stiffness: 200,
+      damping: 30,
     },
   },
 };
@@ -62,7 +62,7 @@ export function StrategySection() {
             stiffness: 200, 
             damping: 30 
           }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <div className={styles.subtitle}>{t('strategy.subtitle')}</div>
           <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: t('strategy.title').replace('<br></br>', '<br/>') }} />
@@ -89,7 +89,7 @@ export function StrategySection() {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     layout 
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     variants={cardVariants}
                     initial={shouldReduceMotion ? "visible" : "hidden"}
                     whileInView="visible"
@@ -108,7 +108,7 @@ export function StrategySection() {
                         <motion.div
                           className={styles.cardContent}
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto', transition: { delay: 0.1 } }}
+                          animate={{ opacity: 1, height: 'auto', transition: { duration: 0.3, delay: 0 } }}
                           exit={{ opacity: 0, height: 0 }}
                         >
                           <p className={styles.cardEmphasis}>{strategy.emphasis}</p>
@@ -129,9 +129,9 @@ export function StrategySection() {
                 type: "spring", 
                 stiffness: 200, 
                 damping: 30,
-                delay: 0.3 
+                delay: 0.2 
               }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage} />
               <div className={styles.imageCaption}>

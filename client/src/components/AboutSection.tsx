@@ -35,10 +35,10 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ 
             type: "spring", 
-            stiffness: 200, 
-            damping: 30 
+            stiffness: 150, 
+            damping: 35 
           }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <p className={styles.description}>
             {t('about.description')}
@@ -63,11 +63,11 @@ export function AboutSection() {
                   // CHANGED: Replaced duration/ease with a spring transition for a more fluid feel
                   transition={{ 
                     type: "spring", 
-                    stiffness: 200, 
-                    damping: 30,
-                    delay: index * 0.2 
+                    stiffness: 150, 
+                    damping: 35,
+                    delay: index * 0.25 
                   }}
-                  viewport={{ once: true, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <div className={styles.pillarIcon}>
                     <Icon />
