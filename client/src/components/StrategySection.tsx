@@ -32,8 +32,8 @@ const cardVariants: Variants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 15,
+      stiffness: 80,
+      damping: 20,
     },
   },
 };
@@ -59,8 +59,8 @@ export function StrategySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ 
             type: "spring", 
-            stiffness: 300, 
-            damping: 25 
+            stiffness: 200, 
+            damping: 30 
           }}
           viewport={{ once: true, amount: 0.3 }}
         >
@@ -127,8 +127,8 @@ export function StrategySection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
                 type: "spring", 
-                stiffness: 300, 
-                damping: 25,
+                stiffness: 200, 
+                damping: 30,
                 delay: 0.3 
               }}
               viewport={{ once: true, amount: 0.3 }}

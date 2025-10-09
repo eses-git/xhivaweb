@@ -35,8 +35,8 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ 
             type: "spring", 
-            stiffness: 300, 
-            damping: 25 
+            stiffness: 200, 
+            damping: 30 
           }}
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -63,8 +63,8 @@ export function AboutSection() {
                   // CHANGED: Replaced duration/ease with a spring transition for a more fluid feel
                   transition={{ 
                     type: "spring", 
-                    stiffness: 300, 
-                    damping: 25,
+                    stiffness: 200, 
+                    damping: 30,
                     delay: index * 0.2 
                   }}
                   viewport={{ once: true, amount: 0.5 }}
