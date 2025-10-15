@@ -9,7 +9,9 @@ import { fundsEnTranslations } from './funds';
 import { partnershipsEnTranslations } from './partnerships'; 
 import { strategyEnTranslations } from './strategy';       
 import { careersEnTranslations } from './careers';
-import { contactEnTranslations } from './contact';       
+import { contactEnTranslations } from './contact';   
+import { seoEnTranslations } from './seo';
+
 
 export const en = {
   ...commonEnTranslations,
@@ -22,4 +24,5 @@ export const en = {
   ...strategyEnTranslations,
   ...careersEnTranslations,
   ...contactEnTranslations,
+  ...seoEnTranslations
 };

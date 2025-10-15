@@ -60,6 +60,11 @@ export const commonEsTranslations = {
   'footer.modal.terms.p2': 'Toda la propiedad intelectual es propiedad de Xhiva Capital. No seremos responsables de ninguna pérdida o daño que surja del uso del sitio. Todas las inversiones implican riesgo, y el rendimiento pasado no es indicativo de resultados futuros.',
   'footer.modal.terms.p3': 'Estos términos se rigen por las leyes de Inglaterra y Gales. Para preguntas, contacte a contact@xhiva.org.',
 
+ 'cookieBanner.message': 'Utilizamos cookies para mejorar su experiencia y para el análisis del sitio web. Al hacer clic en "Aceptar", usted acepta nuestro uso de cookies.',
+'cookieBanner.policyLinkText': 'Consulte nuestra Política de Cookies.',
+'cookieBanner.acceptButton': 'Aceptar',
+'cookieBanner.declineButton': 'Rechazar',
+
   // General Disclaimer Modal
   'disclaimer.title': 'Aviso Legal',
   'disclaimer.content': 'Xhiva es una firma de inversión global privada. La información en este sitio web es solo para fines informativos y no constituye una oferta de venta ni una solicitud de oferta de compra de ningún valor o producto de inversión. Dicha oferta o solicitud se realizará únicamente mediante un memorando de oferta privada confidencial y de acuerdo con las leyes de valores aplicables. El rendimiento pasado no es indicativo de resultados futuros.',

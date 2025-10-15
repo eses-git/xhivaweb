@@ -1,8 +1,7 @@
-// src/components/Home.tsx
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useLanguage } from "./LanguageContext"; // 1. Import the hook
+import { useLanguage } from "./LanguageContext";
 import { Hero } from "./Hero";
 import { AboutSection } from "./AboutSection";
 import { StrategySection } from "./StrategySection";
@@ -11,11 +10,12 @@ import { CallToActionSection } from "./CallToActionSection";
 import { Footer } from "./Footer";
 import { DisclaimerModal } from "./DisclaimerModal";
 import styles from "./AboutSection.module.css";
+import SEO from './SEO'; // Import the SEO component
 
 export const Home = () => {
   const location = useLocation();
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
-  const { t } = useLanguage(); // 2. Initialize the translation function
+  const { t } = useLanguage(); // Get the translation function from your context
 
   useEffect(() => {
     if (location.hash) {
@@ -32,6 +32,13 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen">
+      {/* The SEO component now uses the t() function for dynamic content */}
+      <SEO
+        title={t('seo.home.title')}
+        description={t('seo.home.description')}
+        keywords={t('seo.home.keywords')}
+      />
+
       <Hero />
 
       <motion.section 
@@ -57,7 +64,6 @@ export const Home = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          {/* 3. Use the t() function for the text */}
           {t('home.bridgeText')} 
         </motion.p>
       </motion.section>
@@ -74,3 +80,4 @@ export const Home = () => {
     </div>
   );
 };
+

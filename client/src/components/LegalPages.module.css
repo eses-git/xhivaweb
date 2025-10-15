@@ -1,0 +1,65 @@
+/* src/components/subpages/LegalPages.module.css */
+
+.legalContainer {
+  width: 100%;
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.legalContent {
+  max-width: 800px;
+  width: 100%;
+  color: #333;
+}
+
+.legalContent h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1a202c;
+}
+
+.legalContent h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.legalContent h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.effectiveDate {
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+.legalContent p, .legalContent li {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.legalContent ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.legalContent a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.legalContent a:hover {
+  color: #0056b3;
+}

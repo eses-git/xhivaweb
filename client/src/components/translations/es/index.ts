@@ -11,6 +11,7 @@ import { partnershipsEsTranslations } from './partnerships';
 import { strategyEsTranslations } from './strategy';
 import { careersEsTranslations } from './careers';
 import { contactEsTranslations } from './contact';
+import { seoEsTranslations } from './seo';
 
 export const es = {
   ...commonEsTranslations,
@@ -23,4 +24,5 @@ export const es = {
   ...strategyEsTranslations,
   ...careersEsTranslations,
   ...contactEsTranslations,
+  ...seoEsTranslations,
 };
