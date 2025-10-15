@@ -13,7 +13,6 @@
 }
 
 .careerSection {
-  /* REMOVE position: relative; and z-index: 1; if you added them */
   background: transparent;
   font-family: var(--font-primary);
   padding: 6rem 2rem;
@@ -60,15 +59,14 @@
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  /* Removed background-color from container to let gaps be fully transparent */
 }
 
 .cachyBlock {
   flex: 1;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.344); /* 90% opaque white */
-  backdrop-filter: blur(1px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(1px); /* Safari support */
+  background-color: rgba(255, 255, 255, 0.344); 
+  backdrop-filter: blur(1px); 
+  -webkit-backdrop-filter: blur(1px); 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-top: 4px solid var(--color-accent);
   transition: transform 0.3s ease;
@@ -97,14 +95,28 @@
 
 
 /* --- Form Section --- */
+/* MODIFIED: The main container is now clean */
 .formSection {
+  position: relative; /* Add this */
+  z-index: 1; /* Add this */
   max-width: 750px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.653); /* MODIFIED: Was #FFFFFF */
-  backdrop-filter: blur(1px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(1px); /* Safari support */
   padding: 3rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ADDED: This pseudo-element now holds the blurred background */
+.formSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Places this layer behind the form's content */
+  background-color: rgba(255, 255, 255, 0.653);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .formTitle {
@@ -164,7 +176,7 @@
     margin-bottom: 2rem;
     padding: 1.5rem;
     border: 2px dashed var(--color-light-accent);
-    background-color: rgba(144, 180, 212, 0.05); /* Lightest blue background */
+    background-color: rgba(144, 180, 212, 0.05); 
 }
 
 .fileUploadTitle {
@@ -227,7 +239,7 @@
 }
 
 .removeFileButton:hover {
-    color: #CC0000; /* Red for deletion */
+    color: #CC0000;
 }
 
 /* --- Submit Button --- */
@@ -249,7 +261,7 @@
 }
 
 .submitButton:hover {
-  background-color: #EBD9B2; /* Slightly lighter gold */
+  background-color: #EBD9B2;
   box-shadow: 0 6px 15px rgba(215, 194, 134, 0.5);
 }
 

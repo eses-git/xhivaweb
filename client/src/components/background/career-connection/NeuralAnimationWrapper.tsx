@@ -221,7 +221,7 @@ export const NeuralAnimationWrapper: React.FC<NeuralAnimationWrapperProps> = ({ 
 
     return (
     
-        <div ref={containerRef} className={`relative isolate w-full ${className}`}>
+        <div ref={containerRef} className={`relative  w-full ${className}`}>
             <canvas
                 ref={canvasRef}
                 className="absolute top-0 left-0 w-full h-full -z-10 opacity-50"

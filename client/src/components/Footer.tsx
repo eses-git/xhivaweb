@@ -68,6 +68,7 @@ export function Footer() {
       title: t('footer.modal.disclaimer.title'),
       content: (
         <>
+        
           <p>{t('footer.modal.disclaimer.p1')}</p>
           <p>{t('footer.modal.disclaimer.p2')}</p>
           <p>{t('footer.modal.disclaimer.p3')}</p>
@@ -82,7 +83,8 @@ export function Footer() {
           <p>{t('footer.modal.privacy.p1')}</p>
           <p>{t('footer.modal.privacy.p2')}</p>
           <p>{t('footer.modal.privacy.p3')}</p>
-          <p>{t('footer.modal.privacy.p4')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('footer.modal.privacy.p4') }} />
+
         </>
       )
     },
@@ -93,7 +95,7 @@ export function Footer() {
           <p><strong>{t('footer.modal.terms.effectiveDate')}</strong></p>
           <p>{t('footer.modal.terms.p1')}</p>
           <p>{t('footer.modal.terms.p2')}</p>
-          <p>{t('footer.modal.terms.p3')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('footer.modal.terms.p3') }} />
         </>
       )
     }
@@ -273,6 +275,7 @@ export function Footer() {
         onClose={() => setOpenModal(null)}
         title={openModal ? modalContent[openModal]?.title : ''}
       >
+
         {openModal ? modalContent[openModal]?.content : null}
       </Modal>
     </>

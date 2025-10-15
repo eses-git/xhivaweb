@@ -19,7 +19,7 @@
 
 .container {
   position: relative;
-  z-index: 10;
+  /* z-index: 10; */
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
@@ -74,8 +74,8 @@
 .backgroundGlow { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 24rem; height: 8rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 9999px; filter: blur(48px); z-index: 1; }
 
 /* --- Modal Styles --- */
-.modalBackdrop { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7); z-index: 50; backdrop-filter: blur(4px); }
-.modalContainer { position: fixed; inset: 0; z-index: 51; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modalBackdrop { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; backdrop-filter: blur(4px); }
+.modalContainer { position: fixed; inset: 0; z-index:  10000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
 .modalContent { width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto; background-color: #0D2C54; color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; }
 .modalHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .modalTitle { font-size: 1.5rem; font-weight: 600; color: #D7C286; }
