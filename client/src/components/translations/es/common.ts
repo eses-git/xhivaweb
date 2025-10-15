@@ -66,6 +66,7 @@ export const commonEsTranslations = {
 "cookieBanner.acceptButton": "Aceptar",
 "cookieBanner.declineButton": "Rechazar",
 "cookieBanner.understandButton": "Entendido",
+"cookie.footerLink": "Política de Cookies",
 
   // General Disclaimer Modal
   'disclaimer.title': 'Aviso Legal',

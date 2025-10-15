@@ -125,6 +125,7 @@ export function Footer() {
         { name: t('footer.disclaimer'), href: "#", onClick: () => setOpenModal('disclaimer') },
         { name: t('footer.privacy'), href: "#", onClick: () => setOpenModal('privacy') },
         { name: t('footer.terms'), href: "#", onClick: () => setOpenModal('terms') },
+        { name: t('cookie.footerLink'), href: "/cookie-policy" },
       ]
     },
     {
@@ -165,6 +166,8 @@ export function Footer() {
                   className={styles.languageButton}
                 >
                   {language === 'en' ? t('footer.language.es') : t('footer.language.en')}
+
+
                 </button>
               </div>
             </motion.div>

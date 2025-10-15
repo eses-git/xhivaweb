@@ -19,15 +19,17 @@ import { Career } from "./components/subpages/Career";
 // --- SEO, Consent & Policy Imports ---
 import { HelmetProvider } from 'react-helmet-async';
 import CookieBanner from "./components/CookieBanner.tsx";
-import GoogleAnalytics from "./components/GoogleAnalytics";
+import GoogleAnalytics from "./components/GoogleAnalytics"; // Not currently in use
 import PageLayout from "./components/PageLayout";
-import { CookiePolicy } from "./components/CookiePolicy.tsx"; // 1. Import the new page
+import { CookiePolicy } from "./components/CookiePolicy.tsx";
 
 type ConsentStatus = 'pending' | 'accepted' | 'declined';
 
 export default function App() {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [consentStatus, setConsentStatus] = useState<ConsentStatus>('pending');
+  // 1. ADD NEW LOADING STATE
+  const [isConsentLoaded, setIsConsentLoaded] = useState(false);
 
   useEffect(() => {
     const savedConsent = localStorage.getItem('cookieConsentStatus') as ConsentStatus | null;
@@ -36,6 +38,8 @@ export default function App() {
     } else {
       setConsentStatus('pending');
     }
+    // 2. SET LOADING TO TRUE AFTER CHECK IS COMPLETE
+    setIsConsentLoaded(true);
   }, []);
 
   const handleAcceptCookies = (): void => {
@@ -48,11 +52,20 @@ export default function App() {
     localStorage.setItem('cookieConsentStatus', 'declined');
   };
 
+  // 3. RENDER A BLANK SCREEN OR LOADER WHILE CONSENT IS LOADING
+  if (!isConsentLoaded) {
+    // You can return a loading spinner here if needed, 
+    // but returning null prevents the flash.
+    return null; 
+  }
+
+
   return (
     <HelmetProvider>
       <LanguageProvider>
         <Router>
-    {/*      {consentStatus === 'accepted' && <GoogleAnalytics />}*/}
+          {/* We are NOT using GoogleAnalytics for now, so it remains commented out */}
+    {/* {consentStatus === 'accepted' && <GoogleAnalytics />}*/}
           <ScrollToTop />
           <Routes>
             {/* Home Route */}
@@ -78,7 +91,6 @@ export default function App() {
                   <Header />
                   <AboutUs />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -93,7 +105,6 @@ export default function App() {
                   <Header />
                   <Funds />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -108,7 +119,6 @@ export default function App() {
                   <Header />
                   <Services />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -123,7 +133,6 @@ export default function App() {
                   <Header />
                   <Partnership />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -138,7 +147,6 @@ export default function App() {
                   <Header />
                   <Impact />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -153,7 +161,6 @@ export default function App() {
                   <Header />
                   <Contact />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
@@ -168,16 +175,16 @@ export default function App() {
                   <Header />
                   <Career />
                   <Footer />
-                  <DisclaimerModal isOpen={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} />
                 </div>
               </PageLayout>
             } />
 
-            {/* 2. ADD THIS NEW ROUTE FOR THE COOKIE POLICY */}
+            {/* COOKIE POLICY ROUTE */}
             <Route path="/cookie-policy" element={<CookiePolicy />} />
 
           </Routes>
           
+          {/* Banner is only shown if consentStatus is 'pending' */}
           {consentStatus === 'pending' && (
             <CookieBanner 
               onAccept={handleAcceptCookies} 

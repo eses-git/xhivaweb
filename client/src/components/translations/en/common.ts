@@ -68,7 +68,7 @@ export const commonEnTranslations = {
 'cookieBanner.acceptButton': 'Accept',
 'cookieBanner.declineButton': 'Decline',
 'cookieBanner.understandButton': 'I Understand',
-
+'cookie.footerLink': 'Cookie Policy',
   // General Disclaimer Modal
   'disclaimer.title': 'Legal Disclaimer',
   'disclaimer.content': 'Xhiva is a private global investment firm. The information on this website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security or investment product. Any such offer or solicitation will be made only by means of a confidential private offering memorandum and in accordance with applicable securities laws. Past performance is not indicative of future results.',
