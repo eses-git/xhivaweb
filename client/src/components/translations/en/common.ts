@@ -63,9 +63,11 @@ export const commonEnTranslations = {
 
   // ... your other keys
 'cookieBanner.message': 'We use cookies to enhance your experience and for website analytics. By clicking "Accept", you agree to our use of cookies.',
+'cookieBanner.message1':"  This website uses essential cookies to ensure security, manage traffic, and provide core functionality. By continuing to use this site, you acknowledge our use of these necessary technologies.Learn more in our",
 'cookieBanner.policyLinkText': 'Learn more in our Cookie Policy.',
 'cookieBanner.acceptButton': 'Accept',
 'cookieBanner.declineButton': 'Decline',
+'cookieBanner.understandButton': 'I Understand',
 
   // General Disclaimer Modal
   'disclaimer.title': 'Legal Disclaimer',

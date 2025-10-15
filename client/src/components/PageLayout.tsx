@@ -1,5 +1,5 @@
 import React from 'react';
-import SEO from './SEO';
+import SEO from './seo/SEO';
 
 interface PageLayoutProps {
   children: React.ReactNode;

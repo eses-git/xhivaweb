@@ -1,6 +1,6 @@
 // src/components/subpages/Partnership.tsx
 
-import SEO from '../SEO';
+import SEO from '../seo/SEO';
 import { useLanguage } from '../LanguageContext';
 import { PartnershipsSection } from './PartnershipsSection';
 

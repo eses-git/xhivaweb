@@ -18,10 +18,10 @@ import { Career } from "./components/subpages/Career";
 
 // --- SEO, Consent & Policy Imports ---
 import { HelmetProvider } from 'react-helmet-async';
-import CookieBanner from "./components/CookieBanner";
+import CookieBanner from "./components/CookieBanner.tsx";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import PageLayout from "./components/PageLayout";
-import { CookiePolicy } from "./components/CookiePolicy"; // 1. Import the new page
+import { CookiePolicy } from "./components/CookiePolicy.tsx"; // 1. Import the new page
 
 type ConsentStatus = 'pending' | 'accepted' | 'declined';
 
@@ -52,7 +52,7 @@ export default function App() {
     <HelmetProvider>
       <LanguageProvider>
         <Router>
-          {consentStatus === 'accepted' && <GoogleAnalytics />}
+    {/*      {consentStatus === 'accepted' && <GoogleAnalytics />}*/}
           <ScrollToTop />
           <Routes>
             {/* Home Route */}

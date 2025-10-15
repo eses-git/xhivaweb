@@ -1,4 +1,4 @@
-import SEO from '../SEO'; // Make sure the path is correct
+import SEO from '../seo/SEO'; // Make sure the path is correct
 import { useLanguage } from '../LanguageContext'; // Make sure the path is correct
 import { AboutUsSection } from './AboutUsSection';
 

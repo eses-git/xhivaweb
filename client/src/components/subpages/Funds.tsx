@@ -1,4 +1,4 @@
-import SEO from '../SEO';
+import SEO from '../seo/SEO';
 import { useLanguage } from '../LanguageContext';
 import { FundsSection } from './FundsSection'; // Assuming FundsSection.tsx is in the same folder
 

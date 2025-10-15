@@ -10,7 +10,7 @@ import { CallToActionSection } from "./CallToActionSection";
 import { Footer } from "./Footer";
 import { DisclaimerModal } from "./DisclaimerModal";
 import styles from "./AboutSection.module.css";
-import SEO from './SEO'; // Import the SEO component
+import SEO from './seo/SEO'; // Import the SEO component
 
 export const Home = () => {
   const location = useLocation();
