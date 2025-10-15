@@ -65,7 +65,7 @@ export default function App() {
       <LanguageProvider>
         <Router>
           {/* We are NOT using GoogleAnalytics for now, so it remains commented out */}
-    {/* {consentStatus === 'accepted' && <GoogleAnalytics />}*/}
+     {consentStatus === 'accepted' && <GoogleAnalytics />}
           <ScrollToTop />
           <Routes>
             {/* Home Route */}

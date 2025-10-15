@@ -128,8 +128,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 3500 : 3000; // Fewer on mobile
-      const particleCount = Math.min(isMobile ? 470 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      const densityFactor = isMobile ? 1800 : 3000; // Fewer on mobile
+      const particleCount = Math.min(isMobile ? 250 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
       cellSize = isMobile ? 250 : 150; // Larger cells on mobile
     };
@@ -171,7 +171,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       }
       bufferCtx.lineWidth = 0.5;
 
-      const connectDistanceSq = isMobile ? 50 * 50 : 120 * 120; // Smaller on mobile to reduce drawing
+      const connectDistanceSq = isMobile ? 80 * 80 : 120 * 120; // Smaller on mobile to reduce drawing
 
       bufferCtx.globalAlpha = 0.4;
       bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient();

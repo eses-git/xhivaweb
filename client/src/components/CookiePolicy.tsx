@@ -33,16 +33,14 @@ export function CookiePolicy() {
             <p>{t('cookiePolicy.section2.sub1.p1')}</p>
             <ul>
               <li><strong>{t('cookiePolicy.section2.sub1.cookie1.name')}:</strong> {t('cookiePolicy.section2.sub1.cookie1.desc')}</li>
-       {/*       <li><strong>{t('cookiePolicy.section2.sub1.cookie2.name')}:</strong> {t('cookiePolicy.section2.sub1.cookie2.desc')}</li>*/}
+              <li><strong>{t('cookiePolicy.section2.sub1.cookie2.name')}:</strong> {t('cookiePolicy.section2.sub1.cookie2.desc')}</li>
             </ul>
-      {/*      
+           
             <h3>{t('cookiePolicy.section2.sub2.title')}</h3>
             <p>{t('cookiePolicy.section2.sub2.p1')}</p>
             <ul>
                <li><strong>{t('cookiePolicy.section2.sub2.cookie1.name')}:</strong> {t('cookiePolicy.section2.sub2.cookie1.desc')}</li>
             </ul>
-            */}
-
           </section>
           <section>
             <h2>{t('cookiePolicy.section3.title')}</h2>
