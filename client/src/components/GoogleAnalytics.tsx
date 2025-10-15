@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 // Read the Measurement ID using Vite's import.meta.env syntax
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = import.meta.env.VITE_APP_GA_MEASUREMENT_ID;
 
 const GoogleAnalytics = () => {
   // Only render the script if the ID is available
