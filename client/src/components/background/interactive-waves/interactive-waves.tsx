@@ -43,8 +43,8 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
                 if (isMobile()) {
                     // --- MOBILE SETTINGS ---
                     this.numLines = Math.floor(Math.random() * 5) + 8; // 8-13 lines
-                    this.interactionSpread = Math.random() * 120 + 100; // 100-220
-                    this.baseSpread = Math.random() * 20 + 20; // 20-40
+                    this.interactionSpread = Math.random() * 110 + 80; // 100-220
+                    this.baseSpread = Math.random() * 15 + 15; // 20-40
                     this.guideWaveAmplitude = Math.random() * 40 + 30; // 30-70
                     this.guideWaveFrequency = (Math.random() * 0.003) + 0.001; // 0.001-0.004
                     this.speed = (Math.random() * 0.005) + 0.002; // 0.002-0.007
