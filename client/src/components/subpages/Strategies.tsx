@@ -1,10 +1,10 @@
 // src/subpages/Funds.tsx (New file for the Funds page)
-import { StrategiesSection } from './StrategiesSection'
+import { StrategySection } from './StrategiesSection'
 export function Strategies() {
   return (
     <div>
       <main>
-        <StrategiesSection /> {/* Render the StrategiesSection component here */}
+        <StrategySection /> {/* Render the StrategySection component here */}
       </main>
       
     </div>

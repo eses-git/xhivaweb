@@ -11,7 +11,7 @@ import { strategyEnTranslations } from './strategy';
 import { careersEnTranslations } from './careers';
 import { contactEnTranslations } from './contact';   
 import { seoEnTranslations } from './seo';
-
+import { taxEnTranslations } from './tax'; 
 
 export const en = {
   ...commonEnTranslations,
@@ -24,5 +24,6 @@ export const en = {
   ...strategyEnTranslations,
   ...careersEnTranslations,
   ...contactEnTranslations,
-  ...seoEnTranslations
+  ...seoEnTranslations,
+  ...taxEnTranslations,
 };

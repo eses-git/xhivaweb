@@ -10,11 +10,11 @@ import { AboutUs } from "./components/subpages/AboutUs";
 import { Home } from "./components/Home";
 import { useState, useEffect } from "react";
 import { Footer } from "./components/Footer";
-import { DisclaimerModal } from "./components/DisclaimerModal";
 import ScrollToTop from './components/hooks/ScrollToTop.tsx';
 import { Funds } from "./components/subpages/Funds";
 import { Contact } from "./components/subpages/Contact";
 import { Career } from "./components/subpages/Career";
+import {Tax} from "./components/subpages/Tax.tsx";
 
 // --- SEO, Consent & Policy Imports ---
 import { HelmetProvider } from 'react-helmet-async';
@@ -178,6 +178,19 @@ export default function App() {
                 </div>
               </PageLayout>
             } />
+            {/* Strategic Tax Architecture & Legacy Structuring Subpage Route */}
+        <Route path="/strategic-tax-architecture" element={
+            <PageLayout
+              title="Strategic Tax Architecture & Legacy Structuring"
+              description="Pioneering bespoke, multi-jurisdictional frameworks to foster enduring capital growth and orchestrate intergenerational wealth transfer through robust, globally defensible structures."
+            >
+              <div className="min-h-screen">
+                <Header />
+                <Tax /> {/* Your new component is rendered here */}
+                <Footer />
+              </div>
+            </PageLayout>
+          } />
 
             {/* COOKIE POLICY ROUTE */}
             <Route path="/cookie-policy" element={<CookiePolicy />} />
