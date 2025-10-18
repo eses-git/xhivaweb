@@ -41,24 +41,23 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
                 
                 // --- OPTIMIZATION: Use different settings for mobile vs. desktop ---
                 if (isMobile()) {
-                    // Mobile: More (16), but tighter and flatter bundles
+                    // --- MOBILE SETTINGS ---
                     this.numLines = Math.floor(Math.random() * 5) + 8; // 8-13 lines
-                    this.interactionSpread = Math.random() * 60 + 30; // 30-90 (Tighter spread)
-                    this.baseSpread = Math.random() * 10 + 5; // 5-15 (Tighter base)
-                    this.guideWaveAmplitude = Math.random() * 40 + 30; // 30-70 (Even flatter waves to fit 16)
-                    this.guideWaveFrequency = (Math.random() * 0.003) + 0.001; // 0.001-0.004 (Wider)
-                    this.speed = (Math.random() * 0.005) + 0.002; // 0.002-0.007 (Slightly faster)
+                    this.interactionSpread = Math.random() * 120 + 100; // 100-220
+                    this.baseSpread = Math.random() * 20 + 20; // 20-40
+                    this.guideWaveAmplitude = Math.random() * 40 + 30; // 30-70
+                    this.guideWaveFrequency = (Math.random() * 0.003) + 0.001; // 0.001-0.004
+                    this.speed = (Math.random() * 0.005) + 0.002; // 0.002-0.007
                 } else {
-                    // Desktop: 6 bundles
+                    // --- DESKTOP SETTINGS (Unchanged) ---
                     this.numLines = Math.floor(Math.random() * 10) + 10; // 10-20 lines
                     this.interactionSpread = Math.random() * 100 + 60; // 60-160
                     this.baseSpread = Math.random() * 20 + 10; // 10-30
                     this.guideWaveAmplitude = Math.random() * 100 + 60; // 60-160
                     this.guideWaveFrequency = (Math.random() * 0.005) + 0.002; // 0.002-0.007
-                    this.speed = (Math.random() * 0.005) + 0.001; // 0.001-0.006 (Original speed)
+                    this.speed = (Math.random() * 0.005) + 0.001; // 0.001-0.006
                 }
                 
-                // These are fine for both
                 this.currentSpread = this.baseSpread;
                 this.spreadWaveFrequency = (Math.random() * 0.01) + 0.005;
                 this.phase = Math.random() * Math.PI * 2;
@@ -67,7 +66,6 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             update(mousePosition: {x: number, y: number}) {
                 this.phase += this.speed;
 
-                // --- Open/Close Logic ---
                 const guideYAtMouseX = Math.sin(mousePosition.x * this.guideWaveFrequency + this.phase) * this.guideWaveAmplitude + this.baseY;
                 const distanceToMouse = Math.abs(guideYAtMouseX - mousePosition.y);
                 const spreadRadius = 150; 
@@ -80,18 +78,15 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
                 context.strokeStyle = `rgba(19, 104, 133, 0.4)`;
                 context.lineWidth = 0.5;
                 
-                // --- OPTIMIZATION: Draw in segments for performance ---
-                const segmentLength = 10; // Draw in 10px segments
+                const segmentLength = 10; 
 
                 for (let i = 0; i < this.numLines; i++) {
                     context.beginPath();
                     context.moveTo(0, this.calculateY(0, i, mousePosition));
                     
-                    // Loop in segments instead of 1-pixel steps
                     for (let x = segmentLength; x < canvasWidth; x += segmentLength) {
                         context.lineTo(x, this.calculateY(x, i, mousePosition));
                     }
-                    // Ensure the line always draws to the very end of the canvas
                     context.lineTo(canvasWidth, this.calculateY(canvasWidth, i, mousePosition));
                     
                     context.stroke();
@@ -104,7 +99,6 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
                 const lineOffset = (lineIndex / (this.numLines - 1) - 0.5) * 2 * this.currentSpread;
                 let finalY = guideY + lineOffset * spreadModulator;
 
-                // --- Repulsion Logic ---
                 const dx = x - mousePosition.x;
                 const dy = finalY - mousePosition.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
@@ -123,8 +117,12 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
         const init = () => {
             waveBundles = [];
             const canvasHeight = canvas.height;
-            // --- UPDATED: 16 bundles on mobile, 6 on desktop ---
-            const numBundles = isMobile() ? 16 : 6;
+            
+            // --- [FIX 1] ---
+            // This is correct: 10 bundles for mobile, 6 for desktop
+            const numBundles = isMobile() ? 10 : 6;
+            // --- [END FIX 1] ---
+
             for (let i = 0; i < numBundles; i++) {
                 const y = (canvasHeight / numBundles) * i + (canvasHeight / numBundles / 2);
                 waveBundles.push(new WaveBundle(y));
@@ -140,7 +138,6 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        // --- OPTIMIZATION: Combined handler for Mouse and Touch events ---
         const handleInteractionMove = (event: MouseEvent | TouchEvent) => {
             if (canvas) {
                 const rect = canvas.getBoundingClientRect();
@@ -148,13 +145,11 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
                 let clientY = 0;
 
                 if ('touches' in event) {
-                    // Touch event
                     if (event.touches.length > 0) {
                         clientX = event.touches[0].clientX;
                         clientY = event.touches[0].clientY;
                     }
                 } else {
-                    // Mouse event
                     clientX = event.clientX;
                     clientY = event.clientY;
                 }
@@ -163,30 +158,26 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             }
         };
 
-        // --- OPTIMIZATION: Handler for mouse leave or touch end ---
         const handleInteractionEnd = () => {
             mousePos.x = -1000;
             mousePos.y = -1000;
         }
 
+        // Set canvas drawing size to match window
         const handleResize = () => {
-            if (canvas.parentElement) {
-                canvas.width = canvas.parentElement.clientWidth;
-                canvas.height = canvas.parentElement.clientHeight;
-                init(); // Re-initialize waves with new (and potentially mobile) settings
-            }
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init(); // Re-initialize waves
         };
         
-        const parentElement = canvas.parentElement;
-        
-        // Add all event listeners
-        parentElement?.addEventListener('mousemove', handleInteractionMove);
-        parentElement?.addEventListener('mouseleave', handleInteractionEnd);
+        // Use the window for move/end events since the canvas is fixed
+        window.addEventListener('mousemove', handleInteractionMove);
+        window.addEventListener('mouseleave', handleInteractionEnd);
 
-        parentElement?.addEventListener('touchstart', handleInteractionMove, { passive: true });
-        parentElement?.addEventListener('touchmove', handleInteractionMove, { passive: true });
-        parentElement?.addEventListener('touchend', handleInteractionEnd);
-        parentElement?.addEventListener('touchcancel', handleInteractionEnd);
+        window.addEventListener('touchstart', handleInteractionMove, { passive: true });
+        window.addEventListener('touchmove', handleInteractionMove, { passive: true });
+        window.addEventListener('touchend', handleInteractionEnd);
+        window.addEventListener('touchcancel', handleInteractionEnd);
 
         window.addEventListener('resize', handleResize);
         
@@ -196,13 +187,13 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
 
         return () => {
             // Remove all event listeners
-            parentElement?.removeEventListener('mousemove', handleInteractionMove);
-            parentElement?.removeEventListener('mouseleave', handleInteractionEnd);
+            window.removeEventListener('mousemove', handleInteractionMove);
+            window.removeEventListener('mouseleave', handleInteractionEnd);
             
-            parentElement?.removeEventListener('touchstart', handleInteractionMove);
-            parentElement?.removeEventListener('touchmove', handleInteractionMove);
-            parentElement?.removeEventListener('touchend', handleInteractionEnd);
-            parentElement?.removeEventListener('touchcancel', handleInteractionEnd);
+            window.removeEventListener('touchstart', handleInteractionMove);
+            window.removeEventListener('touchmove', handleInteractionMove);
+            window.removeEventListener('touchend', handleInteractionEnd);
+            window.removeEventListener('touchcancel', handleInteractionEnd);
 
             window.removeEventListener('resize', handleResize);
             cancelAnimationFrame(animationFrameId);
@@ -211,10 +202,28 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
     }, []);
 
     return (
-        // Added a fallback background color
-        <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', background: '#F8F9FA' }}>
-            <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} />
-            <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
+        // --- [FIX 2] ---
+        // Removed `position: 'relative'` to simplify the stacking context
+        <div  className="relative overflow-hidden" style={{ width: '100%', background: '#F8F9FA' }}>
+        {/* --- [END FIX 2] --- */}
+            
+            {/* Canvas is position: fixed to lock it to the viewport background */}
+            <canvas 
+                ref={canvasRef} 
+                className="absolute top-0 left-0 w-full h-full opacity-80 z-0"
+
+                style={{ 
+                    position: 'fixed', 
+                    top: 0, 
+                    left: 0, 
+                    zIndex: 0, 
+                    width: '100vw', 
+                    height: '100vh' 
+                }} 
+            />
+            
+            {/* This content wrapper with zIndex: 1 will now scroll over the fixed canvas */}
+            <div className="relative z-1" style={{   opacity: 0.99 }}>
                 {children}
             </div>
         </div>

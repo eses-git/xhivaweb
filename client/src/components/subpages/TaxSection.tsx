@@ -5,6 +5,7 @@ import styles from './TaxSection.module.css';
 import { ShieldCheck, Users, Landmark, Building2, Search, SlidersHorizontal, UserCheck, Network, FolderSearch } from 'lucide-react';
 import { motion } from "framer-motion";
 import { InteractiveWavesBackground } from '../background/interactive-waves/interactive-waves';
+import React, { useState, useEffect } from 'react';
 
 const taxData = {
   focus: [
@@ -24,9 +25,8 @@ const taxData = {
   ],
 } as const;
 
-// --- ANIMATION VARIANTS ---
+// --- ANIMATION VARIANTS (No changes here) ---
 
-// Variant for the header block
 const headerVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { 
@@ -36,9 +36,8 @@ const headerVariants = {
   }
 } as const;
 
-// Variant for the grid container (to stagger its children)
 const gridContainerVariants = {
-  hidden: { opacity: 1 },
+  hidden: { opacity: 1 }, // Stays at 1 so container itself isn't faded
   visible: {
     opacity: 1,
     transition: {
@@ -47,7 +46,6 @@ const gridContainerVariants = {
   }
 } as const;
 
-// Variant for each individual grid item (headers and content blocks)
 const gridItemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
@@ -57,51 +55,74 @@ const gridItemVariants = {
   }
 } as const;
 
-// --- END VARIANTS ---
-
 
 export function TaxSection() {
   const { t } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  // --- [THE FIX] ---
+  // Instead of replacing the props with {}, we now conditionally set the 'initial' state.
+  // On mobile, the initial state IS the visible state, so no animation runs.
+  // On desktop, the initial state is 'hidden', so it animates into view.
+  const animationProps = {
+      initial: isMobile ? "visible" : "hidden",
+      whileInView: "visible",
+      viewport: { once: true }
+  };
+  
+  // The grid items inherit the initial/whileInView from their parent container,
+  // so we only need to provide the variants.
+  const gridItemProps = { variants: gridItemVariants };
+  // --- [END FIX] ---
 
   const gridItems = [];
   const numRows = Math.max(taxData.focus.length, taxData.approach.length, taxData.delivery.length);
 
-  // Add headers first, wrapped in motion.h2
+  // Add headers first
   gridItems.push(
-    <motion.h2 
+    <motion.h2
       key="header-focus" 
       className={styles.columnHeader} 
-      variants={gridItemVariants}
-      // UPDATED: Pass column number to CSS
+      {...gridItemProps}
       style={{ '--col': 1 } as React.CSSProperties}
     >
       {t('tax.focusTitle')}
     </motion.h2>,
-    <motion.h2 
+    <motion.h2
       key="header-approach" 
       className={styles.columnHeader} 
-      variants={gridItemVariants}
-      // UPDATED: Pass column number to CSS
+      {...gridItemProps}
       style={{ '--col': 2 } as React.CSSProperties}
     >
       {t('tax.approachTitle')}
     </motion.h2>,
-    <motion.h2 
+    <motion.h2
       key="header-delivery" 
       className={styles.columnHeader} 
-      variants={gridItemVariants}
-      // UPDATED: Pass column number to CSS
+      {...gridItemProps}
       style={{ '--col': 3 } as React.CSSProperties}
     >
       {t('tax.deliveryTitle')}
     </motion.h2>
   );
 
-  // Add content items row by row, wrapped in motion.div
+  // Add content items row by row
   for (let i = 0; i < numRows; i++) {
     const row = [taxData.focus[i], taxData.approach[i], taxData.delivery[i]];
     row.forEach((item, colIndex) => {
-      // UPDATED: Define CSS variables (colIndex is 0-based, so add 1)
       const styleProps = { 
         '--col': colIndex + 1, 
         '--row': i + 1 
@@ -109,11 +130,10 @@ export function TaxSection() {
 
       if (item) {
         gridItems.push(
-          <motion.div 
+          <motion.div
             key={`${i}-${colIndex}`} 
             className={styles.gridItem}
-            variants={gridItemVariants}
-            // UPDATED: Pass column and row numbers to CSS
+            {...gridItemProps}
             style={styleProps}
           >
             <div className={styles.itemHeader}>
@@ -124,12 +144,10 @@ export function TaxSection() {
           </motion.div>
         );
       } else {
-        // Add a placeholder if a column is shorter
         gridItems.push(
-          <motion.div 
+          <motion.div
             key={`placeholder-${i}-${colIndex}`} 
-            variants={gridItemVariants} 
-            // UPDATED: Placeholders also need an order
+            {...gridItemProps} 
             style={styleProps}
           />
         );
@@ -140,24 +158,20 @@ export function TaxSection() {
   return (
     <InteractiveWavesBackground>
       <section className={styles.taxSection}>
-        <motion.header 
+        <motion.header
           className={styles.header}
           variants={headerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }} 
+          {...animationProps}
         >
           <p className={styles.preTitle}>{t('tax.preTitle')}</p>
           <h1 className={styles.title}>{t('tax.title')}</h1>
           <p className={styles.subtitle}>{t('tax.subtitle')}</p>
         </motion.header>
 
-        <motion.div 
+        <motion.div
           className={styles.contentGrid}
           variants={gridContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }} 
+          {...animationProps}
         >
           {gridItems}
         </motion.div>

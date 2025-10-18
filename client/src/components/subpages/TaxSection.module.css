@@ -1,6 +1,12 @@
 /* src/components/subpages/TaxSection.module.css */
 
 .taxSection {
+  /* --- [THE FIX] --- */
+  /* This is the key change. It creates a new stacking context for the content,
+     forcing it to render on top of the z-index: 0 fixed canvas. */
+  position: relative; 
+  /* --- [END FIX] --- */
+
   background-color: transparent;
   padding: 80px 2rem;
   font-family: var(--font-body);
@@ -91,7 +97,6 @@
   height: 32px;
   color: #D7C286;
   margin-top: 4px;
-  /* transition: color 0.3s ease; <--- REMOVED */
 }
 
 .itemTitle {
@@ -99,7 +104,6 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: #343a40;
-  /* transition: color 0.3s ease; <--- REMOVED */
 }
 
 .itemText {
@@ -107,7 +111,6 @@
   color: #495057;
   line-height: 1.7;
   text-align: left;
-  /* transition: color 0.3s ease; <--- REMOVED */
 }
 
 /* --- HOVER EFFECT --- */
@@ -121,8 +124,6 @@
 
 
 /* For better readability on the dark hover background */
-/* UPDATED: Combined all text/icon elements to turn white */
-.gridItem:hover .itemTitle,
 .gridItem:hover .itemText,
 .gridItem:hover .icon {
   color: #FFFFFF;
