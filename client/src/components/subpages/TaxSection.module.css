@@ -112,9 +112,10 @@
 
 /* --- HOVER EFFECT --- */
 .gridItem:hover {
-  background-color: #90b4d4;
+  background-color: #90b4d4c2;
   border-color: #90b4d4;
   cursor:auto;
+  backdrop-filter: blur(1px);
 
 }
 
