@@ -120,7 +120,7 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             
             // --- [FIX 1] ---
             // This is correct: 10 bundles for mobile, 6 for desktop
-            const numBundles = isMobile() ? 10 : 6;
+            const numBundles = isMobile() ? 8 : 6;
             // --- [END FIX 1] ---
 
             for (let i = 0; i < numBundles; i++) {
