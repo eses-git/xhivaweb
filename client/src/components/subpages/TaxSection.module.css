@@ -106,7 +106,7 @@
   font-size: 0.95rem;
   color: #495057;
   line-height: 1.7;
-  text-align: justify;
+  text-align: left;
   /* transition: color 0.3s ease; <--- REMOVED */
 }
 

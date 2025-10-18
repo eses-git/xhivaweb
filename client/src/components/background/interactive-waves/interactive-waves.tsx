@@ -210,21 +210,10 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
 
     }, []);
 
-    // --- UPDATED RETURN STATEMENT ---
     return (
-        // The outer div no longer needs overflow: hidden or a background color
-        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            <canvas 
-                ref={canvasRef} 
-                style={{ 
-                    position: 'fixed', // <-- CHANGED from 'absolute'
-                    top: 0, 
-                    left: 0, 
-                    zIndex: -1, // <-- CHANGED from 0
-                    background: '#F8F9FA' // <-- MOVED fallback background here
-                }} 
-            />
-            {/* This zIndex: 1 is crucial so the content scrolls *over* the fixed canvas */}
+        // Added a fallback background color
+        <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', background: '#F8F9FA' }}>
+            <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
                 {children}
             </div>
