@@ -1,323 +1,233 @@
-import React, { useRef, useEffect } from 'react';
+// src/components/background/interactive-waves/interactive-waves.tsx
 
-type InteractiveWavesBackgroundProps = {
-  children: React.ReactNode;
+import React, { useRef, useEffect, PropsWithChildren } from 'react';
+
+// The new wrapper component for the animated background
+export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ children }) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) {
+            return;
+        }
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            return;
+        }
+
+        let animationFrameId: number;
+        let waveBundles: WaveBundle[];
+        const mousePos = { x: -1000, y: -1000 };
+
+        // --- OPTIMIZATION: Helper to check for mobile screen size ---
+        const isMobile = () => window.innerWidth <= 768;
+
+        class WaveBundle {
+            baseY: number;
+            numLines: number;
+            interactionSpread: number; // The spread when mouse is near
+            baseSpread: number; // The default, tighter spread
+            currentSpread: number; // The animated spread value
+            guideWaveAmplitude: number;
+            guideWaveFrequency: number;
+            spreadWaveFrequency: number;
+            phase: number;
+            speed: number;
+
+            constructor(y: number) {
+                this.baseY = y;
+                
+                // --- OPTIMIZATION: Use different settings for mobile vs. desktop ---
+                if (isMobile()) {
+                    // Mobile: More (16), but tighter and flatter bundles
+                    this.numLines = Math.floor(Math.random() * 5) + 8; // 8-13 lines
+                    this.interactionSpread = Math.random() * 60 + 30; // 30-90 (Tighter spread)
+                    this.baseSpread = Math.random() * 10 + 5; // 5-15 (Tighter base)
+                    this.guideWaveAmplitude = Math.random() * 40 + 30; // 30-70 (Even flatter waves to fit 16)
+                    this.guideWaveFrequency = (Math.random() * 0.003) + 0.001; // 0.001-0.004 (Wider)
+                    this.speed = (Math.random() * 0.005) + 0.002; // 0.002-0.007 (Slightly faster)
+                } else {
+                    // Desktop: 6 bundles
+                    this.numLines = Math.floor(Math.random() * 10) + 10; // 10-20 lines
+                    this.interactionSpread = Math.random() * 100 + 60; // 60-160
+                    this.baseSpread = Math.random() * 20 + 10; // 10-30
+                    this.guideWaveAmplitude = Math.random() * 100 + 60; // 60-160
+                    this.guideWaveFrequency = (Math.random() * 0.005) + 0.002; // 0.002-0.007
+                    this.speed = (Math.random() * 0.005) + 0.001; // 0.001-0.006 (Original speed)
+                }
+                
+                // These are fine for both
+                this.currentSpread = this.baseSpread;
+                this.spreadWaveFrequency = (Math.random() * 0.01) + 0.005;
+                this.phase = Math.random() * Math.PI * 2;
+            }
+
+            update(mousePosition: {x: number, y: number}) {
+                this.phase += this.speed;
+
+                // --- Open/Close Logic ---
+                const guideYAtMouseX = Math.sin(mousePosition.x * this.guideWaveFrequency + this.phase) * this.guideWaveAmplitude + this.baseY;
+                const distanceToMouse = Math.abs(guideYAtMouseX - mousePosition.y);
+                const spreadRadius = 150; 
+
+                const targetSpread = distanceToMouse < spreadRadius ? this.interactionSpread : this.baseSpread;
+                this.currentSpread += (targetSpread - this.currentSpread) * 0.05;
+            }
+
+            draw(context: CanvasRenderingContext2D, canvasWidth: number, mousePosition: {x: number, y: number}) {
+                context.strokeStyle = `rgba(19, 104, 133, 0.4)`;
+                context.lineWidth = 0.5;
+                
+                // --- OPTIMIZATION: Draw in segments for performance ---
+                const segmentLength = 10; // Draw in 10px segments
+
+                for (let i = 0; i < this.numLines; i++) {
+                    context.beginPath();
+                    context.moveTo(0, this.calculateY(0, i, mousePosition));
+                    
+                    // Loop in segments instead of 1-pixel steps
+                    for (let x = segmentLength; x < canvasWidth; x += segmentLength) {
+                        context.lineTo(x, this.calculateY(x, i, mousePosition));
+                    }
+                    // Ensure the line always draws to the very end of the canvas
+                    context.lineTo(canvasWidth, this.calculateY(canvasWidth, i, mousePosition));
+                    
+                    context.stroke();
+                }
+            }
+
+            calculateY(x: number, lineIndex: number, mousePosition: {x: number, y: number}): number {
+                const guideY = Math.sin(x * this.guideWaveFrequency + this.phase) * this.guideWaveAmplitude + this.baseY;
+                const spreadModulator = Math.pow(Math.sin(x * this.spreadWaveFrequency + this.phase), 2);
+                const lineOffset = (lineIndex / (this.numLines - 1) - 0.5) * 2 * this.currentSpread;
+                let finalY = guideY + lineOffset * spreadModulator;
+
+                // --- Repulsion Logic ---
+                const dx = x - mousePosition.x;
+                const dy = finalY - mousePosition.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const interactionRadius = 200;
+                const maxDisplacement = 80;
+
+                if (distance < interactionRadius) {
+                    const force = 1 - (distance / interactionRadius);
+                    const displacement = force * maxDisplacement;
+                    finalY -= displacement;
+                }
+                return finalY;
+            }
+        }
+
+        const init = () => {
+            waveBundles = [];
+            const canvasHeight = canvas.height;
+            // --- UPDATED: 16 bundles on mobile, 6 on desktop ---
+            const numBundles = isMobile() ? 16 : 6;
+            for (let i = 0; i < numBundles; i++) {
+                const y = (canvasHeight / numBundles) * i + (canvasHeight / numBundles / 2);
+                waveBundles.push(new WaveBundle(y));
+            }
+        };
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            waveBundles.forEach(bundle => {
+                bundle.update(mousePos); 
+                bundle.draw(ctx, canvas.width, mousePos);
+            });
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        // --- OPTIMIZATION: Combined handler for Mouse and Touch events ---
+        const handleInteractionMove = (event: MouseEvent | TouchEvent) => {
+            if (canvas) {
+                const rect = canvas.getBoundingClientRect();
+                let clientX = 0;
+                let clientY = 0;
+
+                if ('touches' in event) {
+                    // Touch event
+                    if (event.touches.length > 0) {
+                        clientX = event.touches[0].clientX;
+                        clientY = event.touches[0].clientY;
+                    }
+                } else {
+                    // Mouse event
+                    clientX = event.clientX;
+                    clientY = event.clientY;
+                }
+                mousePos.x = clientX - rect.left;
+                mousePos.y = clientY - rect.top;
+            }
+        };
+
+        // --- OPTIMIZATION: Handler for mouse leave or touch end ---
+        const handleInteractionEnd = () => {
+            mousePos.x = -1000;
+            mousePos.y = -1000;
+        }
+
+        const handleResize = () => {
+            if (canvas.parentElement) {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+                init(); // Re-initialize waves with new (and potentially mobile) settings
+            }
+        };
+        
+        const parentElement = canvas.parentElement;
+        
+        // Add all event listeners
+        parentElement?.addEventListener('mousemove', handleInteractionMove);
+        parentElement?.addEventListener('mouseleave', handleInteractionEnd);
+
+        parentElement?.addEventListener('touchstart', handleInteractionMove, { passive: true });
+        parentElement?.addEventListener('touchmove', handleInteractionMove, { passive: true });
+        parentElement?.addEventListener('touchend', handleInteractionEnd);
+        parentElement?.addEventListener('touchcancel', handleInteractionEnd);
+
+        window.addEventListener('resize', handleResize);
+        
+        // Initial setup
+        handleResize();
+        animate();
+
+        return () => {
+            // Remove all event listeners
+            parentElement?.removeEventListener('mousemove', handleInteractionMove);
+            parentElement?.removeEventListener('mouseleave', handleInteractionEnd);
+            
+            parentElement?.removeEventListener('touchstart', handleInteractionMove);
+            parentElement?.removeEventListener('touchmove', handleInteractionMove);
+            parentElement?.removeEventListener('touchend', handleInteractionEnd);
+            parentElement?.removeEventListener('touchcancel', handleInteractionEnd);
+
+            window.removeEventListener('resize', handleResize);
+            cancelAnimationFrame(animationFrameId);
+        };
+
+    }, []);
+
+    // --- UPDATED RETURN STATEMENT ---
+    return (
+        // The outer div no longer needs overflow: hidden or a background color
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <canvas 
+                ref={canvasRef} 
+                style={{ 
+                    position: 'fixed', // <-- CHANGED from 'absolute'
+                    top: 0, 
+                    left: 0, 
+                    zIndex: -1, // <-- CHANGED from 0
+                    background: '#F8F9FA' // <-- MOVED fallback background here
+                }} 
+            />
+            {/* This zIndex: 1 is crucial so the content scrolls *over* the fixed canvas */}
+            <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
+                {children}
+            </div>
+        </div>
+    );
 };
-
-export function InteractiveWavesBackground({ children }: InteractiveWavesBackgroundProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLElement>(null);
-  const bufferCanvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
-  const bufferCtxRef = useRef<CanvasRenderingContext2D | null>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) {
-      console.error("Canvas ref is null");
-      return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      console.error("Could not get 2D context");
-      return;
-    }
-    
-    const bufferCanvas = bufferCanvasRef.current;
-    bufferCanvas.width = canvas.width;
-    bufferCanvas.height = canvas.height;
-    const bufferCtx = bufferCanvas.getContext('2d');
-    if (!bufferCtx) return;
-    bufferCtxRef.current = bufferCtx;
-
-    let animationFrameId: number;
-    let waves: WaveLine[] = [];
-    const mouse = { x: -300, y: -300, radius: 300 };
-    const targetMouse = { x: -300, y: -300 };
-    let mouseRadiusSq = mouse.radius * mouse.radius;
-    let lastFrameTime = 0;
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const targetFPS = isMobile ? 30 : 60;
-    let frameInterval = 1000 / targetFPS;
-    let isInteracting = false;
-    let resetTimer: NodeJS.Timeout | null = null;
-    let avgFrameTime = frameInterval;
-    let isScrolling = false;
-    let scrollTimeout: NodeJS.Timeout | null = null;
-
-    function debounce(func: (...args: any[]) => void, delay: number) {
-      let timeout: NodeJS.Timeout | null = null;
-      return function (...args: any[]) {
-        if (timeout) clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), delay);
-      };
-    }
-
-    const throttle = (fn: Function, delay: number) => {
-      let lastCall = 0;
-      return function (...args: any[]) {
-        const now = Date.now();
-        if (now - lastCall >= delay) {
-          lastCall = now;
-          return fn(...args);
-        }
-      };
-    };
-
-    const resizeCanvas = () => {
-      const parent = containerRef.current;
-      if (parent) {
-        const oldWidth = canvas.width;
-        const oldHeight = canvas.height;
-        canvas.width = parent.offsetWidth;
-        canvas.height = parent.offsetHeight;
-        
-        if (canvas.width === 0 || canvas.height === 0) {
-          console.warn("Canvas size is zero. Parent container may not have height.");
-        }
-        
-        bufferCanvas.width = canvas.width;
-        bufferCanvas.height = canvas.height;
-        if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
-          createWaves(canvas);
-        }
-      } else {
-        console.warn("Container ref is null on resize");
-      }
-    };
-
-    const debouncedResize = debounce(resizeCanvas, 200);
-
-    class WaveLine {
-      baseX: number;
-      phase: number;
-      amp: number;
-      freq: number;
-      color: string;
-      speed: number;
-      points: { y: number, x: number }[] = [];
-
-      constructor(baseX: number, canvas: HTMLCanvasElement) {
-        this.baseX = baseX;
-        this.phase = Math.random() * Math.PI * 2;
-        this.amp = (Math.random() * 15 + 10) * (isMobile ? 0.8 : 1) * 1.5;
-        this.freq = 0.005 + Math.random() * 0.005;
-        this.speed = 0.005 + Math.random() * 0.005;
-        const alpha = 0.05 + Math.random() * 0.15;
-        this.color = `rgba(173, 216, 230, ${alpha})`;
-      }
-
-      update(delta: number, canvas: HTMLCanvasElement, mouse: { x: number; y: number; radius: number }, mouseRadiusSq: number, isInteracting: boolean) {
-        this.phase += this.speed * (delta / 16);
-        this.points = [];
-
-        const step = isMobile ? 15 : 10;
-        for (let y = 0; y <= canvas.height; y += step) {
-          let waveOffset = this.amp * Math.sin(y * this.freq + this.phase);
-          let x = this.baseX + waveOffset;
-
-          const dx = x - mouse.x;
-          const dy = y - mouse.y;
-          const distSq = dx * dx + dy * dy;
-          if (distSq < mouseRadiusSq && isInteracting) {
-            const dist = Math.sqrt(distSq) || 1;
-            const force = (1 - (dist / mouse.radius)) ** 2 * mouse.radius * 0.2 * (isMobile ? 0.8 : 1);
-            const angle = Math.atan2(dy, dx);
-            x += Math.cos(angle) * force;
-          }
-          this.points.push({ x, y });
-        }
-      }
-
-      draw(bufferCtx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
-        if (this.points.length < 2) return;
-
-        bufferCtx.beginPath();
-        bufferCtx.moveTo(this.points[0].x, this.points[0].y);
-
-        for (let i = 0; i < this.points.length - 1; i++) {
-          const p1 = this.points[i];
-          const p2 = this.points[i + 1];
-          const controlX = (p1.x + p2.x) / 2;
-          const controlY = p1.y;
-          bufferCtx.quadraticCurveTo(controlX, controlY, p2.x, p2.y);
-        }
-
-        bufferCtx.strokeStyle = this.color;
-        bufferCtx.lineWidth = isMobile ? 0.5 : 1;
-        bufferCtx.stroke();
-      }
-    }
-
-    const createWaves = (canvas: HTMLCanvasElement) => {
-      const density = isMobile ? 25 : 35;
-      const spacing = canvas.width / density;
-      waves = [];
-      for (let i = 0; i < density; i++) {
-        const baseX = i * spacing + (Math.random() * spacing * 0.5);
-        waves.push(new WaveLine(baseX, canvas));
-      }
-    };
-
-    const updatePointerPosition = (event: MouseEvent | TouchEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      let clientX, clientY;
-      if ('touches' in event) {
-        const touch = event.touches[0];
-        clientX = touch.clientX;
-        clientY = touch.clientY;
-      } else {
-        clientX = event.clientX;
-        clientY = event.clientY;
-      }
-      targetMouse.x = clientX - rect.left;
-      targetMouse.y = clientY - rect.top;
-      isInteracting = true;
-      if (resetTimer) clearTimeout(resetTimer);
-    };
-
-    const handleTouchStart = (event: TouchEvent) => {
-      updatePointerPosition(event);
-      mouse.radius = 350;
-      mouseRadiusSq = mouse.radius * mouse.radius;
-      mouse.x = targetMouse.x;
-      mouse.y = targetMouse.y;
-    };
-
-    const handleTouchEnd = () => {
-      resetTimer = setTimeout(() => {
-        isInteracting = false;
-        targetMouse.x = -300;
-        targetMouse.y = -300;
-        mouse.radius = 300;
-        mouseRadiusSq = mouse.radius * mouse.radius;
-      }, 1500);
-    };
-
-    const handleTouchCancel = () => {
-      handleTouchEnd();
-    };
-
-    const animate = (timestamp: number) => {
-      animationFrameId = requestAnimationFrame(animate);
-
-      try {
-        const delta = timestamp - lastFrameTime;
-        if (delta < frameInterval) {
-          return;
-        }
-        lastFrameTime = timestamp;
-        avgFrameTime = avgFrameTime * 0.9 + delta * 0.1;
-
-        if (avgFrameTime > frameInterval * 1.5 && isMobile) {
-          frameInterval = Math.min(1000 / 20, frameInterval + 1);
-        }
-
-        if (isScrolling) {
-          return; // Skip drawing during scroll for fluency
-        }
-
-        const lerpFactor = isMobile ? 0.3 : 0.5;
-        mouse.x = mouse.x * (1 - lerpFactor) + targetMouse.x * lerpFactor;
-        mouse.y = mouse.y * (1 - lerpFactor) + targetMouse.y * lerpFactor;
-
-        bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if (!isMobile) {
-          bufferCtx.shadowColor = 'rgba(173, 216, 230, 0.2)';
-          bufferCtx.shadowBlur = 5;
-        } else {
-          bufferCtx.shadowColor = 'transparent';
-          bufferCtx.shadowBlur = 0;
-        }
-
-        waves.forEach(wave => {
-          wave.update(delta, canvas, mouse, mouseRadiusSq, isInteracting);
-          wave.draw(bufferCtx, canvas);
-        });
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(bufferCanvas, 0, 0);
-
-      } catch (error) {
-        console.error('Animation error:', error);
-      }
-    };
-
-    resizeCanvas();
-    animationFrameId = requestAnimationFrame(animate);
-
-    const resizeObserver = new ResizeObserver(debouncedResize);
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    window.addEventListener('resize', debouncedResize);
-    const throttledUpdate = throttle(updatePointerPosition, 60);
-    if (isMobile) {
-      window.addEventListener('touchstart', handleTouchStart, { passive: true });
-      window.addEventListener('touchmove', throttledUpdate, { passive: true });
-      window.addEventListener('touchend', handleTouchEnd, { passive: true });
-      window.addEventListener('touchcancel', handleTouchCancel, { passive: true });
-    } else {
-      window.addEventListener('mousemove', updatePointerPosition as EventListener);
-    }
-
-    const handleScroll = () => {
-      isScrolling = true;
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-      }, 150);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener('resize', debouncedResize);
-      if (isMobile) {
-        window.removeEventListener('touchstart', handleTouchStart);
-        window.removeEventListener('touchmove', throttledUpdate);
-        window.removeEventListener('touchend', handleTouchEnd);
-        window.removeEventListener('touchcancel', handleTouchCancel);
-      } else {
-        window.removeEventListener('mousemove', updatePointerPosition as EventListener);
-      }
-      window.removeEventListener('scroll', handleScroll);
-      cancelAnimationFrame(animationFrameId);
-      if (resetTimer) clearTimeout(resetTimer);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
-  }, []);
-
-  return (
-    <section
-      ref={containerRef}
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        background: '#ffffff',
-        height: '100vh',  // Added to ensure the container has height
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: '100%',
-          opacity: 0.8,
-          zIndex: 0,
-          willChange: 'transform',
-          transform: 'translateZ(0)',
-        }}
-      />
-      <div style={{ position: 'relative', zIndex: 10 }}>
-        {children}
-      </div>
-    </section>
-  );
-}
