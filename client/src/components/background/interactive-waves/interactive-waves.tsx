@@ -18,11 +18,15 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
         }
 
         let animationFrameId: number;
-        let waveBundles: WaveBundle[];
+        let waveBundles: WaveBundle[] = [];
         const mousePos = { x: -1000, y: -1000 };
 
         // --- OPTIMIZATION: Helper to check for mobile screen size ---
         const isMobile = () => window.innerWidth <= 768;
+
+        // Track previous dimensions to detect meaningful changes
+        let prevWidth = window.innerWidth;
+        let prevHeight = window.innerHeight;
 
         class WaveBundle {
             baseY: number;
@@ -114,8 +118,7 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             }
         }
 
-        const init = () => {
-            waveBundles = [];
+        const init = (fullReinit: boolean) => {
             const canvasHeight = canvas.height;
             
             // --- [FIX 1] ---
@@ -123,9 +126,18 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
             const numBundles = isMobile() ? 8 : 6;
             // --- [END FIX 1] ---
 
-            for (let i = 0; i < numBundles; i++) {
-                const y = (canvasHeight / numBundles) * i + (canvasHeight / numBundles / 2);
-                waveBundles.push(new WaveBundle(y));
+            if (fullReinit || waveBundles.length !== numBundles) {
+                // Full reinitialization: Only do this on first load or when numBundles changes (e.g., orientation shift)
+                waveBundles = [];
+                for (let i = 0; i < numBundles; i++) {
+                    const y = (canvasHeight / numBundles) * i + (canvasHeight / numBundles / 2);
+                    waveBundles.push(new WaveBundle(y));
+                }
+            } else {
+                // Partial update: Adjust baseY for existing bundles without recreating them
+                waveBundles.forEach((bundle, i) => {
+                    bundle.baseY = (canvasHeight / numBundles) * i + (canvasHeight / numBundles / 2);
+                });
             }
         };
 
@@ -165,9 +177,18 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
 
         // Set canvas drawing size to match window
         const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init(); // Re-initialize waves
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+
+            // Determine if we need a full reinit (e.g., width changed, which might mean orientation or mobile mode shift)
+            const fullReinit = Math.abs(newWidth - prevWidth) > 0; // Any width change triggers full reinit
+            init(fullReinit);
+
+            prevWidth = newWidth;
+            prevHeight = newHeight;
         };
         
         // Use the window for move/end events since the canvas is fixed
@@ -182,7 +203,7 @@ export const InteractiveWavesBackground: React.FC<PropsWithChildren> = ({ childr
         window.addEventListener('resize', handleResize);
         
         // Initial setup
-        handleResize();
+        handleResize(); // This will do a full init on load
         animate();
 
         return () => {
