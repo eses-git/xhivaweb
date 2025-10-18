@@ -1,3 +1,5 @@
+// src/background/interactive-connections-background-light/interactive-connections-background-light.tsx
+
 import React, { useRef, useEffect } from 'react';
 
 type InteractiveConnectionsBackgroundProps = {
@@ -33,8 +35,10 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     let cellSize = 150;
     const grid: Map<string, Particle[]> = new Map();
     let lastFrameTime = 0;
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    const targetFPS = isMobile ? 30 : 60;
+    // NEW: Make isMobile a function based on current width for consistency with CSS media and dynamic resizes
+    const isMobile = () => window.innerWidth <= 768;
+    let prevIsMobile = isMobile(); // Track to detect mode switches
+    const targetFPS = isMobile() ? 30 : 60;
     const frameInterval = 1000 / targetFPS;
 
     // NEW: Debounce function for resize events
@@ -52,15 +56,52 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
         if (parent) {
           const oldWidth = canvas.width;
           const oldHeight = canvas.height;
-          canvas.width = parent.offsetWidth;
-          canvas.height = parent.offsetHeight;
-          bufferCanvas.width = canvas.width;
-          bufferCanvas.height = canvas.height;
-          // MODIFIED: Only recreate particles if size actually changed (prevents "refresh" on mobile scroll)
-          if (oldWidth !== canvas.width || oldHeight !== canvas.height) {
+          const newWidth = parent.offsetWidth;
+          const newHeight = parent.offsetHeight;
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+          bufferCanvas.width = newWidth;
+          bufferCanvas.height = newHeight;
+
+          const currentIsMobile = isMobile();
+
+          // NEW: Only full recreate if first time or mode switched (mobile/desktop)
+          if (oldWidth === 0 || oldHeight === 0 || currentIsMobile !== prevIsMobile) {
             createParticles(canvas);
-            console.log(`Resized canvas to ${canvas.width}x${canvas.height}, particles: ${particles.length}`); // Debug
+            prevIsMobile = currentIsMobile;
+            console.log(`Full recreate: ${newWidth}x${newHeight}, particles: ${particles.length}, mobile: ${currentIsMobile}`); // Debug
+          } else if (oldWidth !== newWidth || oldHeight !== newHeight) {
+            // NEW: Scale existing particles proportionally
+            const scaleX = newWidth / oldWidth;
+            const scaleY = newHeight / oldHeight;
+            particles.forEach(p => {
+              p.baseX *= scaleX;
+              p.baseY *= scaleY;
+              p.x *= scaleX;
+              p.y *= scaleY;
+            });
+
+            // NEW: Adjust particle count to maintain density (add/remove as needed)
+            const densityFactor = currentIsMobile ? 4000 : 3000;
+            const maxParticles = currentIsMobile ? 300 : 700;
+            const targetCount = Math.min(maxParticles, Math.floor((newWidth * newHeight) / densityFactor));
+            let currentCount = particles.length;
+
+            if (targetCount > currentCount) {
+              // Add new particles (they'll slide in naturally)
+              for (let i = 0; i < targetCount - currentCount; i++) {
+                particles.push(new Particle(canvas));
+              }
+            } else if (targetCount < currentCount) {
+              // Remove random particles
+              particles = particles.sort(() => Math.random() - 0.5).slice(0, targetCount);
+            }
+
+            console.log(`Adjusted: ${newWidth}x${newHeight}, particles: ${particles.length}`); // Debug
           }
+
+          // NEW: Always update cellSize on resize
+          cellSize = currentIsMobile ? 200 : 150;
         }
       } catch (error) {
         console.error('Resize error:', error);
@@ -124,10 +165,12 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 4000 : 3000;
-      const particleCount = Math.min(isMobile ? 300 : 700, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      // MODIFIED: Use function for isMobile
+      const currentIsMobile = isMobile();
+      const densityFactor = currentIsMobile ? 4000 : 3000;
+      const particleCount = Math.min(currentIsMobile ? 300 : 700, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
-      cellSize = isMobile ? 200 : 150;
+      cellSize = currentIsMobile ? 200 : 150;
     };
 
     const handleMouseInteraction = () => {
@@ -144,7 +187,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
               if (distanceSq < mouseRadiusSq) {
                 const distance = Math.sqrt(distanceSq);
                 const force = 1 - distanceSq / mouseRadiusSq;
-                const forceMultiplier = isMobile ? 1.5 : 3;
+                const forceMultiplier = isMobile() ? 1.5 : 3;
                 const directionX = (dx / distance) * force * forceMultiplier * particle.z;
                 const directionY = (dy / distance) * force * forceMultiplier * particle.z;
                 particle.vx += directionX;
@@ -157,7 +200,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
     };
 
     const handleConnections = () => {
-      if (isMobile) {
+      if (isMobile()) {
         bufferCtx.shadowColor = 'transparent';
         bufferCtx.shadowBlur = 0;
       } else {
@@ -166,7 +209,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       }
       bufferCtx.lineWidth = 0.5;
 
-      const connectDistanceSq = isMobile ? 80 * 80 : 120 * 120;
+      const connectDistanceSq = isMobile() ? 80 * 80 : 120 * 120;
       grid.clear(); // NEW: Clear grid each frame (wasn't cleared before; minor fix)
       for (const p of particles) {
         const gridX = Math.floor(p.x / cellSize);
@@ -177,14 +220,14 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
       }
 
       bufferCtx.globalAlpha = 0.4;
-      bufferCtx.strokeStyle = isMobile ? '#d7c286' : createGradient();
+      bufferCtx.strokeStyle = isMobile() ? '#d7c286' : createGradient();
 
       bufferCtx.beginPath();
       for (const p1 of particles) {
         const gridX = Math.floor(p1.x / cellSize);
         const gridY = Math.floor(p1.y / cellSize);
         let connections = 0;
-        const maxConnections = isMobile ? 5 : 10;
+        const maxConnections = isMobile() ? 5 : 10;
         for (let i = -1; i <= 1 && connections < maxConnections; i++) {
           for (let j = -1; j <= 1 && connections < maxConnections; j++) {
             const key = `${gridX + i},${gridY + j}`;
@@ -246,7 +289,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
 
         bufferCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if (!isMobile) {
+        if (!isMobile()) {
           bufferCtx.shadowColor = '#d7c186eb';
           bufferCtx.shadowBlur = 12;
         } else {
