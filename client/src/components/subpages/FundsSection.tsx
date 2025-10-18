@@ -2,11 +2,11 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Building2, Heart, Brain, Shield, Coins, Globe, Rocket } from "lucide-react";
+// --- FIX: Imported the replay icon ---
+import { TrendingUp, Building2, Heart, Brain, Shield, Coins, Globe, Rocket, RotateCw } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import { useState, useEffect, useRef } from "react";
 import styles from './FundsSection.module.css';
-import { isMobile } from 'react-device-detect';  // Import for mobile detection; install if needed: npm install react-device-detect
 
 export function FundsSection() {
   const { t } = useLanguage();
@@ -14,8 +14,8 @@ export function FundsSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showReplay, setShowReplay] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // The funds array remains the same
   const funds = [
     { icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
     { icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
@@ -28,16 +28,33 @@ export function FundsSection() {
     { icon: TrendingUp, name: t('funds.item9.name'), focus: t('funds.item9.focus'), philosophy: t('funds.item9.philosophy'), strategy: t('funds.item9.strategy'), allocation: t('funds.item9.allocation'), riskProfile: t('funds.item9.riskProfile'), investmentHorizon: t('funds.item9.investmentHorizon'), targetIRR: t('funds.item9.targetIRR') }
   ];
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    const intervalId = setInterval(() => {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % funds.length);
+    }, 6000); 
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearInterval(intervalId);
+    };
+  }, [funds.length]);
+
+
   const currentFund = funds[currentIndex];
 
-  // Variants for button states (hover and active)
   const buttonVariants = {
     rest: { y: 0, boxShadow: "0 1px 3px rgba(0,0,0,0.1)", borderColor: "#90b4d4" },
     hover: { y: -6, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" },
     active: { y: -6, borderColor: "#d7c286" }
   };
 
-  // Variants for staggered appearance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,20 +63,11 @@ export function FundsSection() {
     }
   };
 
-  // Mobile-optimized child variants
   const animationDuration = isMobile ? 0.3 : 0.5;
   const childVariants = {
     hidden: { opacity: 0, y: isMobile ? 10 : 20 },
     visible: { opacity: 1, y: 0, transition: { duration: animationDuration } }
   };
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % funds.length);
-    }, 6000); 
-
-    return () => clearInterval(intervalId);
-  }, [funds.length]);
 
   const handleFundChange = (index: number) => {
     setCurrentIndex(index);
@@ -70,38 +78,20 @@ export function FundsSection() {
     }
   };
 
-  // UPDATED: handleReplay is now cleaner.
-  // The onPlay event on the video will handle hiding the button.
   const handleReplay = () => {
     if (videoRef.current) {
       videoRef.current.play();
     }
   };
 
-  // Mobile-optimized background: Use image fallback on mobile
-  const backgroundContent = isMobile ? (
-    <img 
-      src="/images/gold-world-fallback.jpg"  // Ensure this static image exists (e.g., screenshot from video)
-      style={{ 
-        position: 'fixed', 
-        top: '50px', 
-        left: 0, 
-        width: '100%', 
-        height: '80%', 
-        objectFit: 'cover', 
-        filter: 'brightness(1.2) opacity(0.5)',
-        zIndex: -1 
-      }}
-      alt="Background"
-    />
-  ) : (
+  const backgroundContent = (
     <video 
       ref={videoRef} 
       autoPlay 
       muted 
       playsInline
-      onPlay={() => setShowReplay(false)} // ADDED: Hides button on play
-      onEnded={() => setShowReplay(true)} // Shows button on end
+      onPlay={() => setShowReplay(false)}
+      onEnded={() => setShowReplay(true)}
       style={{ 
         position: 'fixed', 
         top: '50px', 
@@ -122,20 +112,21 @@ export function FundsSection() {
     <section className={styles.sectionWrapper}>
       {backgroundContent}
  
-      {/* ADDED: Conditionally rendered replay button (only for non-mobile, since video is replaced) */}
       {!isMobile && showReplay && (
+        // --- FIX: Added content to the button ---
         <button onClick={handleReplay} className={styles.replayButton}>
+          <RotateCw size={24} style={{ marginRight: '0.75rem' }} />
+          Replay
         </button>
+        // --- END FIX ---
       )}
 
       <div className={styles.contentContainer}>
-        {/* Header Section */}
         <motion.div className={styles.headerText} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }} viewport={{ once: true }}>
           <div className={styles.subtitle}>{t('funds.subtitle')}</div>
           <h2 className={styles.title}>{t('funds.title')}</h2>
         </motion.div>
         
-        {/* Blue description box */}
         <motion.div
           className={styles.descriptionWrapper}
           initial={{ opacity: 0, y: 30 }}
@@ -150,9 +141,7 @@ export function FundsSection() {
           </div>
         </motion.div>
 
-        {/* Main Content Area */}
         <div className={styles.interactiveContainer}>
-          {/* Buttons Column with staggered animations */}
           <motion.div 
             className={styles.buttonsColumn}
             variants={containerVariants}
@@ -165,7 +154,7 @@ export function FundsSection() {
                 key={fund.name} 
                 className={`${styles.fundButton} ${currentIndex === index ? styles.active : ''}`} 
                 onClick={() => handleFundChange(index)} 
-                variants={{ ...childVariants, ...buttonVariants }}  // Combine appearance and state variants
+                variants={{ ...childVariants, ...buttonVariants }}
                 animate={currentIndex === index ? "active" : "rest"}
                 whileHover="hover"
               >
@@ -175,7 +164,6 @@ export function FundsSection() {
             ))}
           </motion.div>
 
-          {/* Detailed Card */}
           <motion.div 
             ref={cardRef}
             key={currentFund.name} 
@@ -200,7 +188,6 @@ export function FundsSection() {
                   <p>{currentFund.strategy}</p>
                   <h4 className={styles.contentHeading}>{t('funds.details.allocation')}</h4>
                   <p>{currentFund.allocation}</p>
-
                 </div>
               </div>
             </div>

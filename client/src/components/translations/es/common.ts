@@ -60,7 +60,7 @@ export const commonEsTranslations = {
   'footer.modal.terms.p2': 'Toda la propiedad intelectual es propiedad de Xhiva Capital. No seremos responsables de ninguna pérdida o daño que surja del uso del sitio. Todas las inversiones implican riesgo, y el rendimiento pasado no es indicativo de resultados futuros.',
   'footer.modal.terms.p3': 'Estos términos se rigen por las leyes de Inglaterra y Gales. Para preguntas, contacte a  <a href="/contact" style="color:#D7C286" >contact@xhiva.org</a>.',
 
-"cookieBanner.message": "Utilizamos cookies para mejorar su experiencia y para la analítica del sitio web. Al hacer clic en 'Aceptar', usted acepta nuestro uso de cookies.",
+"cookieBanner.message": "Utilizamos cookies para mejorar su experiencia y para la analítica del sitio web. Al hacer clic en 'Aceptar', usted acepta nuestro uso de cookies. ",
 "cookieBanner.message1": "Este sitio web utiliza cookies esenciales para garantizar la seguridad, gestionar el tráfico y proporcionar funcionalidades básicas. Al continuar usando este sitio, usted reconoce nuestro uso de estas tecnologías necesarias. Obtenga más información en nuestra",
 "cookieBanner.policyLinkText": "Política de Cookies.",
 "cookieBanner.acceptButton": "Aceptar",

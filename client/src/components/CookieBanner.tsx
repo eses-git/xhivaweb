@@ -15,7 +15,7 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onAccept , onDecline }) => 
     <div className="cookie-banner">
       <p>
         {t('cookieBanner.message')}
-        <a href="/cookie-policy">{t('cookieBanner.policyLinkText')}</a>
+          <a href="/cookie-policy"> {t('cookieBanner.policyLinkText')}</a>
       </p>
       <div className="cookie-banner-buttons">
         <button onClick={onDecline} className="decline-button">

@@ -55,12 +55,12 @@
 }
 
 .cookie-banner .accept-button {
-  background-color: #007bff;
+  background-color: #d7c286;
   color: white;
 }
 
 .cookie-banner .accept-button:hover {
-  background-color: #0056b3;
+  background-color: #c3ab6b;
 }
 
 .cookie-banner .decline-button {

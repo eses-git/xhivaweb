@@ -44,7 +44,6 @@
   letter-spacing: 0.3em;
   text-transform: uppercase; 
   color: #2D5F9B;
-  /* UPDATED: Reduced margins to fix spacing */
   margin-bottom: 2rem;
   margin-top: 0;
   font-family: var(--font-headings); 
@@ -101,11 +100,8 @@
   align-items: center; 
   justify-content: flex-start; 
   gap: 1rem;
-  will-change: transform, opacity; /* Added for performance hint */
+  will-change: transform, opacity;
 }
-/* Removed hover and active transforms/box-shadows (handled by Framer Motion) */
-/* .fundButton:hover { transform: translateY(-6px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); } */
-/* .fundButton.active { transform: translateY(-6px); border-color: #d7c286; } */
 .buttonIconWrapper { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 44, 84, 0.2); }
 .fundButton.active .buttonIconWrapper { border-color: #d7c286; background-color: rgba(215, 194, 134, 0.1); }
 .buttonIcon { width: 1.25rem; height: 1.25rem; color: #002c54; }
@@ -235,25 +231,30 @@
   }
 }
 
-/* --- ADDED: Replay Button --- */
+/* --- Replay Button --- */
 .replayButton {
   position: fixed;
-  top: 45%; /* Adjust to vertically center within the video area */
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 0; /* Positioned above the video background (-1) and below the main content (1) */
+  z-index: 2; /* Increased z-index to be safe */
   padding: 1rem 2rem;
   font-size: 1.2rem;
   font-weight: 600;
   font-family: var(--font-headings);
   color: white;
-  background-color: rgba(13, 44, 84, 0.7); /* Semi-transparent dark blue */
+  background-color: rgba(13, 44, 84, 0.7);
   border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: none !important; 
+  
+  /* --- FIX: Styles for content alignment --- */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* REMOVED: display: none !important; to let React control visibility */
 }
 
 .replayButton:hover {
