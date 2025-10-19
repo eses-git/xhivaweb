@@ -91,7 +91,7 @@ export function FundsSection() {
       muted 
       playsInline
       onPlay={() => setShowReplay(false)}
-      onEnded={() => setShowReplay(true)}
+      onEnded={() => setShowReplay(false)}
       style={{ 
         position: 'fixed', 
         top: '50px', 

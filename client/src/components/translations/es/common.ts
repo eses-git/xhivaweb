@@ -15,6 +15,7 @@ export const commonEsTranslations = {
   'nav.impact': 'Nuestro Impacto',
   'nav.protocol': 'Nuestro Protocolo de Compromiso',
   'nav.home': 'Inicio',
+  'nav.tax': 'Estructuración de Legado',
 
   // Footer Translations
   'footer.company': 'Empresa',

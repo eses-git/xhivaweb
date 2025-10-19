@@ -1,0 +1,27 @@
+// src/translations/de/partnerships.ts
+
+export const partnershipsDeTranslations = {
+  'partnerships.preTitle': 'ÜBER GRENZEN HINAUS',
+  'partnerships.title': 'Globales Partnerschaftsnetzwerk',
+  'partnerships.item1.category': 'STAATSFONDS',
+  'partnerships.item1.description': 'Strategische Partnerschaften mit nationalen Investitionsbehörden und staatlichen Stellen in wichtigen Volkswirtschaften.',
+  'partnerships.item1.focus': 'Regierungsbeziehungen',
+  'partnerships.item2.category': 'INSTITUTIONELLE INVESTOREN',
+  'partnerships.item2.description': 'Kooperative Beziehungen zu Pensionsfonds, Stiftungen und Versicherungsgesellschaften weltweit.',
+  'partnerships.item2.focus': 'Institutionelles Kapital',
+  'partnerships.item3.category': 'GLOBALE BANKEN',
+  'partnerships.item3.description': 'Kernbankpartnerschaften mit erstklassigen Finanzinstituten für den Zugang zu Kapitalmärkten.',
+  'partnerships.item3.focus': 'Bankinfrastruktur',
+  'partnerships.item4.category': 'TECHNOLOGIEPARTNER',
+  'partnerships.item4.description': 'Innovationsallianzen mit führenden Fintech-Unternehmen und Anbietern von Technologieinfrastruktur.',
+  'partnerships.item4.focus': 'Digitale Innovation',
+  'partnerships.item5.category': 'AUFSICHTSBEHÖRDEN',
+  'partnerships.item5.description': 'Compliance-Partnerschaften mit Finanzaufsichtsbehörden in allen operativen Jurisdiktionen.',
+  'partnerships.item5.focus': 'Regulatorische Exzellenz',
+  'partnerships.item6.category': 'FORSCHUNGSINSTITUTIONEN',
+  'partnerships.item6.description': 'Akademische Partnerschaften mit führenden Universitäten und Think Tanks für Marktforschung und -analyse.',
+  'partnerships.item6.focus': 'Forschungsexzellenz',
+  'partnerships.cta.title': 'Bereit, die Zukunft zu bauen?',
+  'partnerships.cta.subtitle': 'Lassen Sie uns zusammenarbeiten und gemeinsam Werte schaffen. Wir suchen innovative Partner für unsere Mission.',
+  'partnerships.cta.button': 'Partner werden',
+};

@@ -1,0 +1,28 @@
+// src/translations/vi/strategy.ts
+
+export const strategyViTranslations = {
+  'strategy.page.preTitle': 'Chiến lược của chúng tôi',
+  'strategy.page.title': 'Chiến lược đầu tư của chúng tôi',
+  'strategy.page.subtitle': 'Một khuôn khổ kỷ luật cho các cơ hội độc quyền',
+  'strategy.page.intro': 'Chiến lược đầu tư của chúng tôi được thiết kế cho các nhà đầu tư tư nhân đủ điều kiện, văn phòng gia đình và các cá nhân có giá trị ròng cao đang tìm kiếm quyền truy cập vào các chương trình cấp tổ chức trong một khuôn khổ tuân thủ nghiêm ngặt, bảo toàn vốn và hiệu suất vượt trội được điều chỉnh theo rủi ro.',
+  'strategy.page.disclaimer': 'Các chương trình có cấu trúc này không được quảng cáo công khai và chỉ có thể truy cập thông qua một giao thức hợp tác chính thức.',
+  'strategy.approach.title': 'Cách tiếp cận chiến lược của chúng tôi',
+  'strategy.approach.intro': 'Chiến lược của chúng tôi không dựa trên sự đầu cơ thị trường mà dựa trên việc tiếp cận có kỷ luật các chương trình tài chính cấp cao đã được kiểm duyệt trước. Mỗi cam kết tiềm năng được đánh giá dựa trên giá trị riêng của nó, với trọng tâm là:',
+  'strategy.approach.item1.title': 'Nguồn gốc & bảo mật tài sản',
+  'strategy.approach.item1.description': 'Chúng tôi bắt đầu bằng cách xác minh nguồn gốc và tính toàn vẹn của tất cả các tài sản, đảm bảo một nền tảng trong sạch và tuân thủ cho bất kỳ giao dịch nào.',
+  'strategy.approach.item2.title': 'Sự phù hợp với quy định',
+  'strategy.approach.item2.description': 'Các cấu trúc của chúng tôi được điều chỉnh để đáp ứng và vượt qua các nghĩa vụ quy định của tất cả các khu vực pháp lý tham gia, đảm bảo việc thực hiện suôn sẻ và an toàn.',
+  'strategy.approach.item3.title': 'Phù hợp với mục tiêu chiến lược',
+  'strategy.approach.item3.description': 'Chúng tôi làm việc để hiểu các mục tiêu cốt lõi của các đối tác của chúng tôi—dù đó là ổn định tài sản quốc gia hay tăng trưởng vốn tư nhân—và điều chỉnh các chương trình của chúng tôi cho phù hợp.',
+  'strategy.governance.title': 'Quản trị, rủi ro và cấu trúc',
+  'strategy.governance.intro': 'Mặc dù không có khoản đầu tư nào hoàn toàn không có rủi ro, nhưng toàn bộ mô hình hoạt động của chúng tôi được thiết kế để giảm thiểu những rủi ro đó. Tất cả các chương trình chúng tôi sắp xếp đều được cấu trúc hợp tác trực tiếp với các tổ chức tài chính được quản lý, các nhà điều hành nền tảng được cấp phép và trong nhiều trường hợp, là các thực thể chính phủ. Cam kết của chúng tôi trong việc bảo vệ lợi ích của khách hàng bao gồm:',
+  'strategy.governance.item1.title': 'Thẩm định nghiêm ngặt',
+  'strategy.governance.item1.description': 'Kiểm tra lý lịch toàn diện và các giao thức tuân thủ đối với tất cả các bên.',
+  'strategy.governance.item2.title': 'Giao thức tài trợ minh bạch',
+  'strategy.governance.item2.description': 'Xác minh rõ ràng nguồn gốc và quyền sở hữu vốn (KYC/AML).',
+  'strategy.governance.item3.title': 'Cấu trúc vốn riêng biệt',
+  'strategy.governance.item3.description': 'Các phương tiện pháp lý và tài chính phù hợp được thiết kế để tuân thủ quy định tối ưu và bảo vệ tài sản.',
+  'strategy.govergannce.item4.title': 'Giảm thiểu rủi ro tùy chọn',
+  'strategy.governance.item4.description': 'Tiếp cận các cơ chế như giám sát của bên thứ ba, bồi thường và các biện pháp bảo vệ cấp tổ chức khác.',
+  'strategy.conclusion.text': 'Khi được yêu cầu, đội ngũ của chúng tôi được trang bị để tư vấn và thành lập các thực thể pháp lý và tài chính phù hợp để đáp ứng các mục tiêu cụ thể của khu vực pháp lý hoặc chiến lược, đảm bảo khách hàng của chúng tôi được định vị hoàn hảo để tham gia.',
+};

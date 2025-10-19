@@ -1,0 +1,27 @@
+// src/translations/fr/partnerships.ts
+
+export const partnershipsFrTranslations = {
+  'partnerships.preTitle': 'AU-DELÀ DES FRONTIÈRES',
+  'partnerships.title': 'Réseau Mondial de Partenariats',
+  'partnerships.item1.category': 'FONDS SOUVERAINS',
+  'partnerships.item1.description': 'Partenariats stratégiques avec les autorités nationales d\'investissement et les entités souveraines des principales économies.',
+  'partnerships.item1.focus': 'Relations Gouvernementales',
+  'partnerships.item2.category': 'INVESTISSEURS INSTITUTIONNELS',
+  'partnerships.item2.description': 'Relations de collaboration avec les fonds de pension, les dotations et les compagnies d\'assurance du monde entier.',
+  'partnerships.item2.focus': 'Capital Institutionnel',
+  'partnerships.item3.category': 'BANQUES MONDIALES',
+  'partnerships.item3.description': 'Partenariats bancaires essentiels avec des institutions financières de premier rang pour l\'accès aux marchés des capitaux.',
+  'partnerships.item3.focus': 'Infrastructure Bancaire',
+  'partnerships.item4.category': 'PARTENAIRES TECHNOLOGIQUES',
+  'partnerships.item4.description': 'Alliances d\'innovation avec des entreprises fintech de premier plan et des fournisseurs d\'infrastructure technologique.',
+  'partnerships.item4.focus': 'Innovation Numérique',
+  'partnerships.item5.category': 'ORGANISMES DE RÉGLEMENTATION',
+  'partnerships.item5.description': 'Partenariats de conformité avec les autorités de réglementation financière dans toutes les juridictions opérationnelles.',
+  'partnerships.item5.focus': 'Excellence Réglementaire',
+  'partnerships.item6.category': 'INSTITUTIONS DE RECHERCHE',
+  'partnerships.item6.description': 'Partenariats académiques avec des universités et des groupes de réflexion de premier plan pour la recherche et l\'analyse de marché.',
+  'partnerships.item6.focus': 'Excellence en Recherche',
+  'partnerships.cta.title': 'Prêt à Construire l\'Avenir ?',
+  'partnerships.cta.subtitle': 'Collaborons et créons de la valeur ensemble. Nous recherchons des partenaires innovants pour rejoindre notre mission.',
+  'partnerships.cta.button': 'Devenir Partenaire',
+};

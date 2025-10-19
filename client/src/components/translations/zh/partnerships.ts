@@ -1,0 +1,27 @@
+// src/translations/ma/partnerships.ts
+
+export const partnershipsMaTranslations = {
+  'partnerships.preTitle': '超越国界',
+  'partnerships.title': '全球合作伙伴网络',
+  'partnerships.item1.category': '主权财富基金',
+  'partnerships.item1.description': '与主要经济体的国家投资当局和主权实体建立战略合作伙伴关系。',
+  'partnerships.item1.focus': '政府关系',
+  'partnerships.item2.category': '机构投资者',
+  'partnerships.item2.description': '与全球养老基金、捐赠基金和保险公司建立合作伙伴关系。',
+  'partnerships.item2.focus': '机构资本',
+  'partnerships.item3.category': '全球银行',
+  'partnerships.item3.description': '与一级金融机构建立核心银行合作伙伴关系，以进入资本市场。',
+  'partnerships.item3.focus': '银行基础设施',
+  'partnerships.item4.category': '技术合作伙伴',
+  'partnerships.item4.description': '与领先的金融科技公司和技术基础设施提供商建立创新联盟。',
+  'partnerships.item4.focus': '数字创新',
+  'partnerships.item5.category': '监管机构',
+  'partnerships.item5.description': '与所有运营所在司法管辖区的金融监管机构建立合规合作伙伴关系。',
+  'partnerships.item5.focus': '卓越监管',
+  'partnerships.item6.category': '研究机构',
+  'partnerships.item6.description': '与顶尖大学和智库建立学术合作伙伴关系，进行市场研究和分析。',
+  'partnerships.item6.focus': '卓越研究',
+  'partnerships.cta.title': '准备好共建未来了吗？',
+  'partnerships.cta.subtitle': '让我们携手合作，共创价值。我们正在寻找创新的合作伙伴加入我们的使命。',
+  'partnerships.cta.button': '成为合作伙伴',
+};

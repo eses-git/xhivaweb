@@ -1,17 +1,17 @@
 // Header.tsx
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "./LanguageContext";
-import { Link } from "react-router-dom"; // Ensure Link is imported for routing
-import logo from './assets/tri-logo-tr.png'; // Assuming you have a logo image
+import { Link } from "react-router-dom";
+import logo from './assets/tri-logo-tr.png';
 import styles from './Header.module.css';
+import { LanguageSwitcher } from "./LanguageSwitcher"; // 1. Import the new component
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   const menuItems = [
-   /* { name: t('nav.investment'), href: "/Investment" },*/
     { name: t('nav.home'), href: "/" },
     { name: t('nav.about'), href: "/about-us" },
     { name: t('nav.funds'), href: "/funds" },
@@ -21,8 +21,6 @@ export function Header() {
     { name: t('nav.impact'), href: "/impact" },
     { name: t('nav.careers'), href: "/careers" },
     { name: t('nav.contact'), href: "/contact" },
- /*   { name: t('nav.protocol'), href: "/protocol" },*/
-
   ];
 
   return (
@@ -30,7 +28,7 @@ export function Header() {
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           {/* Logo and Company Name - Wrapped in Link to home */}
-          <Link to="/" className={styles.logoLink}> {/* ADDED: Wrap in Link to "/" */}
+          <Link to="/" className={styles.logoLink}>
             <div className={styles.logoSection}>
               <img src={logo} alt="XHIVA Logo" className={styles.logo} />
               <span className={styles.companyName}>
@@ -52,30 +50,18 @@ export function Header() {
               </a>
             ))}
             
-            {/* Language Switcher (Desktop) */}
+            {/* 2. Replace the old button with the new LanguageSwitcher component */}
             <div className={styles.languageSwitcher}>
-              <Globe className={styles.globeIcon} />
-              <button
-                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className={styles.languageButton}
-              >
-                {language === 'en' ? 'ES' : 'EN'}
-              </button>
+              <LanguageSwitcher />
             </div>
             
           </nav>
 
           {/* Mobile Right Section: Language Switcher + Menu Button */}
           <div className={styles.mobileRightSection}>
-            {/* Language Switcher (Mobile) */}
+            {/* 3. Replace the old button with the new LanguageSwitcher component */}
             <div className={styles.mobileLanguageSwitcher}>
-              <Globe className={styles.globeIcon} />
-              <button
-                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className={styles.languageButton}
-              >
-                {language === 'en' ? 'ES' : 'EN'}
-              </button>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -107,7 +93,6 @@ export function Header() {
                   {item.name}
                 </a>
               ))}
-
             </nav>
           </div>
         )}

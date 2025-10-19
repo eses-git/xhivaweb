@@ -262,3 +262,26 @@
   border-color: white;
   transform: translate(-50%, -50%) scale(1.05);
 }
+
+/* Hide native video controls/play button on all devices, especially iOS Safari */
+.backgroundVideo::-webkit-media-controls {
+  display: none !important;
+}
+
+.backgroundVideo::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.backgroundVideo::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+.backgroundVideo::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Fallback for broader control hiding */
+.backgroundVideo {
+  -webkit-appearance: none;
+}

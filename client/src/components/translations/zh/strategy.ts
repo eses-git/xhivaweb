@@ -1,0 +1,28 @@
+// src/translations/ma/strategy.ts
+
+export const strategyMaTranslations = {
+  'strategy.page.preTitle': '我们的策略',
+  'strategy.page.title': '我们的投资策略',
+  'strategy.page.subtitle': '针对专属机会的严谨框架',
+  'strategy.page.intro': '我们的投资策略是为合格的私人投资者、家族办公室和高净值个人设计的，他们寻求在强大的合规性、资本保值和卓越的、风险调整后的表现的框架内获得机构级项目。',
+  'strategy.page.disclaimer': '这些结构化项目不会公开宣传，只能通过正式的参与协议进行访问。',
+  'strategy.approach.title': '我们的战略方法',
+  'strategy.approach.intro': '我们的策略不是基于市场投机，而是基于对预先审查过的高级别金融项目的严谨准入。每个潜在的合作都是根据其自身的优点进行评估，重点关注：',
+  'strategy.approach.item1.title': '资产来源与安全',
+  'strategy.approach.item1.description': '我们首先核实所有资产的来源和完整性，确保任何交易都有一个干净且合规的基础。',
+  'strategy.approach.item2.title': '监管一致性',
+  'strategy.approach.item2.description': '我们的结构是量身定制的，以满足并超越所有参与司法管辖区的监管义务，确保顺利和安全的执行。',
+  'strategy.approach.item3.title': '战略目标匹配',
+  'strategy.approach.item3.description': '我们努力了解交易对手的核心目标——无论是主权财富稳定还是私人资本增长——并相应地调整我们的项目。',
+  'strategy.governance.title': '治理、风险和结构设计',
+  'strategy.governance.intro': '虽然没有一项投资是完全没有风险的，但我们的整个运营模式都旨在减轻此类风险。我们安排的所有项目都是与受监管的金融机构、持牌平台运营商以及在许多情况下的政府实体直接合作构建的。我们对保护客户利益的承诺包括：',
+  'strategy.governance.item1.title': '强有力的尽职调查',
+  'strategy.governance.item1.description': '对所有各方进行全面的背景调查和合规协议。',
+  'strategy.governance.item2.title': '透明的融资协议',
+  'strategy.governance.item2.description': '清晰的资金来源和所有权验证（KYC/AML）。',
+  'strategy.governance.item3.title': '定制化资本结构',
+  'strategy.governance.item3.description': '量身定制的法律和金融工具，旨在实现最佳的监管合规性和资产保护。',
+  'strategy.govergannce.item4.title': '可选的风险缓解措施',
+  'strategy.governance.item4.description': '获得第三方监督、赔偿和其他机构保障等机制。',
+  'strategy.conclusion.text': '如有需要，我们的团队有能力就建立适当的法律和金融实体提供建议，以满足特定的司法管辖区或战略目标，确保我们的客户处于参与的最佳位置。',
+};

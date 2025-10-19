@@ -1,0 +1,27 @@
+// src/translations/ur/partnerships.ts
+
+export const partnershipsUrTranslations = {
+  'partnerships.preTitle': 'سرحدوں سے پرے',
+  'partnerships.title': 'عالمی شراکت داری نیٹ ورک',
+  'partnerships.item1.category': 'خودمختار دولت فنڈز',
+  'partnerships.item1.description': 'بڑی معیشتوں میں قومی سرمایہ کاری حکام اور خودمختار اداروں کے ساتھ اسٹریٹجک شراکتیں۔',
+  'partnerships.item1.focus': 'حکومتی تعلقات',
+  'partnerships.item2.category': 'ادارہ جاتی سرمایہ کار',
+  'partnerships.item2.description': 'دنیا بھر میں پنشن فنڈز، انڈوومنٹس، اور انشورنس کمپنیوں کے ساتھ تعاون پر مبنی تعلقات۔',
+  'partnerships.item2.focus': 'ادارہ جاتی سرمایہ',
+  'partnerships.item3.category': 'عالمی بینک',
+  'partnerships.item3.description': 'سرمایہ مارکیٹ تک رسائی کے لیے ٹئیر-ون مالیاتی اداروں کے ساتھ بنیادی بینکنگ شراکتیں۔',
+  'partnerships.item3.focus': 'بینکنگ انفراسٹرکچر',
+  'partnerships.item4.category': 'ٹیکنالوجی شراکت دار',
+  'partnerships.item4.description': 'معروف فنٹیک کمپنیوں اور ٹیکنالوجی انفراسٹرکچر فراہم کنندگان کے ساتھ جدت طرازی کے اتحاد۔',
+  'partnerships.item4.focus': 'ڈیجیٹل جدت طرازی',
+  'partnerships.item5.category': 'ریگولیٹری باڈیز',
+  'partnerships.item5.description': 'تمام آپریٹنگ دائرہ اختیار میں مالیاتی ریگولیٹری حکام کے ساتھ تعمیل شراکتیں۔',
+  'partnerships.item5.focus': 'ریگولیٹری عمدگی',
+  'partnerships.item6.category': 'تحقیقی ادارے',
+  'partnerships.item6.description': 'مارکیٹ ریسرچ اور تجزیہ کے لیے معروف یونیورسٹیوں اور تھنک ٹینکس کے ساتھ تعلیمی شراکتیں۔',
+  'partnerships.item6.focus': 'تحقیقی عمدگی',
+  'partnerships.cta.title': 'مستقبل کی تعمیر کے لیے تیار ہیں؟',
+  'partnerships.cta.subtitle': 'آئیے مل کر تعاون کریں اور قدر پیدا کریں۔ ہم اپنے مشن میں شامل ہونے کے لیے جدید شراکت داروں کی تلاش میں ہیں۔',
+  'partnerships.cta.button': 'شراکت دار بنیں',
+};

@@ -1,0 +1,27 @@
+// src/translations/vi/partnerships.ts
+
+export const partnershipsViTranslations = {
+  'partnerships.preTitle': 'VƯỢT RA NGOÀI BIÊN GIỚI',
+  'partnerships.title': 'Mạng lưới đối tác toàn cầu',
+  'partnerships.item1.category': 'QUỸ ĐẦU TƯ QUỐC GIA',
+  'partnerships.item1.description': 'Quan hệ đối tác chiến lược với các cơ quan đầu tư quốc gia và các thực thể có chủ quyền trên các nền kinh tế lớn.',
+  'partnerships.item1.focus': 'Quan hệ chính phủ',
+  'partnerships.item2.category': 'NHÀ ĐẦU TƯ TỔ CHỨC',
+  'partnerships.item2.description': 'Mối quan hệ hợp tác với các quỹ hưu trí, quỹ tài trợ và các công ty bảo hiểm trên toàn thế giới.',
+  'partnerships.item2.focus': 'Vốn tổ chức',
+  'partnerships.item3.category': 'NGÂN HÀNG TOÀN CẦU',
+  'partnerships.item3.description': 'Quan hệ đối tác ngân hàng cốt lõi với các tổ chức tài chính hàng đầu để tiếp cận thị trường vốn.',
+  'partnerships.item3.focus': 'Cơ sở hạ tầng ngân hàng',
+  'partnerships.item4.category': 'ĐỐI TÁC CÔNG NGHỆ',
+  'partnerships.item4.description': 'Liên minh đổi mới với các công ty fintech hàng đầu và các nhà cung cấp cơ sở hạ tầng công nghệ.',
+  'partnerships.item4.focus': 'Đổi mới kỹ thuật số',
+  'partnerships.item5.category': 'CƠ QUAN QUẢN LÝ',
+  'partnerships.item5.description': 'Quan hệ đối tác tuân thủ với các cơ quan quản lý tài chính trên tất cả các khu vực pháp lý hoạt động.',
+  'partnerships.item5.focus': 'Sự xuất sắc trong quản lý',
+  'partnerships.item6.category': 'TỔ CHỨC NGHIÊN CỨU',
+  'partnerships.item6.description': 'Quan hệ đối tác học thuật với các trường đại học và các tổ chức tư vấn hàng đầu để nghiên cứu và phân tích thị trường.',
+  'partnerships.item6.focus': 'Sự xuất sắc trong nghiên cứu',
+  'partnerships.cta.title': 'Sẵn sàng xây dựng tương lai?',
+  'partnerships.cta.subtitle': 'Hãy hợp tác và cùng nhau tạo ra giá trị. Chúng tôi đang tìm kiếm các đối tác đổi mới để tham gia sứ mệnh của chúng tôi.',
+  'partnerships.cta.button': 'Trở thành đối tác',
+};

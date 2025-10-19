@@ -1,0 +1,79 @@
+/* src/components/LanguageSwitcher.module.css */
+
+.languageSwitcher {
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: 1px solid rgba(0, 44, 84, 0.3);
+  color: var(--dark-blue);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dropdownButton:hover {
+  background-color: rgba(0, 44, 84, 0.05);
+  border-color: rgba(0, 44, 84, 0.6);
+}
+
+.chevron {
+  transition: transform 0.2s ease-in-out;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 110%; /* Position below the button */
+  right: 0;
+  min-width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 50; /* Ensure it's on top */
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+  color: var(--dark-blue);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdownItem:hover {
+  background-color: rgba(0, 44, 84, 0.05);
+}
+
+.dropdownItem:disabled {
+  font-weight: 600;
+  color: var(--dark-blue);
+  background-color: rgba(0, 44, 84, 0.1);
+  cursor: default;
+}

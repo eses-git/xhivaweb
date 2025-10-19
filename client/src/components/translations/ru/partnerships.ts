@@ -1,0 +1,27 @@
+// src/translations/ru/partnerships.ts
+
+export const partnershipsRuTranslations = {
+  'partnerships.preTitle': 'БЕЗ ГРАНИЦ',
+  'partnerships.title': 'Глобальная партнерская сеть',
+  'partnerships.item1.category': 'СУВЕРЕННЫЕ ФОНДЫ',
+  'partnerships.item1.description': 'Стратегические партнерства с национальными инвестиционными органами и суверенными структурами в крупнейших экономиках.',
+  'partnerships.item1.focus': 'Отношения с правительством',
+  'partnerships.item2.category': 'ИНСТИТУЦИОНАЛЬНЫЕ ИНВЕСТОРЫ',
+  'partnerships.item2.description': 'Сотрудничество с пенсионными фондами, эндаументами и страховыми компаниями по всему миру.',
+  'partnerships.item2.focus': 'Институциональный капитал',
+  'partnerships.item3.category': 'ГЛОБАЛЬНЫЕ БАНКИ',
+  'partnerships.item3.description': 'Ключевые банковские партнерства с финансовыми учреждениями первого уровня для доступа к рынкам капитала.',
+  'partnerships.item3.focus': 'Банковская инфраструктура',
+  'partnerships.item4.category': 'ТЕХНОЛОГИЧЕСКИЕ ПАРТНЕРЫ',
+  'partnerships.item4.description': 'Инновационные альянсы с ведущими финтех-компаниями и поставщиками технологической инфраструктуры.',
+  'partnerships.item4.focus': 'Цифровые инновации',
+  'partnerships.item5.category': 'РЕГУЛИРУЮЩИЕ ОРГАНЫ',
+  'partnerships.item5.description': 'Партнерство в области комплаенса с органами финансового регулирования во всех юрисдикциях.',
+  'partnerships.item5.focus': 'Превосходство в регулировании',
+  'partnerships.item6.category': 'ИССЛЕДОВАТЕЛЬСКИЕ ИНСТИТУТЫ',
+  'partnerships.item6.description': 'Академические партнерства с ведущими университетами и аналитическими центрами для исследования и анализа рынка.',
+  'partnerships.item6.focus': 'Превосходство в исследованиях',
+  'partnerships.cta.title': 'Готовы строить будущее?',
+  'partnerships.cta.subtitle': 'Давайте сотрудничать и создавать ценность вместе. Мы ищем инновационных партнеров для нашей миссии.',
+  'partnerships.cta.button': 'Стать партнером',
+};

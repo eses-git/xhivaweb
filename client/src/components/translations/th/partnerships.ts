@@ -1,0 +1,27 @@
+// src/translations/th/partnerships.ts
+
+export const partnershipsThTranslations = {
+  'partnerships.preTitle': 'ข้ามพรมแดน',
+  'partnerships.title': 'เครือข่ายพันธมิตรระดับโลก',
+  'partnerships.item1.category': 'กองทุนความมั่งคั่งแห่งชาติ',
+  'partnerships.item1.description': 'ความร่วมมือเชิงกลยุทธ์กับหน่วยงานการลงทุนของประเทศและหน่วยงานของรัฐในเศรษฐกิจหลัก',
+  'partnerships.item1.focus': 'ความสัมพันธ์กับรัฐบาล',
+  'partnerships.item2.category': 'นักลงทุนสถาบัน',
+  'partnerships.item2.description': 'ความสัมพันธ์แบบร่วมมือกับกองทุนบำเหน็จบำนาญ, กองทุนบริจาค และบริษัทประกันภัยทั่วโลก',
+  'partnerships.item2.focus': 'เงินทุนสถาบัน',
+  'partnerships.item3.category': 'ธนาคารระดับโลก',
+  'partnerships.item3.description': 'ความร่วมมือด้านการธนาคารหลักกับสถาบันการเงินชั้นนำเพื่อการเข้าถึงตลาดทุน',
+  'partnerships.item3.focus': 'โครงสร้างพื้นฐานด้านการธนาคาร',
+  'partnerships.item4.category': 'พันธมิตรทางเทคโนโลยี',
+  'partnerships.item4.description': 'พันธมิตรทางนวัตกรรมกับบริษัทฟินเทคชั้นนำและผู้ให้บริการโครงสร้างพื้นฐานทางเทคโนโลยี',
+  'partnerships.item4.focus': 'นวัตกรรมดิจิทัล',
+  'partnerships.item5.category': 'หน่วยงานกำกับดูแล',
+  'partnerships.item5.description': 'ความร่วมมือด้านการปฏิบัติตามกฎระเบียบกับหน่วยงานกำกับดูแลทางการเงินในทุกเขตอำนาจศาลที่ดำเนินงาน',
+  'partnerships.item5.focus': 'ความเป็นเลิศด้านกฎระเบียบ',
+  'partnerships.item6.category': 'สถาบันวิจัย',
+  'partnerships.item6.description': 'ความร่วมมือทางวิชาการกับมหาวิทยาลัยและหน่วยงานคลังสมองชั้นนำเพื่อการวิจัยและวิเคราะห์ตลาด',
+  'partnerships.item6.focus': 'ความเป็นเลิศด้านการวิจัย',
+  'partnerships.cta.title': 'พร้อมที่จะสร้างอนาคตแล้วหรือยัง?',
+  'partnerships.cta.subtitle': 'มาร่วมมือกันสร้างคุณค่าไปด้วยกัน เรากำลังมองหาพันธมิตรที่มีนวัตกรรมเพื่อเข้าร่วมภารกิจของเรา',
+  'partnerships.cta.button': 'ร่วมเป็นพันธมิตร',
+};

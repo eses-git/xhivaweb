@@ -1,0 +1,27 @@
+// src/translations/ja/partnerships.ts
+
+export const partnershipsJaTranslations = {
+  'partnerships.preTitle': '国境を越えて',
+  'partnerships.title': 'グローバルパートナーシップネットワーク',
+  'partnerships.item1.category': '政府系ファンド',
+  'partnerships.item1.description': '主要経済国の国家投資機関および政府系機関との戦略的パートナーシップ。',
+  'partnerships.item1.focus': '政府関係',
+  'partnerships.item2.category': '機関投資家',
+  'partnerships.item2.description': '世界中の年金基金、エンダウメント、保険会社との協力関係。',
+  'partnerships.item2.focus': '機関投資家資本',
+  'partnerships.item3.category': 'グローバルバンク',
+  'partnerships.item3.description': '資本市場へのアクセスのためのティア1金融機関とのコアバンキングパートナーシップ。',
+  'partnerships.item3.focus': '銀行インフラ',
+  'partnerships.item4.category': 'テクノロジーパートナー',
+  'partnerships.item4.description': '主要なフィンテック企業およびテクノロジーインフラプロバイダーとのイノベーションアライアンス。',
+  'partnerships.item4.focus': 'デジタルイノベーション',
+  'partnerships.item5.category': '規制当局',
+  'partnerships.item5.description': 'すべての事業管轄区域における金融規制当局とのコンプライアンスパートナーシップ。',
+  'partnerships.item5.focus': '規制の卓越性',
+  'partnerships.item6.category': '研究機関',
+  'partnerships.item6.description': '市場調査と分析のための主要大学およびシンクタンクとの学術的パートナーシップ。',
+  'partnerships.item6.focus': '研究の卓越性',
+  'partnerships.cta.title': '未来を築く準備はできていますか？',
+  'partnerships.cta.subtitle': '協力して共に価値を創造しましょう。私たちのミッションに参加する革新的なパートナーを探しています。',
+  'partnerships.cta.button': 'パートナーになる',
+};

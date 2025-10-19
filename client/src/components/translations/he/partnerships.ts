@@ -1,0 +1,27 @@
+// src/translations/he/partnerships.ts
+
+export const partnershipsHeTranslations = {
+  'partnerships.preTitle': 'מעבר לגבולות',
+  'partnerships.title': 'רשת שותפויות גלובלית',
+  'partnerships.item1.category': 'קרנות עושר ריבוניות',
+  'partnerships.item1.description': 'שותפויות אסטרטגיות עם רשויות השקעות לאומיות וישויות ריבוניות בכלכלות מרכזיות.',
+  'partnerships.item1.focus': 'קשרי ממשל',
+  'partnerships.item2.category': 'משקיעים מוסדיים',
+  'partnerships.item2.description': 'קשרי שיתוף פעולה עם קרנות פנסיה, הקדשים וחברות ביטוח ברחבי העולם.',
+  'partnerships.item2.focus': 'הון מוסדי',
+  'partnerships.item3.category': 'בנקים גלובליים',
+  'partnerships.item3.description': 'שותפויות בנקאיות ליבה עם מוסדות פיננסיים מהשורה הראשונה לגישה לשוקי ההון.',
+  'partnerships.item3.focus': 'תשתית בנקאית',
+  'partnerships.item4.category': 'שותפי טכנולוגיה',
+  'partnerships.item4.description': 'בריתות חדשנות עם חברות פינטק מובילות וספקי תשתיות טכנולוגיות.',
+  'partnerships.item4.focus': 'חדשנות דיגיטלית',
+  'partnerships.item5.category': 'גופי רגולציה',
+  'partnerships.item5.description': 'שותפויות תאימות עם רשויות רגולציה פיננסיות בכל תחומי השיפוט הפועלים.',
+  'partnerships.item5.focus': 'מצוינות רגולטורית',
+  'partnerships.item6.category': 'מוסדות מחקר',
+  'partnerships.item6.description': 'שותפויות אקדמיות עם אוניברסיטאות מובילות וצוותי חשיבה למחקר וניתוח שוק.',
+  'partnerships.item6.focus': 'מצוינות מחקרית',
+  'partnerships.cta.title': 'מוכנים לבנות את העתיד?',
+  'partnerships.cta.subtitle': 'בואו נשתף פעולה וניצור ערך יחד. אנו מחפשים שותפים חדשניים להצטרף למשימה שלנו.',
+  'partnerships.cta.button': 'הפוך לשותף',
+};

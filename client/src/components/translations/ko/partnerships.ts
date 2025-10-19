@@ -1,0 +1,27 @@
+// src/translations/ko/partnerships.ts
+
+export const partnershipsKoTranslations = {
+  'partnerships.preTitle': '국경을 넘어',
+  'partnerships.title': '글로벌 파트너십 네트워크',
+  'partnerships.item1.category': '국부 펀드',
+  'partnerships.item1.description': '주요 경제국 전반의 국가 투자 당국 및 주권 기관과의 전략적 파트너십.',
+  'partnerships.item1.focus': '정부 관계',
+  'partnerships.item2.category': '기관 투자자',
+  'partnerships.item2.description': '전 세계 연기금, 기부금 및 보험 회사와의 협력 관계.',
+  'partnerships.item2.focus': '기관 자본',
+  'partnerships.item3.category': '글로벌 은행',
+  'partnerships.item3.description': '자본 시장 접근을 위한 일류 금융 기관과의 핵심 은행 파트너십.',
+  'partnerships.item3.focus': '은행 인프라',
+  'partnerships.item4.category': '기술 파트너',
+  'partnerships.item4.description': '선도적인 핀테크 기업 및 기술 인프라 제공업체와의 혁신 제휴.',
+  'partnerships.item4.focus': '디지털 혁신',
+  'partnerships.item5.category': '규제 기관',
+  'partnerships.item5.description': '모든 운영 관할 구역의 금융 규제 당국과의 규정 준수 파트너십.',
+  'partnerships.item5.focus': '규제 우수성',
+  'partnerships.item6.category': '연구 기관',
+  'partnerships.item6.description': '시장 조사 및 분석을 위한 선도적인 대학 및 싱크탱크와의 학술 파트너십.',
+  'partnerships.item6.focus': '연구 우수성',
+  'partnerships.cta.title': '미래를 건설할 준비가 되셨습니까?',
+  'partnerships.cta.subtitle': '함께 협력하여 가치를 창출합시다. 우리는 우리의 사명에 동참할 혁신적인 파트너를 찾고 있습니다.',
+  'partnerships.cta.button': '파트너 되기',
+};

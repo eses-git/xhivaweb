@@ -1,0 +1,27 @@
+// src/translations/ar/partnerships.ts
+
+export const partnershipsArTranslations = {
+  'partnerships.preTitle': 'عابر للحدود',
+  'partnerships.title': 'شبكة شراكات عالمية',
+  'partnerships.item1.category': 'صناديق الثروة السيادية',
+  'partnerships.item1.description': 'شراكات استراتيجية مع سلطات الاستثمار الوطنية والكيانات السيادية عبر الاقتصادات الكبرى.',
+  'partnerships.item1.focus': 'العلاقات الحكومية',
+  'partnerships.item2.category': 'المستثمرون المؤسسيون',
+  'partnerships.item2.description': 'علاقات تعاونية مع صناديق التقاعد، والأوقاف، وشركات التأمين في جميع أنحاء العالم.',
+  'partnerships.item2.focus': 'رأس المال المؤسسي',
+  'partnerships.item3.category': 'البنوك العالمية',
+  'partnerships.item3.description': 'شراكات مصرفية أساسية مع مؤسسات مالية من الدرجة الأولى للوصول إلى أسواق رأس المال.',
+  'partnerships.item3.focus': 'البنية التحتية المصرفية',
+  'partnerships.item4.category': 'شركاء التكنولوجيا',
+  'partnerships.item4.description': 'تحالفات ابتكارية مع شركات التكنولوجيا المالية الرائدة ومقدمي البنية التحتية التكنولوجية.',
+  'partnerships.item4.focus': 'الابتكار الرقمي',
+  'partnerships.item5.category': 'الهيئات التنظيمية',
+  'partnerships.item5.description': 'شراكات امتثال مع السلطات التنظيمية المالية عبر جميع الولايات القضائية العاملة.',
+  'partnerships.item5.focus': 'التميز التنظيمي',
+  'partnerships.item6.category': 'المؤسسات البحثية',
+  'partnerships.item6.description': 'شراكات أكاديمية مع جامعات رائدة ومراكز فكرية لأبحاث وتحليلات السوق.',
+  'partnerships.item6.focus': 'التميز البحثي',
+  'partnerships.cta.title': 'هل أنت مستعد لبناء المستقبل؟',
+  'partnerships.cta.subtitle': 'دعنا نتعاون ونخلق القيمة معًا. نحن نبحث عن شركاء مبتكرين للانضمام إلى مهمتنا.',
+  'partnerships.cta.button': 'كن شريكًا',
+};
