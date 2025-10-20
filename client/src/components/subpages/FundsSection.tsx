@@ -14,10 +14,8 @@ export function FundsSection() {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   
-  // --- FIX: Create a ref to hold the interval ID ---
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Moved funds definition up and added IDs
   const funds = [
     { id: 'fund1', icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
     { id: 'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
@@ -30,13 +28,10 @@ export function FundsSection() {
     { id: 'fund9', icon: TrendingUp, name: t('funds.item9.name'), focus: t('funds.item9.focus'), philosophy: t('funds.item9.philosophy'), strategy: t('funds.item9.strategy'), allocation: t('funds.item9.allocation'), riskProfile: t('funds.item9.riskProfile'), investmentHorizon: t('funds.item9.investmentHorizon'), targetIRR: t('funds.item9.targetIRR') }
   ];
 
-  // --- FIX: Create a function to start/reset the timer ---
   const startTimer = () => {
-    // Clear the old timer if it exists
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    // Start a new timer and save its ID
     intervalRef.current = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % funds.length);
     }, 6000);
@@ -44,24 +39,39 @@ export function FundsSection() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Using 768px breakpoint from your CSS
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
-    // --- FIX: Start the timer on component mount ---
     startTimer(); 
 
-    // --- FIX: Update cleanup function to use the ref ---
     return () => {
       window.removeEventListener('resize', checkMobile);
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [funds.length]); // Dependency on funds.length is correct
+  }, [funds.length]);
 
+  // --- ADDED useEffect TO FORCE VIDEO PLAYBACK ---
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.playsInline = true; // Ensure playsinline for iOS/Safari
+      video.autoplay = true;
+      video.preload = 'auto'; // Add preload for better autoplay chances
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Video autoplay was prevented:", error);
+          // Optionally: video.pause(); or add a class to show poster explicitly
+        });
+      }
+    }
+  }, []); // Empty dependency array means this runs once on mount
 
   const currentFund = funds[currentIndex];
 
@@ -87,16 +97,13 @@ export function FundsSection() {
 
   const handleFundChange = (index: number) => {
     setCurrentIndex(index);
-    if (!isMobile && cardRef.current) { // Only scroll on desktop
+    if (!isMobile && cardRef.current) {
       const headerHeight = 50;
       const top = cardRef.current.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
-    
-    // --- FIX: Reset the timer on user click ---
     startTimer();
   };
-
   
   const backgroundContent = (
     <video 
@@ -104,10 +111,12 @@ export function FundsSection() {
       className={styles.backgroundVideo} 
       autoPlay 
       muted 
-      playsInline
+      playsInline // Crucial for iOS/Safari
       controls={false}
+      preload="auto"
       poster="/images/gold-world-poster.jpg" 
     >
+      <source src="/videos/gold-world.webm" type="video/webm" />
       <source src="/videos/gold-world.mp4" type="video/mp4" />
       {t('funds.videoFallback')}
     </video>
