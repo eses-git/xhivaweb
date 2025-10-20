@@ -13,6 +13,7 @@ export function FundsSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [showVideo, setShowVideo] = useState(true); // New state for fallback
   
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -62,14 +63,20 @@ export function FundsSection() {
       video.playsInline = true; // Ensure playsinline for iOS/Safari
       video.autoplay = true;
       video.preload = 'auto'; // Add preload for better autoplay chances
+      video.setAttribute('webkit-playsinline', ''); // Extra for Safari
 
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(error => {
           console.error("Video autoplay was prevented:", error);
-          // Optionally: video.pause(); or add a class to show poster explicitly
+          setShowVideo(false); // Fallback to poster if autoplay fails
         });
       }
+
+      // Handle end to stay on last frame (no loop)
+      video.addEventListener('ended', () => {
+        video.pause();
+      });
     }
   }, []); // Empty dependency array means this runs once on mount
 
@@ -105,7 +112,7 @@ export function FundsSection() {
     startTimer();
   };
   
-  const backgroundContent = (
+  const backgroundContent = showVideo ? (
     <video 
       ref={videoRef} 
       className={styles.backgroundVideo} 
@@ -120,6 +127,8 @@ export function FundsSection() {
       <source src="/videos/gold-world.mp4" type="video/mp4" />
       {t('funds.videoFallback')}
     </video>
+  ) : (
+    <div className={styles.backgroundPoster} />
   );
 
   return (
