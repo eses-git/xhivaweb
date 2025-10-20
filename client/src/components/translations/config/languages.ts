@@ -47,7 +47,7 @@ export const languageConfig = {
     nativeName: 'हिन्दी',
   },
   id: {
-    nativeName: 'Bahasa Indonesia',
+    nativeName: 'Bahasa',
   },
   sw: {
     nativeName: 'Kiswahili',

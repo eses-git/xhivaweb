@@ -30,7 +30,13 @@ export function Header() {
           {/* Logo and Company Name - Wrapped in Link to home */}
           <Link to="/" className={styles.logoLink}>
             <div className={styles.logoSection}>
-              <img src={logo} alt="XHIVA Logo" className={styles.logo} />
+             <img 
+                src={logo} 
+                alt="XHIVA Logo" 
+                className={styles.logo} 
+                width={50}  
+                height={50} 
+              />
               <span className={styles.companyName}>
                 XHIVA
               </span>
