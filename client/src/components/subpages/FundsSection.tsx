@@ -2,7 +2,6 @@
 'use client';
 
 import { motion } from "framer-motion";
-// --- FIX: Removed 'RotateCw' icon ---
 import { TrendingUp, Building2, Heart, Brain, Shield, Coins, Globe, Rocket } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import { useState, useEffect, useRef } from "react";
@@ -12,14 +11,13 @@ export function FundsSection() {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-  // --- FIX: Removed 'showReplay' state ---
   const cardRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   // Moved funds definition up and added IDs
   const funds = [
     { id: 'fund1', icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
-    { id: 'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
+    { id:'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
     { id: 'fund3', icon: Heart, name: t('funds.item3.name'), focus: t('funds.item3.focus'), philosophy: t('funds.item3.philosophy'), strategy: t('funds.item3.strategy'), allocation: t('funds.item3.allocation'), riskProfile: t('funds.item3.riskProfile'), investmentHorizon: t('funds.item3.investmentHorizon'), targetIRR: t('funds.item3.targetIRR') },
     { id: 'fund4', icon: Brain, name: t('funds.item4.name'), focus: t('funds.item4.focus'), philosophy: t('funds.item4.philosophy'), strategy: t('funds.item4.strategy'), allocation: t('funds.item4.allocation'), riskProfile: t('funds.item4.riskProfile'), investmentHorizon: t('funds.item4.investmentHorizon'), targetIRR: t('funds.item4.targetIRR') },
     { id: 'fund5', icon: Coins, name: t('funds.item5.name'), focus: t('funds.item5.focus'), philosophy: t('funds.item5.philosophy'), strategy: t('funds.item5.strategy'), allocation: t('funds.item5.allocation'), riskProfile: t('funds.item5.riskProfile'), investmentHorizon: t('funds.item5.investmentHorizon'), targetIRR: t('funds.item5.targetIRR') },
@@ -79,27 +77,17 @@ export function FundsSection() {
     }
   };
 
-  // --- FIX: Removed 'handleReplay' function ---
-
+  
   const backgroundContent = (
     <video 
       ref={videoRef} 
+      className={styles.backgroundVideo} 
       autoPlay 
+      // loop attribute removed to play only once
       muted 
       playsInline
-      controls={false} // --- FIX: Explicitly add controls={false} ---
-      // --- FIX: Removed onPlay and onEnded handlers ---
-      className={styles.backgroundVideo}
-      style={{ 
-        position: 'fixed', 
-        top: '50px', 
-        left: 0, 
-        width: '100%', 
-        height: '80%', 
-        objectFit: 'cover', 
-        filter: 'brightness(1.2) opacity(0.5)',
-        zIndex: -1 ,
-      }}
+      controls={false}
+      poster="/images/gold-world-poster.jpg" // Make sure this image path is correct
     >
       <source src="/videos/gold-world.mp4" type="video/mp4" />
       {t('funds.videoFallback')}
@@ -110,8 +98,6 @@ export function FundsSection() {
     <section className={styles.sectionWrapper}>
       {backgroundContent}
  
-      {/* --- FIX: Removed the custom replay button --- */}
-
       <div className={styles.contentContainer}>
         <motion.div className={styles.headerText} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }} viewport={{ once: true }}>
           <div className={styles.subtitle}>{t('funds.subtitle')}</div>
@@ -134,7 +120,6 @@ export function FundsSection() {
 
         <div className={styles.interactiveContainer}>
 
-          {/* --- FIX: ICON NAVIGATION FOR MOBILE --- */}
           <div className={styles.fundIconsMobile}>
             {funds.map((fund, index) => (
               <button
@@ -147,10 +132,7 @@ export function FundsSection() {
               </button>
             ))}
           </div>
-          {/* --- END FIX --- */}
 
-
-          {/* --- Original Buttons Column (Desktop) --- */}
           <motion.div 
             className={styles.buttonsColumn}
             variants={containerVariants}
@@ -173,7 +155,6 @@ export function FundsSection() {
             ))}
           </motion.div>
 
-          {/* --- Detailed Card --- */}
           <motion.div 
             ref={cardRef}
             key={currentFund.id || currentFund.name} 
