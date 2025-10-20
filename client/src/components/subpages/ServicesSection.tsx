@@ -1,3 +1,5 @@
+// ServicesSection.tsx
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, PieChart, Users, Shield, Leaf, Handshake } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
@@ -20,43 +22,63 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = services[activeIndex];
 
-  // --- ADDED: Mobile detection state ---
   const [isMobile, setIsMobile] = useState(false);
-  // --- END ---
-
   const [spotlightY, setSpotlightY] = useState(0);
   const listWrapperRef = useRef<HTMLDivElement>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // --- ADDED: Effect for mobile detection ---
+  // --- FIX: Create a ref to hold the interval ID ---
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // --- FIX: Create a function to start/reset the timer ---
+  const startTimer = () => {
+    // Clear the old timer if it exists
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    // Start a new timer and save its ID
+    intervalRef.current = setInterval(() => {
+      setActiveIndex(prevIndex => (prevIndex + 1) % services.length);
+    }, 6000);
+  };
+
   useEffect(() => {
     const checkMobile = () => {
-      // Use 1023px breakpoint consistent with CSS
       setIsMobile(window.innerWidth <= 1023); 
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  // --- END ---
-
+  
+  // This useEffect now manages the timer lifecycle
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setActiveIndex(prevIndex => (prevIndex + 1) % services.length);
-    }, 6000);
+    // Start the timer when the component mounts
+    startTimer();
 
-    return () => clearInterval(intervalId);
+    // Cleanup: clear the interval when the component unmounts
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [services.length]);
 
   // Updated useEffect to only calculate spotlight on desktop
   useEffect(() => {
-    if (!isMobile) { // Only run if not mobile
+    if (!isMobile) { 
       const currentButton = buttonRefs.current[activeIndex];
       if (currentButton) {
         setSpotlightY(currentButton.offsetTop);
       }
     }
-  }, [activeIndex, isMobile]); // Add isMobile dependency
+  }, [activeIndex, isMobile]);
+
+  // --- FIX: Create a single handler for changing services ---
+  const handleServiceChange = (index: number) => {
+    setActiveIndex(index);
+    startTimer(); // This resets the 6-second timer
+  };
 
   return (
     <section id="services" className={styles.servicesSection}>
@@ -75,24 +97,23 @@ export function ServicesSection() {
         </motion.div>
 
         <div className={styles.serviceLayout}>
-          {/* --- FIX: ADDED ICON NAVIGATION FOR MOBILE --- */}
+          {/* --- Mobile Icon Navigation --- */}
           <div className={styles.serviceIconsMobile}>
             {services.map((service, index) => (
               <button
                 key={`icon-${service.id}`}
                 className={`${styles.iconButtonMobile} ${activeIndex === index ? styles.active : ''}`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleServiceChange(index)} // Use new handler
                 aria-label={`Select ${service.title}`}
               >
                 <service.icon className={styles.iconInButton} />
               </button>
             ))}
           </div>
-          {/* --- END FIX --- */}
-
-          {/* --- Original Button List (Desktop) --- */}
+          
+          {/* --- Desktop Button List --- */}
           <div ref={listWrapperRef} className={styles.serviceListWrapper}>
-            {!isMobile && ( // Conditionally render spotlight only if not mobile
+            {!isMobile && (
               <motion.div
                 className={styles.spotlight}
                 animate={{ y: spotlightY }}
@@ -104,7 +125,7 @@ export function ServicesSection() {
                 key={service.id}
                 ref={el => { buttonRefs.current[index] = el; }} 
                 className={`${styles.serviceButton} ${activeIndex === index ? styles.active : ''}`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleServiceChange(index)} // Use new handler
               >
                 <service.icon className={styles.buttonIcon} />
                 <span className={styles.buttonTitle}>{service.title}</span>
@@ -116,7 +137,7 @@ export function ServicesSection() {
           <div className={styles.detailsPanel}>
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeService.id} // Ensure key changes for animation
+                key={activeService.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -143,8 +164,6 @@ export function ServicesSection() {
             </AnimatePresence>
           </div>
           
-          {/* Slider Dots removed */}
-
         </div>
       </NeuralConnections>
     </section>

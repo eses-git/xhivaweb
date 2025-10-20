@@ -1,6 +1,6 @@
 // src/components/ImpactSection.tsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // --- Added useRef
 import { useLanguage } from '../LanguageContext';
 import styles from './ImpactSection.module.css';
 import { Landmark, HeartHandshake } from 'lucide-react';
@@ -9,16 +9,35 @@ import { AnimatedBackgroundWrapper } from '../background/isometric-background/An
 export function ImpactSection() {
   const { t } = useLanguage();
   const [activePillar, setActivePillar] = useState<'economic' | 'humanitarian'>('economic');
+  
+  // --- FIX: Create a ref to hold the interval ID ---
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
+  // --- FIX: Create a function to start/reset the timer ---
+  const startTimer = () => {
+    // Clear the old timer if it exists
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    // Start a new timer and save its ID
+    intervalRef.current = setInterval(() => {
       setActivePillar(currentPillar =>
         currentPillar === 'economic' ? 'humanitarian' : 'economic'
       );
     }, 6000);
+  };
 
-    return () => clearInterval(intervalId);
-  }, []);
+  useEffect(() => {
+    // --- FIX: Start the timer on component mount ---
+    startTimer();
+
+    // --- FIX: Update cleanup function to use the ref ---
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []); // Empty dependency array is correct, runs only on mount/unmount
 
   const pillars = {
     economic: {
@@ -34,6 +53,12 @@ export function ImpactSection() {
       descriptionKey: 'impact.humanitarian.description',
     }
   };
+  
+  // --- FIX: Create a click handler to set pillar and reset timer ---
+  const handlePillarChange = (pillar: 'economic' | 'humanitarian') => {
+    setActivePillar(pillar);
+    startTimer(); // Reset the timer on click
+  };
 
   return (
    <AnimatedBackgroundWrapper className={styles.section}>
@@ -44,19 +69,18 @@ export function ImpactSection() {
           <p className={styles.introText}>{t('impact.intro1')}</p>
         </header>
 
-        {/* --- FIX: Moved Toggles ABOVE the cards --- */}
         <div className={styles.pillarToggles}>
           {Object.values(pillars).map(pillar => (
             <button
               key={pillar.id}
               className={`${styles.toggleButton} ${activePillar === pillar.id ? styles.active : ''}`}
-              onClick={() => setActivePillar(pillar.id as 'economic' | 'humanitarian')}
+              // --- FIX: Use the new handler function ---
+              onClick={() => handlePillarChange(pillar.id as 'economic' | 'humanitarian')}
             >
               {t(pillar.titleKey as any)}
             </button>
           ))}
         </div>
-        {/* --- END FIX --- */}
 
         {/* --- MOBILE CARD CONTAINER --- */}
         <div className={styles.cardContainerForMobile}>
@@ -93,8 +117,6 @@ export function ImpactSection() {
             </div>
           </div>
         </div>
-
-        {/* --- Toggles moved above --- */}
 
         <p className={styles.conclusionText}>
           {t('impact.conclusion')}

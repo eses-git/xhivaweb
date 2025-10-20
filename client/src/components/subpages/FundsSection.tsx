@@ -13,11 +13,14 @@ export function FundsSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // --- FIX: Create a ref to hold the interval ID ---
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Moved funds definition up and added IDs
   const funds = [
     { id: 'fund1', icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
-    { id:'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
+    { id: 'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
     { id: 'fund3', icon: Heart, name: t('funds.item3.name'), focus: t('funds.item3.focus'), philosophy: t('funds.item3.philosophy'), strategy: t('funds.item3.strategy'), allocation: t('funds.item3.allocation'), riskProfile: t('funds.item3.riskProfile'), investmentHorizon: t('funds.item3.investmentHorizon'), targetIRR: t('funds.item3.targetIRR') },
     { id: 'fund4', icon: Brain, name: t('funds.item4.name'), focus: t('funds.item4.focus'), philosophy: t('funds.item4.philosophy'), strategy: t('funds.item4.strategy'), allocation: t('funds.item4.allocation'), riskProfile: t('funds.item4.riskProfile'), investmentHorizon: t('funds.item4.investmentHorizon'), targetIRR: t('funds.item4.targetIRR') },
     { id: 'fund5', icon: Coins, name: t('funds.item5.name'), focus: t('funds.item5.focus'), philosophy: t('funds.item5.philosophy'), strategy: t('funds.item5.strategy'), allocation: t('funds.item5.allocation'), riskProfile: t('funds.item5.riskProfile'), investmentHorizon: t('funds.item5.investmentHorizon'), targetIRR: t('funds.item5.targetIRR') },
@@ -27,6 +30,18 @@ export function FundsSection() {
     { id: 'fund9', icon: TrendingUp, name: t('funds.item9.name'), focus: t('funds.item9.focus'), philosophy: t('funds.item9.philosophy'), strategy: t('funds.item9.strategy'), allocation: t('funds.item9.allocation'), riskProfile: t('funds.item9.riskProfile'), investmentHorizon: t('funds.item9.investmentHorizon'), targetIRR: t('funds.item9.targetIRR') }
   ];
 
+  // --- FIX: Create a function to start/reset the timer ---
+  const startTimer = () => {
+    // Clear the old timer if it exists
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    // Start a new timer and save its ID
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % funds.length);
+    }, 6000);
+  };
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768); // Using 768px breakpoint from your CSS
@@ -35,15 +50,17 @@ export function FundsSection() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    const intervalId = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % funds.length);
-    }, 6000); 
+    // --- FIX: Start the timer on component mount ---
+    startTimer(); 
 
+    // --- FIX: Update cleanup function to use the ref ---
     return () => {
       window.removeEventListener('resize', checkMobile);
-      clearInterval(intervalId);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
     };
-  }, [funds.length]);
+  }, [funds.length]); // Dependency on funds.length is correct
 
 
   const currentFund = funds[currentIndex];
@@ -75,6 +92,9 @@ export function FundsSection() {
       const top = cardRef.current.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+    
+    // --- FIX: Reset the timer on user click ---
+    startTimer();
   };
 
   
@@ -83,11 +103,10 @@ export function FundsSection() {
       ref={videoRef} 
       className={styles.backgroundVideo} 
       autoPlay 
-      // loop attribute removed to play only once
       muted 
       playsInline
       controls={false}
-      poster="/images/gold-world-poster.jpg" // Make sure this image path is correct
+      poster="/images/gold-world-poster.jpg" 
     >
       <source src="/videos/gold-world.mp4" type="video/mp4" />
       {t('funds.videoFallback')}
