@@ -1,4 +1,4 @@
-/* Footer.module.css (Definitive Version 2.0) */
+/* Footer.module.css */
 
 /* --- Base Styles --- */
 .section {
@@ -29,25 +29,29 @@
 /* --- Main Grid & Content --- */
 .mainGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr); /* Keep 5 columns */
   gap: 3rem;
   margin-bottom: 4rem;
 }
 
 .brandSection {
-  grid-column: span 2;
-  gap: 1.5rem;
+  /* --- FIX: Change span from 2 to 1 --- */
+  grid-column: span 1; 
+  /* --- END FIX --- */
+  gap: 1.5rem; /* Note: gap on grid items usually doesn't apply directly */
+               /* Consider adding display:flex; flex-direction:column; if needed */
 }
 
 .logoContainer { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
 .logo { width: 3rem; height: auto; }
 .logoText { font-size: 1.5rem; font-weight: 900; }
-.brandDescription { color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; line-height: 1.5; }
+.brandDescription { color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; line-height: 1.5; margin-top: 1rem; } /* Added margin-top */
 
-.languageSwitcher { display: flex; align-items: center; gap: 0.5rem; margin-top: 20px; }
-.languageIcon { width: 1rem; height: 1rem; color: rgba(255, 255, 255, 0.6); }
-.languageButton { font-size: 0.875rem; color: rgba(255, 255, 255, 0.8); transition: color 200ms; text-transform: uppercase; font-weight: 500; background: none; border: none; padding: 0; cursor: pointer; }
-.languageButton:hover { color: #FFFFFF; }
+/* Language switcher styles removed as requested */
+
+.linkSection {
+  /* This section implicitly takes 1 column span, which is correct */
+}
 
 .sectionTitle { font-size: 1.25rem; font-weight: 400; color: #D7C286; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
 .linkList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
@@ -70,6 +74,9 @@
 .regulatedContainer { display: flex; align-items: center; gap: 1.5rem; font-size: 0.875rem; }
 .regulatedLabel { color: rgba(255, 255, 255, 0.6); }
 .regulatedList { display: flex; align-items: center; gap: 1rem; color: rgba(255, 255, 255, 0.7); }
+.regulatedLink { color: inherit; text-decoration: none; transition: color 0.2s; } /* Added basic link styling */
+.regulatedLink:hover { color: #FFFFFF; } /* Added hover effect */
+
 
 .backgroundGlow { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 24rem; height: 8rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 9999px; filter: blur(48px); z-index: 1; }
 
@@ -86,13 +93,11 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
   line-height: 1.6;
-  
-  /* --- NEW & IMPROVED FIX FOR TEXT OVERFLOW --- */
-  overflow-wrap: break-word; /* Standard property for breaking long words */
-  word-break: break-word;    /* More aggressive property to ensure wrapping */
-  -webkit-hyphens: auto;     /* Adds hyphens to break words cleanly (for Safari) */
-  -ms-hyphens: auto;         /* Adds hyphens (for IE/Edge) */
-  hyphens: auto;             /* Adds hyphens (for modern browsers) */
+  overflow-wrap: break-word; 
+  word-break: break-word;    
+  -webkit-hyphens: auto;     
+  -ms-hyphens: auto;         
+  hyphens: auto;             
 }
 
 .modalBody p { margin-bottom: 1rem; }
@@ -103,7 +108,13 @@
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 992px) {
   .mainGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Now stacks brand + 1 link section, then 2 + 2 links */
+    gap: 2rem; /* Reduce gap slightly */
+  }
+  .brandSection {
+     /* Allow brand to span full width if needed, or keep at 1 */
+     /* grid-column: span 2; */ 
+     /* Or remove the span to let it flow naturally */
   }
 }
 
@@ -113,22 +124,31 @@
     padding-bottom: 4rem;
   }
   .mainGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack into 1 column */
     text-align: center;
     gap: 2rem;
   }
   .brandSection {
-    grid-column: span 1;
+    grid-column: span 1; /* Ensure it takes 1 column when stacked */
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .linkSection {
+     margin-bottom: 1.5rem; /* Add spacing between stacked sections */
+  }
   .linkList {
-    align-items: center;
+    align-items: center; /* Center links when stacked */
   }
   .bottomContent {
     flex-direction: column;
     gap: 1rem;
+    text-align: center; /* Center copyright/regulated text */
+  }
+  .regulatedContainer {
+     gap: 0.5rem; /* Reduce gap in regulated list */
+     flex-direction: column; /* Stack label and list on small mobile */
+     align-items: center;
   }
 
   /* Responsive Modal Styles */

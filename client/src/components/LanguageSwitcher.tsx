@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
+// Assuming Language type is exported from LanguageContext
+import { Language } from './LanguageContext'; 
 import { languageConfig } from './translations/config/languages';
 import styles from './LanguageSwitcher.module.css';
 import { Globe, ChevronDown } from 'lucide-react';
@@ -13,7 +15,30 @@ export const LanguageSwitcher = () => {
 
   const currentLanguageName = languageConfig[language]?.nativeName || language.toUpperCase();
 
-  // This effect handles closing the dropdown when clicking outside of it
+  // --- SORTING LOGIC ---
+  // 1. Get all language codes except 'en'
+  const otherLangCodes = (Object.keys(languageConfig) as Language[]).filter(
+    (code) => code !== 'en'
+  );
+
+  // 2. Sort the other language codes based on their nativeName
+  otherLangCodes.sort((a, b) => {
+    const nameA = languageConfig[a].nativeName.toUpperCase(); // Ignore case
+    const nameB = languageConfig[b].nativeName.toUpperCase(); // Ignore case
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0; // names must be equal
+  });
+
+  // 3. Create the final sorted list with 'en' first
+  const sortedLangCodes: Language[] = ['en', ...otherLangCodes];
+  // --- END SORTING LOGIC ---
+
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -26,9 +51,9 @@ export const LanguageSwitcher = () => {
     };
   }, []);
 
-  const handleLanguageChange = (langCode: string) => {
-    setLanguage(langCode as keyof typeof languageConfig);
-    setIsOpen(false); // Close dropdown after selection
+  const handleLanguageChange = (langCode: Language) => {
+    setLanguage(langCode);
+    setIsOpen(false); 
   };
 
   return (
@@ -46,15 +71,16 @@ export const LanguageSwitcher = () => {
 
       {isOpen && (
         <ul className={styles.dropdownMenu} role="menu">
-          {Object.keys(languageConfig).map((langCode) => (
+          {/* 4. Map over the NEW sorted list */}
+          {sortedLangCodes.map((langCode) => (
             <li key={langCode}>
               <button
                 className={styles.dropdownItem}
                 onClick={() => handleLanguageChange(langCode)}
                 role="menuitem"
-                disabled={langCode === language} // Disable the currently active language
+                disabled={langCode === language} 
               >
-                {languageConfig[langCode as keyof typeof languageConfig].nativeName}
+                {languageConfig[langCode].nativeName}
               </button>
             </li>
           ))}

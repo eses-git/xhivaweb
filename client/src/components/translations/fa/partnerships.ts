@@ -1,0 +1,27 @@
+// src/translations/fa/partnerships.ts
+
+export const partnershipsFaTranslations = {
+  'partnerships.preTitle': 'فراتر از مرزها',
+  'partnerships.title': 'شبکه همکاری جهانی',
+  'partnerships.item1.category': 'صندوق‌های ثروت ملی',
+  'partnerships.item1.description': 'همکاری‌های استراتژیک با مقامات سرمایه‌گذاری ملی و نهادهای دولتی در اقتصادهای بزرگ.',
+  'partnerships.item1.focus': 'روابط دولتی',
+  'partnerships.item2.category': 'سرمایه‌گذاران نهادی',
+  'partnerships.item2.description': 'روابط همکاری با صندوق‌های بازنشستگی، موقوفات و شرکت‌های بیمه در سراسر جهان.',
+  'partnerships.item2.focus': 'سرمایه نهادی',
+  'partnerships.item3.category': 'بانک‌های جهانی',
+  'partnerships.item3.description': 'همکاری‌های بانکی اصلی با موسسات مالی درجه یک برای دسترسی به بازارهای سرمایه.',
+  'partnerships.item3.focus': 'زیرساخت بانکی',
+  'partnerships.item4.category': 'شرکای فناوری',
+  'partnerships.item4.description': 'اتحادهای نوآوری با شرکت‌های پیشرو فین‌تک و ارائه‌دهندگان زیرساخت فناوری.',
+  'partnerships.item4.focus': 'نوآوری دیجیتال',
+  'partnerships.item5.category': 'نهادهای نظارتی',
+  'partnerships.item5.description': 'همکاری‌های انطباق با مقامات نظارتی مالی در تمام حوزه‌های قضایی عملیاتی.',
+  'partnerships.item5.focus': 'برتری نظارتی',
+  'partnerships.item6.category': 'مؤسسات تحقیقاتی',
+  'partnerships.item6.description': 'همکاری‌های آکادمیک با دانشگاه‌ها و اتاق‌های فکر پیشرو برای تحقیقات و تحلیل بازار.',
+  'partnerships.item6.focus': 'برتری تحقیقاتی',
+  'partnerships.cta.title': 'آماده ساختن آینده هستید؟',
+  'partnerships.cta.subtitle': 'بیایید همکاری کنیم و با هم ارزش ایجاد کنیم. ما به دنبال شرکای نوآور برای پیوستن به مأموریت خود هستیم.',
+  'partnerships.cta.button': 'شریک شوید',
+};

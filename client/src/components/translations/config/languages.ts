@@ -41,6 +41,27 @@ export const languageConfig = {
     nativeName: 'עברית',
   },
   ur: {
-    nativeName: 'اردو', // <-- Add Urdu here
+    nativeName: 'اردو',
+  },
+  hi: {
+    nativeName: 'हिन्दी',
+  },
+  id: {
+    nativeName: 'Bahasa Indonesia',
+  },
+  sw: {
+    nativeName: 'Kiswahili',
+  },
+  it: {
+    nativeName: 'Italiano',
+  },
+  tl: {
+    nativeName: 'Tagalog',
+  },
+  fa: {
+    nativeName: 'فارسی',
+  },
+  el: {
+    nativeName: 'Ελληνικά', // Added Greek
   },
 };

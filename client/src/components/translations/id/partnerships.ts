@@ -1,0 +1,27 @@
+// src/translations/id/partnerships.ts
+
+export const partnershipsIdTranslations = {
+  'partnerships.preTitle': 'MELAMPAUI BATAS',
+  'partnerships.title': 'Jaringan Kemitraan Global',
+  'partnerships.item1.category': 'DANA KEKAYAAN NEGARA',
+  'partnerships.item1.description': 'Kemitraan strategis dengan otoritas investasi nasional dan entitas negara di seluruh ekonomi utama.',
+  'partnerships.item1.focus': 'Hubungan Pemerintah',
+  'partnerships.item2.category': 'INVESTOR INSTITUSIONAL',
+  'partnerships.item2.description': 'Hubungan kolaboratif dengan dana pensiun, dana abadi, dan perusahaan asuransi di seluruh dunia.',
+  'partnerships.item2.focus': 'Modal Institusional',
+  'partnerships.item3.category': 'BANK GLOBAL',
+  'partnerships.item3.description': 'Kemitraan perbankan inti dengan lembaga keuangan tingkat satu untuk akses pasar modal.',
+  'partnerships.item3.focus': 'Infrastruktur Perbankan',
+  'partnerships.item4.category': 'MITRA TEKNOLOGI',
+  'partnerships.item4.description': 'Aliansi inovasi dengan perusahaan fintech terkemuka dan penyedia infrastruktur teknologi.',
+  'partnerships.item4.focus': 'Inovasi Digital',
+  'partnerships.item5.category': 'BADAN REGULASI',
+  'partnerships.item5.description': 'Kemitraan kepatuhan dengan otoritas regulasi keuangan di semua yurisdiksi operasi.',
+  'partnerships.item5.focus': 'Keunggulan Regulasi',
+  'partnerships.item6.category': 'LEMBAGA PENELITIAN',
+  'partnerships.item6.description': 'Kemitraan akademik dengan universitas terkemuka dan lembaga pemikir untuk riset dan analisis pasar.',
+  'partnerships.item6.focus': 'Keunggulan Riset',
+  'partnerships.cta.title': 'Siap Membangun Masa Depan?',
+  'partnerships.cta.subtitle': 'Mari berkolaborasi dan menciptakan nilai bersama. Kami mencari mitra inovatif untuk bergabung dengan misi kami.',
+  'partnerships.cta.button': 'Menjadi Mitra',
+};

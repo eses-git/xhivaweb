@@ -1,19 +1,22 @@
 // Footer.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, ArrowRight, X } from "lucide-react";
+// REMOVED Globe import as it's no longer used here
+import { ArrowRight, X } from "lucide-react";
+// REMOVED language, setLanguage from useLanguage import as they are not used
 import { useLanguage, TranslationKey } from "./LanguageContext";
 import logo from './assets/logo-thick-white.png';
 import styles from './Footer.module.css';
+// REMOVED LanguageSwitcher import
 
-// --- TYPE DEFINITION FIX: Define a more specific type for the links ---
+// Type definition for FooterLink
 type FooterLink = {
   name: string;
   href: string;
-  onClick?: () => void; // The '?' makes onClick optional
+  onClick?: () => void;
 };
 
-// Modal component (no changes needed here)
+// Modal component
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -22,6 +25,7 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+  // ... (Modal implementation remains the same)
   return (
     <AnimatePresence>
       {isOpen && (
@@ -60,15 +64,15 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   );
 };
 
+
 export function Footer() {
-  const { t, language, setLanguage } = useLanguage();
+  const { t } = useLanguage(); // 'language' and 'setLanguage' are removed
 
   const modalContent = {
     disclaimer: {
       title: t('footer.modal.disclaimer.title'),
       content: (
         <>
-        
           <p>{t('footer.modal.disclaimer.p1')}</p>
           <p>{t('footer.modal.disclaimer.p2')}</p>
           <p>{t('footer.modal.disclaimer.p3')}</p>
@@ -84,7 +88,6 @@ export function Footer() {
           <p>{t('footer.modal.privacy.p2')}</p>
           <p>{t('footer.modal.privacy.p3')}</p>
           <p dangerouslySetInnerHTML={{ __html: t('footer.modal.privacy.p4') }} />
-
         </>
       )
     },
@@ -103,7 +106,6 @@ export function Footer() {
   
   const [openModal, setOpenModal] = useState<keyof typeof modalContent | null>(null);
 
-  // Apply the new FooterLink type here
   const footerSections: { title: string; links: FooterLink[] }[] = [
     {
       title: t('footer.company'),
@@ -116,6 +118,7 @@ export function Footer() {
       title: t('footer.services'),
       links: [
         { name: t('nav.services'), href: "/services" },
+        { name: t('nav.tax'), href: "/strategic-tax-architecture" },
         { name: t('nav.strategy'), href: "/#strategy" },
         { name: t('footer.globalFunds'), href: "/funds" },
         { name: t('nav.partnerships'), href: "/partnership" }
@@ -135,7 +138,6 @@ export function Footer() {
       links: [
         { name: t('nav.contact'), href: "/contact" },
         { name: t('nav.careers'), href: "/careers" },
-
       ]
     }
   ];
@@ -161,17 +163,7 @@ export function Footer() {
               <p className={styles.brandDescription}>
                 {t('footer.brandDescription')}
               </p>
-              <div className={styles.languageSwitcher}>
-                <Globe className={styles.languageIcon} />
-                <button
-                  onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                  className={styles.languageButton}
-                >
-                  {language === 'en' ? t('footer.language.es') : t('footer.language.en')}
-
-
-                </button>
-              </div>
+              {/* --- REMOVED LanguageSwitcher section --- */}
             </motion.div>
 
             {footerSections.map((section, index) => (
@@ -188,7 +180,6 @@ export function Footer() {
                 <ul className={styles.linkList}>
                   {section.links.map((link) => (
                     <li key={link.name}>
-                      {/* --- RENDERING FIX: Check if link.onClick exists --- */}
                       {link.onClick ? (
                         <button
                           onClick={link.onClick}
@@ -211,6 +202,7 @@ export function Footer() {
             ))}
           </div>
 
+          {/* ... (Newsletter section remains the same) ... */}
           <motion.div 
             className={styles.newsletterSection}
             initial={{ opacity: 0, y: 30 }}
@@ -220,7 +212,7 @@ export function Footer() {
             viewport={{ once: false, amount: 0.3 }}
             style={{display:'none'}}
           >
-            <div className={styles.newsletterContent}>
+             <div className={styles.newsletterContent}>
               <h3 className={styles.newsletterTitle}>{t('footer.newsletterTitle')}</h3>
               <p className={styles.newsletterDescription}>
                 {t('footer.newsletterDescription')}
@@ -242,6 +234,7 @@ export function Footer() {
             </div>
           </motion.div>
 
+          {/* ... (Bottom section remains the same) ... */}
           <motion.div 
             className={styles.bottomSection}
             initial={{ opacity: 0 }}
@@ -250,7 +243,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <div className={styles.bottomContent}>
+             <div className={styles.bottomContent}>
               <div className={styles.copyright}>
                 {t('footer.copyright')}
               </div>
@@ -270,12 +263,12 @@ export function Footer() {
         <div className={styles.backgroundGlow}></div>
       </footer>
 
+      {/* ... (Modal remains the same) ... */}
       <Modal
         isOpen={openModal !== null}
         onClose={() => setOpenModal(null)}
         title={openModal ? modalContent[openModal]?.title : ''}
       >
-
         {openModal ? modalContent[openModal]?.content : null}
       </Modal>
     </>

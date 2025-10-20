@@ -1,0 +1,27 @@
+// src/translations/el/partnerships.ts
+
+export const partnershipsElTranslations = {
+  'partnerships.preTitle': 'ΠΕΡΑ ΑΠΟ ΤΑ ΣΥΝΟΡΑ',
+  'partnerships.title': 'Παγκόσμιο Δίκτυο Συνεργασιών',
+  'partnerships.item1.category': 'ΚΡΑΤΙΚΑ ΕΠΕΝΔΥΤΙΚΑ ΤΑΜΕΙΑ',
+  'partnerships.item1.description': 'Στρατηγικές συνεργασίες με εθνικές επενδυτικές αρχές και κρατικούς φορείς σε μεγάλες οικονομίες.',
+  'partnerships.item1.focus': 'Κυβερνητικές Σχέσεις',
+  'partnerships.item2.category': 'ΘΕΣΜΙΚΟΙ ΕΠΕΝΔΥΤΕΣ',
+  'partnerships.item2.description': 'Συνεργατικές σχέσεις με συνταξιοδοτικά ταμεία, κληροδοτήματα και ασφαλιστικές εταιρείες παγκοσμίως.',
+  'partnerships.item2.focus': 'Θεσμικό Κεφάλαιο',
+  'partnerships.item3.category': 'ΠΑΓΚΟΣΜΙΕΣ ΤΡΑΠΕΖΕΣ',
+  'partnerships.item3.description': 'Βασικές τραπεζικές συνεργασίες με χρηματοπιστωτικά ιδρύματα πρώτης κατηγορίας για πρόσβαση στις κεφαλαιαγορές.',
+  'partnerships.item3.focus': 'Τραπεζική Υποδομή',
+  'partnerships.item4.category': 'ΤΕΧΝΟΛΟΓΙΚΟΙ ΕΤΑΙΡΟΙ',
+  'partnerships.item4.description': 'Συμμαχίες καινοτομίας με κορυφαίες εταιρείες fintech και παρόχους τεχνολογικής υποδομής.',
+  'partnerships.item4.focus': 'Ψηφιακή Καινοτομία',
+  'partnerships.item5.category': 'ΡΥΘΜΙΣΤΙΚΟΙ ΦΟΡΕΙΣ',
+  'partnerships.item5.description': 'Συνεργασίες συμμόρφωσης με τις χρηματοοικονομικές ρυθμιστικές αρχές σε όλες τις λειτουργικές δικαιοδοσίες.',
+  'partnerships.item5.focus': 'Ρυθμιστική Αριστεία',
+  'partnerships.item6.category': 'ΕΡΕΥΝΗΤΙΚΑ ΙΔΡΥΜΑΤΑ',
+  'partnerships.item6.description': 'Ακαδημαϊκές συνεργασίες με κορυφαία πανεπιστήμια και δεξαμενές σκέψης για έρευνα και ανάλυση αγοράς.',
+  'partnerships.item6.focus': 'Ερευνητική Αριστεία',
+  'partnerships.cta.title': 'Έτοιμοι να Χτίσουμε το Μέλλον;',
+  'partnerships.cta.subtitle': 'Ας συνεργαστούμε και ας δημιουργήσουμε αξία μαζί. Αναζητούμε καινοτόμους εταίρους για να συμμετάσχουν στην αποστολή μας.',
+  'partnerships.cta.button': 'Γίνετε Συνεργάτης',
+};

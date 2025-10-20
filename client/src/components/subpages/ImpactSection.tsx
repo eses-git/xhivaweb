@@ -44,9 +44,22 @@ export function ImpactSection() {
           <p className={styles.introText}>{t('impact.intro1')}</p>
         </header>
 
-        {/* --- MOBILE CARD CONTAINER (Updated for equal height) --- */}
+        {/* --- FIX: Moved Toggles ABOVE the cards --- */}
+        <div className={styles.pillarToggles}>
+          {Object.values(pillars).map(pillar => (
+            <button
+              key={pillar.id}
+              className={`${styles.toggleButton} ${activePillar === pillar.id ? styles.active : ''}`}
+              onClick={() => setActivePillar(pillar.id as 'economic' | 'humanitarian')}
+            >
+              {t(pillar.titleKey as any)}
+            </button>
+          ))}
+        </div>
+        {/* --- END FIX --- */}
+
+        {/* --- MOBILE CARD CONTAINER --- */}
         <div className={styles.cardContainerForMobile}>
-          {/* We render BOTH cards and use CSS to show/hide them */}
           {Object.values(pillars).map(pillar => (
             <div
               key={pillar.id}
@@ -81,17 +94,7 @@ export function ImpactSection() {
           </div>
         </div>
 
-        <div className={styles.pillarToggles}>
-          {Object.values(pillars).map(pillar => (
-            <button
-              key={pillar.id}
-              className={`${styles.toggleButton} ${activePillar === pillar.id ? styles.active : ''}`}
-              onClick={() => setActivePillar(pillar.id as 'economic' | 'humanitarian')}
-            >
-              {t(pillar.titleKey as any)}
-            </button>
-          ))}
-        </div>
+        {/* --- Toggles moved above --- */}
 
         <p className={styles.conclusionText}>
           {t('impact.conclusion')}

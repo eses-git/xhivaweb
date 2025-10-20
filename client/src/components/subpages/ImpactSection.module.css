@@ -33,10 +33,10 @@
   background-color: #d7c18641;
    border: 1px solid rgba(0, 44, 84, 0.1);
     font-size: 1rem;
-     font-weight: 400; 
+     font-weight: 400;
      letter-spacing: 0.3em;
       text-transform: uppercase;
-       color: #2D5F9B; 
+       color: #2D5F9B;
           margin-bottom: 3rem;
         margin-top: 3rem;
         font-family: var(--font-headings);
@@ -59,12 +59,18 @@
 
 /* --- MOBILE & DESKTOP CARD CONTENT (Shared Styles) --- */
 .cardContent {
-  padding: 3rem;
+  /* --- FIX 1: Reduced top padding --- */
+  padding: 1.5rem 3rem 2.5rem 3rem; /* Adjusted top/bottom padding */
+  /* --- END FIX 1 --- */
   text-align: center;
   max-width: 650px;
+  /* NEW: Use flexbox to control vertical alignment within this block */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* --- NEW: Simple Card for Mobile --- */
+/* --- Simple Card for Mobile --- */
 .cardContainerForMobile {
   display: none; /* Hidden by default on desktop */
 }
@@ -74,7 +80,8 @@
   perspective: 1500px;
   max-width: 900px;
   margin: 0 auto;
-  height: 500px;
+  height: 450px; /* Reduced height slightly as padding reduced */
+  margin-top: 2rem;
 }
 
 .flipperCard {
@@ -112,7 +119,7 @@
 
 .icon {
   color: var(--gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced margin */
 }
 .icon svg {
   width: 48px;
@@ -137,7 +144,7 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin: 2.5rem auto 4rem auto;
+  margin: 0 auto 2.5rem auto;
 }
 
 .toggleButton {
@@ -180,21 +187,19 @@
 .conclusionText {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 4rem auto 0 auto;
   font-size: 1.1rem;
   color: var(--text-muted);
 }
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-  /* NEW: Adjust the main section for mobile */
   .section {
-    padding-left: 0; /* Remove side padding */
-    padding-right: 0; /* Remove side padding */
-    overflow-x: hidden; /* Prevent any accidental horizontal scrolling */
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
   }
 
-  /* NEW: Add padding back to the text containers */
   .header,
   .pillarToggles,
   .conclusionText {
@@ -202,47 +207,58 @@
     padding-right: 1.5rem;
   }
 
-  /* Hide the 3D flipper on mobile */
   .perspectiveContainer {
     display: none;
   }
 
-  /* Show and style our new simple container on mobile */
   .cardContainerForMobile {
-    display: grid;
-    place-items: center;
+    display: block; /* Change from grid to block */
     width: 100%;
-    max-width: none; /* UPDATED: Allow card to be full width */
-    margin: 0 0 2rem 0; /* UPDATED: Remove side margins */
+    max-width: none;
+    margin: 0 0 2rem 0;
     background-color: var(--background-card);
-    border: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    /* NEW: Remove the border on the sides for an edge-to-edge look */
     border-left: none;
     border-right: none;
+    /* --- FIX 2: Remove fixed min-height --- */
+    /* min-height: 400px; */ 
+    position: relative; /* Keep relative for absolute children */
+    overflow: hidden; /* Prevent content jumping during fade */
+    /* NEW: Add min-height based on content (using auto won't work well with absolute positioning) */
+    /* Instead, we rely on padding inside .mobileCardContent to push height */
   }
 
-  /* Style for the stacked content cards */
   .mobileCardContent {
-    grid-area: 1 / 1;
-    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    inset: 0; /* Shortcut for top/left/right/bottom: 0 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Add visibility transition */
     opacity: 0;
+    visibility: hidden; /* Hide inactive card completely */
     text-align: center;
-    padding: 2.5rem;
+    /* --- FIX 1 & 2: Adjust padding for icon & auto height --- */
+    padding: 2rem 1.5rem; /* Reduced top/bottom padding further for mobile */
+    /* --- END FIX --- */
+    pointer-events: none;
   }
   
-  /* Show the active card */
   .mobileCardContent.active {
     opacity: 1;
+    visibility: visible; /* Make active card visible */
+    position: relative; /* Allow active card to define container height */
+    pointer-events: auto;
   }
 
   .title {
     font-size: 2.5rem;
   }
 
-  .cardContent {
-    padding: 2rem;
-  }
+  /* Desktop padding already adjusted via .cardContent */
 
   .pillarTitle {
     font-size: 1.8rem;
@@ -250,5 +266,14 @@
 
   .pillarDescription {
     font-size: 1rem;
+  }
+
+  .toggleButton {
+    font-weight: bold;
+    color: #495057;
+    font-size: 1.1rem;
+  }
+  .toggleButton.active {
+    color: var(--dark-blue); 
   }
 }

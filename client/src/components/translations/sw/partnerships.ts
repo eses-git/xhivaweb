@@ -1,0 +1,27 @@
+// src/translations/sw/partnerships.ts
+
+export const partnershipsSwTranslations = {
+  'partnerships.preTitle': 'ZAIDI YA MIPAKA',
+  'partnerships.title': 'Mtandao wa Ushirikiano wa Kimataifa',
+  'partnerships.item1.category': 'FEDHA ZA UTAJIRI WA SERIKALI',
+  'partnerships.item1.description': 'Ushirikiano wa kimkakati na mamlaka za uwekezaji za kitaifa na vyombo vya serikali katika uchumi mkuu.',
+  'partnerships.item1.focus': 'Mahusiano ya Kiserikali',
+  'partnerships.item2.category': 'WAWEKEZAJI WA TAASISI',
+  'partnerships.item2.description': 'Mahusiano ya ushirikiano na mifuko ya pensheni, wakfu, na makampuni ya bima duniani kote.',
+  'partnerships.item2.focus': 'Mtaji wa Kitaasisi',
+  'partnerships.item3.category': 'BENKI ZA KIMATAIFA',
+  'partnerships.item3.description': 'Ushirikiano mkuu wa kibenki na taasisi za kifedha za daraja la kwanza kwa ufikiaji wa masoko ya mitaji.',
+  'partnerships.item3.focus': 'Miundombinu ya Kibenki',
+  'partnerships.item4.category': 'WASHIRIKA WA TEKNOLOJIA',
+  'partnerships.item4.description': 'Muungano wa uvumbuzi na makampuni yanayoongoza ya fintech na watoa huduma wa miundombinu ya teknolojia.',
+  'partnerships.item4.focus': 'Uvumbuzi wa Kidijitali',
+  'partnerships.item5.category': 'VYOMBO VYA UDHIBITI',
+  'partnerships.item5.description': 'Ushirikiano wa uzingatiaji na mamlaka za udhibiti wa kifedha katika mamlaka zote za uendeshaji.',
+  'partnerships.item5.focus': 'Ubora wa Udhibiti',
+  'partnerships.item6.category': 'TAASISI ZA UTAFITI',
+  'partnerships.item6.description': 'Ushirikiano wa kitaaluma na vyuo vikuu vinavyoongoza na mizinga ya kufikiria kwa utafiti na uchambuzi wa soko.',
+  'partnerships.item6.focus': 'Ubora wa Utafiti',
+  'partnerships.cta.title': 'Uko Tayari Kujenga Wakati Ujao?',
+  'partnerships.cta.subtitle': 'Tushirikiane na tuunde thamani pamoja. Tunatafuta washirika wabunifu kujiunga na misheni yetu.',
+  'partnerships.cta.button': 'Kuwa Mshirika',
+};

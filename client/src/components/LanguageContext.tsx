@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { en } from './translations/en';
-import { es } from './translations/es'; 
+import { es } from './translations/es';
 import { ru } from './translations/ru';
 import { zh } from './translations/zh';
 import { ar } from './translations/ar';
@@ -12,7 +12,14 @@ import { ja } from './translations/ja';
 import { ko } from './translations/ko';
 import { pt } from './translations/pt';
 import { he } from './translations/he';
-import { ur } from './translations/ur'; // 1. Import 'ur'
+import { ur } from './translations/ur';
+import { hi } from './translations/hi';
+import { id } from './translations/id';
+import { sw } from './translations/sw';
+import { it } from './translations/it';
+import { tl } from './translations/tl';
+import { fa } from './translations/fa';
+import { el } from './translations/el'; // 1. Import 'el' (Greek)
 
 const translations = {
   en,
@@ -28,7 +35,14 @@ const translations = {
   ko,
   pt,
   he,
-  ur, // 2. Add 'ur' to the object
+  ur,
+  hi,
+  id,
+  sw,
+  it,
+  tl,
+  fa,
+  el, // 2. Add 'el' (Greek) to the object
 };
 
 export type Language = keyof typeof translations;
@@ -55,11 +69,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
 
     if (typeof navigator !== 'undefined' && navigator.language) {
-      let browserLang = navigator.language.split('-')[0]; // e.g., 'ur', 'he', 'pt'
-      
-      if (browserLang === 'zh') browserLang = 'zh'; 
-      if (browserLang === 'iw') browserLang = 'he'; // Handle older Hebrew code if necessary
-      
+      let browserLang = navigator.language.split('-')[0]; // e.g., 'el', 'fa', 'tl'
+
+      if (browserLang === 'zh') browserLang = 'zh';
+      if (browserLang === 'iw') browserLang = 'he'; // Handle older Hebrew code
+
       if (browserLang in typedTranslations) {
         setLanguageState(browserLang as Language);
         return;
@@ -72,9 +86,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('appLanguage', language);
-      
-      // 3. Add 'ur' to the RTL check
-      if (language === 'ar' || language === 'he' || language === 'ur') { 
+
+      // Update RTL/LTR direction based on language
+      if (language === 'ar' || language === 'he' || language === 'ur' || language === 'fa') {
         document.documentElement.setAttribute('dir', 'rtl');
       } else {
         document.documentElement.setAttribute('dir', 'ltr');

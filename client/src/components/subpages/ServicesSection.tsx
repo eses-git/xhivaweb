@@ -20,9 +20,25 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = services[activeIndex];
 
+  // --- ADDED: Mobile detection state ---
+  const [isMobile, setIsMobile] = useState(false);
+  // --- END ---
+
   const [spotlightY, setSpotlightY] = useState(0);
   const listWrapperRef = useRef<HTMLDivElement>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // --- ADDED: Effect for mobile detection ---
+  useEffect(() => {
+    const checkMobile = () => {
+      // Use 1023px breakpoint consistent with CSS
+      setIsMobile(window.innerWidth <= 1023); 
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  // --- END ---
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -32,12 +48,15 @@ export function ServicesSection() {
     return () => clearInterval(intervalId);
   }, [services.length]);
 
+  // Updated useEffect to only calculate spotlight on desktop
   useEffect(() => {
-    const currentButton = buttonRefs.current[activeIndex];
-    if (currentButton) {
-      setSpotlightY(currentButton.offsetTop);
+    if (!isMobile) { // Only run if not mobile
+      const currentButton = buttonRefs.current[activeIndex];
+      if (currentButton) {
+        setSpotlightY(currentButton.offsetTop);
+      }
     }
-  }, [activeIndex]);
+  }, [activeIndex, isMobile]); // Add isMobile dependency
 
   return (
     <section id="services" className={styles.servicesSection}>
@@ -56,17 +75,33 @@ export function ServicesSection() {
         </motion.div>
 
         <div className={styles.serviceLayout}>
+          {/* --- FIX: ADDED ICON NAVIGATION FOR MOBILE --- */}
+          <div className={styles.serviceIconsMobile}>
+            {services.map((service, index) => (
+              <button
+                key={`icon-${service.id}`}
+                className={`${styles.iconButtonMobile} ${activeIndex === index ? styles.active : ''}`}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Select ${service.title}`}
+              >
+                <service.icon className={styles.iconInButton} />
+              </button>
+            ))}
+          </div>
+          {/* --- END FIX --- */}
+
+          {/* --- Original Button List (Desktop) --- */}
           <div ref={listWrapperRef} className={styles.serviceListWrapper}>
-            <motion.div
-              className={styles.spotlight}
-              animate={{ y: spotlightY }}
-              transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            />
+            {!isMobile && ( // Conditionally render spotlight only if not mobile
+              <motion.div
+                className={styles.spotlight}
+                animate={{ y: spotlightY }}
+                transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+              />
+            )}
             {services.map((service, index) => (
               <button
                 key={service.id}
-                // --- THIS IS THE FIX ---
-                // Wrap the function body in curly braces to ensure a void return type
                 ref={el => { buttonRefs.current[index] = el; }} 
                 className={`${styles.serviceButton} ${activeIndex === index ? styles.active : ''}`}
                 onClick={() => setActiveIndex(index)}
@@ -77,10 +112,11 @@ export function ServicesSection() {
             ))}
           </div>
 
+          {/* --- Details Panel (Content Card) --- */}
           <div className={styles.detailsPanel}>
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeService.id}
+                key={activeService.id} // Ensure key changes for animation
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -106,6 +142,9 @@ export function ServicesSection() {
               </motion.div>
             </AnimatePresence>
           </div>
+          
+          {/* Slider Dots removed */}
+
         </div>
       </NeuralConnections>
     </section>

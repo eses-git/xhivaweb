@@ -2,12 +2,10 @@
 
 .servicesSection {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #FFFFFF; /* Fallback if background component fails */
   overflow: hidden;
-  margin-top:85px;
-  padding-bottom:85px;
-  margin-bottom:0;
-  margin-top:0;
+  /* padding-bottom: 85px; // REMOVED - Caused extra space */
+  margin-top: 0;
 }
 
 /* --- Header --- */
@@ -25,10 +23,9 @@
   margin-bottom: 3rem;
   font-family: var(--font-headings);
   margin-top: 150px;
- }
+}
 
-/* CHANGED: Font weight adjusted to match other sections */
-.title { 
+.title {
   font-family: var(--font-headings);
   font-size: 4rem;
   color: var(--dark-blue);
@@ -44,27 +41,30 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: flex-start;
-  max-width: 1440px;
+  max-width: 1420px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem; /* REMOVED padding-bottom here */
   gap: 2rem;
-  max-width: 1420px; /* Centralizes content */
-  padding-bottom:50px;
-
-
 }
 @media (min-width: 1024px) {
   .serviceLayout {
     grid-template-columns: 1fr 2fr;
     gap: 3rem;
+    padding-bottom: 50px; /* Add padding back only for desktop grid */
   }
 }
 
-/* --- Left Side: Interactive List --- */
+/* --- Left Side: Interactive List (Desktop) --- */
 .serviceListWrapper {
   position: relative;
   border: 1px solid #e5e7eb;
   background-color: #FFFFFF;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .serviceListWrapper {
+    display: block;
+  }
 }
 
 .spotlight {
@@ -77,6 +77,12 @@
   z-index: 0;
   pointer-events: none;
 }
+@media (min-width: 1024px) {
+  .spotlight {
+    display: block;
+  }
+}
+
 
 .serviceButton {
   position: relative;
@@ -118,105 +124,146 @@
 .serviceButton.active .buttonTitle {
   color: #002c54;
 }
-.titleIcon {
-  width: 100px;
-  height: 100px;
-  margin-right: 1rem;
-} 
 
-/* --- Right Side: Details Panel --- */
-/* CHANGED: Panel now has a white background and blue border */
+/* --- Right Side: Details Panel (Content Card) --- */
 .detailsPanel {
   position: relative;
   min-height: 420px;
-  background-color: #FFFFFF; /* Was blue */
-  border: 2px solid #90b4d4; /* Added blue border */
+  background-color: #FFFFFF;
+  border: 2px solid #90b4d4;
   padding: 2rem;
 }
 
-/* CHANGED: Text colors updated for light background */
-.detailsSubtitle { 
-  color: #90b4d4; 
-  text-transform: uppercase; 
-  letter-spacing: 0.1em; 
-  font-size: 0.875rem; 
-  margin-bottom: 0.5rem; 
+.detailsSubtitle {
+  color: #90b4d4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
 }
-.detailsTitle { 
-  font-size: 2rem; 
-  font-weight: 500; 
-  margin-bottom: 1rem; 
-  color: #002c54; 
+.detailsTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #002c54;
 }
-.detailsDescription { 
-   font-size: 1rem;
+.detailsDescription {
+  font-size: 1rem;
   color: #4b5563;
   line-height: 1.7;
   max-width: 600px;
   margin-bottom: 2rem;
-  
-  /* --- FIX 1: Remove quotes --- */
   text-align: center;
-
-  /* --- FIX 2: Center the block --- */
   margin-left: auto;
   margin-right: auto;
 }
 
-/* CHANGED: Grid no longer needs a separate background */
-.detailsGrid { 
-  display: grid; 
-  grid-template-columns: 1fr; 
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
-  border-top: 1px solid #e5e7eb; /* Changed to a light gray border */
+  border-top: 1px solid #e5e7eb;
   padding-top: 1.5rem;
 }
-
-/* Add this to your .module.css file */
-
-.iconContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem; /* Adds space between the icon and the title below it */
-}
-
-/* In your .module.css file */
-
-
-
-/* Step B: Apply the animation to your icon's class */
-.titleIcon {
-  width: 100px;
-  height: 100px;
-
-}
-
 @media (min-width: 768px) { .detailsGrid { grid-template-columns: repeat(3, 1fr); } }
 
-.gridTitle { 
-  color: #d7c286; 
-  font-size: 0.8rem; 
-  text-transform: uppercase; 
-  letter-spacing: 0.1em; 
-  margin-bottom: 0.5rem; 
+.gridTitle {
+  color: #d7c286;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
 }
-.servicesSection{
-  margin-bottom:0;
-  padding-bottom:0;
+
+.gridText {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
 }
-.gridText { 
-  font-size: 0.9rem; 
-  color: #4b5563; 
-  line-height: 1.6; 
+
+/* --- ICON NAVIGATION STYLES (Mobile) --- */
+.serviceIconsMobile {
+  display: none;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.iconButtonMobile {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  opacity: 0.7; /* Increase default opacity slightly */
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.iconInButton {
+  width: 28px;
+  height: 28px;
+  /* --- FIX 1: Default color changed to dark --- */
+  color: var(--dark-blue); /* Was #adb5bd */
+  /* --- END FIX --- */
+  transition: color 0.3s ease;
+}
+
+.iconButtonMobile:hover {
+  opacity: 0.85; /* Slightly increase hover opacity */
+}
+
+.iconButtonMobile.active {
+  opacity: 1;
+}
+
+.iconButtonMobile.active .iconInButton {
+  /* --- FIX 1: Active color changed to gold --- */
+  color: var(--gold); /* Was var(--dark-blue) */
+  /* --- END FIX --- */
 }
 
 /* --- Mobile Adjustments --- */
 @media (max-width: 1023px) {
+  /* --- FIX 2: Remove bottom padding from section --- */
+  .servicesSection {
+      padding-bottom: 0; /* Was 85px */
+  }
+  .serviceLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem; /* Add some padding back here if needed below buttons */
+  }
+  .serviceListWrapper {
+    display: none;
+  }
+  .serviceIconsMobile {
+    display: flex;
+    order: 1;
+  }
   .detailsPanel {
+    order: 2;
     min-height: auto;
+    width: 100%;
+    margin-bottom: 1.5rem; /* Add margin below card before icons */
+  }
+  .spotlight {
+      display: none !important;
   }
 }
+
 @media (max-width: 768px) {
   .title { font-size: 2.5rem; }
   .detailsTitle { font-size: 1.75rem; }
+  .iconInButton {
+    width: 24px;
+    height: 24px;
+  }
+  .serviceIconsMobile {
+     gap: 0.5rem;
+     padding: 0.75rem 0;
+     margin-bottom: 1rem;
+  }
 }

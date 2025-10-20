@@ -1,0 +1,27 @@
+// src/translations/tl/partnerships.ts
+
+export const partnershipsTlTranslations = {
+  'partnerships.preTitle': 'HIGIT SA MGA HANGGANAN',
+  'partnerships.title': 'Pandaigdigang Network ng Pakikipagsosyo',
+  'partnerships.item1.category': 'MGA SOVEREIGN WEALTH FUND',
+  'partnerships.item1.description': 'Mga estratehikong pakikipagsosyo sa mga pambansang awtoridad sa pamumuhunan at mga sovereign entity sa mga pangunahing ekonomiya.',
+  'partnerships.item1.focus': 'Mga Relasyon sa Gobyerno',
+  'partnerships.item2.category': 'MGA INSTITUSYONAL NA MAMUMUHUNAN',
+  'partnerships.item2.description': 'Mga ugnayang nagtutulungan sa mga pondo ng pensiyon, mga endowment, at mga kumpanya ng seguro sa buong mundo.',
+  'partnerships.item2.focus': 'Institusyonal na Kapital',
+  'partnerships.item3.category': 'MGA PANDAIGDIGANG BANGKO',
+  'partnerships.item3.description': 'Mga pangunahing pakikipagsosyo sa pagbabangko sa mga nangungunang institusyong pampinansyal para sa access sa mga merkado ng kapital.',
+  'partnerships.item3.focus': 'Imprastraktura sa Pagbabangko',
+  'partnerships.item4.category': 'MGA KASOSYO SA TEKNOLOHIYA',
+  'partnerships.item4.description': 'Mga alyansa sa pagbabago sa mga nangungunang kumpanya ng fintech at mga provider ng imprastraktura sa teknolohiya.',
+  'partnerships.item4.focus': 'Digital na Pagbabago',
+  'partnerships.item5.category': 'MGA REGULATORY BODY',
+  'partnerships.item5.description': 'Mga pakikipagsosyo sa pagsunod sa mga awtoridad sa regulasyon sa pananalapi sa lahat ng operating jurisdiction.',
+  'partnerships.item5.focus': 'Kahusayan sa Regulasyon',
+  'partnerships.item6.category': 'MGA INSTITUSYON SA PANANALIKSIK',
+  'partnerships.item6.description': 'Mga pakikipagsosyong akademiko sa mga nangungunang unibersidad at mga think tank para sa pananaliksik at pagsusuri sa merkado.',
+  'partnerships.item6.focus': 'Kahusayan sa Pananaliksik',
+  'partnerships.cta.title': 'Handa nang Bumuo ng Kinabukasan?',
+  'partnerships.cta.subtitle': 'Magtulungan tayo at lumikha ng halaga nang sama-sama. Naghahanap kami ng mga makabagong kasosyo upang sumali sa aming misyon.',
+  'partnerships.cta.button': 'Maging Kasosyo',
+};

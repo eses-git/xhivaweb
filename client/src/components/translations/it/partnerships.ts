@@ -1,0 +1,27 @@
+// src/translations/it/partnerships.ts
+
+export const partnershipsItTranslations = {
+  'partnerships.preTitle': 'OLTRE I CONFINI',
+  'partnerships.title': 'Rete Globale di Partnership',
+  'partnerships.item1.category': 'FONDI SOVRANI',
+  'partnerships.item1.description': 'Partnership strategiche con autorità di investimento nazionali ed entità sovrane nelle principali economie.',
+  'partnerships.item1.focus': 'Relazioni Governative',
+  'partnerships.item2.category': 'INVESTITORI ISTITUZIONALI',
+  'partnerships.item2.description': 'Relazioni collaborative con fondi pensione, fondazioni e compagnie assicurative in tutto il mondo.',
+  'partnerships.item2.focus': 'Capitale Istituzionale',
+  'partnerships.item3.category': 'BANCHE GLOBALI',
+  'partnerships.item3.description': 'Partnership bancarie fondamentali con istituti finanziari di primo livello per l\'accesso ai mercati dei capitali.',
+  'partnerships.item3.focus': 'Infrastruttura Bancaria',
+  'partnerships.item4.category': 'PARTNER TECNOLOGICI',
+  'partnerships.item4.description': 'Alleanze per l\'innovazione con aziende fintech leader e fornitori di infrastrutture tecnologiche.',
+  'partnerships.item4.focus': 'Innovazione Digitale',
+  'partnerships.item5.category': 'ENTI REGOLATORI',
+  'partnerships.item5.description': 'Partnership di conformità con le autorità di regolamentazione finanziaria in tutte le giurisdizioni operative.',
+  'partnerships.item5.focus': 'Eccellenza Regolatoria',
+  'partnerships.item6.category': 'ISTITUTI DI RICERCA',
+  'partnerships.item6.description': 'Partnership accademiche con università leader e think tank per la ricerca e l\'analisi di mercato.',
+  'partnerships.item6.focus': 'Eccellenza nella Ricerca',
+  'partnerships.cta.title': 'Pronto a Costruire il Futuro?',
+  'partnerships.cta.subtitle': 'Collaboriamo e creiamo valore insieme. Cerchiamo partner innovativi per unirsi alla nostra missione.',
+  'partnerships.cta.button': 'Diventa Partner',
+};

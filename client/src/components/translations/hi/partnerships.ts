@@ -1,0 +1,27 @@
+// src/translations/hi/partnerships.ts
+
+export const partnershipsHiTranslations = {
+  'partnerships.preTitle': 'सीमाओं से परे',
+  'partnerships.title': 'वैश्विक भागीदारी नेटवर्क',
+  'partnerships.item1.category': 'संप्रभु धन निधि',
+  'partnerships.item1.description': 'प्रमुख अर्थव्यवस्थाओं में राष्ट्रीय निवेश प्राधिकरणों और संप्रभु संस्थाओं के साथ रणनीतिक साझेदारी।',
+  'partnerships.item1.focus': 'सरकारी संबंध',
+  'partnerships.item2.category': 'संस्थागत निवेशक',
+  'partnerships.item2.description': 'दुनिया भर में पेंशन फंड, एंडोमेंट और बीमा कंपनियों के साथ सहयोगात्मक संबंध।',
+  'partnerships.item2.focus': 'संस्थागत पूंजी',
+  'partnerships.item3.category': 'वैश्विक बैंक',
+  'partnerships.item3.description': 'पूंजी बाजार तक पहुंच के लिए शीर्ष-स्तरीय वित्तीय संस्थानों के साथ मुख्य बैंकिंग साझेदारी।',
+  'partnerships.item3.focus': 'बैंकिंग बुनियादी ढांचा',
+  'partnerships.item4.category': 'प्रौद्योगिकी भागीदार',
+  'partnerships.item4.description': 'अग्रणी फिनटेक कंपनियों और प्रौद्योगिकी बुनियादी ढांचा प्रदाताओं के साथ नवाचार गठबंधन।',
+  'partnerships.item4.focus': 'डिजिटल नवाचार',
+  'partnerships.item5.category': 'नियामक निकाय',
+  'partnerships.item5.description': 'सभी ऑपरेटिंग क्षेत्राधिकारों में वित्तीय नियामक प्राधिकरणों के साथ अनुपालन साझेदारी।',
+  'partnerships.item5.focus': 'नियामक उत्कृष्टता',
+  'partnerships.item6.category': 'अनुसंधान संस्थान',
+  'partnerships.item6.description': 'बाजार अनुसंधान और विश्लेषण के लिए अग्रणी विश्वविद्यालयों और थिंक टैंक के साथ अकादमिक साझेदारी।',
+  'partnerships.item6.focus': 'अनुसंधान उत्कृष्टता',
+  'partnerships.cta.title': 'भविष्य बनाने के लिए तैयार हैं?',
+  'partnerships.cta.subtitle': 'आइए सहयोग करें और मिलकर मूल्य बनाएं। हम अपने मिशन में शामिल होने के लिए अभिनव भागीदारों की तलाश कर रहे हैं।',
+  'partnerships.cta.button': 'एक भागीदार बनें',
+};
