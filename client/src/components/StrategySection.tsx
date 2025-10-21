@@ -88,7 +88,7 @@ export function StrategySection() {
                     className={`${styles.strategyCard} ${isHovered ? styles.isHovered : ''}`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    layout 
+                    // layout  <--- REMOVED THIS
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     variants={cardVariants}
                     initial={shouldReduceMotion ? "visible" : "hidden"}
@@ -96,9 +96,9 @@ export function StrategySection() {
                   >
                     <ArrowUpRight className={styles.cardIndicatorIcon} />
                     
-                    <motion.div layout="position" className={styles.cardHeader}>
+                    <motion.div /* layout="position" */ className={styles.cardHeader}> {/* <--- REMOVED THIS */}
                       <strategy.icon className={styles.cardIcon} />
-                      <motion.h3 layout="position" className={styles.cardTitle}>
+                      <motion.h3 /* layout="position" */ className={styles.cardTitle}> {/* <--- REMOVED THIS */}
                         {strategy.title}
                       </motion.h3>
                     </motion.div>
