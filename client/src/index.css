@@ -6200,11 +6200,10 @@ html {
   font-display: swap;
 }
 
-
 @font-face {
   font-family: 'Lato';
   src: url('/fonts/lato/Lato-Bold.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -6212,7 +6211,7 @@ html {
 @font-face {
   font-family: 'Lato';
   src: url('/fonts/lato/Lato-BoldItalic.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
@@ -6220,7 +6219,7 @@ html {
 @font-face {
   font-family: 'Lato';
   src: url('/fonts/lato/Lato-Light.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -6240,7 +6239,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);  /* Montserrat for headings/titles */
-  font-weight:400;
 }
 
 /* Optional: Minimize reflow */
