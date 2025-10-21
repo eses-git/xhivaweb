@@ -341,8 +341,5 @@
     display: none;
   }
   
-  /* The video/poster will inherit the styles, which is correct */
-  .backgroundVideo,
-  .backgroundPoster {
-  }
+
 }
