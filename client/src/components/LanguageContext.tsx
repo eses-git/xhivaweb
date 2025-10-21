@@ -19,7 +19,9 @@ import { sw } from './translations/sw';
 import { it } from './translations/it';
 import { tl } from './translations/tl';
 import { fa } from './translations/fa';
-import { el } from './translations/el'; // 1. Import 'el' (Greek)
+import { el } from './translations/el'; 
+import { nl } from './translations/nl'; 
+import { no } from './translations/no'; 
 
 const translations = {
   en,
@@ -43,6 +45,8 @@ const translations = {
   tl,
   fa,
   el, // 2. Add 'el' (Greek) to the object
+  nl,
+  no,
 };
 
 export type Language = keyof typeof translations;

@@ -62,6 +62,12 @@ export const languageConfig = {
     nativeName: 'فارسی',
   },
   el: {
-    nativeName: 'Ελληνικά', // Added Greek
+    nativeName: 'Ελληνικά', 
+  },
+  nl: { 
+    nativeName: 'Nederlands',
+  },
+  no: {
+    nativeName: 'Norsk',
   },
 };

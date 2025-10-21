@@ -1,0 +1,27 @@
+// src/translations/nl/partnerships.ts
+
+export const partnershipsNlTranslations = {
+  'partnerships.preTitle': 'BUITEN DE GRENZEN',
+  'partnerships.title': 'Wereldwijd Partnernetwerk',
+  'partnerships.item1.category': 'STAATSINVESTERINGSFONDSEN',
+  'partnerships.item1.description': 'Strategische partnerschappen met nationale investeringsautoriteiten en soevereine entiteiten in belangrijke economieën.',
+  'partnerships.item1.focus': 'Overheidsrelaties',
+  'partnerships.item2.category': 'INSTITUTIONELE INVESTEERDERS',
+  'partnerships.item2.description': 'Samenwerkingsverbanden met pensioenfondsen, schenkingsfondsen en verzekeringsmaatschappijen wereldwijd.',
+  'partnerships.item2.focus': 'Institutioneel Kapitaal',
+  'partnerships.item3.category': 'WERELDWIJDE BANKEN',
+  'partnerships.item3.description': 'Kernbankpartnerschappen met vooraanstaande financiële instellingen voor toegang tot de kapitaalmarkten.',
+  'partnerships.item3.focus': 'Bankinfrastructuur',
+  'partnerships.item4.category': 'TECHNOLOGIEPARTNERS',
+  'partnerships.item4.description': 'Innovatieallianties met toonaangevende fintech-bedrijven en leveranciers van technologische infrastructuur.',
+  'partnerships.item4.focus': 'Digitale Innovatie',
+  'partnerships.item5.category': 'REGELGEVENDE INSTANTIES',
+  'partnerships.item5.description': 'Compliance-partnerschappen met financiële regelgevende autoriteiten in alle operationele rechtsgebieden.',
+  'partnerships.item5.focus': 'Regelgevende Excellentie',
+  'partnerships.item6.category': 'ONDERZOEKSINSTELLINGEN',
+  'partnerships.item6.description': 'Academische partnerschappen met toonaangevende universiteiten en denktanks voor marktonderzoek en -analyse.',
+  'partnerships.item6.focus': 'Onderzoeksexcellentie',
+  'partnerships.cta.title': 'Klaar om de Toekomst te Bouwen?',
+  'partnerships.cta.subtitle': "Laten we samenwerken en samen waarde creëren. We zoeken innovatieve partners om zich bij onze missie aan te sluiten.",
+  'partnerships.cta.button': 'Word een Partner',
+};

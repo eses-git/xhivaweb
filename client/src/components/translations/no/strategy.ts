@@ -1,0 +1,28 @@
+// src/translations/no/strategy.ts
+
+export const strategyNoTranslations = {
+  'strategy.page.preTitle': 'Våre Strategier',
+  'strategy.page.title': 'Vår Investeringsstrategi',
+  'strategy.page.subtitle': 'Et Disiplinert Rammeverk for Eksklusive Muligheter',
+  'strategy.page.intro': 'Vår investeringsstrategi er utformet for kvalifiserte private investorer, familieeide investeringsselskaper og personer med høy nettoformue som søker tilgang til programmer av institusjonell kvalitet innenfor et rammeverk av robust etterlevelse, kapitalbevaring og eksepsjonell, risikojustert ytelse.',
+  'strategy.page.disclaimer': 'Disse strukturerte programmene annonseres ikke offentlig og er kun tilgjengelige gjennom en formell engasjementsprotokoll.',
+  'strategy.approach.title': 'Vår Strategiske Tilnærming',
+  'strategy.approach.intro': 'Vår strategi er ikke basert på markedsspekulasjon, men på disiplinert tilgang til forhåndsgodkjente finansielle programmer på høyt nivå. Hvert potensielt engasjement evalueres på sine egne meritter, med fokus på:',
+  'strategy.approach.item1.title': 'Aktivaenes Opprinnelse & Sikkerhet',
+  'strategy.approach.item1.description': 'Vi begynner med å verifisere opprinnelsen og integriteten til alle aktiva, og sikrer et rent og kompatibelt grunnlag for enhver transaksjon.',
+  'strategy.approach.item2.title': 'Regulatorisk Tilpasning',
+  'strategy.approach.item2.description': 'Våre strukturer er skreddersydd for å møte og overgå de regulatoriske forpliktelsene i alle deltakende jurisdiksjoner, noe som sikrer en jevn og sikker gjennomføring.',
+  'strategy.approach.item3.title': 'Strategisk Måltilpasning',
+  'strategy.approach.item3.description': 'Vi jobber for å forstå kjernemålene til våre motparter – enten det er stabilisering av statlig formue eller vekst i privat kapital – og tilpasser våre programmer deretter.',
+  'strategy.governance.title': 'Styring, Risiko og Strukturering',
+  'strategy.governance.intro': 'Selv om ingen investering er helt uten risiko, er hele vår driftsmodell designet for å redusere slike risikoer. Alle programmer vi arrangerer, struktureres i direkte samarbeid med regulerte finansinstitusjoner, lisensierte plattformoperatører og, i mange tilfeller, statlige enheter. Vår forpliktelse til å beskytte klientinteresser inkluderer:',
+  'strategy.governance.item1.title': 'Robust Due Diligence',
+  'strategy.governance.item1.description': 'Omfattende bakgrunnssjekker og etterlevelsesprotokoller for alle parter.',
+  'strategy.governance.item2.title': 'Transparente Finansieringsprotokoller',
+  'strategy.governance.item2.description': 'Klar verifisering av midlenes opprinnelse og eierskap (KYC/AML).',
+  'strategy.governance.item3.title': 'Skreddersydd Kapitalstrukturering',
+  'strategy.governance.item3.description': 'Skreddersydde juridiske og finansielle verktøy designet for optimal regulatorisk etterlevelse og beskyttelse av eiendeler.',
+  'strategy.govergannce.item4.title': 'Valgfri Risikoreduksjon',
+  'strategy.governance.item4.description': 'Tilgang til mekanismer som tredjepartstilsyn, skadesløsholdelser og andre institusjonelle sikkerhetstiltak.',
+  'strategy.conclusion.text': 'Der det kreves, er teamet vårt utstyrt for å gi råd om og etablere de nødvendige juridiske og finansielle enhetene for å møte spesifikke jurisdiksjons- eller strategiske mål, og sikrer at våre klienter er perfekt posisjonert for deltakelse.',
+};

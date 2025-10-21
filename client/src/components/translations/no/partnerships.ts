@@ -1,0 +1,27 @@
+// src/translations/no/partnerships.ts
+
+export const partnershipsNoTranslations = {
+  'partnerships.preTitle': 'UTENFOR GRENSENE',
+  'partnerships.title': 'Globalt Partnerskapsnettverk',
+  'partnerships.item1.category': 'STATLIGE INVESTERINGSFOND',
+  'partnerships.item1.description': 'Strategiske partnerskap med nasjonale investeringsmyndigheter og statlige enheter i store økonomier.',
+  'partnerships.item1.focus': 'Offentlige Relasjoner',
+  'partnerships.item2.category': 'INSTITUSJONELLE INVESTORER',
+  'partnerships.item2.description': 'Samarbeidsrelasjoner med pensjonsfond, gavefond og forsikringsselskaper over hele verden.',
+  'partnerships.item2.focus': 'Institusjonell Kapital',
+  'partnerships.item3.category': 'GLOBALE BANKER',
+  'partnerships.item3.description': 'Kjernebankpartnerskap med førsteklasses finansinstitusjoner for tilgang til kapitalmarkedene.',
+  'partnerships.item3.focus': 'Bankinfrastruktur',
+  'partnerships.item4.category': 'TEKNOLOGIPARTNERE',
+  'partnerships.item4.description': 'Innovasjonsallianser med ledende fintech-selskaper og leverandører av teknologiinfrastruktur.',
+  'partnerships.item4.focus': 'Digital Innovasjon',
+  'partnerships.item5.category': 'REGULERINGSORGANER',
+  'partnerships.item5.description': 'Etterlevelsespartnerskap med finansielle reguleringsmyndigheter i alle driftsjurisdiksjoner.',
+  'partnerships.item5.focus': 'Regulatorisk Eksellense',
+  'partnerships.item6.category': 'FORSKNINGSINSTITUSJONER',
+  'partnerships.item6.description': 'Akademiske partnerskap med ledende universiteter og tenketanker for markedsundersøkelser og analyser.',
+  'partnerships.item6.focus': 'Forskningseksellense',
+  'partnerships.cta.title': 'Klar til å Bygge Fremtiden?',
+  'partnerships.cta.subtitle': 'La oss samarbeide og skape verdi sammen. Vi ser etter innovative partnere som vil bli med på vårt oppdrag.',
+  'partnerships.cta.button': 'Bli Partner',
+};

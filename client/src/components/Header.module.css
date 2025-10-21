@@ -12,11 +12,12 @@
   border-bottom-width: 1px;
   border-color: #E5E7EB;
   width: 100%;
-  /* overflow: hidden; <-- THIS LINE WAS REMOVED TO FIX THE MENU */
+  height: auto; /* Allow header to grow vertically */
+  padding: 0.5rem 0; /* Add padding for wrapped content */
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1440px; /* Increased from 1280px for more space */
   margin-left: auto;
   margin-right: auto;
   padding-left: 0;
@@ -29,7 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem;
+  min-height: 4rem; /* Use min-height instead of fixed height */
   width: 100%;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -65,19 +66,20 @@
 .desktopNav {
   display: none;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap; /* Allow menu items to wrap */
+  gap: 0.75rem; /* Reduced from 1rem for tighter spacing */
+  max-width: 70%; /* Restrict nav width to prevent overlap */
 }
 
 .navLink {
-  font-size: 0.775rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem); /* Responsive font size */
   font-weight: 400;
   color: #5A5A5A;
   transition: color 200ms;
   position: relative;
   letter-spacing: 0.05em;
-  text-decoration:none;
-  text-transform: uppercase; 
-
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .navLink:hover {
@@ -225,7 +227,7 @@
     height: 2rem;
   }
   .innerContainer {
-    height: 4rem;
+    min-height: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }

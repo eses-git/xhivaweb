@@ -1,15 +1,16 @@
-// Header.tsx
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "./LanguageContext";
 import { Link } from "react-router-dom";
 import logo from './assets/tri-logo-tr.png';
 import styles from './Header.module.css';
-import { LanguageSwitcher } from "./LanguageSwitcher"; // 1. Import the new component
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavTooLong, setIsNavTooLong] = useState(false);
   const { t } = useLanguage();
+  const navRef = useRef<HTMLDivElement>(null);
 
   const menuItems = [
     { name: t('nav.home'), href: "/" },
@@ -23,6 +24,19 @@ export function Header() {
     { name: t('nav.contact'), href: "/contact" },
   ];
 
+  useEffect(() => {
+    const checkNavWidth = () => {
+      if (navRef.current) {
+        const navWidth = navRef.current.offsetWidth;
+        const containerWidth = navRef.current.parentElement?.offsetWidth || 0;
+        setIsNavTooLong(navWidth > containerWidth * 0.6); // Threshold for "too long"
+      }
+    };
+    checkNavWidth();
+    window.addEventListener('resize', checkNavWidth);
+    return () => window.removeEventListener('resize', checkNavWidth);
+  }, [t]); // Re-run when translations change
+
   return (
     <header className={styles.header} id="main-header">
       <div className={styles.container}>
@@ -30,7 +44,7 @@ export function Header() {
           {/* Logo and Company Name - Wrapped in Link to home */}
           <Link to="/" className={styles.logoLink}>
             <div className={styles.logoSection}>
-             <img 
+              <img 
                 src={logo} 
                 alt="XHIVA Logo" 
                 className={styles.logo} 
@@ -44,7 +58,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className={styles.desktopNav}>
+          <nav ref={navRef} className={styles.desktopNav}>
             {menuItems.map((item) => (
               <a
                 key={item.name}
@@ -55,22 +69,27 @@ export function Header() {
                 <span className={styles.navUnderline}></span>
               </a>
             ))}
-            
-            {/* 2. Replace the old button with the new LanguageSwitcher component */}
-            <div className={styles.languageSwitcher}>
+            {!isNavTooLong && (
+              <div className={styles.languageSwitcher}>
+                <LanguageSwitcher />
+              </div>
+            )}
+          </nav>
+
+          {/* Top-Right Language Switcher for Long Nav */}
+          {isNavTooLong && (
+            <div className={styles.topRightLanguageSwitcher}>
               <LanguageSwitcher />
             </div>
-            
-          </nav>
+          )}
 
           {/* Mobile Right Section: Language Switcher + Menu Button */}
           <div className={styles.mobileRightSection}>
-            {/* 3. Replace the old button with the new LanguageSwitcher component */}
-            <div className={styles.mobileLanguageSwitcher}>
-              <LanguageSwitcher />
-            </div>
-
-            {/* Mobile Menu Button */}
+            {!isNavTooLong && (
+              <div className={styles.mobileLanguageSwitcher}>
+                <LanguageSwitcher />
+              </div>
+            )}
             <button
               className={styles.mobileMenuButton}
               onClick={() => setIsMenuOpen(!isMenuOpen)}

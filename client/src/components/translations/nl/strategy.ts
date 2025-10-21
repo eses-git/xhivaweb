@@ -1,0 +1,28 @@
+// src/translations/nl/strategy.ts
+
+export const strategyNlTranslations = {
+  'strategy.page.preTitle': 'Onze Strategieën',
+  'strategy.page.title': 'Onze Investeringsstrategie',
+  'strategy.page.subtitle': 'Een Gedisciplineerd Raamwerk voor Exclusieve Mogelijkheden',
+  'strategy.page.intro': 'Onze investeringsstrategie is ontworpen voor gekwalificeerde particuliere investeerders, family offices en vermogende particulieren die toegang zoeken tot programma\'s van institutionele kwaliteit binnen een raamwerk van robuuste compliance, kapitaalbehoud en uitzonderlijke, risicogecorrigeerde prestaties.',
+  'strategy.page.disclaimer': 'Deze gestructureerde programma\'s worden niet openbaar geadverteerd en zijn alleen toegankelijk via een formeel betrokkenheidsprotocol.',
+  'strategy.approach.title': 'Onze Strategische Aanpak',
+  'strategy.approach.intro': 'Onze strategie is niet gebaseerd op marktspeculatie, maar op gedisciplineerde toegang tot vooraf gescreende financiële programma\'s op hoog niveau. Elke potentiële betrokkenheid wordt op zijn eigen merites beoordeeld, met een focus op:',
+  'strategy.approach.item1.title': 'Herkomst & Veiligheid van Activa',
+  'strategy.approach.item1.description': 'We beginnen met het verifiëren van de oorsprong en integriteit van alle activa, om een schone en conforme basis voor elke transactie te garanderen.',
+  'strategy.approach.item2.title': 'Afstemming op Regelgeving',
+  'strategy.approach.item2.description': 'Onze structuren zijn op maat gemaakt om te voldoen aan en de wettelijke verplichtingen van alle deelnemende rechtsgebieden te overtreffen, wat een soepele en veilige uitvoering garandeert.',
+  'strategy.approach.item3.title': 'Afstemming op Strategische Doelstellingen',
+  'strategy.approach.item3.description': 'We werken om de kerndoelen van onze tegenpartijen te begrijpen - of het nu gaat om stabilisatie van staatsvermogen of particuliere kapitaalgroei - en stemmen onze programma\'s dienovereenkomstig af.',
+  'strategy.governance.title': 'Governance, Risico en Structurering',
+  'strategy.governance.intro': 'Hoewel geen enkele investering geheel zonder risico is, is ons hele operationele model ontworpen om dergelijke risico\'s te beperken. Alle programma\'s die we arrangeren, worden gestructureerd in directe samenwerking met gereguleerde financiële instellingen, gelicentieerde platformbeheerders en, in veel gevallen, overheidsinstanties. Onze toewijding aan het beschermen van de belangen van de klant omvat:',
+  'strategy.governance.item1.title': 'Robuuste Due Diligence',
+  'strategy.governance.item1.description': 'Uitgebreide achtergrondonderzoeken en compliance-protocollen voor alle partijen.',
+  'strategy.governance.item2.title': 'Transparante Financieringsprotocollen',
+  'strategy.governance.item2.description': 'Duidelijke verificatie van de herkomst en eigendom van fondsen (KYC/AML).',
+  'strategy.governance.item3.title': 'Maatwerk Kapitaalstructurering',
+  'strategy.governance.item3.description': 'Op maat gemaakte juridische en financiële vehikels, ontworpen voor optimale naleving van regelgeving en activabescherming.',
+  'strategy.govergannce.item4.title': 'Optionele Risicobeperking',
+  'strategy.governance.item4.description': 'Toegang tot mechanismen zoals toezicht door derden, vrijwaringen en andere institutionele waarborgen.',
+  'strategy.conclusion.text': 'Waar nodig is ons team uitgerust om te adviseren over en het opzetten van de juiste juridische en financiële entiteiten om te voldoen aan specifieke jurisdictionele of strategische doelstellingen, zodat onze klanten perfect gepositioneerd zijn voor deelname.',
+};
