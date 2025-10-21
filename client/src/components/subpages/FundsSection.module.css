@@ -262,16 +262,17 @@
 
 /* --- VIDEO STYLES --- */
 .backgroundVideo {
-  position: absolute;
-  top: -450px;
+position: absolute;
+  top: 0; /* Align with section top */
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  z-index: -1;      
+  object-position: center top; /* Shift content upward, aligning top of video behind header */
+  z-index: -1;
   filter: brightness(1.2) opacity(0.3);
   pointer-events: none;
-  background-color:#FFFFFF;
+  background-color: #FFFFFF;
 }
 
 /* Stronger hiding for Safari controls */
@@ -296,8 +297,8 @@
 /* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
   .backgroundVideo {
-    object-fit: contain;
-    top:-650px;
+   object-position: center 0 ; /* Fine-tune for mobile; 0 = top edge */
+   margin-top:160px;
     /* top: -100px; <-- This offset is no longer needed */
   }
   .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
