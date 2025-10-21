@@ -123,7 +123,6 @@ export function FundsSection() {
       preload="auto"
       poster="/images/gold-world-poster.jpg" 
     >
-      <source src="/videos/gold-world.webm" type="video/webm" />
       <source src="/videos/gold-world.mp4" type="video/mp4" />
       {t('funds.videoFallback')}
     </video>
