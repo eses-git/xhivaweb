@@ -131,7 +131,7 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
       const densityFactor = isMobile ? 800 : 3000; // Fewer on mobile
       const particleCount = Math.min(isMobile ? 180 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
-      cellSize = isMobile ? 250 : 150; // Larger cells on mobile
+      cellSize = isMobile ? 220 : 150; // Larger cells on mobile
     };
 
     const handleMouseInteraction = (forceBoost = 1) => {
