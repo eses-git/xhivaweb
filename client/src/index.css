@@ -6176,7 +6176,7 @@ html {
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -6204,7 +6204,7 @@ html {
 @font-face {
   font-family: 'Lato';
   src: url('/fonts/lato/Lato-Bold.woff2') format('woff2');
-  font-weight: bold;
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -6212,7 +6212,7 @@ html {
 @font-face {
   font-family: 'Lato';
   src: url('/fonts/lato/Lato-BoldItalic.woff2') format('woff2');
-  font-weight: bold;
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
