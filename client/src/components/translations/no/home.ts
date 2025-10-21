@@ -2,9 +2,9 @@
 
 export const homeNoTranslations = {
   // Hero
-  'hero.title': 'Arkitekter',
-  'hero.title1': 'for Morgendagens ',
-  'hero.title2': 'Verden',
+ 'hero.title': 'Arkitekter',
+'hero.title1': 'for',
+'hero.title2': 'Fremtiden',
   'hero.description': "Fremtiden blir ikke funnet. Den blir bygget. XHIVA distribuerer strategisk kapital til disruptive teknologier, kritisk infrastruktur og bærekraftige initiativer som vil definere det neste århundret. Vi investerer ikke bare i verden; vi investerer i morgendagens verden.",
   'hero.cta': 'Oppdag Vår Globale Påvirkning',
   'hero.viewDemo': 'Les Mer',
