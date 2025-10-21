@@ -61,30 +61,20 @@ useEffect(() => {
   if (video) {
     video.muted = true;
     video.playsInline = true;
-    video.autoplay = true;  // Still set for browsers that allow it
+    video.autoplay = true;
     video.preload = 'auto';
     video.setAttribute('webkit-playsinline', '');
 
-    const playVideo = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("Video autoplay was prevented:", error);
-          setShowVideo(false);  // Fallback to poster
-        });
+    const checkPlaybackTimer = setTimeout(() => {
+      if (video.paused) {
+        console.log("Video did not start playing; falling back to poster.");
+        setShowVideo(false);
       }
+    }, 5000); // Allow time for loading and potential autoplay
+
+    return () => {
+      clearTimeout(checkPlaybackTimer);
     };
-
-    // Check if already ready, otherwise listen for 'canplay'
-    if (video.readyState >= 2) {  // HAVE_ENOUGH_DATA or better
-      playVideo();
-    } else {
-      video.addEventListener('canplay', playVideo, { once: true });
-    }
-
-    video.addEventListener('ended', () => {
-      video.pause();
-    });
   }
 }, []);
 
