@@ -192,7 +192,7 @@
   color: #002c54;
   font-size: 1.5rem;
 }
-.waveTitle { font-size: 1.5rem; font-weight: 600; color: #002c54; font-family: var(--font-headings); }
+.waveTitle { font-size: 1.5rem; font-weight: 500; color: #002c54; font-family: var(--font-headings); }
 .waveSubtitle { font-size: 0.9rem; color: #adb5bd; font-family: var(--font-body); }
 .waveBody {
   font-size: 1rem;
@@ -203,7 +203,7 @@
   position: relative;
   z-index: 1;
 }
-.contentHeading { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #90b4d4; font-weight: 600; margin-bottom: 0.5rem; font-family: var(--font-headings); }
+.contentHeading { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #90b4d4; font-weight: 500; margin-bottom: 0.5rem; font-family: var(--font-headings); }
 .contentHeading:not(:first-child) { margin-top: 1.5rem; }
 
 
