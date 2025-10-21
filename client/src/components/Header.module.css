@@ -147,6 +147,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  text-align:center;
 }
 
 .menuIcon {
@@ -170,6 +171,8 @@
   width: 100%;
   box-sizing: border-box;
   top: 100%;
+  align-items: center;
+
 }
 
 .mobileNavList {
@@ -177,7 +180,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .mobileNavLink {
