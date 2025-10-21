@@ -56,29 +56,37 @@ export function FundsSection() {
   }, [funds.length]);
 
   // --- ADDED useEffect TO FORCE VIDEO PLAYBACK ---
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.playsInline = true; // Ensure playsinline for iOS/Safari
-      video.autoplay = true;
-      video.preload = 'auto'; // Add preload for better autoplay chances
-      video.setAttribute('webkit-playsinline', ''); // Extra for Safari
+useEffect(() => {
+  const video = videoRef.current;
+  if (video) {
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;  // Still set for browsers that allow it
+    video.preload = 'auto';
+    video.setAttribute('webkit-playsinline', '');
 
+    const playVideo = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(error => {
           console.error("Video autoplay was prevented:", error);
-          setShowVideo(false); // Fallback to poster if autoplay fails
+          setShowVideo(false);  // Fallback to poster
         });
       }
+    };
 
-      // Handle end to stay on last frame (no loop)
-      video.addEventListener('ended', () => {
-        video.pause();
-      });
+    // Check if already ready, otherwise listen for 'canplay'
+    if (video.readyState >= 2) {  // HAVE_ENOUGH_DATA or better
+      playVideo();
+    } else {
+      video.addEventListener('canplay', playVideo, { once: true });
     }
-  }, []); // Empty dependency array means this runs once on mount
+
+    video.addEventListener('ended', () => {
+      video.pause();
+    });
+  }
+}, []);
 
   const currentFund = funds[currentIndex];
 

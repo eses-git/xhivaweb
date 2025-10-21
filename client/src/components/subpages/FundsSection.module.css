@@ -9,6 +9,7 @@
   padding: 35px 0;
   /* margin-top: 100px;  <-- REMOVED */
   background-color: #FFFFFF;
+  min-height: 80vh;  /* <-- ADDED: Example value; adjust based on your design (e.g., 100vh for full viewport height) */
 }
 
 .sectionWrapper::before {
@@ -263,14 +264,15 @@
 
 /* --- VIDEO STYLES --- */
 .backgroundVideo {
-  position: absolute;
-  top: -500px;
+position: absolute;
+  top: 0;          /* Pins to the top of .sectionWrapper */
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain;  /* Preserves aspect ratio, fits without stretching or cropping */
+  object-position: top center;  /* Aligns content to the top (fixes "middle" placement) */
   z-index: -1;      
-  filter: brightness(1.2) opacity(0.5);
+  filter: brightness(1.2) opacity(0.3);
   pointer-events: none;
 }
 
@@ -292,26 +294,38 @@
 
 /* --- Poster Fallback Styles (FIXED) --- */
 .backgroundPoster {
-  position: absolute; /* <-- CHANGED from 'fixed' */
+position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit:contain; /* <-- ADDED */
-  background: url('/images/gold-world-poster.jpg') no-repeat center / cover; /* <-- CHANGED to 'cover' */
-  z-index: -1;      /* <-- CHANGED from '1' */
-  filter: brightness(1.2) opacity(0.5);
+  z-index: -1;
+  filter: brightness(1.2) opacity(0.3);
   pointer-events: none;
 }
 
 
 /* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
-  .backgroundVideo {
-    object-fit: contain;
-    top:-600px;
-    /* top: -100px; <-- This offset is no longer needed */
+
+
+ .contentContainer {
+    padding-top: 0; /* <-- CHANGED: Remove the 100px padding on mobile to avoid extra space at the top */
   }
+
+  .backgroundVideo {
+    position: absolute;
+    top: 180px; /* Will be overridden by JS on mobile */
+    height: auto; /* Will be overridden by JS on mobile */
+    object-position: center center; /* Center it horizontally and vertically within its new dimensions */
+  }
+
+  .headerText {
+    position: relative; /* Ensure the header can overlay properly if needed */
+    margin-top: 1rem; /* Optional: Add a small margin if you want some space at the top without padding */
+  }
+
+
   .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
   .contentContainer { 
     padding: 0 1rem; 
