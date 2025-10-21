@@ -12,12 +12,12 @@
   border-bottom-width: 1px;
   border-color: #E5E7EB;
   width: 100%;
-  height: auto; /* Allow header to grow vertically */
-  padding: 0.5rem 0; /* Add padding for wrapped content */
+  height: auto;
+  padding: 0.5rem 0;
 }
 
 .container {
-  max-width: 1440px; /* Increased from 1280px for more space */
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0;
@@ -29,26 +29,27 @@
 .innerContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  min-height: 4rem; /* Use min-height instead of fixed height */
+  justify-content: space-between; /* This now separates logo from rightContainer */
+  min-height: 4rem;
   width: 100%;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
 
+/* --- Left Side --- */
 .logoLink {
   text-decoration: none;
   color: inherit;
   display: flex;
   align-items: center;
+  flex-shrink: 0; /* Prevents logo from shrinking */
 }
 
 .logoSection {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-shrink: 0;
 }
 
 .logo {
@@ -63,16 +64,25 @@
   color: #002C54;
 }
 
-.desktopNav {
-  display: none;
+/* --- NEW: Right Side Container --- */
+.rightContainer {
+  display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Allow menu items to wrap */
-  gap: 0.75rem; /* Reduced from 1rem for tighter spacing */
-  max-width: 70%; /* Restrict nav width to prevent overlap */
+  gap: 0.75rem; /* Default gap for mobile (switcher + hamburger) */
+}
+
+/* --- Right Side Elements --- */
+
+.desktopNav {
+  display: none; /* Hidden on mobile by default */
+  align-items: center;
+  flex-wrap: wrap; /* Allows nav to wrap if screen is very narrow */
+  gap: 0.75rem;
+  justify-content: flex-end; /* Aligns nav links to the right */
 }
 
 .navLink {
-  font-size: clamp(0.65rem, 1.5vw, 0.75rem); /* Responsive font size */
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   font-weight: 400;
   color: #5A5A5A;
   transition: color 200ms;
@@ -80,6 +90,7 @@
   letter-spacing: 0.05em;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap; /* Prevents long language words from breaking */
 }
 
 .navLink:hover {
@@ -100,16 +111,12 @@
   width: 100%;
 }
 
-.languageSwitcher {
+/* Removed 'position: absolute' and simplified */
+.languageSwitcherWrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.globeIcon {
-  width: 1rem;
-  height: 1rem;
-  color: #002C54;
+  flex-shrink: 0; /* Prevents switcher from shrinking */
 }
 
 .languageButton {
@@ -124,21 +131,14 @@
   padding: 0;
 }
 
-.languageButton:hover {
-  color: #002C54;
-}
+/* This class is no longer needed */
+/* .topRightLanguageSwitcher { ... } */
+
 
 .mobileRightSection {
-  display: flex;
+  display: flex; /* Shown on mobile by default */
   align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.mobileLanguageSwitcher {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  flex-shrink: 0; /* Prevents button from shrinking */
 }
 
 .mobileMenuButton {
@@ -147,7 +147,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .menuIcon {
@@ -156,6 +155,7 @@
   color: #002C54;
 }
 
+/* --- Mobile Menu Dropdown (No changes) --- */
 .mobileNav {
   display: block;
   padding-top: 1rem;
@@ -165,7 +165,7 @@
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.95);
-  z-index: -1; /* Place it behind the main header content */
+  z-index: 40; /* Lower than header */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
@@ -177,6 +177,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  align-items: flex-end;
 }
 
 .mobileNavLink {
@@ -186,26 +187,23 @@
   transition: color 200ms;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  text-align: center;
+  text-align: right;
   text-decoration: none;
 }
 
-.mobileNavLink:hover {
-  color: #002C54;
-}
 
 /* --- Responsive Styles --- */
 @media (min-width: 1024px) {
+  .rightContainer {
+    gap: 1.5rem; /* Larger gap on desktop */
+  }
   .desktopNav {
-    display: flex;
-  }
-  .mobileMenuButton {
-    display: none;
-  }
-  .mobileNav {
-    display: none;
+    display: flex; /* Show desktop nav */
   }
   .mobileRightSection {
+    display: none; /* Hide mobile hamburger button */
+  }
+  .mobileNav {
     display: none;
   }
   .innerContainer {
@@ -215,10 +213,6 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
   .companyName {
     font-size: 1.25rem;
   }
