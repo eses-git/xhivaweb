@@ -110,13 +110,12 @@ useEffect(() => {
     startTimer();
   };
   
-  const backgroundContent = showVideo ? (
-    <video 
-      ref={videoRef} 
+const backgroundContent = !isMobile ? (
+  <video 
       className={styles.backgroundVideo} 
       autoPlay 
       muted 
-      playsInline // Crucial for iOS/Safari
+      playsInline
       controls={false}
       preload="auto"
       poster="/images/gold-world-poster.jpg" 
@@ -126,8 +125,12 @@ useEffect(() => {
       {t('funds.videoFallback')}
     </video>
   ) : (
-    <div className={styles.backgroundPoster} />
-  );
+    <img 
+      src="/videos/gold-world.gif" 
+      className={styles.backgroundGif} 
+      alt="Background animation" 
+    />
+  ); 
 
   return (
     <section className={styles.sectionWrapper}>

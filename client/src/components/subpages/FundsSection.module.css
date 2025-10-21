@@ -291,6 +291,18 @@ position: absolute;
   display: none !important;
 }
 
+.backgroundGif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  z-index: -1;
+  filter: brightness(1.2) opacity(0.3);
+  pointer-events: none;
+}
 
 /* --- Poster Fallback Styles (FIXED) --- */
 .backgroundPoster {
@@ -317,10 +329,11 @@ position: absolute;
     padding-top: 0; /* <-- CHANGED: Remove the 100px padding on mobile to avoid extra space at the top */
   }
 
-  .backgroundVideo {
+  .backgroundVideo,
+  .backgroundGif {
     position: absolute;
-    top: 180px; /* Will be overridden by JS on mobile */
-    height: auto; /* Will be overridden by JS on mobile */
+    top: 180px; /* Will be overridden by JS on mobile if you have that logic elsewhere */
+    height: auto; /* Will be overridden by JS on mobile if needed */
     object-position: center center; /* Center it horizontally and vertically within its new dimensions */
   }
 
