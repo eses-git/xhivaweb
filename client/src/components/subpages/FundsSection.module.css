@@ -311,7 +311,7 @@
     object-fit: contain;
     /* top: -100px; <-- This offset is no longer needed */
   }
-  .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
+  .sectionWrapper { padding: 2rem 0 0 0; } /* Removed top padding, as content container has it */
   .contentContainer { 
     padding: 0 1rem; 
     padding-top: 100px; /* Make sure mobile also has the offset */
