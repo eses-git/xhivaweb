@@ -78,7 +78,7 @@ export const homeJaTranslations = {
   'cta.button.primary': 'コンサルテーションをリクエスト',
   'cta.button.secondary': 'ファンドを探る',
   'cta.contact1.title': 'メールでのお問い合わせ',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': '電話でのお問い合わせ',
   'cta.contact2.text': 'リクエストに応じて利用可能',
   'cta.contact3.title': 'グローバルオフィス',

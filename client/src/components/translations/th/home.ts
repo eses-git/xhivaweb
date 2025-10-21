@@ -78,7 +78,7 @@ export const homeThTranslations = {
   'cta.button.primary': 'ขอคำปรึกษา',
   'cta.button.secondary': 'สำรวจกองทุน',
   'cta.contact1.title': 'ติดต่อทางอีเมล',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'ติดต่อทางโทรศัพท์',
   'cta.contact2.text': 'สามารถขอได้',
   'cta.contact3.title': 'สำนักงานทั่วโลก',

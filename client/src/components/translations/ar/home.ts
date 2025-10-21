@@ -78,7 +78,7 @@ export const homeArTranslations = {
   'cta.button.primary': 'اطلب استشارة',
   'cta.button.secondary': 'استكشف الصناديق',
   'cta.contact1.title': 'الاتصال بالبريد الإلكتروني',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'الاتصال الهاتفي',
   'cta.contact2.text': 'متاح عند الطلب',
   'cta.contact3.title': 'المكاتب العالمية',

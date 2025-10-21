@@ -2,31 +2,31 @@
 
 export const seoIdTranslations = {
   // Home Page
-  'seo.home.title': 'Membangun Dunia Masa Depan | Xhiva',
-  'seo.home.description': 'Xhiva mengerahkan modal strategis ke dalam teknologi disruptif, infrastruktur penting, dan inisiatif berkelanjutan yang akan menentukan abad berikutnya.',
+  'seo.home.title': 'Membangun Dunia Masa Depan | XHIVA',
+  'seo.home.description': 'XHIVA mengerahkan modal strategis ke dalam teknologi disruptif, infrastruktur penting, dan inisiatif berkelanjutan yang akan menentukan abad berikutnya.',
   'seo.home.keywords': 'modal strategis, investasi global, teknologi disruptif, infrastruktur, inisiatif berkelanjutan, ekuitas swasta',
 
   // About Us Page
-  'seo.about.title': 'Tentang Kami | Xhiva',
+  'seo.about.title': 'Tentang Kami | XHIVA',
   'seo.about.description': 'Firma penasihat strategis terkemuka di titik temu antara kepentingan negara, perbankan sentral, dan pasar modal swasta. Temukan filosofi pengelolaan kami.',
-  'seo.aboutus.title': 'Tentang Kami | Membangun Stabilitas & Nilai | Xhiva',
+  'seo.aboutus.title': 'Tentang Kami | Membangun Stabilitas & Nilai | XHIVA',
   'seo.aboutus.description': 'Firma penasihat strategis terkemuka di titik temu antara kepentingan negara, perbankan sentral, dan pasar modal swasta. Temukan filosofi pengelolaan dan dampak abadi kami.',
   
-  'seo.funds.title': 'Dana Global Kami | Mesin Kemajuan Global | Xhiva',
-  'seo.funds.description': 'Jelajahi portofolio terkurasi Xhiva dari kendaraan investasi khusus, yang dirancang untuk memanfaatkan megatren global. Akses strategi eksklusif untuk investor yang memenuhi syarat.',
+  'seo.funds.title': 'Dana Global Kami | Mesin Kemajuan Global | XHIVA',
+  'seo.funds.description': 'Jelajahi portofolio terkurasi XHIVA dari kendaraan investasi khusus, yang dirancang untuk memanfaatkan megatren global. Akses strategi eksklusif untuk investor yang memenuhi syarat.',
 
-  'seo.impact.title': 'Dampak Kami | Mandat di Luar Laba | Xhiva',
-  'seo.impact.description': 'Temukan bagaimana Xhiva mencapai mandat ganda: pertumbuhan modal yang cerdas dan kemajuan masyarakat yang disengaja. Dampak kami tertanam dalam strategi kami.',
-  'seo.partnership.title': 'Jaringan Kemitraan Global | Melampaui Batas | Xhiva',
-  'seo.partnership.description': 'Jelajahi kemitraan strategis Xhiva dengan dana kekayaan negara, investor institusional, bank global, dan pemimpin teknologi untuk menciptakan nilai sinergis dan membangun masa depan.',
-  'seo.services.title': 'Layanan Keuangan Institusional | Manajemen Aset & Fidusia | Xhiva',
-  'seo.services.description': 'Jelajahi rangkaian layanan institusional terpadu Xhiva, termasuk manajemen aset canggih, konstruksi portofolio kustom, perencanaan kekayaan, pengawasan fidusia, dan peluang investasi bersama eksklusif.',
+  'seo.impact.title': 'Dampak Kami | Mandat di Luar Laba | XHIVA',
+  'seo.impact.description': 'Temukan bagaimana XHIVA mencapai mandat ganda: pertumbuhan modal yang cerdas dan kemajuan masyarakat yang disengaja. Dampak kami tertanam dalam strategi kami.',
+  'seo.partnership.title': 'Jaringan Kemitraan Global | Melampaui Batas | XHIVA',
+  'seo.partnership.description': 'Jelajahi kemitraan strategis XHIVA dengan dana kekayaan negara, investor institusional, bank global, dan pemimpin teknologi untuk menciptakan nilai sinergis dan membangun masa depan.',
+  'seo.services.title': 'Layanan Keuangan Institusional | Manajemen Aset & Fidusia | XHIVA',
+  'seo.services.description': 'Jelajahi rangkaian layanan institusional terpadu XHIVA, termasuk manajemen aset canggih, konstruksi portofolio kustom, perencanaan kekayaan, pengawasan fidusia, dan peluang investasi bersama eksklusif.',
 
    'cookiePolicy.title': 'Kebijakan Cookie',
   'cookiePolicy.effectiveDate': 'Tanggal Efektif: 14 Oktober 2025',
 
   'cookiePolicy.section1.title': 'Pendahuluan',
-  'cookiePolicy.section1.p1': 'Kebijakan Cookie ini menjelaskan bagaimana Xhiva ("kami", "milik kami") menggunakan cookie dan teknologi serupa untuk mengenali Anda ketika Anda mengunjungi situs web kami di xhiva.org. Ini menjelaskan apa teknologi ini dan mengapa kami menggunakannya, serta hak Anda untuk mengontrol penggunaannya.',
+  'cookiePolicy.section1.p1': 'Kebijakan Cookie ini menjelaskan bagaimana XHIVA ("kami", "milik kami") menggunakan cookie dan teknologi serupa untuk mengenali Anda ketika Anda mengunjungi situs web kami di XHIVA.org. Ini menjelaskan apa teknologi ini dan mengapa kami menggunakannya, serta hak Anda untuk mengontrol penggunaannya.',
 
   'cookiePolicy.section2.title': 'Bagaimana Kami Menggunakan Cookie',
   'cookiePolicy.section2.p1': 'Kami menggunakan cookie karena beberapa alasan. Beberapa cookie diperlukan karena alasan teknis agar situs web kami dapat beroperasi, dan kami menyebutnya sebagai cookie "penting" atau "sangat diperlukan". Cookie lain memungkinkan kami untuk melacak dan menargetkan minat pengguna kami untuk meningkatkan pengalaman di situs web kami. Kami telah mengkategorikannya di bawah ini:',
@@ -52,6 +52,6 @@ export const seoIdTranslations = {
   'cookiePolicy.section5.title': 'Hubungi Kami',
   'cookiePolicy.section5.p1': 'Jika Anda memiliki pertanyaan tentang penggunaan cookie kami, silakan hubungi kami di',
 
-  'seo.cookiePolicy.title': 'Kebijakan Cookie | Xhiva',
-  'seo.cookiePolicy.description': 'Pelajari bagaimana Xhiva menggunakan cookie dan teknologi serupa untuk mengenali Anda ketika Anda mengunjungi situs web kami, dan pahami hak Anda untuk mengontrol penggunaannya.',
+  'seo.cookiePolicy.title': 'Kebijakan Cookie | XHIVA',
+  'seo.cookiePolicy.description': 'Pelajari bagaimana XHIVA menggunakan cookie dan teknologi serupa untuk mengenali Anda ketika Anda mengunjungi situs web kami, dan pahami hak Anda untuk mengontrol penggunaannya.',
 };

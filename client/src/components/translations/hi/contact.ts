@@ -8,7 +8,7 @@ export const contactHiTranslations = {
   'contact.form.emailLabel': 'ईमेल पता',
   'contact.form.messageLabel': 'संदेश',
   'contact.form.submitButton': 'संदेश भेजें',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'अनुरोध पर उपलब्ध है',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'भेज रहा है...',

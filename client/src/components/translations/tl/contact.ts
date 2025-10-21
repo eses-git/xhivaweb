@@ -8,7 +8,7 @@ export const contactTlTranslations = {
   'contact.form.emailLabel': 'Email Address',
   'contact.form.messageLabel': 'Mensahe',
   'contact.form.submitButton': 'Ipadala ang Mensahe',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'Magagamit kapag hiniling',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Nagpapadala...',

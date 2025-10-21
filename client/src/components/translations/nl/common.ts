@@ -40,7 +40,7 @@ export const commonNlTranslations = {
   'footer.disclaimer': 'Juridische Disclaimer',
   'footer.privacy': 'Privacybeleid',
   'footer.terms': 'Servicevoorwaarden',
-  'footer.copyright': '© 2025 Xhiva. Alle rechten voorbehouden.',
+  'footer.copyright': '© 2025 XHIVA. Alle rechten voorbehouden.',
   'footer.language.es': 'Español',
   'footer.language.en': 'English',
 
@@ -51,15 +51,15 @@ export const commonNlTranslations = {
   'footer.modal.disclaimer.p3': 'Toegang tot deze programma\'s is beperkt tot gekwalificeerde, ervaren beleggers die voldoen aan strikte geschiktheidscriteria en een formele juridische overeenkomst hebben ondertekend.',
   'footer.modal.privacy.title': 'Privacybeleid',
   'footer.modal.privacy.effectiveDate': 'Ingangsdatum: 7 augustus 2025',
-  'footer.modal.privacy.p1': 'Dit beleid beschrijft hoe Xhiva Capital ("wij", "ons", "onze") de persoonsgegevens verzamelt, gebruikt en beveiligt die u ons via onze website verstrekt. Wij treden op als de \'verwerkingsverantwoordelijke\' in de zin van de Britse Algemene Verordening Gegevensbescherming (UK GDPR).',
+  'footer.modal.privacy.p1': 'Dit beleid beschrijft hoe XHIVA Capital ("wij", "ons", "onze") de persoonsgegevens verzamelt, gebruikt en beveiligt die u ons via onze website verstrekt. Wij treden op als de \'verwerkingsverantwoordelijke\' in de zin van de Britse Algemene Verordening Gegevensbescherming (UK GDPR).',
   'footer.modal.privacy.p2': 'Wij kunnen informatie verzamelen die u verstrekt via aanvraagformulieren (naam, e-mail, investeerdersstatus) en technische gegevens (IP-adres, browsertype). Wij gebruiken uw gegevens op basis van legitieme belangen om op aanvragen te reageren, toestemming voor marketing, en wettelijke verplichtingen voor AML/KYC-vereisten.',
   'footer.modal.privacy.p3': 'Wij verkopen uw gegevens niet, maar kunnen deze delen met vertrouwde derde partijen zoals professionele adviseurs, toezichthouders en dienstverleners. Uw gegevens kunnen buiten het VK worden doorgegeven met passende waarborgen.',
-  'footer.modal.privacy.p4': 'We hebben passende veiligheidsmaatregelen geïmplementeerd en bewaren gegevens alleen zo lang als nodig is. Onder de UK GDPR heeft u rechten op toegang tot, correctie, verwijdering van of bezwaar tegen de verwerking van uw gegevens, en om toestemming in te trekken. Voor vragen kunt u contact opnemen met <a href="/contact" style="color:#D7C286" >contact@xhiva.org</a>.',
+  'footer.modal.privacy.p4': 'We hebben passende veiligheidsmaatregelen geïmplementeerd en bewaren gegevens alleen zo lang als nodig is. Onder de UK GDPR heeft u rechten op toegang tot, correctie, verwijdering van of bezwaar tegen de verwerking van uw gegevens, en om toestemming in te trekken. Voor vragen kunt u contact opnemen met <a href="/contact" style="color:#D7C286" >contact@XHIVA.org</a>.',
   'footer.modal.terms.title': 'Algemene Voorwaarden',
   'footer.modal.terms.effectiveDate': 'Ingangsdatum: 7 augustus 2025',
   'footer.modal.terms.p1': 'Door deze website te bezoeken, gaat u akkoord met deze Algemene Voorwaarden. De inhoud is uitsluitend voor informatieve doeleinden en vormt geen financieel, beleggings-, juridisch of ander professioneel advies. Niets op deze site vormt een aanbod of uitnodiging.',
-  'footer.modal.terms.p2': 'Alle intellectuele eigendom is het eigendom van Xhiva Capital. Wij zijn niet aansprakelijk voor enig verlies of schade voortvloeiend uit uw gebruik van de site. Alle investeringen brengen risico\'s met zich mee, en in het verleden behaalde resultaten bieden geen garantie voor de toekomst.',
-  'footer.modal.terms.p3': 'Deze voorwaarden worden beheerst door de wetten van Engeland en Wales. Neem voor vragen contact met ons op via <a href="/contact" style="color:#D7C286" >contact@xhiva.org</a>.',
+  'footer.modal.terms.p2': 'Alle intellectuele eigendom is het eigendom van XHIVA Capital. Wij zijn niet aansprakelijk voor enig verlies of schade voortvloeiend uit uw gebruik van de site. Alle investeringen brengen risico\'s met zich mee, en in het verleden behaalde resultaten bieden geen garantie voor de toekomst.',
+  'footer.modal.terms.p3': 'Deze voorwaarden worden beheerst door de wetten van Engeland en Wales. Neem voor vragen contact met ons op via <a href="/contact" style="color:#D7C286" >contact@XHIVA.org</a>.',
 
   // Cookie Banner
   'cookieBanner.message': 'We gebruiken cookies om uw ervaring te verbeteren en voor websiteanalyse. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies.  ',
@@ -72,5 +72,5 @@ export const commonNlTranslations = {
 
   // General Disclaimer Modal
   'disclaimer.title': 'Juridische Disclaimer',
-  'disclaimer.content': 'Xhiva is een particuliere wereldwijde investeringsfirma. De informatie op deze website is uitsluitend voor informatieve doeleinden en vormt geen aanbod tot verkoop of een uitnodiging tot het doen van een aanbod tot aankoop van effecten of beleggingsproducten. Een dergelijk aanbod of uitnodiging zal alleen worden gedaan door middel van een vertrouwelijk particulier aanbiedingsmemorandum en in overeenstemming met de toepasselijke effectenwetgeving. In het verleden behaalde resultaten bieden geen garantie voor de toekomst.',
+  'disclaimer.content': 'XHIVA is een particuliere wereldwijde investeringsfirma. De informatie op deze website is uitsluitend voor informatieve doeleinden en vormt geen aanbod tot verkoop of een uitnodiging tot het doen van een aanbod tot aankoop van effecten of beleggingsproducten. Een dergelijk aanbod of uitnodiging zal alleen worden gedaan door middel van een vertrouwelijk particulier aanbiedingsmemorandum en in overeenstemming met de toepasselijke effectenwetgeving. In het verleden behaalde resultaten bieden geen garantie voor de toekomst.',
 };

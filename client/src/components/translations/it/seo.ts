@@ -2,31 +2,31 @@
 
 export const seoItTranslations = {
   // Home Page
-  'seo.home.title': 'Progettare il Mondo di Domani | Xhiva',
-  'seo.home.description': 'Xhiva impiega capitale strategico nelle tecnologie dirompenti, nelle infrastrutture critiche e nelle iniziative sostenibili che definiranno il prossimo secolo.',
+  'seo.home.title': 'Progettare il Mondo di Domani | XHIVA',
+  'seo.home.description': 'XHIVA impiega capitale strategico nelle tecnologie dirompenti, nelle infrastrutture critiche e nelle iniziative sostenibili che definiranno il prossimo secolo.',
   'seo.home.keywords': 'capitale strategico, investimento globale, tecnologia dirompente, infrastruttura, iniziative sostenibili, private equity',
 
   // About Us Page
-  'seo.about.title': 'Chi Siamo | Xhiva',
+  'seo.about.title': 'Chi Siamo | XHIVA',
   'seo.about.description': 'Una società di consulenza strategica di primo piano al nesso tra interessi sovrani, banche centrali e mercati dei capitali privati. Scopri la nostra filosofia di gestione responsabile.',
-  'seo.aboutus.title': 'Chi Siamo | Progettare Stabilità e Valore | Xhiva',
+  'seo.aboutus.title': 'Chi Siamo | Progettare Stabilità e Valore | XHIVA',
   'seo.aboutus.description': 'Una società di consulenza strategica di primo piano al nesso tra interessi sovrani, banche centrali e mercati dei capitali privati. Scopri la nostra filosofia di gestione responsabile e impatto duraturo.',
   
-  'seo.funds.title': 'I Nostri Fondi Globali | Motori del Progresso Globale | Xhiva',
-  'seo.funds.description': 'Esplora il portafoglio curato di Xhiva di veicoli di investimento specializzati, progettati per capitalizzare sulle megatendenze globali. Accedi a strategie proprietarie per investitori qualificati.',
+  'seo.funds.title': 'I Nostri Fondi Globali | Motori del Progresso Globale | XHIVA',
+  'seo.funds.description': 'Esplora il portafoglio curato di XHIVA di veicoli di investimento specializzati, progettati per capitalizzare sulle megatendenze globali. Accedi a strategie proprietarie per investitori qualificati.',
 
-  'seo.impact.title': 'Il Nostro Impatto | Un Mandato Oltre il Profitto | Xhiva',
-  'seo.impact.description': 'Scopri come Xhiva raggiunge un duplice mandato: la crescita intelligente del capitale e il progresso deliberato della società. Il nostro impatto è incorporato nella nostra strategia.',
-  'seo.partnership.title': 'Rete Globale di Partnership | Oltre i Confini | Xhiva',
-  'seo.partnership.description': 'Esplora le partnership strategiche di Xhiva con fondi sovrani, investitori istituzionali, banche globali e leader tecnologici per creare valore sinergico e costruire il futuro.',
-  'seo.services.title': 'Servizi Finanziari Istituzionali | Gestione Patrimoniale e Fiduciaria | Xhiva',
-  'seo.services.description': 'Esplora la suite integrata di servizi istituzionali di Xhiva, tra cui gestione patrimoniale sofisticata, costruzione di portafogli personalizzati, pianificazione patrimoniale, supervisione fiduciaria e opportunità esclusive di co-investimento.',
+  'seo.impact.title': 'Il Nostro Impatto | Un Mandato Oltre il Profitto | XHIVA',
+  'seo.impact.description': 'Scopri come XHIVA raggiunge un duplice mandato: la crescita intelligente del capitale e il progresso deliberato della società. Il nostro impatto è incorporato nella nostra strategia.',
+  'seo.partnership.title': 'Rete Globale di Partnership | Oltre i Confini | XHIVA',
+  'seo.partnership.description': 'Esplora le partnership strategiche di XHIVA con fondi sovrani, investitori istituzionali, banche globali e leader tecnologici per creare valore sinergico e costruire il futuro.',
+  'seo.services.title': 'Servizi Finanziari Istituzionali | Gestione Patrimoniale e Fiduciaria | XHIVA',
+  'seo.services.description': 'Esplora la suite integrata di servizi istituzionali di XHIVA, tra cui gestione patrimoniale sofisticata, costruzione di portafogli personalizzati, pianificazione patrimoniale, supervisione fiduciaria e opportunità esclusive di co-investimento.',
 
    'cookiePolicy.title': 'Politica sui Cookie',
   'cookiePolicy.effectiveDate': 'Data di entrata in vigore: 14 ottobre 2025',
 
   'cookiePolicy.section1.title': 'Introduzione',
-  'cookiePolicy.section1.p1': 'Questa Politica sui Cookie spiega come Xhiva ("noi", "ci", "nostro") utilizza i cookie e tecnologie simili per riconoscerti quando visiti il nostro sito web all\'indirizzo xhiva.org. Spiega cosa sono queste tecnologie e perché le utilizziamo, nonché i tuoi diritti di controllare il nostro utilizzo di esse.',
+  'cookiePolicy.section1.p1': 'Questa Politica sui Cookie spiega come XHIVA ("noi", "ci", "nostro") utilizza i cookie e tecnologie simili per riconoscerti quando visiti il nostro sito web all\'indirizzo XHIVA.org. Spiega cosa sono queste tecnologie e perché le utilizziamo, nonché i tuoi diritti di controllare il nostro utilizzo di esse.',
 
   'cookiePolicy.section2.title': 'Come utilizziamo i cookie',
   'cookiePolicy.section2.p1': 'Utilizziamo i cookie per diversi motivi. Alcuni cookie sono richiesti per motivi tecnici affinché il nostro sito web funzioni, e li definiamo cookie "essenziali" o "strettamente necessari". Altri cookie ci consentono di tracciare e indirizzare gli interessi dei nostri utenti per migliorare l\'esperienza sul nostro sito web. Li abbiamo classificati di seguito:',
@@ -52,6 +52,6 @@ export const seoItTranslations = {
   'cookiePolicy.section5.title': 'Contattaci',
   'cookiePolicy.section5.p1': 'Se hai domande sul nostro utilizzo dei cookie, ti preghiamo di contattarci all\'indirizzo',
 
-  'seo.cookiePolicy.title': 'Politica sui Cookie | Xhiva',
-  'seo.cookiePolicy.description': 'Scopri come Xhiva utilizza i cookie e tecnologie simili per riconoscerti quando visiti il nostro sito web e comprendi i tuoi diritti di controllare il nostro utilizzo di essi.',
+  'seo.cookiePolicy.title': 'Politica sui Cookie | XHIVA',
+  'seo.cookiePolicy.description': 'Scopri come XHIVA utilizza i cookie e tecnologie simili per riconoscerti quando visiti il nostro sito web e comprendi i tuoi diritti di controllare il nostro utilizzo di essi.',
 };

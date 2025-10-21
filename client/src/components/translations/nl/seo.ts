@@ -2,31 +2,31 @@
 
 export const seoNlTranslations = {
   // Home Page
-  'seo.home.title': 'Architecten van de Wereld van Morgen | Xhiva',
-  'seo.home.description': 'Xhiva zet strategisch kapitaal in voor de disruptieve technologieën, kritieke infrastructuur en duurzame initiatieven die de volgende eeuw zullen definiëren.',
+  'seo.home.title': 'Architecten van de Wereld van Morgen | XHIVA',
+  'seo.home.description': 'XHIVA zet strategisch kapitaal in voor de disruptieve technologieën, kritieke infrastructuur en duurzame initiatieven die de volgende eeuw zullen definiëren.',
   'seo.home.keywords': 'strategisch kapitaal, wereldwijde investeringen, disruptieve technologie, infrastructuur, duurzame initiatieven, private equity',
 
   // About Us Page
-  'seo.about.title': 'Over Ons | Xhiva',
+  'seo.about.title': 'Over Ons | XHIVA',
   'seo.about.description': 'Een vooraanstaand strategisch adviesbureau op het snijvlak van soevereine belangen, centrale banken en particuliere kapitaalmarkten. Ontdek onze filosofie van rentmeesterschap.',
-  'seo.aboutus.title': 'Over Ons | Stabiliteit & Waarde Creëren | Xhiva',
+  'seo.aboutus.title': 'Over Ons | Stabiliteit & Waarde Creëren | XHIVA',
   'seo.aboutus.description': 'Een vooraanstaand strategisch adviesbureau op het snijvlak van soevereine belangen, centrale banken en particuliere kapitaalmarkten. Ontdek onze filosofie van rentmeesterschap en blijvende impact.',
 
-  'seo.funds.title': 'Onze Wereldwijde Fondsen | Motoren van Wereldwijde Vooruitgang | Xhiva',
-  'seo.funds.description': 'Verken Xhiva\'s samengestelde portefeuille van gespecialiseerde investeringsvehikels, ontworpen om te kapitaliseren op wereldwijde megatrends. Toegang tot eigen strategieën voor gekwalificeerde investeerders.',
+  'seo.funds.title': 'Onze Wereldwijde Fondsen | Motoren van Wereldwijde Vooruitgang | XHIVA',
+  'seo.funds.description': 'Verken XHIVA\'s samengestelde portefeuille van gespecialiseerde investeringsvehikels, ontworpen om te kapitaliseren op wereldwijde megatrends. Toegang tot eigen strategieën voor gekwalificeerde investeerders.',
 
-  'seo.impact.title': 'Onze Impact | Een Mandaat Voorbij Winst | Xhiva',
-  'seo.impact.description': 'Ontdek hoe Xhiva een dubbel mandaat bereikt: de intelligente groei van kapitaal en de doelbewuste vooruitgang van de samenleving. Onze impact is verankerd in onze strategie.',
-  'seo.partnership.title': 'Wereldwijd Partnernetwerk | Buiten de Grenzen | Xhiva',
-  'seo.partnership.description': 'Verken Xhiva\'s strategische partnerschappen met staatsinvesteringsfondsen, institutionele investeerders, wereldwijde banken en technologieleiders om synergiewaarde te creëren en de toekomst te bouwen.',
-  'seo.services.title': 'Institutionele Financiële Diensten | Vermogensbeheer & Fiduciair | Xhiva',
-  'seo.services.description': 'Verken Xhiva\'s geïntegreerde suite van institutionele diensten, inclusief geavanceerd vermogensbeheer, aangepaste portefeuilleconstructie, vermogensplanning, fiduciair toezicht en exclusieve co-investeringsmogelijkheden.',
+  'seo.impact.title': 'Onze Impact | Een Mandaat Voorbij Winst | XHIVA',
+  'seo.impact.description': 'Ontdek hoe XHIVA een dubbel mandaat bereikt: de intelligente groei van kapitaal en de doelbewuste vooruitgang van de samenleving. Onze impact is verankerd in onze strategie.',
+  'seo.partnership.title': 'Wereldwijd Partnernetwerk | Buiten de Grenzen | XHIVA',
+  'seo.partnership.description': 'Verken XHIVA\'s strategische partnerschappen met staatsinvesteringsfondsen, institutionele investeerders, wereldwijde banken en technologieleiders om synergiewaarde te creëren en de toekomst te bouwen.',
+  'seo.services.title': 'Institutionele Financiële Diensten | Vermogensbeheer & Fiduciair | XHIVA',
+  'seo.services.description': 'Verken XHIVA\'s geïntegreerde suite van institutionele diensten, inclusief geavanceerd vermogensbeheer, aangepaste portefeuilleconstructie, vermogensplanning, fiduciair toezicht en exclusieve co-investeringsmogelijkheden.',
 
   'cookiePolicy.title': 'Cookiebeleid',
   'cookiePolicy.effectiveDate': 'Ingangsdatum: 14 oktober 2025',
 
   'cookiePolicy.section1.title': 'Introductie',
-  'cookiePolicy.section1.p1': 'Dit Cookiebeleid legt uit hoe Xhiva ("wij", "ons" en "onze") cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt op xhiva.org. Het legt uit wat deze technologieën zijn en waarom we ze gebruiken, evenals uw rechten om ons gebruik ervan te controleren.',
+  'cookiePolicy.section1.p1': 'Dit Cookiebeleid legt uit hoe XHIVA ("wij", "ons" en "onze") cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt op XHIVA.org. Het legt uit wat deze technologieën zijn en waarom we ze gebruiken, evenals uw rechten om ons gebruik ervan te controleren.',
 
   'cookiePolicy.section2.title': 'Hoe Wij Cookies Gebruiken',
   'cookiePolicy.section2.p1': 'Wij gebruiken cookies om verschillende redenen. Sommige cookies zijn om technische redenen vereist om onze website te laten werken, en we noemen deze "essentiële" of "strikt noodzakelijke" cookies. Andere cookies stellen ons in staat om de interesses van onze gebruikers te volgen en te targeten om de ervaring op onze website te verbeteren. We hebben ze hieronder gecategoriseerd:',
@@ -52,6 +52,6 @@ export const seoNlTranslations = {
   'cookiePolicy.section5.title': 'Neem Contact Met Ons Op',
   'cookiePolicy.section5.p1': 'Als u vragen heeft over ons gebruik van cookies, neem dan contact met ons op via',
 
-  'seo.cookiePolicy.title': 'Cookiebeleid | Xhiva',
-  'seo.cookiePolicy.description': 'Lees hoe Xhiva cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt, en begrijp uw rechten om ons gebruik ervan te controleren.',
+  'seo.cookiePolicy.title': 'Cookiebeleid | XHIVA',
+  'seo.cookiePolicy.description': 'Lees hoe XHIVA cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt, en begrijp uw rechten om ons gebruik ervan te controleren.',
 };

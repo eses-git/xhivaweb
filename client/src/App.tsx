@@ -72,7 +72,7 @@ export default function App() {
             <Route path="/" element={
               <PageLayout 
                 title="Architecting the World of Tomorrow"
-                description="Xhiva deploys strategic capital into the disruptive technologies, critical infrastructure, and sustainable initiatives that will define the next century."
+                description="XHIVA deploys strategic capital into the disruptive technologies, critical infrastructure, and sustainable initiatives that will define the next century."
               >
                 <div className="min-h-screen">
                   <Header />
@@ -155,7 +155,7 @@ export default function App() {
             <Route path="/contact" element={
               <PageLayout
                 title="Contact Us"
-                description="Connect with Xhiva. We are available for new engagements and inquiries from qualified institutional investors and partners."
+                description="Connect with XHIVA. We are available for new engagements and inquiries from qualified institutional investors and partners."
               >
                 <div className="min-h-screen">
                   <Header />

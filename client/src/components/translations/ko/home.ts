@@ -78,7 +78,7 @@ export const homeKoTranslations = {
   'cta.button.primary': '상담 요청',
   'cta.button.secondary': '펀드 탐색하기',
   'cta.contact1.title': '이메일 문의',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': '전화 문의',
   'cta.contact2.text': '요청 시 제공 가능',
   'cta.contact3.title': '글로벌 오피스',

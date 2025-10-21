@@ -78,7 +78,7 @@ export const homeTlTranslations = {
   'cta.button.primary': 'HUMILING NG KONSULTASYON',
   'cta.button.secondary': 'GALUGARIN ANG MGA PONDO',
   'cta.contact1.title': 'KONTAK SA EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'KONTAK SA TELEPONO',
   'cta.contact2.text': 'Magagamit kapag hiniling',
   'cta.contact3.title': 'MGA OPISINA NG PANDAIGDIG',

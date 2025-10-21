@@ -79,7 +79,7 @@ export const homePtTranslations = {
   'cta.button.primary': 'SOLICITAR CONSULTA',
   'cta.button.secondary': 'EXPLORAR FUNDOS',
   'cta.contact1.title': 'CONTATO POR EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'CONTATO POR TELEFONE',
   'cta.contact2.text': 'Disponível mediante solicitação',
   'cta.contact3.title': 'ESCRITÓRIOS GLOBAIS',

@@ -40,7 +40,7 @@ export const commonEnTranslations = {
   'footer.disclaimer': 'Legal Disclaimer',
   'footer.privacy': 'Privacy Policy',
   'footer.terms': 'Terms of Service',
-  'footer.copyright': '© 2025 Xhiva. All rights reserved.',
+  'footer.copyright': '© 2025 XHIVA. All rights reserved.',
   'footer.language.es': 'Español',
   'footer.language.en': 'English',
 
@@ -51,15 +51,15 @@ export const commonEnTranslations = {
   'footer.modal.disclaimer.p3': 'Access to these programmes is limited to qualified, sophisticated investors who meet strict eligibility criteria and have executed a formal legal agreement.',
   'footer.modal.privacy.title': 'Privacy Policy',
   'footer.modal.privacy.effectiveDate': 'Effective Date: 7 August 2025',
-  'footer.modal.privacy.p1': 'This policy outlines how Xhiva Capital ("we", "us", "our") collects, uses, and safeguards the personal data you provide to us through our website. We act as the \'data controller\' for the purposes of the UK General Data Protection Regulation (UK GDPR).',
+  'footer.modal.privacy.p1': 'This policy outlines how XHIVA Capital ("we", "us", "our") collects, uses, and safeguards the personal data you provide to us through our website. We act as the \'data controller\' for the purposes of the UK General Data Protection Regulation (UK GDPR).',
   'footer.modal.privacy.p2': 'We may collect information you provide via enquiry forms (name, email, investor status) and technical data (IP address, browser type). We use your data based on legitimate interests to respond to enquiries, consent for marketing, and legal obligation for AML/KYC requirements.',
   'footer.modal.privacy.p3': 'We do not sell your data but may share it with trusted third parties such as professional advisers, regulators, and service providers. Your data may be transferred outside the UK with appropriate safeguards in place.',
-  'footer.modal.privacy.p4': 'We have implemented appropriate security measures and will retain data only as long as necessary. Under UK GDPR, you have rights to access, correct, erase, or object to the processing of your data, and to withdraw consent. For questions, please contact <a href="/contact" style="color:#D7C286" >contact@xhiva.org</a>.',
+  'footer.modal.privacy.p4': 'We have implemented appropriate security measures and will retain data only as long as necessary. Under UK GDPR, you have rights to access, correct, erase, or object to the processing of your data, and to withdraw consent. For questions, please contact <a href="/contact" style="color:#D7C286" >contact@XHIVA.org</a>.',
   'footer.modal.terms.title': 'Terms and Conditions',
   'footer.modal.terms.effectiveDate': 'Effective Date: 7 August 2025',
   'footer.modal.terms.p1': 'By accessing this website, you agree to be bound by these Terms and Conditions. The content is for informational purposes only and does not constitute financial, investment, legal, or other professional advice. Nothing on this site constitutes an offer or solicitation.',
-  'footer.modal.terms.p2': 'All intellectual property is the property of Xhiva Capital. We shall not be liable for any loss or damage arising from your use of the site. All investments involve risk, and past performance is not indicative of future results.',
-  'footer.modal.terms.p3': 'These terms are governed by the laws of England and Wales. For questions, contact us via our <a href="/contact" style="color:#D7C286" >contact@xhiva.org</a>.',
+  'footer.modal.terms.p2': 'All intellectual property is the property of XHIVA Capital. We shall not be liable for any loss or damage arising from your use of the site. All investments involve risk, and past performance is not indicative of future results.',
+  'footer.modal.terms.p3': 'These terms are governed by the laws of England and Wales. For questions, contact us via our <a href="/contact" style="color:#D7C286" >contact@XHIVA.org</a>.',
 
 
   // ... your other keys
@@ -72,5 +72,5 @@ export const commonEnTranslations = {
 'cookie.footerLink': 'Cookie Policy',
   // General Disclaimer Modal
   'disclaimer.title': 'Legal Disclaimer',
-  'disclaimer.content': 'Xhiva is a private global investment firm. The information on this website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security or investment product. Any such offer or solicitation will be made only by means of a confidential private offering memorandum and in accordance with applicable securities laws. Past performance is not indicative of future results.',
+  'disclaimer.content': 'XHIVA is a private global investment firm. The information on this website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security or investment product. Any such offer or solicitation will be made only by means of a confidential private offering memorandum and in accordance with applicable securities laws. Past performance is not indicative of future results.',
 };

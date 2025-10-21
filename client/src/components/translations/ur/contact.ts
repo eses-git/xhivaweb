@@ -8,7 +8,7 @@ export const contactUrTranslations = {
   'contact.form.emailLabel': 'ای میل اڈریس',
   'contact.form.messageLabel': 'پیغام',
   'contact.form.submitButton': 'پیغام بھیجیں',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'درخواست پر دستیاب ہے',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'بھیج رہا ہے...',

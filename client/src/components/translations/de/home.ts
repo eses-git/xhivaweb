@@ -78,7 +78,7 @@ export const homeDeTranslations = {
   'cta.button.primary': 'BERATUNG ANFORDERN',
   'cta.button.secondary': 'FONDS ERKUNDEN',
   'cta.contact1.title': 'E-MAIL KONTAKT',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'TELEFONKONTAKT',
   'cta.contact2.text': 'Auf Anfrage verfügbar',
   'cta.contact3.title': 'GLOBALE BÜROS',

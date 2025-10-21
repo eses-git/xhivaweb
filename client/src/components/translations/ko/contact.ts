@@ -8,7 +8,7 @@ export const contactKoTranslations = {
   'contact.form.emailLabel': '이메일 주소',
   'contact.form.messageLabel': '메시지',
   'contact.form.submitButton': '메시지 보내기',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': '요청 시 제공 가능',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': '보내는 중...',

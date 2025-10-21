@@ -8,7 +8,7 @@ export const contactThTranslations = {
   'contact.form.emailLabel': 'ที่อยู่อีเมล',
   'contact.form.messageLabel': 'ข้อความ',
   'contact.form.submitButton': 'ส่งข้อความ',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'สามารถขอได้',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'กำลังส่ง...',

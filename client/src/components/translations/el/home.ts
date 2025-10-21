@@ -78,7 +78,7 @@ export const homeElTranslations = {
   'cta.button.primary': 'ΖΗΤΗΣΤΕ ΣΥΜΒΟΥΛΗ',
   'cta.button.secondary': 'ΕΞΕΡΕΥΝΗΣΤΕ ΚΕΦΑΛΑΙΑ',
   'cta.contact1.title': 'ΕΠΙΚΟΙΝΩΝΙΑ EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'ΕΠΙΚΟΙΝΩΝΙΑ ΤΗΛΕΦΩΝΟΥ',
   'cta.contact2.text': 'Διαθέσιμο κατόπιν αιτήματος',
   'cta.contact3.title': 'ΠΑΓΚΟΣΜΙΑ ΓΡΑΦΕΙΑ',

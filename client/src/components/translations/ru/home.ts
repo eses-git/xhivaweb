@@ -78,7 +78,7 @@ export const homeRuTranslations = {
   'cta.button.primary': 'ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ',
   'cta.button.secondary': 'ИЗУЧИТЬ ФОНДЫ',
   'cta.contact1.title': 'EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'ТЕЛЕФОН',
   'cta.contact2.text': 'Доступно по запросу',
   'cta.contact3.title': 'ГЛОБАЛЬНЫЕ ОФИСЫ',

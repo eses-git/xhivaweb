@@ -78,7 +78,7 @@ export const homeHeTranslations = {
   'cta.button.primary': 'בקש ייעוץ',
   'cta.button.secondary': 'חקור קרנות',
   'cta.contact1.title': 'צור קשר בדוא"ל',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'צור קשר טלפוני',
   'cta.contact2.text': 'זמין לפי בקשה',
   'cta.contact3.title': 'משרדים גלובליים',

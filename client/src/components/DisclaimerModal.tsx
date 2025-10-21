@@ -91,7 +91,7 @@ export function DisclaimerModal({ isOpen, onClose }: DisclaimerModalProps) {
             <div className="mb-8">
               <h3 className="text-xl font-black text-primary mb-4">Investor Eligibility</h3>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                Xhiva's investment products and services are exclusively available to:
+                XHIVA's investment products and services are exclusively available to:
               </p>
               <ul className="space-y-2 text-foreground/80">
                 <li className="flex items-start space-x-3">
@@ -117,7 +117,7 @@ export function DisclaimerModal({ isOpen, onClose }: DisclaimerModalProps) {
             <div className="mb-8">
               <h3 className="text-xl font-black text-primary mb-4">Regulatory Information</h3>
               <p className="text-foreground/80 leading-relaxed">
-                Xhiva operates under the oversight of multiple regulatory authorities including the Securities and Exchange Commission (SEC), 
+                XHIVA operates under the oversight of multiple regulatory authorities including the Securities and Exchange Commission (SEC), 
                 Financial Conduct Authority (FCA), and Swiss Financial Market Supervisory Authority (FINMA). Our operations comply with 
                 all applicable securities laws and regulations in jurisdictions where we conduct business.
               </p>
@@ -127,7 +127,7 @@ export function DisclaimerModal({ isOpen, onClose }: DisclaimerModalProps) {
             <div className="mb-8">
               <h3 className="text-xl font-black text-primary mb-4">Privacy & Confidentiality</h3>
               <p className="text-foreground/80 leading-relaxed">
-                All information shared with Xhiva is treated with the highest level of confidentiality. We maintain strict data protection 
+                All information shared with XHIVA is treated with the highest level of confidentiality. We maintain strict data protection 
                 protocols and comply with international privacy regulations including GDPR and other applicable data protection laws. 
                 Client information is never shared without explicit consent except as required by law.
               </p>
@@ -138,7 +138,7 @@ export function DisclaimerModal({ isOpen, onClose }: DisclaimerModalProps) {
               <h4 className="font-bold text-primary mb-2">Legal Inquiries</h4>
               <p className="text-sm text-foreground/70">
                 For questions regarding this disclaimer, compliance matters, or legal documentation, 
-                please contact our legal department at legal@xhiva.com or through our secure communication channels.
+                please contact our legal department at legal@XHIVA.com or through our secure communication channels.
               </p>
             </div>
           </div>

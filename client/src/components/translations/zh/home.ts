@@ -78,7 +78,7 @@ export const homeMaTranslations = {
   'cta.button.primary': '请求咨询',
   'cta.button.secondary': '探索基金',
   'cta.contact1.title': '电子邮件联系',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': '电话联系',
   'cta.contact2.text': '根据要求提供',
   'cta.contact3.title': '全球办事处',

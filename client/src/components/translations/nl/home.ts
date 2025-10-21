@@ -78,7 +78,7 @@ export const homeNlTranslations = {
   'cta.button.primary': 'VRAAG ADVIESGESPREK AAN',
   'cta.button.secondary': 'VERKEN FONDSEN',
   'cta.contact1.title': 'E-MAILCONTACT',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'TELEFONISCH CONTACT',
   'cta.contact2.text': 'Beschikbaar op aanvraag',
   'cta.contact3.title': 'WERELDWIJDE KANTOREN',

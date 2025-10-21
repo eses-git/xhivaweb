@@ -78,7 +78,7 @@ export const homeIdTranslations = {
   'cta.button.primary': 'MINTA KONSULTASI',
   'cta.button.secondary': 'JELAJAHI DANA',
   'cta.contact1.title': 'KONTAK EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'KONTAK TELEPON',
   'cta.contact2.text': 'Tersedia berdasarkan permintaan',
   'cta.contact3.title': 'KANTOR GLOBAL',

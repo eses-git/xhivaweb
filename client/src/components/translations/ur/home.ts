@@ -78,7 +78,7 @@ export const homeUrTranslations = {
   'cta.button.primary': 'مشاورت کی درخواست کریں',
   'cta.button.secondary': 'فنڈز دریافت کریں',
   'cta.contact1.title': 'ای میل رابطہ',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'فون رابطہ',
   'cta.contact2.text': 'درخواست پر دستیاب ہے',
   'cta.contact3.title': 'عالمی دفاتر',

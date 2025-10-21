@@ -78,7 +78,7 @@ export const homeFaTranslations = {
   'cta.button.primary': 'درخواست مشاوره',
   'cta.button.secondary': 'کاوش صندوق‌ها',
   'cta.contact1.title': 'تماس ایمیلی',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'تماس تلفنی',
   'cta.contact2.text': 'در صورت درخواست موجود است',
   'cta.contact3.title': 'دفاتر جهانی',

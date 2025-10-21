@@ -2,31 +2,31 @@
 
 export const seoMaTranslations = {
   // Home Page
-  'seo.home.title': '构建未来世界 | Xhiva',
-  'seo.home.description': 'Xhiva 将战略资本部署到将定义下一个世纪的颠覆性技术、关键基础设施和可持续发展计划中。',
+  'seo.home.title': '构建未来世界 | XHIVA',
+  'seo.home.description': 'XHIVA 将战略资本部署到将定义下一个世纪的颠覆性技术、关键基础设施和可持续发展计划中。',
   'seo.home.keywords': '战略资本, 全球投资, 颠覆性技术, 基础设施, 可持续发展计划, 私募股权',
 
   // About Us Page
-  'seo.about.title': '关于我们 | Xhiva',
+  'seo.about.title': '关于我们 | XHIVA',
   'seo.about.description': '一家位于主权利益、中央银行业务和私人资本市场交汇处的首屈一指的战略咨询公司。了解我们的管家理念。',
-  'seo.aboutus.title': '关于我们 | 构建稳定与价值 | Xhiva',
+  'seo.aboutus.title': '关于我们 | 构建稳定与价值 | XHIVA',
   'seo.aboutus.description': '一家位于主权利益、中央银行业务和私人资本市场交汇处的首屈一指的战略咨询公司。了解我们的管家理念和持久影响力。',
   
-  'seo.funds.title': '我们的全球基金 | 全球进步的引擎 | Xhiva',
-  'seo.funds.description': '探索 Xhiva 精心策划的专业投资工具组合，旨在利用全球大趋势。为合格投资者提供专有策略。',
+  'seo.funds.title': '我们的全球基金 | 全球进步的引擎 | XHIVA',
+  'seo.funds.description': '探索 XHIVA 精心策划的专业投资工具组合，旨在利用全球大趋势。为合格投资者提供专有策略。',
 
-  'seo.impact.title': '我们的影响力 | 超越利润的使命 | Xhiva',
-  'seo.impact.description': '了解 Xhiva 如何实现双重使命：资本的明智增长和社会的刻意进步。我们的影响力已嵌入我们的战略中。',
-  'seo.partnership.title': '全球合作伙伴网络 | 超越国界 | Xhiva',
-  'seo.partnership.description': '探索 Xhiva 与主权财富基金、机构投资者、全球银行和技术领导者的战略合作伙伴关系，以创造协同价值并共建未来。',
-  'seo.services.title': '机构金融服务 | 资产管理与受托 | Xhiva',
-  'seo.services.description': '探索 Xhiva 的综合机构服务套件，包括精密的资产管理、定制投资组合构建、财富规划、受托监督和专属共同投资机会。',
+  'seo.impact.title': '我们的影响力 | 超越利润的使命 | XHIVA',
+  'seo.impact.description': '了解 XHIVA 如何实现双重使命：资本的明智增长和社会的刻意进步。我们的影响力已嵌入我们的战略中。',
+  'seo.partnership.title': '全球合作伙伴网络 | 超越国界 | XHIVA',
+  'seo.partnership.description': '探索 XHIVA 与主权财富基金、机构投资者、全球银行和技术领导者的战略合作伙伴关系，以创造协同价值并共建未来。',
+  'seo.services.title': '机构金融服务 | 资产管理与受托 | XHIVA',
+  'seo.services.description': '探索 XHIVA 的综合机构服务套件，包括精密的资产管理、定制投资组合构建、财富规划、受托监督和专属共同投资机会。',
 
    'cookiePolicy.title': 'Cookie 政策',
   'cookiePolicy.effectiveDate': '生效日期：2025年10月14日',
 
   'cookiePolicy.section1.title': '引言',
-  'cookiePolicy.section1.p1': '本 Cookie 政策解释了 Xhiva（“我们”、“我们的”）如何在您访问我们的网站 xhiva.org 时使用 cookie 和类似技术来识别您。它解释了这些技术是什么，我们为什么使用它们，以及您控制我们使用它们的权利。',
+  'cookiePolicy.section1.p1': '本 Cookie 政策解释了 XHIVA（“我们”、“我们的”）如何在您访问我们的网站 XHIVA.org 时使用 cookie 和类似技术来识别您。它解释了这些技术是什么，我们为什么使用它们，以及您控制我们使用它们的权利。',
 
   'cookiePolicy.section2.title': '我们如何使用 Cookie',
   'cookiePolicy.section2.p1': '我们出于多种原因使用 cookie。有些 cookie 是出于技术原因为了我们网站的运营所必需的，我们称之为“必要”或“绝对必要”的 cookie。其他 cookie 使我们能够跟踪和定位用户的兴趣，以增强我们网站的体验。我们已将它们分类如下：',
@@ -52,6 +52,6 @@ export const seoMaTranslations = {
   'cookiePolicy.section5.title': '联系我们',
   'cookiePolicy.section5.p1': '如果您对我们使用 cookie 有任何疑问，请通过以下方式联系我们：',
 
-  'seo.cookiePolicy.title': 'Cookie 政策 | Xhiva',
-  'seo.cookiePolicy.description': '了解 Xhiva 如何使用 cookie 和类似技术在您访问我们网站时识别您，并了解您控制我们使用它们的权利。',
+  'seo.cookiePolicy.title': 'Cookie 政策 | XHIVA',
+  'seo.cookiePolicy.description': '了解 XHIVA 如何使用 cookie 和类似技术在您访问我们网站时识别您，并了解您控制我们使用它们的权利。',
 };

@@ -78,7 +78,7 @@ export const homeFrTranslations = {
   'cta.button.primary': 'DEMANDER UNE CONSULTATION',
   'cta.button.secondary': 'EXPLORER LES FONDS',
   'cta.contact1.title': 'CONTACT EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'CONTACT TÉLÉPHONIQUE',
   'cta.contact2.text': 'Disponible sur demande',
   'cta.contact3.title': 'BUREAUX MONDIAUX',

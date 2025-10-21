@@ -9,7 +9,7 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({ title, description, keywords }) => {
   // Use a template for the title to always include your brand name
-  const pageTitle = `${title} | Xhiva`;
+  const pageTitle = `${title} | XHIVA`;
 
   return (
     <Helmet>

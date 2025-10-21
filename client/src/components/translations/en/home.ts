@@ -78,7 +78,7 @@ export const homeEnTranslations = {
   'cta.button.primary': 'REQUEST CONSULTATION',
   'cta.button.secondary': 'EXPLORE FUNDS',
   'cta.contact1.title': 'EMAIL CONTACT',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'PHONE CONTACT',
   'cta.contact2.text': 'Available upon request',
   'cta.contact3.title': 'GLOBAL OFFICES',

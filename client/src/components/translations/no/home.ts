@@ -78,7 +78,7 @@ export const homeNoTranslations = {
   'cta.button.primary': 'BE OM KONSULTASJON',
   'cta.button.secondary': 'UTFORSK FOND',
   'cta.contact1.title': 'E-POSTKONTAKT',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'TELEFONKONTAKT',
   'cta.contact2.text': 'Tilgjengelig på forespørsel',
   'cta.contact3.title': 'GLOBALE KONTORER',

@@ -2,31 +2,31 @@
 
 export const seoSwTranslations = {
   // Home Page
-  'seo.home.title': 'Kuunda Ulimwengu wa Kesho | Xhiva',
-  'seo.home.description': 'Xhiva inapeleka mtaji mkakati katika teknolojia zinazoleta mabadiliko makubwa, miundombinu muhimu, na mipango endelevu itakayoainisha karne ijayo.',
+  'seo.home.title': 'Kuunda Ulimwengu wa Kesho | XHIVA',
+  'seo.home.description': 'XHIVA inapeleka mtaji mkakati katika teknolojia zinazoleta mabadiliko makubwa, miundombinu muhimu, na mipango endelevu itakayoainisha karne ijayo.',
   'seo.home.keywords': 'mtaji mkakati, uwekezaji wa kimataifa, teknolojia yenye usumbufu, miundombinu, mipango endelevu, hisa binafsi',
 
   // About Us Page
-  'seo.about.title': 'Kuhusu Sisi | Xhiva',
+  'seo.about.title': 'Kuhusu Sisi | XHIVA',
   'seo.about.description': 'Kampuni kuu ya ushauri wa kimkakati katika makutano ya maslahi ya kitaifa, benki kuu, na masoko ya mitaji binafsi. Gundua falsafa yetu ya usimamizi.',
-  'seo.aboutus.title': 'Kuhusu Sisi | Kuunda Uthabiti na Thamani | Xhiva',
+  'seo.aboutus.title': 'Kuhusu Sisi | Kuunda Uthabiti na Thamani | XHIVA',
   'seo.aboutus.description': 'Kampuni kuu ya ushauri wa kimkakati katika makutano ya maslahi ya kitaifa, benki kuu, na masoko ya mitaji binafsi. Gundua falsafa yetu ya usimamizi na athari za kudumu.',
   
-  'seo.funds.title': 'Fedha Zetu za Kimataifa | Injini za Maendeleo ya Kimataifa | Xhiva',
-  'seo.funds.description': 'Gundua kwingineko iliyoratibiwa ya Xhiva ya vyombo vya uwekezaji maalum, vilivyoundwa kutumia fursa ya mienendo mikuu ya kimataifa. Pata mikakati ya umiliki kwa wawekezaji waliohitimu.',
+  'seo.funds.title': 'Fedha Zetu za Kimataifa | Injini za Maendeleo ya Kimataifa | XHIVA',
+  'seo.funds.description': 'Gundua kwingineko iliyoratibiwa ya XHIVA ya vyombo vya uwekezaji maalum, vilivyoundwa kutumia fursa ya mienendo mikuu ya kimataifa. Pata mikakati ya umiliki kwa wawekezaji waliohitimu.',
 
-  'seo.impact.title': 'Athari Zetu | Mamlaka Zaidi ya Faida | Xhiva',
-  'seo.impact.description': 'Gundua jinsi Xhiva inavyofikia mamlaka mbili: ukuaji wa busara wa mtaji na maendeleo ya makusudi ya jamii. Athari zetu zimeingizwa katika mkakati wetu.',
-  'seo.partnership.title': 'Mtandao wa Ushirikiano wa Kimataifa | Zaidi ya Mipaka | Xhiva',
-  'seo.partnership.description': 'Gundua ushirikiano wa kimkakati wa Xhiva na fedha za utajiri wa serikali, wawekezaji wa taasisi, benki za kimataifa, na viongozi wa teknolojia ili kuunda thamani ya pamoja na kujenga siku zijazo.',
-  'seo.services.title': 'Huduma za Kifedha za Kitaasisi | Usimamizi wa Mali na Udhamini | Xhiva',
-  'seo.services.description': 'Gundua safu iliyounganishwa ya Xhiva ya huduma za kitaasisi, ikiwa ni pamoja na usimamizi wa hali ya juu wa mali, ujenzi wa kwingineko maalum, mipango ya mali, uangalizi wa kidhamana, na fursa za kipekee za uwekezaji wa pamoja.',
+  'seo.impact.title': 'Athari Zetu | Mamlaka Zaidi ya Faida | XHIVA',
+  'seo.impact.description': 'Gundua jinsi XHIVA inavyofikia mamlaka mbili: ukuaji wa busara wa mtaji na maendeleo ya makusudi ya jamii. Athari zetu zimeingizwa katika mkakati wetu.',
+  'seo.partnership.title': 'Mtandao wa Ushirikiano wa Kimataifa | Zaidi ya Mipaka | XHIVA',
+  'seo.partnership.description': 'Gundua ushirikiano wa kimkakati wa XHIVA na fedha za utajiri wa serikali, wawekezaji wa taasisi, benki za kimataifa, na viongozi wa teknolojia ili kuunda thamani ya pamoja na kujenga siku zijazo.',
+  'seo.services.title': 'Huduma za Kifedha za Kitaasisi | Usimamizi wa Mali na Udhamini | XHIVA',
+  'seo.services.description': 'Gundua safu iliyounganishwa ya XHIVA ya huduma za kitaasisi, ikiwa ni pamoja na usimamizi wa hali ya juu wa mali, ujenzi wa kwingineko maalum, mipango ya mali, uangalizi wa kidhamana, na fursa za kipekee za uwekezaji wa pamoja.',
 
    'cookiePolicy.title': 'Sera ya Vidakuzi',
   'cookiePolicy.effectiveDate': 'Tarehe ya Kuanza Kutumika: 14 Oktoba 2025',
 
   'cookiePolicy.section1.title': 'Utangulizi',
-  'cookiePolicy.section1.p1': 'Sera hii ya Vidakuzi inaeleza jinsi Xhiva ("sisi", "yetu") inavyotumia vidakuzi na teknolojia zinazofanana ili kukutambua unapotembelea tovuti yetu katika xhiva.org. Inaeleza teknolojia hizi ni nini na kwa nini tunazitumia, pamoja na haki zako za kudhibiti matumizi yetu.',
+  'cookiePolicy.section1.p1': 'Sera hii ya Vidakuzi inaeleza jinsi XHIVA ("sisi", "yetu") inavyotumia vidakuzi na teknolojia zinazofanana ili kukutambua unapotembelea tovuti yetu katika XHIVA.org. Inaeleza teknolojia hizi ni nini na kwa nini tunazitumia, pamoja na haki zako za kudhibiti matumizi yetu.',
 
   'cookiePolicy.section2.title': 'Jinsi Tunavyotumia Vidakuzi',
   'cookiePolicy.section2.p1': 'Tunatumia vidakuzi kwa sababu kadhaa. Baadhi ya vidakuzi vinahitajika kwa sababu za kiufundi ili tovuti yetu ifanye kazi, na tunaviita vidakuzi "muhimu" au "vinavyohitajika sana". Vidakuzi vingine hutuwezesha kufuatilia na kulenga maslahi ya watumiaji wetu ili kuboresha uzoefu kwenye tovuti yetu. Tumevigawa katika makundi hapa chini:',
@@ -52,6 +52,6 @@ export const seoSwTranslations = {
   'cookiePolicy.section5.title': 'Wasiliana Nasi',
   'cookiePolicy.section5.p1': 'Ikiwa una maswali yoyote kuhusu matumizi yetu ya vidakuzi, tafadhali wasiliana nasi kwa',
 
-  'seo.cookiePolicy.title': 'Sera ya Vidakuzi | Xhiva',
-  'seo.cookiePolicy.description': 'Jifunze jinsi Xhiva inavyotumia vidakuzi na teknolojia zinazofanana ili kukutambua unapotembelea tovuti yetu, na uelewe haki zako za kudhibiti matumizi yetu.',
+  'seo.cookiePolicy.title': 'Sera ya Vidakuzi | XHIVA',
+  'seo.cookiePolicy.description': 'Jifunze jinsi XHIVA inavyotumia vidakuzi na teknolojia zinazofanana ili kukutambua unapotembelea tovuti yetu, na uelewe haki zako za kudhibiti matumizi yetu.',
 };

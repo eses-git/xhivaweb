@@ -2,31 +2,31 @@
 
 export const seoTlTranslations = {
   // Home Page
-  'seo.home.title': 'Pag-arkitekto ng Mundo ng Bukas | Xhiva',
-  'seo.home.description': 'Ang Xhiva ay naglalaan ng estratehikong kapital sa mga teknolohiyang disruptive, kritikal na imprastraktura, at mga sustainable na inisyatibo na magtatakda ng susunod na siglo.',
+  'seo.home.title': 'Pag-arkitekto ng Mundo ng Bukas | XHIVA',
+  'seo.home.description': 'Ang XHIVA ay naglalaan ng estratehikong kapital sa mga teknolohiyang disruptive, kritikal na imprastraktura, at mga sustainable na inisyatibo na magtatakda ng susunod na siglo.',
   'seo.home.keywords': 'estratehikong kapital, pandaigdigang pamumuhunan, teknolohiyang disruptive, imprastraktura, mga sustainable na inisyatibo, pribadong equity',
 
   // About Us Page
-  'seo.about.title': 'Tungkol Sa Amin | Xhiva',
+  'seo.about.title': 'Tungkol Sa Amin | XHIVA',
   'seo.about.description': 'Isang nangungunang estratehikong advisory firm sa ugnayan ng mga interes ng soberanya, sentral na pagbabangko, at mga pribadong merkado ng kapital. Tuklasin ang aming pilosopiya ng pangangasiwa.',
-  'seo.aboutus.title': 'Tungkol Sa Amin | Pag-iinhinyero ng Katatagan at Halaga | Xhiva',
+  'seo.aboutus.title': 'Tungkol Sa Amin | Pag-iinhinyero ng Katatagan at Halaga | XHIVA',
   'seo.aboutus.description': 'Isang nangungunang estratehikong advisory firm sa ugnayan ng mga interes ng soberanya, sentral na pagbabangko, at mga pribadong merkado ng kapital. Tuklasin ang aming pilosopiya ng pangangasiwa at pangmatagalang epekto.',
   
-  'seo.funds.title': 'Ang Aming mga Pandaigdigang Pondo | Mga Makina ng Pandaigdigang Pag-unlad | Xhiva',
-  'seo.funds.description': 'Galugarin ang curated na portfolio ng Xhiva ng mga espesyal na sasakyang pamumuhunan, na ininhinyero upang samantalahin ang mga pandaigdigang megatrend. I-access ang mga proprietary na estratehiya para sa mga kwalipikadong mamumuhunan.',
+  'seo.funds.title': 'Ang Aming mga Pandaigdigang Pondo | Mga Makina ng Pandaigdigang Pag-unlad | XHIVA',
+  'seo.funds.description': 'Galugarin ang curated na portfolio ng XHIVA ng mga espesyal na sasakyang pamumuhunan, na ininhinyero upang samantalahin ang mga pandaigdigang megatrend. I-access ang mga proprietary na estratehiya para sa mga kwalipikadong mamumuhunan.',
 
-  'seo.impact.title': 'Ang Aming Epekto | Isang Mandato Higit sa Kita | Xhiva',
-  'seo.impact.description': 'Tuklasin kung paano nakakamit ng Xhiva ang isang dalawahang mandato: ang matalinong paglago ng kapital at ang sinadyang pagsulong ng lipunan. Ang aming epekto ay naka-embed sa aming estratehiya.',
-  'seo.partnership.title': 'Pandaigdigang Network ng Pakikipagsosyo | Higit sa mga Hangganan | Xhiva',
-  'seo.partnership.description': 'Galugarin ang mga estratehikong pakikipagsosyo ng Xhiva sa mga sovereign wealth fund, mga institusyonal na mamumuhunan, mga pandaigdigang bangko, at mga lider ng teknolohiya upang lumikha ng synergistic na halaga at bumuo ng hinaharap.',
-  'seo.services.title': 'Mga Serbisyong Pinansyal sa Institusyon | Pamamahala ng Asset at Fiduciary | Xhiva',
-  'seo.services.description': 'Galugarin ang pinagsama-samang suite ng mga serbisyong institusyonal ng Xhiva, kabilang ang sopistikadong pamamahala ng asset, pasadyang paggawa ng portfolio, pagpaplano ng yaman, fiduciary oversight, at mga eksklusibong oportunidad sa co-investment.',
+  'seo.impact.title': 'Ang Aming Epekto | Isang Mandato Higit sa Kita | XHIVA',
+  'seo.impact.description': 'Tuklasin kung paano nakakamit ng XHIVA ang isang dalawahang mandato: ang matalinong paglago ng kapital at ang sinadyang pagsulong ng lipunan. Ang aming epekto ay naka-embed sa aming estratehiya.',
+  'seo.partnership.title': 'Pandaigdigang Network ng Pakikipagsosyo | Higit sa mga Hangganan | XHIVA',
+  'seo.partnership.description': 'Galugarin ang mga estratehikong pakikipagsosyo ng XHIVA sa mga sovereign wealth fund, mga institusyonal na mamumuhunan, mga pandaigdigang bangko, at mga lider ng teknolohiya upang lumikha ng synergistic na halaga at bumuo ng hinaharap.',
+  'seo.services.title': 'Mga Serbisyong Pinansyal sa Institusyon | Pamamahala ng Asset at Fiduciary | XHIVA',
+  'seo.services.description': 'Galugarin ang pinagsama-samang suite ng mga serbisyong institusyonal ng XHIVA, kabilang ang sopistikadong pamamahala ng asset, pasadyang paggawa ng portfolio, pagpaplano ng yaman, fiduciary oversight, at mga eksklusibong oportunidad sa co-investment.',
 
    'cookiePolicy.title': 'Patakaran sa Cookie',
   'cookiePolicy.effectiveDate': 'Petsa ng Bisa: Oktubre 14, 2025',
 
   'cookiePolicy.section1.title': 'Panimula',
-  'cookiePolicy.section1.p1': 'Ang Patakaran sa Cookie na ito ay nagpapaliwanag kung paano ginagamit ng Xhiva ("kami", "aming") ang mga cookie at mga katulad na teknolohiya upang makilala ka kapag bumisita ka sa aming website sa xhiva.org. Nagpapaliwanag ito kung ano ang mga teknolohiyang ito at bakit namin ginagamit ang mga ito, pati na rin ang iyong mga karapatan na kontrolin ang aming paggamit sa mga ito.',
+  'cookiePolicy.section1.p1': 'Ang Patakaran sa Cookie na ito ay nagpapaliwanag kung paano ginagamit ng XHIVA ("kami", "aming") ang mga cookie at mga katulad na teknolohiya upang makilala ka kapag bumisita ka sa aming website sa XHIVA.org. Nagpapaliwanag ito kung ano ang mga teknolohiyang ito at bakit namin ginagamit ang mga ito, pati na rin ang iyong mga karapatan na kontrolin ang aming paggamit sa mga ito.',
 
   'cookiePolicy.section2.title': 'Paano Namin Ginagamit ang mga Cookie',
   'cookiePolicy.section2.p1': 'Ginagamit namin ang mga cookie sa ilang mga kadahilanan. Ang ilang mga cookie ay kinakailangan para sa mga teknikal na kadahilanan upang gumana ang aming website, at tinutukoy namin ang mga ito bilang "mahahalaga" o "mahigpit na kinakailangan" na mga cookie. Pinapayagan kami ng ibang mga cookie na subaybayan at i-target ang mga interes ng aming mga gumagamit upang mapahusay ang karanasan sa aming website. Kinategorya namin ang mga ito sa ibaba:',
@@ -52,6 +52,6 @@ export const seoTlTranslations = {
   'cookiePolicy.section5.title': 'Makipag-ugnay sa Amin',
   'cookiePolicy.section5.p1': 'Kung mayroon kang anumang mga katanungan tungkol sa aming paggamit ng mga cookie, mangyaring makipag-ugnay sa amin sa',
 
-  'seo.cookiePolicy.title': 'Patakaran sa Cookie | Xhiva',
-  'seo.cookiePolicy.description': 'Alamin kung paano ginagamit ng Xhiva ang mga cookie at mga katulad na teknolohiya upang makilala ka kapag bumisita ka sa aming website, at unawain ang iyong mga karapatan na kontrolin ang aming paggamit sa mga ito.',
+  'seo.cookiePolicy.title': 'Patakaran sa Cookie | XHIVA',
+  'seo.cookiePolicy.description': 'Alamin kung paano ginagamit ng XHIVA ang mga cookie at mga katulad na teknolohiya upang makilala ka kapag bumisita ka sa aming website, at unawain ang iyong mga karapatan na kontrolin ang aming paggamit sa mga ito.',
 };

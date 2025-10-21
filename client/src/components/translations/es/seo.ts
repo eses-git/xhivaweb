@@ -1,32 +1,32 @@
 export const seoEsTranslations = {
   // Home Page
-  'seo.home.title': 'Arquitectando el Mundo del Mañana | Xhiva',
-  'seo.home.description': 'Xhiva despliega capital estratégico en las tecnologías disruptivas, infraestructura crítica e iniciativas sostenibles que definirán el próximo siglo.',
+  'seo.home.title': 'Arquitectando el Mundo del Mañana | XHIVA',
+  'seo.home.description': 'XHIVA despliega capital estratégico en las tecnologías disruptivas, infraestructura crítica e iniciativas sostenibles que definirán el próximo siglo.',
   'seo.home.keywords': 'capital estratégico, inversión global, tecnología disruptiva, infraestructura, iniciativas sostenibles, capital privado',
 
   // About Us Page
-  'seo.about.title': 'Sobre Nosotros | Xhiva',
+  'seo.about.title': 'Sobre Nosotros | XHIVA',
   'seo.about.description': 'Una firma de asesoría estratégica de primer nivel en el nexo de intereses soberanos, banca central y mercados de capital privado. Descubra nuestra filosofía de administración.',
   // ... add more for other pages
-  'seo.aboutus.title': 'About Us | Engineering Stability & Value | Xhiva',
+  'seo.aboutus.title': 'About Us | Engineering Stability & Value | XHIVA',
   'seo.aboutus.description': 'A premier strategic advisory firm at the nexus of sovereign interests, central banking, and private capital markets. Discover our philosophy of stewardship and lasting impact.',
 
-  'seo.funds.title': 'Nuestros Fondos Globales | Motores del Progreso Global | Xhiva',
-  'seo.funds.description': 'Explore el portafolio de vehículos de inversión especializados de Xhiva, diseñados para capitalizar megatendencias globales. Acceda a estrategias propietarias para inversionistas calificados.',
+  'seo.funds.title': 'Nuestros Fondos Globales | Motores del Progreso Global | XHIVA',
+  'seo.funds.description': 'Explore el portafolio de vehículos de inversión especializados de XHIVA, diseñados para capitalizar megatendencias globales. Acceda a estrategias propietarias para inversionistas calificados.',
 
-  'seo.impact.title': 'Nuestro Impacto | Un Mandato Más Allá del Beneficio | Xhiva',
-  'seo.impact.description': 'Descubra cómo Xhiva logra un doble mandato: el crecimiento inteligente del capital y el avance deliberado de la sociedad. Nuestro impacto está integrado en nuestra estrategia.',
+  'seo.impact.title': 'Nuestro Impacto | Un Mandato Más Allá del Beneficio | XHIVA',
+  'seo.impact.description': 'Descubra cómo XHIVA logra un doble mandato: el crecimiento inteligente del capital y el avance deliberado de la sociedad. Nuestro impacto está integrado en nuestra estrategia.',
 
-  'seo.partnership.title': 'Red Global de Socios | Más Allá de las Fronteras | Xhiva',
-  'seo.partnership.description': 'Explore las alianzas estratégicas de Xhiva con fondos soberanos, inversionistas institucionales, bancos globales y líderes tecnológicos para crear valor sinérgico y construir el futuro.',
-  'seo.services.title': 'Servicios Financieros Institucionales | Gestión de Activos y Fiduciarios | Xhiva',
-  'seo.services.description': 'Explore la suite integrada de servicios institucionales de Xhiva, incluyendo gestión sofisticada de activos, construcción de portafolios a medida, planificación patrimonial, supervisión fiduciaria y oportunidades exclusivas de coinversión.',
+  'seo.partnership.title': 'Red Global de Socios | Más Allá de las Fronteras | XHIVA',
+  'seo.partnership.description': 'Explore las alianzas estratégicas de XHIVA con fondos soberanos, inversionistas institucionales, bancos globales y líderes tecnológicos para crear valor sinérgico y construir el futuro.',
+  'seo.services.title': 'Servicios Financieros Institucionales | Gestión de Activos y Fiduciarios | XHIVA',
+  'seo.services.description': 'Explore la suite integrada de servicios institucionales de XHIVA, incluyendo gestión sofisticada de activos, construcción de portafolios a medida, planificación patrimonial, supervisión fiduciaria y oportunidades exclusivas de coinversión.',
 
     'cookiePolicy.title': 'Política de Cookies',
   'cookiePolicy.effectiveDate': 'Fecha de Vigencia: 14 de Octubre de 2025',
 
   'cookiePolicy.section1.title': 'Introducción',
-  'cookiePolicy.section1.p1': 'Esta Política de Cookies explica cómo Xhiva ("nosotros", "nos", y "nuestro") utiliza cookies y tecnologías similares para reconocerlo cuando visita nuestro sitio web en xhiva.org. Explica qué son estas tecnologías y por qué las usamos, así como sus derechos para controlar nuestro uso de ellas.',
+  'cookiePolicy.section1.p1': 'Esta Política de Cookies explica cómo XHIVA ("nosotros", "nos", y "nuestro") utiliza cookies y tecnologías similares para reconocerlo cuando visita nuestro sitio web en XHIVA.org. Explica qué son estas tecnologías y por qué las usamos, así como sus derechos para controlar nuestro uso de ellas.',
 
   'cookiePolicy.section2.title': 'Cómo Usamos las Cookies',
   'cookiePolicy.section2.p1': 'Utilizamos cookies por varias razones. Algunas cookies son necesarias por razones técnicas para que nuestro sitio web funcione, y nos referimos a ellas como cookies "esenciales" o "estrictamente necesarias". Otras cookies nos permiten rastrear y dirigir los intereses de nuestros usuarios para mejorar la experiencia en nuestro sitio web. Las hemos categorizado a continuación:',
@@ -52,8 +52,8 @@ export const seoEsTranslations = {
   'cookiePolicy.section5.title': 'Contáctenos',
   'cookiePolicy.section5.p1': 'Si tiene alguna pregunta sobre nuestro uso de cookies, por favor contáctenos en',
 
-  'seo.cookiePolicy.title': 'Política de Cookies | Xhiva',
-'seo.cookiePolicy.description': 'Conozca cómo Xhiva utiliza cookies y tecnologías similares para reconocerlo cuando visita nuestro sitio web y comprenda sus derechos para controlar nuestro uso de ellas.',
+  'seo.cookiePolicy.title': 'Política de Cookies | XHIVA',
+'seo.cookiePolicy.description': 'Conozca cómo XHIVA utiliza cookies y tecnologías similares para reconocerlo cuando visita nuestro sitio web y comprenda sus derechos para controlar nuestro uso de ellas.',
 
   
 

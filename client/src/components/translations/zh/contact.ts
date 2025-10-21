@@ -8,7 +8,7 @@ export const contactMaTranslations = {
   'contact.form.emailLabel': '电子邮件地址',
   'contact.form.messageLabel': '信息',
   'contact.form.submitButton': '发送信息',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': '根据要求提供',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': '发送中...',

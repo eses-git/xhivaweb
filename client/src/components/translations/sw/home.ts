@@ -78,7 +78,7 @@ export const homeSwTranslations = {
   'cta.button.primary': 'OMBA USHAURI',
   'cta.button.secondary': 'GUNDUA FEDHA',
   'cta.contact1.title': 'MAWASILIANO YA BARUA PEPE',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'MAWASILIANO YA SIMU',
   'cta.contact2.text': 'Inapatikana kwa ombi',
   'cta.contact3.title': 'OFISI ZA KIMATAIFA',

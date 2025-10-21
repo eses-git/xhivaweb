@@ -8,7 +8,7 @@ export const contactItTranslations = {
   'contact.form.emailLabel': 'Indirizzo Email',
   'contact.form.messageLabel': 'Messaggio',
   'contact.form.submitButton': 'Invia Messaggio',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'Disponibile su richiesta',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Invio in corso...',

@@ -78,7 +78,7 @@ export const homeViTranslations = {
   'cta.button.primary': 'YÊU CẦU TƯ VẤN',
   'cta.button.secondary': 'KHÁM PHÁ CÁC QUỸ',
   'cta.contact1.title': 'LIÊN HỆ EMAIL',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'LIÊN HỆ ĐIỆN THOẠI',
   'cta.contact2.text': 'Có sẵn theo yêu cầu',
   'cta.contact3.title': 'VĂN PHÒNG TOÀN CẦU',

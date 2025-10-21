@@ -78,7 +78,7 @@ export const homeHiTranslations = {
   'cta.button.primary': 'परामर्श का अनुरोध करें',
   'cta.button.secondary': 'निधि अन्वेषण करें',
   'cta.contact1.title': 'ईमेल संपर्क',
-  'cta.contact1.text': 'investments@xhiva.com',
+  'cta.contact1.text': 'investments@XHIVA.com',
   'cta.contact2.title': 'फोन संपर्क',
   'cta.contact2.text': 'अनुरोध पर उपलब्ध है',
   'cta.contact3.title': 'वैश्विक कार्यालय',

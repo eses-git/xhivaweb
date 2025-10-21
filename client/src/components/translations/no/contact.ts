@@ -8,7 +8,7 @@ export const contactNoTranslations = {
   'contact.form.emailLabel': 'E-postadresse',
   'contact.form.messageLabel': 'Melding',
   'contact.form.submitButton': 'Send Melding',
-  'contact.details.email': 'contact@xhiva.org',
+  'contact.details.email': 'contact@XHIVA.org',
   'contact.details.phone': 'Tilgjengelig på forespørsel',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, Storbritannia',
   'contact.form.sendingButton': 'Sender...',
