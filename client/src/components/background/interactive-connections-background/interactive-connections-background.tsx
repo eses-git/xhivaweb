@@ -102,8 +102,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
         const springFactor = isMobile ? 0.002 : 0.003;
         this.vx += (this.baseX - this.x) * springFactor;
         this.vy += (this.baseY - this.y) * springFactor;
-        this.vx *= isMobile ? 0.90 : 0.99;
-        this.vy *= isMobile ? 0.90 : 0.99;
+        this.vx *= isMobile ? 0.60 : 0.99;
+        this.vy *= isMobile ? 0.60 : 0.99;
 
         // Clamp velocity to prevent jittery overshoots
         const maxVel = isMobile ? 2 : 4;
