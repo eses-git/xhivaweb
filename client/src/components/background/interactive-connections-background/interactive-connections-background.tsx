@@ -102,8 +102,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
         const springFactor = isMobile ? 0.002 : 0.003;
         this.vx += (this.baseX - this.x) * springFactor;
         this.vy += (this.baseY - this.y) * springFactor;
-        this.vx *= isMobile ? 0.98 : 0.99;
-        this.vy *= isMobile ? 0.98 : 0.99;
+        this.vx *= isMobile ? 0.90 : 0.99;
+        this.vy *= isMobile ? 0.90 : 0.99;
 
         // Clamp velocity to prevent jittery overshoots
         const maxVel = isMobile ? 2 : 4;
@@ -128,8 +128,8 @@ export function InteractiveConnectionsBackground({ children }: InteractiveConnec
     }
 
     const createParticles = (canvasElement: HTMLCanvasElement) => {
-      const densityFactor = isMobile ? 900 : 3000; // Fewer on mobile
-      const particleCount = Math.min(isMobile ? 200 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+      const densityFactor = isMobile ? 800 : 3000; // Fewer on mobile
+      const particleCount = Math.min(isMobile ? 180 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
       particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
       cellSize = isMobile ? 250 : 150; // Larger cells on mobile
     };
