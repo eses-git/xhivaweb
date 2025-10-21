@@ -298,7 +298,6 @@ position: absolute;
 @media (max-width: 768px) {
   .backgroundVideo {
    object-position: center 0 ; /* Fine-tune for mobile; 0 = top edge */
-   margin-top:160px;
     /* top: -100px; <-- This offset is no longer needed */
   }
   .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
