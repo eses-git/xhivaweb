@@ -270,9 +270,8 @@
   height: 100%;
   object-fit: contain;
   z-index: -1;      
-  filter: brightness(1.2) opacity(0.25);
+  filter: brightness(1.2) opacity(0.5);
   pointer-events: none;
-  background-color:#FFFFFF;
 }
 
 /* Stronger hiding for Safari controls */
@@ -294,7 +293,7 @@
 /* --- Poster Fallback Styles (FIXED) --- */
 .backgroundPoster {
   position: absolute; /* <-- CHANGED from 'fixed' */
-  top: -500px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -303,8 +302,6 @@
   z-index: -1;      /* <-- CHANGED from '1' */
   filter: brightness(1.2) opacity(0.5);
   pointer-events: none;
-    background-color:#FFFFFF;
-
 }
 
 
