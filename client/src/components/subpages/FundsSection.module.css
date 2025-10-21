@@ -274,10 +274,10 @@ position: absolute;
   background-color: #FFFFFF;
 }
 
-/* Stronger hiding for Safari controls */
+/* Stronger hiding for Safari controls 
 .backgroundVideo::-webkit-media-controls,
 .backgroundVideo::-webkit-media-controls-panel,
-.backgroundVideo::-webkit-media-controls-enclosure,
+.backgroundVideo::-webkit-media-controls-enclosure,*/
 .backgroundVideo::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none !important;
