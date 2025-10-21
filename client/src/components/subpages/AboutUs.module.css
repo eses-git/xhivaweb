@@ -55,7 +55,7 @@
   font-size: clamp(2.5rem, 8vw, 4rem);
   color: var(--dark-blue);
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: bold;
   margin: 0.5rem 0 1.5rem 0;
 }
 
@@ -96,7 +96,7 @@
   font-size: 1.25rem;
   font-family: var(--font-headings);
   color: var(--dark-blue);
-  font-weight: 600;
+  font-weight: bold;
 }
 
 /* --- INTERACTIVE HARMONY PANELS --- */
