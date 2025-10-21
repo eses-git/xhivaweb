@@ -8,6 +8,7 @@
   overflow: hidden;
   padding: 35px 0;
   /* margin-top: 100px;  <-- REMOVED */
+  background-color: #FFFFFF;
 }
 
 .sectionWrapper::before {
@@ -19,6 +20,7 @@
   background-position: center center;
   background-attachment: local;
   opacity: 0.7;
+  background-color: #FFFFFF;
 }
 
 .contentContainer {
@@ -261,23 +263,22 @@
 
 /* --- VIDEO STYLES --- */
 .backgroundVideo {
-position: absolute;
-  top: 0; /* Align with section top */
+  position: absolute;
+  top: -500px;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center top; /* Shift content upward, aligning top of video behind header */
-  z-index: -1;
-  filter: brightness(1.2) opacity(0.3);
+  z-index: -1;      
+  filter: brightness(1.2) opacity(0.25);
   pointer-events: none;
-  background-color: #FFFFFF;
+  background-color:#FFFFFF;
 }
 
-/* Stronger hiding for Safari controls 
+/* Stronger hiding for Safari controls */
 .backgroundVideo::-webkit-media-controls,
 .backgroundVideo::-webkit-media-controls-panel,
-.backgroundVideo::-webkit-media-controls-enclosure,*/
+.backgroundVideo::-webkit-media-controls-enclosure,
 .backgroundVideo::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none !important;
@@ -289,24 +290,29 @@ position: absolute;
   display: none !important;
 }
 
+
+/* --- Poster Fallback Styles (FIXED) --- */
 .backgroundPoster {
-  position: absolute;
-  top: 0;
+  position: absolute; /* <-- CHANGED from 'fixed' */
+  top: -500px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/images/gold-world-poster.jpg') no-repeat center center / cover;
-  z-index: -1;
-  filter: brightness(1.2) opacity(0.3);
+  object-fit:contain; /* <-- ADDED */
+  background: url('/images/gold-world-poster.jpg') no-repeat center / cover; /* <-- CHANGED to 'cover' */
+  z-index: -1;      /* <-- CHANGED from '1' */
+  filter: brightness(1.2) opacity(0.5);
   pointer-events: none;
-}
+    background-color:#FFFFFF;
 
+}
 
 
 /* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
   .backgroundVideo {
-   object-position: center 0 ; /* Fine-tune for mobile; 0 = top edge */
+    object-fit: contain;
+    top:-600px;
     /* top: -100px; <-- This offset is no longer needed */
   }
   .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
