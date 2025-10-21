@@ -32,7 +32,7 @@
 
 .visionSubtitle {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 500;
   color: var(--xhiva-gold);
   margin-bottom: 1rem;
 } 
@@ -43,7 +43,7 @@
   font-size: clamp(2.5rem, 8vw, 4rem);
   color: var(--dark-blue);
   line-height: 1.1;
-  font-weight: bold;
+  font-weight: 500;
   margin: 0.5rem 0 1.5rem 0;
 }
 
