@@ -57,13 +57,24 @@
   margin: 1.5rem auto 0; 
   font-weight: 300; 
 }
-
-/* --- Grid Wrapper --- */
 .gridWrapper {
   background-color: #0d2c54;
   padding: 4rem 0;
-}
+  
+  /* Define grid properties */
+  --grid-line-color: #163a66; /* A little lighter than the background */
+  --grid-size: 25px;       /* The size of your notebook squares */
 
+  /* Create the grid */
+  background-image: 
+    /* Horizontal lines */
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    /* Vertical lines */
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+  
+  /* Set the grid size */
+  background-size: var(--grid-size) var(--grid-size);
+}
 /* --- Layout Container --- */
 .layoutContainer {
   display: grid;
