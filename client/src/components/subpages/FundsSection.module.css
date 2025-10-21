@@ -281,7 +281,7 @@ position: absolute;
 .backgroundVideo::-webkit-media-controls-enclosure,
 .backgroundVideo::-webkit-media-controls-start-playback-button {
   display: none !important;
- /* -webkit-appearance: none !important;*/
+  -webkit-appearance: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
 }
