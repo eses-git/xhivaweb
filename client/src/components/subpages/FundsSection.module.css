@@ -300,7 +300,7 @@ position: absolute;
   object-fit: contain;
   object-position: top center;
   z-index: -1;
-  filter: brightness(1.2) opacity(0.3);
+  filter: brightness(1.2) opacity(0.4);
   pointer-events: none;
 }
 
