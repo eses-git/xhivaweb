@@ -135,7 +135,9 @@ export function StrategySection() {
               }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage} />
+              <img src={imageUrl} alt={t('strategy.image.alt')} className={styles.strategyImage}
+              loading="lazy"
+              />
               <div className={styles.imageCaption}>
                 <h3 dangerouslySetInnerHTML={{ __html: t('strategy.image.title').replace('<br></br>', '<br/>') }} />
                 <p>{t('strategy.image.description')}</p>
