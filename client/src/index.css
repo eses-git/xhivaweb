@@ -6147,106 +6147,17 @@ html {
 
 /* Append to the end of index.css */
 
-/* Montserrat for headings (use variable for efficiency) */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-VariableFont_wght.woff2') format('woff2');
-  font-weight: 100 900;  /* Variable: Covers Thin to Black */
-  font-style: normal;
-  font-display: swap;  /* Anti-jump */
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Italic-VariableFont_wght.woff2') format('woff2');
-  font-weight: 100 900;  /* Variable Italic */
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Fallback statics if variable not needed (optional; remove if using variable) */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/montserrat/Montserrat-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Add more statics only if required (e.g., SemiBold) */
-
-/* Lato for body (no variable in your files, so use statics) */
-@font-face {
-  font-family: 'Lato';
-  src: url('/fonts/lato/Lato-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/fonts/lato/Lato-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/fonts/lato/Lato-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/fonts/lato/Lato-BoldItalic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/fonts/lato/Lato-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Add more like Light/Thin only if needed */
-
-/* CSS Variables */
 :root {
   --font-headings: 'Montserrat', sans-serif;
   --font-body: 'Lato', sans-serif;
 }
 
-/* Global Application */
 body {
-  font-family: var(--font-body);  /* Lato for paragraphs/descriptions */
+  font-family: var(--font-body);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headings);  /* Montserrat for headings/titles */
+  font-family: var(--font-headings);
 }
 
 /* Optional: Minimize reflow */
