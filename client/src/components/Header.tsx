@@ -2,7 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "./LanguageContext";
 import { Link } from "react-router-dom";
-import logo from './assets/tri-logo-tr.png';
+import logo from './assets/tri-logo-v2-t.png';
 import styles from './Header.module.css';
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
