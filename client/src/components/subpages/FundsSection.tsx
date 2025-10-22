@@ -140,7 +140,7 @@ const backgroundContent = !isMobile ? (
       // This appends a unique timestamp to bust the browser cache on every reload
       src={`/videos/gold-world.gif?t=${gifTimestamp}`} 
       className={styles.backgroundGif} 
-      alt="Background animation" 
+      alt="  " 
     />
   ); 
 
