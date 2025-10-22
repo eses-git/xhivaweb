@@ -231,7 +231,7 @@
 }
 /* --- NEWLY ADDED --- */
 /* Special styles for short, wide screens (like Nest Hub) */
-@media (max-width: 1048px) and (max-height: 700px) {
+@media (max-width: 1048px) and (max-height: 700px) and (orientation: landscape) {
   .mobileNavList {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 columns */
