@@ -9,7 +9,7 @@
 }
 
 /* --- Header --- */
-.header { text-align: center; margin-bottom: 3rem; max-width: 960px; margin-left: auto; margin-right: auto; padding: 0 2rem; z-index:99999; position:relative }
+.header { text-align: center; margin-bottom: 3rem; max-width: 960px; margin-left: auto; margin-right: auto; padding: 0 2rem; z-index:1; position:relative }
 .subtitle {
   display: inline-block;
   padding: 1.5rem 3rem;
@@ -23,7 +23,7 @@
   margin-bottom: 3rem;
   font-family: var(--font-headings);
   margin-top: 150px;
-  z-index:999;
+  z-index:1;
 }
 
 .title {
