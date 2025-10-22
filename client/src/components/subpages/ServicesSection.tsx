@@ -82,7 +82,7 @@ export function ServicesSection() {
 
   return (
     <section id="services" className={styles.servicesSection}>
-      <NeuralConnections>
+      <NeuralConnections />
         <motion.div 
           className={styles.header}
           initial={{ opacity: 0, y: 50 }}
@@ -165,7 +165,6 @@ export function ServicesSection() {
           </div>
           
         </div>
-      </NeuralConnections>
     </section>
   );
 }

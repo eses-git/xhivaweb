@@ -1,83 +1,119 @@
-import { useEffect, useState } from 'react';
+// Home.tsx
+import React, { useEffect, useState, Suspense, lazy } from 'react'; // Import Suspense and lazy
 import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
-import { Hero } from "./Hero";
-import { AboutSection } from "./AboutSection";
-import { StrategySection } from "./StrategySection";
-import { Homepage } from "./Homepage";
-import { CallToActionSection } from "./CallToActionSection";
-import { Footer } from "./Footer";
-import { DisclaimerModal } from "./DisclaimerModal";
-import styles from "./AboutSection.module.css";
-import SEO from './seo/SEO'; // Import the SEO component
+import { Hero } from "./Hero"; // Keep Hero imported normally
+// Remove direct imports for components below the fold
+// import { AboutSection } from "./AboutSection";
+// import { StrategySection } from "./StrategySection";
+// import { Homepage } from "./Homepage";
+// import { CallToActionSection } from "./CallToActionSection";
+// import { Footer } from "./Footer";
+// import { DisclaimerModal } from "./DisclaimerModal"; // REMOVED DisclaimerModal import
+import styles from "./AboutSection.module.css"; // Keep styles if needed by Home itself
+import SEO from './seo/SEO';
+
+// Lazy load components that are below the fold
+const AboutSection = lazy(() => import('./AboutSection').then(module => ({ default: module.AboutSection })));
+const StrategySection = lazy(() => import('./StrategySection').then(module => ({ default: module.StrategySection })));
+const Homepage = lazy(() => import('./Homepage').then(module => ({ default: module.Homepage })));
+const CallToActionSection = lazy(() => import('./CallToActionSection').then(module => ({ default: module.CallToActionSection })));
+const Footer = lazy(() => import('./Footer').then(module => ({ default: module.Footer })));
+
+// (Optional) Define a simple loading indicator component
+const LoadingFallback = () => (
+    <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '50vh', // Adjust height as needed
+        fontSize: '1.2rem',
+        color: '#666'
+    }}>
+        Loading Section...
+    </div>
+);
 
 export const Home = () => {
   const location = useLocation();
-  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
-  const { t } = useLanguage(); // Get the translation function from your context
+  // REMOVED useState for isDisclaimerOpen
+  // const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.slice(1);
-      const element = document.getElementById(targetId);
-      
+    // REMOVED checkDisclaimer function and call
+
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Use setTimeout to allow lazy components time to load before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 500); // Adjust delay if needed
       }
     } else {
-      window.scrollTo(0, 0);
+        // Scroll to top on initial load or navigation without hash
+        window.scrollTo(0, 0);
     }
-  }, [location]);
+
+  }, [location]); // Rerun effect if location changes (e.g., hash change)
 
   return (
     <div className="min-h-screen">
-      {/* The SEO component now uses the t() function for dynamic content */}
       <SEO
         title={t('seo.home.title')}
         description={t('seo.home.description')}
         keywords={t('seo.home.keywords')}
       />
 
-      <Hero />
+      <Hero /> {/* Hero renders immediately */}
 
-      <motion.section 
+      {/* Bridge Section - Keep outside Suspense if it's typically visible early */}
+      <motion.section
         className={styles.bridgeSection}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.5 }}
-        id="about"
-        style={{ marginTop: '2rem', paddingTop: '6rem' }}
+        id="about" // Ensure this ID matches links if used for navigation
+        style={{ marginTop: '2rem', paddingTop: '6rem' }} // Review styling consistency
       >
-        <motion.div 
+        <motion.div
           className={styles.bridgeLine}
           initial={{ width: 0 }}
           whileInView={{ width: '80px' }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.5 }}
         />
-        <motion.p 
+        <motion.p
           className={styles.bridgeText}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          {t('home.bridgeText')} 
+          {t('home.bridgeText')}
         </motion.p>
       </motion.section>
-      
-      <AboutSection />
-      <StrategySection />
-      <Homepage />
-      <CallToActionSection />
-      <Footer />
-      <DisclaimerModal 
-        isOpen={isDisclaimerOpen} 
-        onClose={() => setIsDisclaimerOpen(false)} 
+
+      {/* Wrap all lazy-loaded components in a single Suspense */}
+      <Suspense fallback={<LoadingFallback />}>
+        <AboutSection />
+        <StrategySection />
+        <Homepage />
+        <CallToActionSection />
+        <Footer />
+      </Suspense>
+
+      {/* REMOVED DisclaimerModal component instance */}
+      {/*
+      <DisclaimerModal
+        isOpen={isDisclaimerOpen}
+        onClose={() => setIsDisclaimerOpen(false)}
       />
+      */}
     </div>
   );
 };
-
