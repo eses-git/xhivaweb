@@ -353,7 +353,7 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         if (resetTimer) clearTimeout(resetTimer);
       };
       
-    }, 200); // 500ms delay
+    }, 100); // 500ms delay
 
     // 8. DELAY ANIMATION: The main cleanup for the useEffect
     //    This cleans up the *timer itself* if the component unmounts early
