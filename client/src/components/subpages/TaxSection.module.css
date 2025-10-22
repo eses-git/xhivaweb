@@ -33,14 +33,13 @@
   font-family: var(--font-headings);
   font-size: 3.5rem;
   color: var(--dark-blue);
-  font-weight: 500;
   line-height: 1.2;
   margin: 0.5rem 0 1.5rem 0;
 }
 .subtitle {
   font-family: var(--font-headings);
   font-size: 1.1rem;
-  color: #495057;
+  color: #2f3337;
   line-height: 1.6;
   font-style: italic;
 }
@@ -59,7 +58,6 @@
   color: var(--column-header-color, #D7C286);
   transition: color 0.4s ease-out;
   font-size: 1rem;
-  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding-bottom: 1rem;
