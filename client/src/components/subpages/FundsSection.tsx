@@ -13,11 +13,16 @@ export function FundsSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [showVideo, setShowVideo] = useState(true); // New state for fallback
+  const [showVideo, setShowVideo] = useState(true); 
+  
+  // --- ADDED THIS LINE ---
+  // Creates a unique timestamp once when the component mounts.
+  const [gifTimestamp] = useState(Date.now());
   
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const funds = [
+    // ... your funds array ...
     { id: 'fund1', icon: Rocket, name: t('funds.item1.name'), focus: t('funds.item1.focus'), philosophy: t('funds.item1.philosophy'), strategy: t('funds.item1.strategy'), allocation: t('funds.item1.allocation'), riskProfile: t('funds.item1.riskProfile'), investmentHorizon: t('funds.item1.investmentHorizon'), targetIRR: t('funds.item1.targetIRR') },
     { id: 'fund2', icon: Building2, name: t('funds.item2.name'), focus: t('funds.item2.focus'), philosophy: t('funds.item2.philosophy'), strategy: t('funds.item2.strategy'), allocation: t('funds.item2.allocation'), riskProfile: t('funds.item2.riskProfile'), investmentHorizon: t('funds.item2.investmentHorizon'), targetIRR: t('funds.item2.targetIRR') },
     { id: 'fund3', icon: Heart, name: t('funds.item3.name'), focus: t('funds.item3.focus'), philosophy: t('funds.item3.philosophy'), strategy: t('funds.item3.strategy'), allocation: t('funds.item3.allocation'), riskProfile: t('funds.item3.riskProfile'), investmentHorizon: t('funds.item3.investmentHorizon'), targetIRR: t('funds.item3.targetIRR') },
@@ -30,6 +35,7 @@ export function FundsSection() {
   ];
 
   const startTimer = () => {
+    // ... your startTimer logic ...
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -39,6 +45,7 @@ export function FundsSection() {
   };
 
   useEffect(() => {
+    // ... your isMobile logic ...
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -55,31 +62,32 @@ export function FundsSection() {
     };
   }, [funds.length]);
 
-  // --- ADDED useEffect TO FORCE VIDEO PLAYBACK ---
-useEffect(() => {
-  const video = videoRef.current;
-  if (video) {
-    video.muted = true;
-    video.playsInline = true;
-    video.autoplay = true;
-    video.preload = 'auto';
-    video.setAttribute('webkit-playsinline', '');
+  useEffect(() => {
+    // ... your video fallback logic ...
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.playsInline = true;
+      video.autoplay = true;
+      video.preload = 'auto';
+      video.setAttribute('webkit-playsinline', '');
 
-    const checkPlaybackTimer = setTimeout(() => {
-      if (video.paused) {
-        console.log("Video did not start playing; falling back to poster.");
-        setShowVideo(false);
-      }
-    }, 5000); // Allow time for loading and potential autoplay
+      const checkPlaybackTimer = setTimeout(() => {
+        if (video.paused) {
+          console.log("Video did not start playing; falling back to poster.");
+          setShowVideo(false);
+        }
+      }, 5000); // Allow time for loading and potential autoplay
 
-    return () => {
-      clearTimeout(checkPlaybackTimer);
-    };
-  }
-}, []);
+      return () => {
+        clearTimeout(checkPlaybackTimer);
+      };
+    }
+  }, []);
 
   const currentFund = funds[currentIndex];
 
+  // ... your variants ...
   const buttonVariants = {
     rest: { y: 0, boxShadow: "0 1px 3px rgba(0,0,0,0.1)", borderColor: "#90b4d4" },
     hover: { y: -6, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" },
@@ -101,6 +109,7 @@ useEffect(() => {
   };
 
   const handleFundChange = (index: number) => {
+    // ... your handleFundChange logic ...
     setCurrentIndex(index);
     if (!isMobile && cardRef.current) {
       const headerHeight = 50;
@@ -111,7 +120,8 @@ useEffect(() => {
   };
   
 const backgroundContent = !isMobile ? (
-  <video 
+    <video 
+      // ... video props ...
       className={styles.backgroundVideo} 
       autoPlay 
       muted 
@@ -126,7 +136,9 @@ const backgroundContent = !isMobile ? (
     </video>
   ) : (
     <img 
-      src="/videos/gold-world.gif" 
+      // --- MODIFIED THIS LINE ---
+      // This appends a unique timestamp to bust the browser cache on every reload
+      src={`/videos/gold-world.gif?t=${gifTimestamp}`} 
       className={styles.backgroundGif} 
       alt="Background animation" 
     />
@@ -137,6 +149,7 @@ const backgroundContent = !isMobile ? (
       {backgroundContent}
  
       <div className={styles.contentContainer}>
+        {/* ... rest of your TSX ... */}
         <motion.div className={styles.headerText} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }} viewport={{ once: true }}>
           <div className={styles.subtitle}>{t('funds.subtitle')}</div>
           <h2 className={styles.title}>{t('funds.title')}</h2>
