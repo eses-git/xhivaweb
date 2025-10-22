@@ -7,8 +7,9 @@
   background-color: transparent;
   overflow: hidden;
   padding: 35px 0;
+  /* margin-top: 100px;  <-- REMOVED */
   background-color: #FFFFFF;
-  min-height: 80vh; 
+  min-height: 80vh;  /* <-- ADDED: Example value; adjust based on your design (e.g., 100vh for full viewport height) */
 }
 
 .sectionWrapper::before {
@@ -30,7 +31,7 @@
   max-width: 1420px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 100px;
+  padding-top: 100px; /* <-- ADDED (This pushes the text down, but not the video) */
 }
 
 
@@ -264,12 +265,12 @@
 /* --- VIDEO STYLES --- */
 .backgroundVideo {
 position: absolute;
-  top: 0;
+  top: 0;          /* Pins to the top of .sectionWrapper */
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; 
-  object-position: top center; 
+  object-fit: contain;  /* Preserves aspect ratio, fits without stretching or cropping */
+  object-position: top center;  /* Aligns content to the top (fixes "middle" placement) */
   z-index: -1;      
   filter: brightness(1.2) opacity(0.3);
   pointer-events: none;
@@ -323,33 +324,29 @@ position: absolute;
 /* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
 
-  /* REMOVED this problematic block:
-    .contentContainer {
-      padding-top: 0; 
-    }
-  */
 
-  /* REMOVED this problematic block that pushed the GIF down:
-    .backgroundVideo,
-    .backgroundGif {
-      position: absolute;
-      top: 180px; 
-      height: auto; 
-      object-position: center center;
-    }
-  */
+ .contentContainer {
+    padding-top: 0; /* <-- CHANGED: Remove the 100px padding on mobile to avoid extra space at the top */
+  }
 
-  /* REMOVED this (it was redundant):
-    .headerText {
-      position: relative;
-      margin-top: 1rem;
-    }
-  */
+  .backgroundVideo,
+  .backgroundGif {
+    position: absolute;
+    top: 180px; /* Will be overridden by JS on mobile if you have that logic elsewhere */
+    height: auto; /* Will be overridden by JS on mobile if needed */
+    object-position: center center; /* Center it horizontally and vertically within its new dimensions */
+  }
 
-  .sectionWrapper { padding: 0; } 
+  .headerText {
+    position: relative; /* Ensure the header can overlay properly if needed */
+    margin-top: 1rem; /* Optional: Add a small margin if you want some space at the top without padding */
+  }
+
+
+  .sectionWrapper { padding: 0; } /* <-- CHANGED: Removed padding */
   .contentContainer { 
     padding: 0 1rem; 
-    padding-top: 100px; /* This is the correct rule */
+    padding-top: 100px; /* Make sure mobile also has the offset */
   }
   .subtitle { padding: 1rem 1.5rem; }
   .descriptionContent { padding: 2rem 1.5rem; }
