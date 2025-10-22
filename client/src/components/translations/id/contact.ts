@@ -8,7 +8,7 @@ export const contactIdTranslations = {
   'contact.form.emailLabel': 'Alamat Email',
   'contact.form.messageLabel': 'Pesan',
   'contact.form.submitButton': 'Kirim Pesan',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'Tersedia berdasarkan permintaan',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Mengirim...',

@@ -8,7 +8,7 @@ export const contactJaTranslations = {
   'contact.form.emailLabel': 'メールアドレス',
   'contact.form.messageLabel': 'メッセージ',
   'contact.form.submitButton': 'メッセージを送信',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'リクエストに応じて利用可能',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': '送信中...',

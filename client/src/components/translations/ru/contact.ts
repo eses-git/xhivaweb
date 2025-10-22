@@ -8,7 +8,7 @@ export const contactRuTranslations = {
   'contact.form.emailLabel': 'Адрес электронной почты',
   'contact.form.messageLabel': 'Сообщение',
   'contact.form.submitButton': 'Отправить сообщение',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'Доступно по запросу',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Отправка...',

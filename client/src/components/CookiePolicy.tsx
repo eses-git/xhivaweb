@@ -54,7 +54,7 @@ export function CookiePolicy() {
 
           <section>
             <h2>{t('cookiePolicy.section5.title')}</h2>
-            <p>{t('cookiePolicy.section5.p1')}  <a href="/contact" color="#D7C286" >contact@XHIVA.org</a>.</p>
+            <p>{t('cookiePolicy.section5.p1')}  <a href="/contact" color="#D7C286" >contact@xhiva.org</a>.</p>
           </section>
         </div>
       </main>

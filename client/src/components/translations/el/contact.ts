@@ -8,7 +8,7 @@ export const contactElTranslations = {
   'contact.form.emailLabel': 'Διεύθυνση Email',
   'contact.form.messageLabel': 'Μήνυμα',
   'contact.form.submitButton': 'Αποστολή Μηνύματος',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'Διαθέσιμο κατόπιν αιτήματος',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Αποστολή...',

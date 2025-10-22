@@ -8,7 +8,7 @@ export const contactFaTranslations = {
   'contact.form.emailLabel': 'آدرس ایمیل',
   'contact.form.messageLabel': 'پیام',
   'contact.form.submitButton': 'ارسال پیام',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'در صورت درخواست موجود است',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'در حال ارسال...',

@@ -8,7 +8,7 @@ export const contactViTranslations = {
   'contact.form.emailLabel': 'Địa chỉ email',
   'contact.form.messageLabel': 'Tin nhắn',
   'contact.form.submitButton': 'Gửi tin nhắn',
-  'contact.details.email': 'contact@XHIVA.org',
+  'contact.details.email': 'contact@xhiva.org',
   'contact.details.phone': 'Có sẵn theo yêu cầu',
   'contact.details.office': 'Suite 15, Beaufort Court, Admirals Way, Canary Wharf, London, E14 9XL, United Kingdom',
   'contact.form.sendingButton': 'Đang gửi...',
