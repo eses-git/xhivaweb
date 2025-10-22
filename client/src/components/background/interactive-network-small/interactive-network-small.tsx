@@ -21,33 +21,30 @@ interface Edge {
 const NeuralNetwork: React.FC = () => {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // --- FIX: Screen-size detection logic is now self-contained here ---
+  // --- Screen-size detection logic ---
   const [isMobile, setIsMobile] = useState(() => {
-    // Check for window object to avoid errors during server-side rendering
     if (typeof window !== 'undefined') {
       return window.innerWidth < 768;
     }
-    return false; // Default to desktop on the server
+    return false;
   });
 
   useEffect(() => {
-    // This function updates the state when the window is resized
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     window.addEventListener('resize', handleResize);
-    // Cleanup the event listener when the component unmounts
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures this effect runs only on mount and unmount
+  }, []);
 
-  // --- Responsive parameters based on the isMobile state ---
+  // --- Responsive parameters ---
   const viewWidth = isMobile ? 400 : 1000;
   const viewHeight = isMobile ? 1000 : 400;
-  const nodeRadius = isMobile ? 5 : 8; // Smaller balls for mobile
+  const nodeRadius = isMobile ? 5 : 8;
 
   const initialNodes = useMemo<Node[]>(() => {
     const desktopNodes: Omit<Node, 'vx' | 'vy'>[] = [
+      // ... (all your node data remains unchanged) ...
       { id: 'l1', x: 50, y: 150, color: '#2b5797', baseX: 50, baseY: 150 },
       { id: 'l2', x: 100, y: 50, color: '#2b5797', baseX: 100, baseY: 50 },
       { id: 'l3', x: 100, y: 250, color: '#2b5797', baseX: 100, baseY: 250 },
@@ -138,72 +135,83 @@ const NeuralNetwork: React.FC = () => {
     setDynamicEdges(newEdges);
   }, [currentNodes, isMobile]);
 
+  // --- MODIFICATION: Added setTimeout to delay animation ---
   useEffect(() => {
-    let animationFrameId: number;
-    let time = 0;
+    // 1. Start the timer
+    const animationTimer = setTimeout(() => {
+      let animationFrameId: number;
+      let time = 0;
 
-    const animate = () => {
-      time += 0.01;
-      const { x: mouseX, y: mouseY } = mouseRef.current;
-      const repelRadius = 100;
-      const repelStrength = 4;
-      const damping = 0.99;
-      const ambientStrength = 0.002;
+      const animate = () => {
+        time += 0.01;
+        const { x: mouseX, y: mouseY } = mouseRef.current;
+        const repelRadius = 100;
+        const repelStrength = 4;
+        const damping = 0.99;
+        const ambientStrength = 0.002;
 
-      const updatedNodes = nodesRef.current.map(node => {
-        node.vx += (Math.sin(time + node.baseY) * ambientStrength);
-        node.vy += (Math.cos(time + node.baseX) * ambientStrength);
-        const dxMouse = node.x - mouseX;
-        const dyMouse = node.y - mouseY;
-        const distMouseSq = dxMouse * dxMouse + dyMouse * dyMouse;
-        if (distMouseSq < repelRadius * repelRadius) {
-          const distMouse = Math.sqrt(distMouseSq);
-          const force = (1 - distMouse / repelRadius) * repelStrength;
-          node.vx += (dxMouse / distMouse) * force;
-          node.vy += (dyMouse / distMouse) * force;
-        }
-        node.vx *= damping;
-        node.vy *= damping;
-        node.x += node.vx;
-        node.y += node.vy;
-        
-        const radius = nodeRadius; 
-        if (node.x - radius < 0) { node.x = radius; node.vx *= -1; }
-        else if (node.x + radius > viewWidth) { node.x = viewWidth - radius; node.vx *= -1; }
-        if (node.y - radius < 0) { node.y = radius; node.vy *= -1; }
-        else if (node.y + radius > viewHeight) { node.y = viewHeight - radius; node.vy *= -1; }
-        return node;
-      });
-      nodesRef.current = updatedNodes;
-      setCurrentNodes(updatedNodes);
+        const updatedNodes = nodesRef.current.map(node => {
+          node.vx += (Math.sin(time + node.baseY) * ambientStrength);
+          node.vy += (Math.cos(time + node.baseX) * ambientStrength);
+          const dxMouse = node.x - mouseX;
+          const dyMouse = node.y - mouseY;
+          const distMouseSq = dxMouse * dxMouse + dyMouse * dyMouse;
+          if (distMouseSq < repelRadius * repelRadius) {
+            const distMouse = Math.sqrt(distMouseSq);
+            const force = (1 - distMouse / repelRadius) * repelStrength;
+            node.vx += (dxMouse / distMouse) * force;
+            node.vy += (dyMouse / distMouse) * force;
+          }
+          node.vx *= damping;
+          node.vy *= damping;
+          node.x += node.vx;
+          node.y += node.vy;
+          
+          const radius = nodeRadius; 
+          if (node.x - radius < 0) { node.x = radius; node.vx *= -1; }
+          else if (node.x + radius > viewWidth) { node.x = viewWidth - radius; node.vx *= -1; }
+          if (node.y - radius < 0) { node.y = radius; node.vy *= -1; }
+          else if (node.y + radius > viewHeight) { node.y = viewHeight - radius; node.vy *= -1; }
+          return node;
+        });
+        nodesRef.current = updatedNodes;
+        setCurrentNodes(updatedNodes);
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      // 2. All this logic now runs *inside* the timer
       animationFrameId = requestAnimationFrame(animate);
-    };
 
-    animationFrameId = requestAnimationFrame(animate);
+      const handleMouseMove = (event: MouseEvent) => {
+        if (!svgRef.current) return;
+        const svgPoint = svgRef.current.createSVGPoint();
+        svgPoint.x = event.clientX;
+        svgPoint.y = event.clientY;
+        
+        const inverseCTM = svgRef.current.getScreenCTM()?.inverse();
+        if (inverseCTM) {
+            const pointInSVGSpace = svgPoint.matrixTransform(inverseCTM);
+            mouseRef.current = { x: pointInSVGSpace.x, y: pointInSVGSpace.y };
+        }
+      };
 
-    const handleMouseMove = (event: MouseEvent) => {
-      if (!svgRef.current) return;
-      const svgPoint = svgRef.current.createSVGPoint();
-      svgPoint.x = event.clientX;
-      svgPoint.y = event.clientY;
-      
-      const inverseCTM = svgRef.current.getScreenCTM()?.inverse();
-      if (inverseCTM) {
-          const pointInSVGSpace = svgPoint.matrixTransform(inverseCTM);
-          mouseRef.current = { x: pointInSVGSpace.x, y: pointInSVGSpace.y };
-      }
-    };
+      const handleMouseLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseleave', handleMouseLeave);
 
-    const handleMouseLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
+      // 3. The cleanup for the animation must be returned *by the timer*
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }, 500); // 500ms delay
 
+    // 4. The main useEffect cleanup just clears the timer
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+      clearTimeout(animationTimer);
     };
-  }, [viewWidth, viewHeight, nodeRadius]);
+  }, [viewWidth, viewHeight, nodeRadius]); // Dependencies remain the same
 
   return (
     <svg 
@@ -232,22 +240,16 @@ const NeuralNetwork: React.FC = () => {
   );
 };
 
-// --- Props and Wrapper Component (No changes needed) ---
-type NeuralConnectionsProps = {
-  children: React.ReactNode;
-};
-
-const NeuralConnections: React.FC<NeuralConnectionsProps> = ({ children }) => {
+// --- MODIFICATION: Wrapper component simplified to be a background element ---
+// 1. Removed 'children' prop
+const NeuralConnections: React.FC = () => {
+  // 2. Changed styles to be absolute positioning
   const sectionStyle: React.CSSProperties = {
-    position: 'relative',
-    width: '100%',
+    position: 'absolute',
+    inset: 0, // Replaces top/left/width/height
+    zIndex: 0,
     backgroundColor: '#f8f9fa',
     overflow: 'hidden',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    color: '#343a40',
   };
 
   const backgroundStyle: React.CSSProperties = {
@@ -260,19 +262,12 @@ const NeuralConnections: React.FC<NeuralConnectionsProps> = ({ children }) => {
     opacity: 0.5,
   };
 
-  const contentStyle: React.CSSProperties = {
-    position: 'relative',
-    zIndex: 1,
-  };
-
   return (
     <section style={sectionStyle}>
       <div style={backgroundStyle}>
         <NeuralNetwork />
       </div>
-      <div style={contentStyle}>
-        {children}
-      </div>
+      {/* 3. Removed the children/content div */}
     </section>
   );
 };

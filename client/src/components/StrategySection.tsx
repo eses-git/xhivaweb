@@ -5,7 +5,7 @@ import { useLanguage } from "./LanguageContext";
 import { useState } from "react";
 import styles from './StrategySection.module.css';
 
-const imageUrl = '/strategy1.png';
+const imageUrl = '/strategy1.webp';
 
 type Strategy = {
   icon: React.ElementType;

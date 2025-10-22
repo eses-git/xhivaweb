@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 // REMOVED language, setLanguage from useLanguage import as they are not used
 import { useLanguage, TranslationKey } from "./LanguageContext";
-import logo from './assets/logo-thick-white.png';
+import logo from './assets/logo-thick-white.webp';
 import styles from './Footer.module.css';
 // REMOVED LanguageSwitcher import
 

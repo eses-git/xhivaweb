@@ -54,25 +54,34 @@ export function Homepage() {
   };
 
   return (
-    <main className={styles.homepageWrapper}>
-      <NeuralConnections>
-        <section className={styles.visionSection}>
-          <motion.div
-            className={styles.visionContent}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] as const }}
-            viewport={{ once: true, amount: 0.3 }} // CHANGED
-          >
-            <h3 className={styles.visionSubtitle}>{t('homepage.leadership.subtitle')}</h3>
-            <h1 className={styles.visionTitle}>{t('homepage.leadership.title')}</h1>
-            <p className={styles.visionDescription}>
-              {t('homepage.leadership.description')}
-            </p>
-          </motion.div>
-        </section>
-      </NeuralConnections>
+    // 1. MODIFICATION: Added 'relative' positioning to the wrapper
+    <main className={`${styles.homepageWrapper} relative`}>
+      
+      {/* 2. MODIFICATION: Render animation as a sibling in the background */}
+      <NeuralConnections />
+      
+      {/* 3. MODIFICATION: Render content as a sibling on top */}
+      <section className={`${styles.visionSection} relative z-10`}>
+        <motion.div
+          className={styles.visionContent}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] as const }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h3 className={styles.visionSubtitle}>{t('homepage.leadership.subtitle')}</h3>
+          <h1 className={styles.visionTitle}>{t('homepage.leadership.title')}</h1>
+          <p className={styles.visionDescription}>
+            {t('homepage.leadership.description')}
+          </p>
+        </motion.div>
+      </section>
+      
+      {/* NOTE: The original file had the rest of the homepage content removed.
+        If you have other sections (like 'ecosystemPillars'), they should
+        also go here, inside the 'main' tag but outside the 'visionSection'.
+      */}
       
     </main>
   );
