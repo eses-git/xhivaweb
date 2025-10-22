@@ -177,7 +177,9 @@
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
 }
-
+.detailsDescription {
+  text-align:left;
+}
 .gridText {
   font-size: 0.9rem;
   color: #4b5563;
