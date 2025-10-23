@@ -176,7 +176,7 @@
 
 .harmonyPanel h3 { font-family: var(--font-headings); font-size: 1.5rem; color: var(--dark-blue); margin: 0; }
 .panelContent { margin-top: 20px; opacity: 0; max-height: 0; transition: opacity 0.4s ease-out 0.2s, max-height 0.4s ease-out 0.2s; }
-.harmonyPanel.active .panelContent { opacity: 1; max-height: 200px; }
+.harmonyPanel.active .panelContent { opacity: 1; max-height: 800px; }
 .panelContent p { font-size: 1rem; line-height: 1.7; color: var(--dark-gray); margin: 0; text-align: justify; }
 
 /* --- CAPSTONE / MISSION STATEMENT --- */
@@ -190,6 +190,7 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -213,4 +214,7 @@
   .capstoneSection p {
     text-align: center;
   }
+  /* --- ELASTIC MOBILE FIX --- */
+  /* Targets the text container (the div next to the icon) inside the pillar card */
+
 }

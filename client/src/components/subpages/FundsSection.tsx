@@ -112,7 +112,7 @@ export function FundsSection() {
     // ... your handleFundChange logic ...
     setCurrentIndex(index);
     if (!isMobile && cardRef.current) {
-      const headerHeight = 50;
+      const headerHeight = 70;
       const top = cardRef.current.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
