@@ -7,7 +7,7 @@ import { Hero } from "./Hero"; // Keep Hero imported normally
 // Remove direct imports for components below the fold
 // import { AboutSection } from "./AboutSection";
 // import { StrategySection } from "./StrategySection";
-// import { Homepage } from "./Homepage";
+ import { Homepage } from "./Homepage";
 // import { CallToActionSection } from "./CallToActionSection";
 // import { Footer } from "./Footer";
 // import { DisclaimerModal } from "./DisclaimerModal"; // REMOVED DisclaimerModal import
@@ -17,7 +17,7 @@ import SEO from './seo/SEO';
 // Lazy load components that are below the fold
 const AboutSection = lazy(() => import('./AboutSection').then(module => ({ default: module.AboutSection })));
 const StrategySection = lazy(() => import('./StrategySection').then(module => ({ default: module.StrategySection })));
-const Homepage = lazy(() => import('./Homepage').then(module => ({ default: module.Homepage })));
+//const Homepage = lazy(() => import('./Homepage').then(module => ({ default: module.Homepage })));
 const CallToActionSection = lazy(() => import('./CallToActionSection').then(module => ({ default: module.CallToActionSection })));
 const Footer = lazy(() => import('./Footer').then(module => ({ default: module.Footer })));
 
