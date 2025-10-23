@@ -1,3 +1,4 @@
+// interactive-network-small.tsx
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 
 // --- Types for the Neural Network Animation ---
@@ -40,7 +41,7 @@ const NeuralNetwork: React.FC = () => {
   // --- Responsive parameters ---
   const viewWidth = isMobile ? 400 : 1000;
   const viewHeight = isMobile ? 1000 : 400;
-  const nodeRadius = isMobile ? 5 : 8;
+  const nodeRadius = isMobile ? 10 : 8; // Bigger on mobile as requested
 
   const initialNodes = useMemo<Node[]>(() => {
     const desktopNodes: Omit<Node, 'vx' | 'vy'>[] = [
@@ -93,8 +94,8 @@ const NeuralNetwork: React.FC = () => {
 
     return transformedNodes.map(node => ({
         ...node,
-        vx: Math.random() * 0.5 - 0.25,
-        vy: Math.random() * 0.5 - 0.25,
+        vx: 0,
+        vy: 0,
     }));
   }, [isMobile]);
 
@@ -103,6 +104,7 @@ const NeuralNetwork: React.FC = () => {
 
   const nodesRef = useRef<Node[]>(JSON.parse(JSON.stringify(initialNodes)));
   const mouseRef = useRef({ x: -9999, y: -9999 });
+  const frameCountRef = useRef(0);
 
   const nodesById = useMemo(() => {
     const map = new Map<string, Node>();
@@ -116,10 +118,10 @@ const NeuralNetwork: React.FC = () => {
   }, [initialNodes]);
 
   useEffect(() => {
-    const newEdges: Edge[] = [];
-    const connectDistance = isMobile ? 100 : 120;
+    const connectDistance = isMobile ? 150 : 120; // Slightly larger on mobile for better connectivity in tall layout
     const connectDistanceSq = connectDistance * connectDistance;
 
+    const newEdges: Edge[] = [];
     for (let i = 0; i < currentNodes.length; i++) {
       for (let j = i + 1; j < currentNodes.length; j++) {
         const p1 = currentNodes[i];
@@ -137,18 +139,27 @@ const NeuralNetwork: React.FC = () => {
 
   // --- MODIFICATION: Added setTimeout to delay animation ---
   useEffect(() => {
+    // Accessibility: Check for reduced motion preference
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      // Skip animation; could set static positions here if desired
+      return;
+    }
+
     // 1. Start the timer
     const animationTimer = setTimeout(() => {
       let animationFrameId: number;
       let time = 0;
+      const updateInterval = isMobile ? 4 : 2; // Throttle state updates: every 4 frames on mobile (~15 FPS effective), every 2 on desktop (~30 FPS)
+      frameCountRef.current = 0;
 
       const animate = () => {
         time += 0.01;
         const { x: mouseX, y: mouseY } = mouseRef.current;
         const repelRadius = 100;
-        const repelStrength = 4;
+        const repelStrength = isMobile ? 3 : 4; // Slightly lower strength on mobile for smoother performance
         const damping = 0.99;
-        const ambientStrength = 0.002;
+        const ambientStrength = isMobile ? 0.001 : 0.000; // Lower ambient on mobile to reduce computation
 
         const updatedNodes = nodesRef.current.map(node => {
           node.vx += (Math.sin(time + node.baseY) * ambientStrength);
@@ -162,6 +173,10 @@ const NeuralNetwork: React.FC = () => {
             node.vx += (dxMouse / distMouse) * force;
             node.vy += (dyMouse / distMouse) * force;
           }
+          // Added spring force for recentering
+          const springFactor = 0.005;
+          node.vx += (node.baseX - node.x) * springFactor;
+          node.vy += (node.baseY - node.y) * springFactor;
           node.vx *= damping;
           node.vy *= damping;
           node.x += node.vx;
@@ -175,18 +190,32 @@ const NeuralNetwork: React.FC = () => {
           return node;
         });
         nodesRef.current = updatedNodes;
-        setCurrentNodes(updatedNodes);
+
+        frameCountRef.current++;
+        if (frameCountRef.current % updateInterval === 0) {
+          setCurrentNodes([...updatedNodes]); // Update React state less frequently for better perf
+        }
+
         animationFrameId = requestAnimationFrame(animate);
       };
 
       // 2. All this logic now runs *inside* the timer
       animationFrameId = requestAnimationFrame(animate);
 
-      const handleMouseMove = (event: MouseEvent) => {
+      const updatePointerPosition = (event: MouseEvent | TouchEvent) => {
         if (!svgRef.current) return;
         const svgPoint = svgRef.current.createSVGPoint();
-        svgPoint.x = event.clientX;
-        svgPoint.y = event.clientY;
+        let clientX, clientY;
+        if ('touches' in event) {
+          const touch = event.touches[0];
+          clientX = touch.clientX;
+          clientY = touch.clientY;
+        } else {
+          clientX = event.clientX;
+          clientY = event.clientY;
+        }
+        svgPoint.x = clientX;
+        svgPoint.y = clientY;
         
         const inverseCTM = svgRef.current.getScreenCTM()?.inverse();
         if (inverseCTM) {
@@ -195,23 +224,38 @@ const NeuralNetwork: React.FC = () => {
         }
       };
 
-      const handleMouseLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseleave', handleMouseLeave);
+      const handlePointerLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+
+      if (isMobile) {
+        window.addEventListener('touchstart', updatePointerPosition, { passive: true });
+        window.addEventListener('touchmove', updatePointerPosition, { passive: true });
+        window.addEventListener('touchend', handlePointerLeave, { passive: true });
+        window.addEventListener('touchcancel', handlePointerLeave, { passive: true });
+      } else {
+        window.addEventListener('mousemove', updatePointerPosition as EventListener);
+        window.addEventListener('mouseleave', handlePointerLeave);
+      }
 
       // 3. The cleanup for the animation must be returned *by the timer*
       return () => {
         cancelAnimationFrame(animationFrameId);
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('mouseleave', handleMouseLeave);
+        if (isMobile) {
+          window.removeEventListener('touchstart', updatePointerPosition);
+          window.removeEventListener('touchmove', updatePointerPosition);
+          window.removeEventListener('touchend', handlePointerLeave);
+          window.removeEventListener('touchcancel', handlePointerLeave);
+        } else {
+          window.removeEventListener('mousemove', updatePointerPosition as EventListener);
+          window.removeEventListener('mouseleave', handlePointerLeave);
+        }
       };
-    }, 500); // 500ms delay
+    }, isMobile ? 1200 : 500); // Longer delay on mobile for better initial load
 
     // 4. The main useEffect cleanup just clears the timer
     return () => {
       clearTimeout(animationTimer);
     };
-  }, [viewWidth, viewHeight, nodeRadius]); // Dependencies remain the same
+  }, [viewWidth, viewHeight, nodeRadius, isMobile]); // Added isMobile to dependencies
 
   return (
     <svg 
@@ -230,10 +274,10 @@ const NeuralNetwork: React.FC = () => {
           const source = nodesById.get(edge.source);
           const target = nodesById.get(edge.target);
           if (!source || !target) return null;
-          return <line key={`edge-${i}`} x1={source.x} y1={source.y} x2={target.x} y2={target.y} stroke="#d0d0d0" strokeWidth={1} strokeOpacity={0.6} />;
+          return <line key={`edge-${i}`} x1={source.x} y1={source.y} x2={target.x} y2={target.y} stroke="#d0d0d0" strokeWidth={1} strokeOpacity={isMobile ? 0.4 : 0.6} />;
         })}
         {currentNodes.map(node => (
-          <circle key={node.id} cx={node.x} cy={node.y} r={nodeRadius} fill={node.color} style={{ filter: 'url(#shadow)' }} />
+          <circle key={node.id} cx={node.x} cy={node.y} r={nodeRadius} fill={node.color} style={isMobile ? {} : { filter: 'url(#shadow)' }} /> // Skip shadow on mobile for perf
         ))}
       </g>
     </svg>
