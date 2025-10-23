@@ -2,9 +2,9 @@
 
 export const homeFrTranslations = {
   // Hero
-  'hero.title': 'Architecturer',
-  'hero.title1': 'le Monde ',
-  'hero.title2': 'de Demain',
+'hero.title': 'Créer',
+'hero.title1': 'le Monde',
+'hero.title2': 'Futur',
   'hero.description': 'Le futur ne se trouve pas. Il se construit. XHIVA déploie du capital stratégique dans les technologies de rupture, les infrastructures critiques et les initiatives durables qui définiront le siècle prochain. Nous n\'investissons pas seulement dans le monde ; nous investissons dans le monde de demain.',
   'hero.cta': 'Découvrez Notre Impact Mondial',
   'hero.viewDemo': 'En Savoir Plus',
