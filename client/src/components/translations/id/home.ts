@@ -2,9 +2,9 @@
 
 export const homeIdTranslations = {
   // Hero
-  'hero.title': 'Membangun',
-  'hero.title1': 'Dunia ',
-  'hero.title2': 'Masa Depan',
+ 'hero.title': 'Mencipta',
+'hero.title1': 'Dunia',
+'hero.title2': 'Esok',
   'hero.description': 'Masa depan tidak ditemukan. Ia dibangun. XHIVA mengerahkan modal strategis ke dalam teknologi disruptif, infrastruktur penting, dan inisiatif berkelanjutan yang akan menentukan abad berikutnya. Kami tidak hanya berinvestasi di dunia; kami berinvestasi di dunia masa depan.',
   'hero.cta': 'Temukan Dampak Global Kami',
   'hero.viewDemo': 'Pelajari Lebih Lanjut',

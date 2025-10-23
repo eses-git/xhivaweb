@@ -11,7 +11,7 @@ async function sendTestEmail() {
   try {
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev', // Resend's special test address
-      to: ['xhiva.estera@proton.me'], // IMPORTANT: Change this to your own email
+      to: ['XHIVA.estera@proton.me'], // IMPORTANT: Change this to your own email
       subject: 'Test from Resend SDK',
       html: '<strong>If you are seeing this, your Resend API key is working!</strong>',
     });

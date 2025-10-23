@@ -1,5 +1,5 @@
 {
-  "name": "xhiva-api-server",
+  "name": "XHIVA-api-server",
   "version": "1.0.0",
   "description": "API server for sending career application emails.",
   "main": "index.js",

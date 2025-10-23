@@ -44,7 +44,7 @@ app.post(
 
       // 4. Send the email using resend.emails.send()
       const { data, error } = await resend.emails.send({
-        from: 'xhiva-careers@xhiva.org', // MUST be an email from your verified domain
+        from: 'XHIVA-careers@XHIVA.org', // MUST be an email from your verified domain
         to: 'anishkothari10@gmail.com', // Where you want to receive applications
         subject: `XHIVA.org -Career Application: ${position} from ${fullName}`,
         reply_to: email, // Use 'reply_to' for the applicant's email
@@ -85,7 +85,7 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, message, subject } = req.body;
 
     const { data, error } = await resend.emails.send({
-      from: 'xhiva-contact@xhiva.org', // MUST be an email from your verified domain
+      from: 'XHIVA-contact@xhiva.org', // MUST be an email from your verified domain
       to: 'anishkothari10@gmail.com', // Where you want to receive contact messages
       subject: `XHIVA.org - New Contact Form Submission from ${name}`,
       reply_to: email,
