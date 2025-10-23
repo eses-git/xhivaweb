@@ -1,16 +1,24 @@
 // interactive-connections-background.tsx
 import React, { useRef, useEffect } from 'react';
 
-// 1. REMOVED 'children' from props
 type InteractiveConnectionsBackgroundProps = {};
+
+// LOGIC FOR CONDITIONAL DELAY
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+const DESKTOP_DELAY_MS = 100;
+const MOBILE_DELAY_MS = 1200; // Reduced from 1800ms for better timing; adjust based on testing
+const delayTime = isMobile ? MOBILE_DELAY_MS : DESKTOP_DELAY_MS;
 
 export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bufferCanvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const containerRef = useRef<HTMLElement>(null);
 
+  // 1. New ref to control a temporary hiding class on the canvas
+  const isFirstDrawRef = useRef(true); 
+
   useEffect(() => {
-    // 2. DELAY ANIMATION: Wrap entire effect body in a timer
+    
     const startAnimationTimer = setTimeout(() => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -24,7 +32,6 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
 
       let animationFrameId: number;
       let particles: Particle[] = [];
-      // 3. OPTIMIZATION: Create variable to hold the gradient
       let connectionGradient: CanvasGradient | string;
       const mouse = { x: -300, y: -300, radius: 150 };
       const targetMouse = { x: -300, y: -300 };
@@ -32,12 +39,21 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
       let cellSize = 150;
       let grid: Map<string, Particle[]> = new Map();
       let lastFrameTime = 0;
-      const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+      
       const targetFPS = isMobile ? 30 : 60;
       let frameInterval = 1000 / targetFPS;
       let isInteracting = false;
       let resetTimer: NodeJS.Timeout | null = null;
       let avgFrameTime = frameInterval;
+      
+      // Removed isFirstDraw, using isFirstDrawRef instead
+
+      // Accessibility: Check for reduced motion preference
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) {
+        // Skip animation; could set a static background or minimal particles here if desired
+        return;
+      }
 
       function debounce(func: (...args: any[]) => void, delay: number) {
         let timeout: NodeJS.Timeout | null = null;
@@ -58,7 +74,6 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         };
       };
 
-      // 4. OPTIMIZATION: Modify gradient function to accept params
       const createGradient = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
         const gradient = ctx.createLinearGradient(0, 0, width, height);
         gradient.addColorStop(0, 'rgba(139, 98, 44, 0.8)');
@@ -76,7 +91,6 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
           bufferCanvas.width = canvas.width;
           bufferCanvas.height = canvas.height;
 
-          // 5. OPTIMIZATION: Update the gradient variable on resize
           if (bufferCtx && !isMobile) {
             connectionGradient = createGradient(bufferCtx, canvas.width, canvas.height);
           } else {
@@ -144,7 +158,7 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
 
       const createParticles = (canvasElement: HTMLCanvasElement) => {
         const densityFactor = isMobile ? 800 : 3000;
-        const particleCount = Math.min(isMobile ? 180 : 400, Math.floor((canvasElement.width * canvasElement.height) / densityFactor));
+        const particleCount = Math.min(isMobile ? 180 : 400, Math.floor((canvasElement.width * canvasElement.height * window.devicePixelRatio) / densityFactor));
         particles = Array.from({ length: particleCount }, () => new Particle(canvasElement));
         cellSize = isMobile ? 200 : 150;
       };
@@ -186,10 +200,9 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         }
         bufferCtx.lineWidth = 0.5;
 
-        const connectDistanceSq = isMobile ? 50 * 60 : 120 * 120;
+        const connectDistanceSq = isMobile ? 40 * 40 : 120 * 120; // Smaller on mobile for fewer connections
 
         bufferCtx.globalAlpha = 0.4;
-        // 6. OPTIMIZATION: Use the gradient variable here
         bufferCtx.strokeStyle = connectionGradient;
 
         bufferCtx.beginPath();
@@ -309,6 +322,16 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(bufferCanvas, 0, 0);
 
+          // Updated reveal logic: Set opacity inline
+          if (isFirstDrawRef.current) {
+            setTimeout(() => {
+              if (canvasRef.current) {
+                canvasRef.current.style.opacity = '0.8';
+              }
+            }, isMobile ? 100 : 50); // Slightly longer on mobile
+            isFirstDrawRef.current = false;
+          }
+
           animationFrameId = requestAnimationFrame(animate);
         } catch (error) {
           console.error('Animation error:', error);
@@ -316,7 +339,6 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         }
       };
 
-      // Everything below this point is still inside the setTimeout
       resizeCanvas();
       requestAnimationFrame(animate);
 
@@ -326,6 +348,7 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
       }
 
       window.addEventListener('resize', debouncedResize);
+      window.addEventListener('orientationchange', debouncedResize); // Added for mobile orientation
       const throttledUpdate = throttle(updatePointerPosition, 60);
       if (isMobile) {
         window.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -336,11 +359,11 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         window.addEventListener('mousemove', updatePointerPosition as EventListener);
       }
 
-      // 7. DELAY ANIMATION: The cleanup must be returned *inside* the timer
-      //    This function won't be registered until the timeout completes.
+      // Inner cleanup
       return () => {
         resizeObserver.disconnect();
         window.removeEventListener('resize', debouncedResize);
+        window.removeEventListener('orientationchange', debouncedResize);
         if (isMobile) {
           window.removeEventListener('touchstart', handleTouchStart);
           window.removeEventListener('touchmove', throttledUpdate);
@@ -353,30 +376,30 @@ export function InteractiveConnectionsBackground({}: InteractiveConnectionsBackg
         if (resetTimer) clearTimeout(resetTimer);
       };
       
-    }, 100); // 500ms delay
+    }, delayTime);
 
-    // 8. DELAY ANIMATION: The main cleanup for the useEffect
-    //    This cleans up the *timer itself* if the component unmounts early
+    // Outer cleanup (cleans up the initial timer)
     return () => {
       clearTimeout(startAnimationTimer);
-      // Note: The inner cleanup (removing event listeners) is now handled
-      // by the return function *inside* the setTimeout.
     };
-  }, []);
+  }, [delayTime]);
 
   return (
     <section
       ref={containerRef}
-      // 9. DECOUPLING: Use absolute positioning to fill parent
       className="absolute inset-0 z-0 overflow-hidden"
       style={{ background: `linear-gradient(135deg, #040424 0%, #002c54 100%)` }}
     >
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full opacity-80 z-0"
-        style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+        className="absolute top-0 left-0 w-full h-full z-0"
+        style={{
+          opacity: 0, // Initial hidden state
+          transition: 'opacity 0.5s ease-in', // Always apply transition
+          willChange: 'transform, opacity', // Hint for better perf
+          transform: 'translateZ(0)'
+        }}
       />
-      {/* 10. DECOUPLING: The 'children' wrapper has been removed */}
     </section>
   );
 }

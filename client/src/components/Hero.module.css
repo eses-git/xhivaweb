@@ -194,6 +194,10 @@
   }
   .title {
     font-size: clamp(2.8rem, 10vw, 6rem);
+
+    animation: none !important;
+    text-shadow: 0 0 10px var(--gold-color);
+  
   }
   .description {
     font-size: 0.95rem;
@@ -214,6 +218,8 @@
   @media (max-width: 1048px) and (max-height: 700px) {
       .title {
           margin-top:20px;
+           animation: none !important;
+          text-shadow: 0 0 10px var(--gold-color);
 
       }
 
@@ -221,6 +227,8 @@
     @media (max-width: 1px) and (max-height: 800px) {
       .title {
           margin-top:20px;
+          animation: none !important;
+          text-shadow: 0 0 10px var(--gold-color);
 
       }
 
