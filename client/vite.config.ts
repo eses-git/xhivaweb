@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import compression from 'vite-plugin-compression';
+import sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig({
   plugins: [
@@ -19,6 +20,24 @@ export default defineConfig({
       ext: '.br',
       threshold: 10240,
       deleteOriginFile: false,
+    }),
+    sitemap({ 
+      hostname: 'https://xhiva.org/', 
+      dynamicRoutes: [ 
+        '/',
+        '/about-us',
+        '/funds',
+        '/services',
+        '/partnership',
+        '/impact',
+        '/contact',
+        '/careers',
+        '/strategic-tax-architecture',
+        '/cookie-policy'
+      ],
+      robots: [ // Optional: Auto-generate robots.txt
+        { userAgent: '*', allow: '/' }
+      ]
     }),
   ],
   resolve: {
