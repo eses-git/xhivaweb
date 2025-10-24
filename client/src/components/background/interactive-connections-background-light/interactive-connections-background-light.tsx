@@ -83,7 +83,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
 
             // NEW: Adjust particle count to maintain density (add/remove as needed)
             const densityFactor = currentIsMobile ? 4000 : 3000;
-            const maxParticles = currentIsMobile ? 300 : 700;
+            const maxParticles = currentIsMobile ? 300 : 600;
             const targetCount = Math.min(maxParticles, Math.floor((newWidth * newHeight) / densityFactor));
             let currentCount = particles.length;
 
@@ -205,7 +205,7 @@ export function InteractiveConnectionsBackgroundLight({ children }: InteractiveC
         bufferCtx.shadowBlur = 0;
       } else {
         bufferCtx.shadowColor = '#f4e383ff';
-        bufferCtx.shadowBlur = 5;
+        bufferCtx.shadowBlur = 2;
       }
       bufferCtx.lineWidth = 0.5;
 
