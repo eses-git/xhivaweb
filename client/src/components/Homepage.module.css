@@ -8,26 +8,26 @@
   --XHIVA-off-white: #F1F1F1;
   --XHIVA-gold: #D7C286;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: var(--font-sans); /* Defined heading font */
 }
 
 .homepageWrapper {
   background-color: #FFFFFF;
   font-family: var(--font-sans);
-  overflow-x: hidden;
 }
 
 /* --- Section 1: Vision --- */
 .visionSection {
   text-align: center;
-  width: 100%; 
+  width: 100%;
+  /* Removed relative positioning, z-index added inline in JSX */
 }
 
 .visionContent {
   max-width: 900px;
   margin: 0 auto;
   padding: 6rem 2rem;
-  /* ADDED FOR PERFORMANCE */
-  will-change: transform, opacity;
+  /* Removed will-change */
 }
 
 .visionSubtitle {
@@ -35,13 +35,12 @@
   font-weight: 500;
   color: var(--XHIVA-gold);
   margin-bottom: 1rem;
-} 
+}
 
 .visionTitle {
   font-family: var(--font-headings);
-  /* CHANGED: Replaced fixed size with a fluid, responsive size */
   font-size: clamp(2.5rem, 8vw, 4rem);
-  color: var(--dark-blue);
+  color: var(--XHIVA-dark-blue); /* Corrected variable */
   line-height: 1.1;
   font-weight: 500;
   margin: 0.5rem 0 1.5rem 0;
@@ -57,133 +56,15 @@
 }
 
 /* --- Section 2: Ecosystem --- */
-.ecosystemSection {
-  background-color: #F1F1F1;
-  padding: 5rem 0;
-  width: 100%;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.ecosystemContentWrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  gap: 4rem;
-  padding: 0 2rem;
-}
-
-.ecosystemNav {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.ecosystemTab {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem 1.5rem;
-  background: transparent;
-  border: none;
-  border-left: 4px solid transparent;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--XHIVA-dark-gray);
-  transition: all 0.3s ease;
-}
-
-.ecosystemIcon {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-  filter: grayscale(1) opacity(0.6);
-  transition: filter 0.3s ease;
-  flex-shrink: 0;
-}
-
-.ecosystemTab:hover .ecosystemIcon,
-.ecosystemTab.active .ecosystemIcon {
-  filter: grayscale(0) opacity(1);
-}
-
-.ecosystemTab:hover {
-  background-color: #FFFFFF;
-  color: var(--XHIVA-gold);
-}
-
-.ecosystemTab.active {
-  background-color: #FFFFFF;
-  color: var(--XHIVA-dark-blue);
-  border-left-color: var(--XHIVA-gold);
-}
-
-.ecosystemContent {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  font-weight: 300;
-  color: var(--XHIVA-dark-gray);
-  min-height: 200px;
-}
+/* ALL STYLES RELATED TO .ecosystem* HAVE BEEN REMOVED */
 
 
 /* --- RESPONSIVE STYLES --- */
-@media (max-width: 1024px) {
-  .ecosystemContentWrapper {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .ecosystemNav {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 2rem;
-  }
-  .ecosystemContent {
-    text-align: center;
-    padding: 0 1rem;
-    min-height: auto;
-  }
-  .ecosystemTab {
-    border-left: none;
-    border-bottom: 4px solid transparent;
-  }
-  .ecosystemTab.active {
-    border-bottom-color: var(--XHIVA-gold);
-  }
-}
+/* Adjusted to only contain Vision section responsive rules */
 @media (max-width: 768px) {
   .visionContent { padding: 4rem 1.5rem; }
-  .ecosystemSection { padding: 3rem 0; }
-  
-  .ecosystemContentWrapper {
-    padding: 0 1.5rem;
-  }
-  .ecosystemTab {
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-  .ecosystemContent {
-    font-size: 1.1rem;
-  }
 }
 @media (max-width: 480px) {
   .visionContent { padding: 3rem 1rem; }
   .visionDescription { font-size: 1rem; }
-
-  .ecosystemSection { padding: 2.5rem 0; }
-  .ecosystemContentWrapper { padding: 0 1rem; }
-  
-  .ecosystemNav { padding-bottom: 1.5rem; }
-  .ecosystemTab { padding: 0.75rem; }
-  .ecosystemIcon { width: 45px; height: 45px; }
-  
-  .ecosystemContent { font-size: 1rem; }
 }

@@ -1,72 +1,30 @@
 // Homepage.tsx
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion"; // Removed unused imports: AnimatePresence, useState, useEffect, useRef
 import { useLanguage } from "./LanguageContext";
-import { useState, useEffect, useRef } from "react";
 import styles from './Homepage.module.css';
 import NeuralConnections from './background/interactive-network-small/interactive-network-small';
 
-// Import your custom icons
-import shieldIcon from './assets/icons/shield_icon.png';
-import globeIcon from './assets/icons/globe_icon.png';
-import brainIcon from './assets/icons/arrow_2.png';
+// Removed unused icon imports
 
 export function Homepage() {
   const { t } = useLanguage();
-  
-  const [activePillarIndex, setActivePillarIndex] = useState(0);
-  const pillarIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const ecosystemPillars = [
-    { icon: shieldIcon, title: t('interactive.block1-title'), description: t('interactive.block1-description') },
-    { icon: globeIcon, title: t('interactive.block2-title'), description: t('interactive.block2-description') },
-    { icon: brainIcon, title: t('interactive.block3-title'), description: t('interactive.block3-description') }
-  ];
+  // Removed all state, refs, effects, data, and functions related to pillars
 
-  const startPillarRotation = () => {
-    if (pillarIntervalRef.current) clearInterval(pillarIntervalRef.current);
-    pillarIntervalRef.current = setInterval(() => {
-      setActivePillarIndex(prevIndex => (prevIndex + 1) % ecosystemPillars.length);
-    }, 6000);
-  };
-
-  useEffect(() => {
-    startPillarRotation();
-    return () => {
-      if (pillarIntervalRef.current) clearInterval(pillarIntervalRef.current);
-    };
-  }, []);
-
-  const handlePillarClick = (index: number) => {
-    setActivePillarIndex(index);
-    startPillarRotation();
-  };
-  
-  const activePillar = ecosystemPillars[activePillarIndex];
-
-  const ecosystemContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
-  };
-
-  const ecosystemItemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
-  };
+  // Removed unused animation variants
 
   return (
-    // 1. MODIFICATION: Added 'relative' positioning to the wrapper
     <main className={`${styles.homepageWrapper} relative`}>
-      
-      {/* 2. MODIFICATION: Render animation as a sibling in the background */}
+      {/* Background Animation */}
       <NeuralConnections />
-      
-      {/* 3. MODIFICATION: Render content as a sibling on top */}
+
+      {/* Vision Section Content */}
       <section className={`${styles.visionSection} relative z-10`}>
         <motion.div
           className={styles.visionContent}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
+          // Ensure exit prop is removed if not using AnimatePresence wrapper
           transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] as const }}
           viewport={{ once: true, amount: 0.3 }}
         >
@@ -77,12 +35,11 @@ export function Homepage() {
           </p>
         </motion.div>
       </section>
-      
-      {/* NOTE: The original file had the rest of the homepage content removed.
-        If you have other sections (like 'ecosystemPillars'), they should
-        also go here, inside the 'main' tag but outside the 'visionSection'.
-      */}
-      
+
+      {/* Ecosystem Section has been completely removed */}
+
+      {/* Add any other sections of your homepage here if needed */}
+
     </main>
   );
 }
