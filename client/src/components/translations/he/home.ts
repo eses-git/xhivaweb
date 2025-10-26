@@ -7,7 +7,7 @@ export const homeHeTranslations = {
   'hero.title2': 'המחר',
   'hero.description': 'העתיד אינו נמצא. הוא נבנה. XHIVA פורסת הון אסטרטגי בטכנולוגיות משבשות, תשתיות קריטיות ויוזמות בנות קיימא שיגדירו את המאה הבאה. איננו משקיעים רק בעולם; אנו משקיעים בעולם של מחר.',
   'hero.cta': 'גלה את ההשפעה הגלובלית שלנו',
-  'hero.viewDemo': 'למידע נוסף',
+  "hero.viewDemo": "למידע נוסף על XHIVA",
   'home.bridgeText': 'מניעי הקידמה הגלובלית',
 
   // Homepage (Leadership Section)

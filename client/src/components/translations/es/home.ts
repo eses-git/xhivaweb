@@ -7,7 +7,7 @@ export const homeEsTranslations = {
   'hero.title2': 'del Mañana',
   'hero.description': "El futuro no se encuentra. Se construye. XHIVA despliega capital estratégico en las tecnologías disruptivas, infraestructura crítica e iniciativas sostenibles que definirán el próximo siglo. No solo invertimos en el mundo; invertimos en el mundo del mañana.",
   'hero.cta': 'Descubra Nuestro Impacto Global',
-  'hero.viewDemo': 'Saber Más',
+"hero.viewDemo": "Conocer más sobre XHIVA",
   'home.bridgeText': 'Impulsadores del Progreso Global',
 
   // Homepage (Leadership Section)

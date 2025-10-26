@@ -7,7 +7,7 @@ export const homeNlTranslations = {
   'hero.title2': 'van Morgen',
   'hero.description': "De toekomst wordt niet gevonden. Hij wordt gebouwd. XHIVA zet strategisch kapitaal in voor de disruptieve technologieën, kritieke infrastructuur en duurzame initiatieven die de volgende eeuw zullen definiëren. We investeren niet alleen in de wereld; we investeren in de wereld van morgen.",
   'hero.cta': 'Ontdek Onze Wereldwijde Impact',
-  'hero.viewDemo': 'Meer Informatie',
+  "hero.viewDemo": "Meer informatie over XHIVA",
   'home.bridgeText': 'Drijvers van Wereldwijde Vooruitgang',
 
   // Homepage (Leadership Section)

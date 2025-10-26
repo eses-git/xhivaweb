@@ -7,7 +7,7 @@ export const homeTlTranslations = {
   'hero.title2': 'ng Bukas',
   'hero.description': 'Ang hinaharap ay hindi natatagpuan. Ito ay itinatayo. Ang XHIVA ay naglalaan ng estratehikong kapital sa mga teknolohiyang disruptive, kritikal na imprastraktura, at mga sustainable na inisyatibo na magtatakda ng susunod na siglo. Hindi lamang kami namumuhunan sa mundo; namumuhunan kami sa mundo ng bukas.',
   'hero.cta': 'Tuklasin ang Aming Pandaigdigang Epekto',
-  'hero.viewDemo': 'Matuto Nang Higit Pa',
+  "hero.viewDemo": "Alamin pa ang tungkol sa XHIVA",
   'home.bridgeText': 'Mga Tagapagpatakbo ng Pandaigdigang Pag-unlad',
 
   // Homepage (Leadership Section)

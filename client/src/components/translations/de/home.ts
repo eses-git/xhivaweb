@@ -7,7 +7,7 @@ export const homeDeTranslations = {
 'hero.title2': 'Zukunft',
   'hero.description': 'Die Zukunft wird nicht gefunden. Sie wird gebaut. XHIVA setzt strategisches Kapital in disruptive Technologien, kritische Infrastrukturen und nachhaltige Initiativen ein, die das nächste Jahrhundert definieren werden. Wir investieren nicht nur in die Welt; wir investieren in die Welt von morgen.',
   'hero.cta': 'Entdecken Sie unseren globalen Einfluss',
-  'hero.viewDemo': 'Erfahren Sie mehr',
+  "hero.viewDemo": "Mehr über XHIVA erfahren",
   'home.bridgeText': 'Treiber des globalen Fortschritts',
 
   // Homepage (Leadership Section)

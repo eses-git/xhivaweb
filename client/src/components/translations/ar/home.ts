@@ -7,7 +7,7 @@ export const homeArTranslations = {
   'hero.title2': 'الغد',
   'hero.description': 'المستقبل لا يُكتشف، بل يُبنى. XHIVA تنشر رأس المال الاستراتيجي في التقنيات المبتكرة، والبنية التحتية الحيوية، والمبادرات المستدامة التي ستحدد ملامح القرن القادم. نحن لا نستثمر في العالم فقط؛ بل نستثمر في عالم الغد.',
   'hero.cta': 'اكتشف تأثيرنا العالمي',
-  'hero.viewDemo': 'اعرف المزيد',
+  "hero.viewDemo": "اعرف المزيد عن XHIVA",
   'home.bridgeText': 'محركات التقدم العالمي',
 
   // Homepage (Leadership Section)

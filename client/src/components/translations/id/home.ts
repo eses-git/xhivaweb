@@ -7,7 +7,7 @@ export const homeIdTranslations = {
 'hero.title2': 'Esok',
   'hero.description': 'Masa depan tidak ditemukan. Ia dibangun. XHIVA mengerahkan modal strategis ke dalam teknologi disruptif, infrastruktur penting, dan inisiatif berkelanjutan yang akan menentukan abad berikutnya. Kami tidak hanya berinvestasi di dunia; kami berinvestasi di dunia masa depan.',
   'hero.cta': 'Temukan Dampak Global Kami',
-  'hero.viewDemo': 'Pelajari Lebih Lanjut',
+  "hero.viewDemo": "Pelajari lebih lanjut tentang XHIVA",
   'home.bridgeText': 'Penggerak Kemajuan Global',
 
   // Homepage (Leadership Section)

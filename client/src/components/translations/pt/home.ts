@@ -7,7 +7,7 @@ export const homePtTranslations = {
   'hero.title2': 'de Amanhã',
   'hero.description': 'O futuro não é encontrado. É construído. A XHIVA implementa capital estratégico nas tecnologias disruptivas, infraestrutura crítica e iniciativas sustentáveis que definirão o próximo século. Nós não apenas investimos no mundo; nós investimos no mundo de amanhã.',
   'hero.cta': 'Descubra Nosso Impacto Global',
-  'hero.viewDemo': 'Saiba Mais',
+  "hero.viewDemo": "Saiba mais sobre XHIVA",
   'home.bridgeText': 'Impulsionadores do Progresso Global',
 
 

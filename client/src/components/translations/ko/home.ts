@@ -7,7 +7,7 @@ export const homeKoTranslations = {
   'hero.title2': '설계합니다', // Adjusted for Korean structure
   'hero.description': '미래는 발견되는 것이 아닙니다. 만들어지는 것입니다. XHIVA는 다음 세기를 정의할 파괴적 기술, 핵심 인프라 및 지속 가능한 이니셔티브에 전략적 자본을 투입합니다. 우리는 단지 세상에 투자하는 것이 아니라, 내일의 세상에 투자합니다.',
   'hero.cta': '우리의 글로벌 영향력 발견하기',
-  'hero.viewDemo': '더 알아보기',
+  "hero.viewDemo": "XHIVA에 대해 자세히 알아보기",
   'home.bridgeText': '글로벌 진보의 동력',
 
   // Homepage (Leadership Section)

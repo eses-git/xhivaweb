@@ -7,7 +7,7 @@ export const homeSwTranslations = {
   'hero.title2': 'wa Kesho',
   'hero.description': 'Wakati ujao haupatikani. Unajengwa. XHIVA inapeleka mtaji mkakati katika teknolojia zinazoleta mabadiliko makubwa, miundombinu muhimu, na mipango endelevu itakayoainisha karne ijayo. Hatuwekezi tu duniani; tunawekeza katika ulimwengu wa kesho.',
   'hero.cta': 'Gundua Athari Zetu za Kimataifa',
-  'hero.viewDemo': 'Jifunze Zaidi',
+  "hero.viewDemo": "Pata maelezo zaidi kuhusu XHIVA",
   'home.bridgeText': 'Madereva wa Maendeleo ya Kimataifa',
 
   // Homepage (Leadership Section)

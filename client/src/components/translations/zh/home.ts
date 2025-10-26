@@ -7,7 +7,7 @@ export const homeMaTranslations = {
   'hero.title2': '世界',
   'hero.description': '未来不是被发现的，而是被建造的。XHIVA 将战略资本部署到将定义下一个世纪的颠覆性技术、关键基础设施和可持续发展计划中。我们不仅投资于世界；我们投资于未来的世界。',
   'hero.cta': '发现我们的全球影响力',
-  'hero.viewDemo': '了解更多',
+  "hero.viewDemo": "了解更多关于 XHIVA",
   'home.bridgeText': '全球进步的驱动力',
 
   // Homepage (Leadership Section)

@@ -7,7 +7,7 @@ export const homeViTranslations = {
 'hero.title2': 'Tương lai',
   'hero.description': 'Tương lai không được tìm thấy. Nó được xây dựng. XHIVA triển khai vốn chiến lược vào các công nghệ đột phá, cơ sở hạ tầng quan trọng và các sáng kiến bền vững sẽ định hình thế kỷ tới. Chúng tôi không chỉ đầu tư vào thế giới; chúng tôi đầu tư vào thế giới của ngày mai.',
   'hero.cta': 'Khám phá Tác động Toàn cầu của Chúng tôi',
-  'hero.viewDemo': 'Tìm hiểu thêm',
+  "hero.viewDemo": "Tìm hiểu thêm về XHIVA",
   'home.bridgeText': 'Động lực của sự tiến bộ toàn cầu',
 
   // Homepage (Leadership Section)

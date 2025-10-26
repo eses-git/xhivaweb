@@ -7,7 +7,7 @@ export const homeNoTranslations = {
 'hero.title2': 'Fremtiden',
   'hero.description': "Fremtiden blir ikke funnet. Den blir bygget. XHIVA distribuerer strategisk kapital til disruptive teknologier, kritisk infrastruktur og bærekraftige initiativer som vil definere det neste århundret. Vi investerer ikke bare i verden; vi investerer i morgendagens verden.",
   'hero.cta': 'Oppdag Vår Globale Påvirkning',
-  'hero.viewDemo': 'Les Mer',
+  "hero.viewDemo": "Lær mer om XHIVA",
   'home.bridgeText': 'Drivere for Global Fremgang',
 
   // Homepage (Leadership Section)

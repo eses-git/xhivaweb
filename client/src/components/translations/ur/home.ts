@@ -7,7 +7,7 @@ export const homeUrTranslations = {
   'hero.title2': 'کو تشکیل دینا', // Adjusted for Urdu structure
   'hero.description': 'مستقبل پایا نہیں جاتا۔ اسے بنایا جاتا ہے۔ XHIVA آنے والی صدی کی وضاحت کرنے والی خلل ڈالنے والی ٹیکنالوجیز، اہم انفراسٹرکچر، اور پائیدار اقدامات میں اسٹریٹجک سرمایہ کاری کرتا ہے۔ ہم صرف دنیا میں سرمایہ کاری نہیں کرتے؛ ہم کل کی دنیا میں سرمایہ کاری کرتے ہیں۔',
   'hero.cta': 'ہمارے عالمی اثرات دریافت کریں',
-  'hero.viewDemo': 'مزید جانیں',
+  "hero.viewDemo": "XHIVA کے بارے میں مزید جانیں",
   'home.bridgeText': 'عالمی ترقی کے محرکات',
 
   // Homepage (Leadership Section)

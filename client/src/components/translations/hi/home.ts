@@ -7,7 +7,7 @@ export const homeHiTranslations = {
   'hero.title2': 'का निर्माण', // Adjusted for Hindi structure
   'hero.description': 'भविष्य पाया नहीं जाता। यह बनाया जाता है। XHIVA अगली सदी को परिभाषित करने वाली विघटनकारी प्रौद्योगिकियों, महत्वपूर्ण बुनियादी ढांचे और टिकाऊ पहलों में रणनीतिक पूंजी तैनात करता है। हम सिर्फ दुनिया में निवेश नहीं करते हैं; हम कल की दुनिया में निवेश करते हैं।',
   'hero.cta': 'हमारे वैश्विक प्रभाव की खोज करें',
-  'hero.viewDemo': 'और जानें',
+  "hero.viewDemo": "XHIVA के बारे में और जानें",
   'home.bridgeText': 'वैश्विक प्रगति के चालक',
 
   // Homepage (Leadership Section)

@@ -7,7 +7,7 @@ export const homeJaTranslations = {
   'hero.title2': '設計する', // Adjusted for Japanese structure
   'hero.description': '未来は見つけるものではない。築き上げるものだ。XHIVAは、次の世紀を定義する破壊的技術、重要インフラ、持続可能なイニシアチブに戦略的資本を投入します。私たちは世界に投資するだけでなく、未来の世界に投資します。',
   'hero.cta': '私たちのグローバルな影響力を発見する',
-  'hero.viewDemo': '詳細を見る',
+  "hero.viewDemo": "XHIVA について詳しく知る",
   'home.bridgeText': 'グローバルな進歩の推進力',
 
   // Homepage (Leadership Section)
