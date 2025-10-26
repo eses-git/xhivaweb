@@ -21,9 +21,9 @@ export default defineConfig({
       threshold: 10240,
       deleteOriginFile: false,
     }),
-    sitemap({ 
-      hostname: 'https://xhiva.org/', 
-      dynamicRoutes: [ 
+    sitemap({
+      hostname: 'https://xhiva.org', // Removed trailing slash
+      dynamicRoutes: [
         '/',
         '/about-us',
         '/funds',
@@ -106,3 +106,4 @@ export default defineConfig({
     open: true,
   },
 });
+
