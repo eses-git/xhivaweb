@@ -96,7 +96,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    outDir: 'build',
+    outDir: 'dist',
     minify: true,
     cssMinify: true,  // Explicitly enable (default in prod)
     cssCodeSplit: true,  // Split CSS for better loading/caching
