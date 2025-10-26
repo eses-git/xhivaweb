@@ -21,9 +21,10 @@ export default defineConfig({
       threshold: 10240,
       deleteOriginFile: false,
     }),
-    sitemap({
-      hostname: 'https://xhiva.org', // Removed trailing slash
-      dynamicRoutes: [
+    sitemap({ 
+      hostname: 'https://xhiva.org',
+      outDir: 'build', // <-- Tells sitemap plugin to use 'build'
+      dynamicRoutes: [ 
         '/',
         '/about-us',
         '/funds',
@@ -96,7 +97,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    outDir: 'dist',
+    outDir: 'build', // <-- Tells Vite to output to 'build'
     minify: true,
     cssMinify: true,  // Explicitly enable (default in prod)
     cssCodeSplit: true,  // Split CSS for better loading/caching
