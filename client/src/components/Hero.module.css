@@ -50,6 +50,7 @@
   width: 100%;
   gap: 3rem;
   will-change: transform, opacity;
+  justify-content: center; /* <-- ADD THIS LINE */
 }
 
 /* Left Container (Title) */
@@ -98,6 +99,7 @@
   padding-right: 1.5rem;
   max-width: 400px;
   will-change: transform, opacity;
+
 }
 
 /* Actions (Buttons) */

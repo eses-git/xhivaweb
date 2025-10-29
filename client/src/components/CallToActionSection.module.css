@@ -60,6 +60,7 @@
   letter-spacing: -0.025em;
   /* ADDED FOR PERFORMANCE */
   will-change: transform, opacity;
+  text-wrap: wrap;
 }
 
 .accentText {
@@ -222,7 +223,10 @@
   }
   .ctaContent { margin-bottom: 4rem; }
   .description { margin-bottom: 3rem; }
-  .title { margin-bottom: 2rem; }
+  .title { margin-bottom: 2rem; 
+  font-size: clamp(2.5rem, 10vw, 4rem); /* <-- ADD THIS: Reduces font size on small screens */
+  overflow-wrap: break-word;
+  }
   
   .primaryButton, .secondaryButton {
     padding: 1.25rem 2.5rem;
