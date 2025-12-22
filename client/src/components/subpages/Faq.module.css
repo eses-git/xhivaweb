@@ -45,11 +45,12 @@
 }
 
 .mainTitle {
-  font-family: var(--font-header);
-  font-size: 48px;
-  font-weight: 400;
-  color: var(--color-dark);
-  margin: 0 0 20px 0;
+   font-family: var(--font-headings);
+  font-size: 4rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
 }
 
 .subtitle {
