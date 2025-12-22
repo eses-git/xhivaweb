@@ -12,6 +12,7 @@ import { careersSwTranslations } from './careers';
 import { contactSwTranslations } from './contact';   
 import { seoSwTranslations } from './seo';
 import { taxSwTranslations } from './tax'; 
+import  { faqSwTranslations } from './faq'; 
 
 export const sw = {
   ...commonSwTranslations,
@@ -26,4 +27,5 @@ export const sw = {
   ...contactSwTranslations,
   ...seoSwTranslations,
   ...taxSwTranslations,
+  ...faqSwTranslations
 };

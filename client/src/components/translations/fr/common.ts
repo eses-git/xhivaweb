@@ -16,6 +16,7 @@ export const commonFrTranslations = {
   'nav.protocol': 'Notre Protocole d\'Engagement',
   'nav.home': 'Accueil',
   'nav.tax': 'Structuration Patrimoniale',
+  'nav.faq': 'FAQ' ,
 
   // Footer Translations
   'footer.company': 'Société',

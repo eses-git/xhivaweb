@@ -12,6 +12,7 @@ import { careersRuTranslations } from './careers';
 import { contactRuTranslations } from './contact';   
 import { seoRuTranslations } from './seo';
 import { taxRuTranslations } from './tax'; 
+import  { faqRuTranslations } from './faq';
 
 export const ru = {
   ...commonRuTranslations,
@@ -26,5 +27,6 @@ export const ru = {
   ...contactRuTranslations,
   ...seoRuTranslations,
   ...taxRuTranslations,
+  ...faqRuTranslations
 };
 

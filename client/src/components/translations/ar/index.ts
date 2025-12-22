@@ -12,6 +12,7 @@ import { careersArTranslations } from './careers';
 import { contactArTranslations } from './contact';   
 import { seoArTranslations } from './seo';
 import { taxArTranslations } from './tax'; 
+import  { faqArTranslations } from './faq';
 
 export const ar = {
   ...commonArTranslations,
@@ -26,4 +27,5 @@ export const ar = {
   ...contactArTranslations,
   ...seoArTranslations,
   ...taxArTranslations,
+  ...faqArTranslations
 };

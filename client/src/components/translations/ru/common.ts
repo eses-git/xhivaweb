@@ -16,6 +16,8 @@ export const commonRuTranslations = {
   'nav.protocol': 'Протокол взаимодействия',
   'nav.home': 'Главная',
   'nav.tax': 'Структурирование наследия', // <-- FIX: Added missing key
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Компания',

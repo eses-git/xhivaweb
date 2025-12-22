@@ -19,6 +19,7 @@ export function Header() {
     { name: t('nav.partnerships'), href: "/partnership" },
     { name: t('nav.impact'), href: "/impact" },
     { name: t('nav.careers'), href: "/careers" },
+    { name: t('nav.faq'), href: "/faq" },
     { name: t('nav.contact'), href: "/contact" },
   ];
 

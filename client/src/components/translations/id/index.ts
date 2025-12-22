@@ -12,6 +12,7 @@ import { careersIdTranslations } from './careers';
 import { contactIdTranslations } from './contact';   
 import { seoIdTranslations } from './seo';
 import { taxIdTranslations } from './tax'; 
+import  { faqIdTranslations } from './faq';
 
 export const id = {
   ...commonIdTranslations,
@@ -26,4 +27,5 @@ export const id = {
   ...contactIdTranslations,
   ...seoIdTranslations,
   ...taxIdTranslations,
+  ...faqIdTranslations
 };

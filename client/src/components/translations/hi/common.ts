@@ -16,6 +16,8 @@ export const commonHiTranslations = {
   'nav.protocol': 'एंगेजमेंट प्रोटोकॉल',
   'nav.home': 'होम',
   'nav.tax': 'विरासत संरचना',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'कंपनी',

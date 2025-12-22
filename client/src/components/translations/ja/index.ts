@@ -12,6 +12,7 @@ import { careersJaTranslations } from './careers';
 import { contactJaTranslations } from './contact';   
 import { seoJaTranslations } from './seo';
 import { taxJaTranslations } from './tax'; 
+import  { faqJaTranslations } from './faq';
 
 export const ja = {
   ...commonJaTranslations,
@@ -26,4 +27,5 @@ export const ja = {
   ...contactJaTranslations,
   ...seoJaTranslations,
   ...taxJaTranslations,
+  ...faqJaTranslations
 };

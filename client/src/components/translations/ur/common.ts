@@ -16,6 +16,8 @@ export const commonUrTranslations = {
   'nav.protocol': 'مشغولیت کا پروٹوکول',
   'nav.home': 'ہوم',
   'nav.tax': 'وراثت کی تشکیل',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'کمپنی',

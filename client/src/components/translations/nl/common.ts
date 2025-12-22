@@ -16,6 +16,8 @@ export const commonNlTranslations = {
   'nav.protocol': 'Ons Betrokkenheidsprotocol',
   'nav.home': 'Home',
   'nav.tax': 'Nalatenschapsstructurering',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Bedrijf',

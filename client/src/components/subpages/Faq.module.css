@@ -1,0 +1,191 @@
+/* src/components/Faq.module.css */
+
+/* Define local variables based on your design file, 
+   falling back to project defaults where they match */
+.faqSection {
+  --color-gold: #D7C286;       /* Matches var(--gold) */
+  --color-dark: #1A1A1A;       /* Specific to FAQ Design */
+  --color-grey-light: #F9F9F9;
+  --color-grey-border: #E5E5E5;
+  --color-grey-text: #555555;
+  --color-white: #FFFFFF;
+  
+  --font-header: 'Montserrat', sans-serif; /* Matches var(--font-headings) */
+  --font-body: 'Lato', sans-serif;         /* Matches var(--font-body) */
+
+  background-color: var(--color-white);
+  padding: 85px 20px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.preTitle {
+  font-family: var(--font-header);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+  margin-top: 3rem;
+
+}
+
+.mainTitle {
+  font-family: var(--font-header);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--color-dark);
+  margin: 0 0 20px 0;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--color-grey-text);
+  font-weight: 300;
+}
+
+/* SEARCH BAR */
+.searchWrapper {
+  max-width: 600px;
+  margin: 0 auto 80px auto;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 20px 50px 20px 20px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-dark);
+  border: 1px solid var(--color-grey-border);
+  border-radius: 4px;
+  background-color: var(--color-grey-light);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gold);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* CATEGORY SECTION */
+.faqCategory {
+  margin-bottom: 60px;
+}
+
+.categoryTitle {
+  font-family: var(--font-header);
+  font-size: 24px;
+  color: var(--color-dark);
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+/* ACCORDION ITEM */
+.accordionItem {
+  border-bottom: 1px solid var(--color-grey-border);
+}
+
+.accordionButton {
+  width: 100%;
+  text-align: left;
+  padding: 25px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.questionText {
+  font-family: var(--font-header);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-dark);
+  transition: color 0.3s ease;
+  padding-right: 15px;
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--color-gold);
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* ACTIVE STATE */
+.accordionItem.active .questionText {
+  color: var(--color-gold);
+}
+
+.accordionItem.active .icon {
+  transform: rotate(45deg);
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease;
+}
+
+.accordionContent.open {
+  /* max-height is handled inline via JS for exact height, 
+     but we keep a high max-height class for safety if needed */
+}
+
+.answerText {
+  padding: 0 0 30px 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-grey-text);
+  max-width: 95%;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .mainTitle {
+    font-size: 32px;
+  }
+  
+  .faqSection {
+    padding: 60px 20px;
+  }
+  
+  .searchWrapper {
+    margin-bottom: 50px;
+  }
+}

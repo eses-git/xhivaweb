@@ -16,6 +16,8 @@ export const commonFaTranslations = {
   'nav.protocol': 'پروتکل تعامل ما',
   'nav.home': 'صفحه اصلی',
   'nav.tax': 'ساختاربندی میراث',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'شرکت',

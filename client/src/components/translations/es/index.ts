@@ -13,6 +13,7 @@ import { careersEsTranslations } from './careers';
 import { contactEsTranslations } from './contact';
 import { seoEsTranslations } from './seo';
 import { taxEsTranslations } from './tax'; 
+import  { faqEsTranslations } from './faq';
 
 
 export const es = {
@@ -28,4 +29,5 @@ export const es = {
   ...contactEsTranslations,
   ...seoEsTranslations,
   ...taxEsTranslations,
+  ...faqEsTranslations
 };

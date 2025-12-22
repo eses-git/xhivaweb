@@ -138,6 +138,7 @@ export function Footer() {
       links: [
         { name: t('nav.contact'), href: "/contact" },
         { name: t('nav.careers'), href: "/careers" },
+        { name: t('nav.faq'), href: "/faq" },
       ]
     }
   ];

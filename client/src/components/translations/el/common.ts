@@ -16,6 +16,8 @@ export const commonElTranslations = {
   'nav.protocol': 'Πρωτόκολλο Δέσμευσης',
   'nav.home': 'Αρχική',
   'nav.tax': 'Διάρθρωση Κληρονομιάς',
+  'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Εταιρεία',

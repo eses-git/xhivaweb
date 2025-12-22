@@ -16,6 +16,8 @@ export const commonItTranslations = {
   'nav.protocol': 'Protocollo di Ingaggio',
   'nav.home': 'Home',
   'nav.tax': 'Strutturazione Patrimoniale',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Azienda',

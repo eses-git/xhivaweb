@@ -15,6 +15,7 @@ import { Funds } from "./components/subpages/Funds";
 import { Contact } from "./components/subpages/Contact";
 import { Career } from "./components/subpages/Career";
 import {Tax} from "./components/subpages/Tax.tsx";
+import { Faq } from "./components/subpages/Faq.tsx";
 
 // --- SEO, Consent & Policy Imports ---
 import { HelmetProvider } from 'react-helmet-async';
@@ -191,7 +192,19 @@ export default function App() {
               </div>
             </PageLayout>
           } />
-
+            {/* FAQ Subpage Route */}
+          <Route path="/faq" element={
+            <PageLayout
+              title="Frequently Asked Questions"
+              description="Comprehensive answers to common inquiries about our investment strategies, governance, operations, and client services."
+            >
+              <div className="min-h-screen">
+                <Header />
+                <Faq /> {/* FAQ component is rendered here */}
+                <Footer />
+              </div>
+            </PageLayout>
+          } />  
             {/* COOKIE POLICY ROUTE */}
             <Route path="/cookie-policy" element={<CookiePolicy />} />
 

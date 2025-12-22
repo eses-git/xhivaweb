@@ -12,6 +12,7 @@ import { careersElTranslations } from './careers';
 import { contactElTranslations } from './contact';   
 import { seoElTranslations } from './seo';
 import { taxElTranslations } from './tax'; 
+import  { faqElTranslations } from './faq';
 
 export const el = {
   ...commonElTranslations,
@@ -26,4 +27,5 @@ export const el = {
   ...contactElTranslations,
   ...seoElTranslations,
   ...taxElTranslations,
+  ...faqElTranslations
 };

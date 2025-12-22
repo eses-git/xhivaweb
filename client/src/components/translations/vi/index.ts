@@ -12,6 +12,7 @@ import { careersViTranslations } from './careers';
 import { contactViTranslations } from './contact';   
 import { seoViTranslations } from './seo';
 import { taxViTranslations } from './tax'; 
+import { faqViTranslations } from './faq';
 
 export const vi = {
   ...commonViTranslations,
@@ -26,4 +27,5 @@ export const vi = {
   ...contactViTranslations,
   ...seoViTranslations,
   ...taxViTranslations,
+  ...faqViTranslations
 };

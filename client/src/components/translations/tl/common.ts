@@ -16,6 +16,8 @@ export const commonTlTranslations = {
   'nav.protocol': 'Protokol ng Pakikipag-ugnayan',
   'nav.home': 'Tahanan',
   'nav.tax': 'Pagbubuo ng Pamana',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Kumpanya',

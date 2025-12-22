@@ -12,6 +12,7 @@ import { careersThTranslations } from './careers';
 import { contactThTranslations } from './contact';   
 import { seoThTranslations } from './seo';
 import { taxThTranslations } from './tax'; 
+import { faqThTranslations } from './faq';
 
 export const th = {
   ...commonThTranslations,
@@ -26,4 +27,5 @@ export const th = {
   ...contactThTranslations,
   ...seoThTranslations,
   ...taxThTranslations,
+  ...faqThTranslations,
 };

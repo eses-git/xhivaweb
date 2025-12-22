@@ -16,6 +16,8 @@ export const commonMaTranslations = {
   'nav.protocol': '我们的参与协议',
   'nav.home': '首页',
   'nav.tax': '传承规划',
+  'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': '公司',

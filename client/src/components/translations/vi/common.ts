@@ -16,6 +16,8 @@ export const commonViTranslations = {
   'nav.protocol': 'Quy trình hợp tác',
   'nav.home': 'Trang chủ',
   'nav.tax': 'Cấu trúc di sản',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Công ty',

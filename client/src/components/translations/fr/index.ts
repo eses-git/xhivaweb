@@ -12,6 +12,7 @@ import { careersFrTranslations } from './careers';
 import { contactFrTranslations } from './contact';   
 import { seoFrTranslations } from './seo';
 import { taxFrTranslations } from './tax'; 
+import { faqFrTranslations } from './faq';
 
 export const fr = {
   ...commonFrTranslations,
@@ -26,4 +27,5 @@ export const fr = {
   ...contactFrTranslations,
   ...seoFrTranslations,
   ...taxFrTranslations,
+  ...faqFrTranslations
 };

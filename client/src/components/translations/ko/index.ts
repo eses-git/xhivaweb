@@ -12,6 +12,7 @@ import { careersKoTranslations } from './careers';
 import { contactKoTranslations } from './contact';   
 import { seoKoTranslations } from './seo';
 import { taxKoTranslations } from './tax'; 
+import  { faqKoTranslations } from './faq';
 
 export const ko = {
   ...commonKoTranslations,
@@ -26,4 +27,5 @@ export const ko = {
   ...contactKoTranslations,
   ...seoKoTranslations,
   ...taxKoTranslations,
+  ...faqKoTranslations
 };

@@ -16,6 +16,8 @@ export const commonNoTranslations = {
   'nav.protocol': 'Vår Engasjementsprotokoll',
   'nav.home': 'Hjem',
   'nav.tax': 'Arvestrukturering',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Selskap',

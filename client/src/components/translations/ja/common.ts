@@ -16,6 +16,8 @@ export const commonJaTranslations = {
   'nav.protocol': 'エンゲージメントプロトコル',
   'nav.home': 'ホーム',
   'nav.tax': 'レガシーストラクチャリング',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': '会社',

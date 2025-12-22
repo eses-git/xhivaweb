@@ -16,6 +16,8 @@ export const commonKoTranslations = {
   'nav.protocol': '참여 프로토콜',
   'nav.home': '홈',
   'nav.tax': '유산 구조화',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': '회사',

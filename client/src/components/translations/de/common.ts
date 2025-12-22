@@ -16,6 +16,7 @@ export const commonDeTranslations = {
   'nav.protocol': 'Unser Engagementprotokoll',
   'nav.home': 'Startseite',
   'nav.tax': 'Nachfolgestrukturierung',
+  'nav.faq': 'FAQ',
 
   // Footer Translations
   'footer.company': 'Unternehmen',

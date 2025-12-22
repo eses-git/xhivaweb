@@ -16,6 +16,7 @@ export const commonEnTranslations = {
   'nav.protocol': 'Our Engagement Protocol',
   'nav.home': 'Home',
   'nav.tax': 'Legacy Structuring',
+  'nav.faq': 'FAQ',
 
   // Footer Translations
   'footer.company': 'Company',

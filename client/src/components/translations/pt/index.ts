@@ -13,6 +13,7 @@ import { careersPtTranslations } from './careers';
 import { contactPtTranslations } from './contact';   
 import { seoPtTranslations } from './seo';
 import { taxPtTranslations } from './tax'; 
+import  { faqPtTranslations } from './faq';
 
 export const pt = {
   ...commonPtTranslations,
@@ -27,4 +28,5 @@ export const pt = {
   ...contactPtTranslations,
   ...seoPtTranslations,
   ...taxPtTranslations,
+  ...faqPtTranslations
 };

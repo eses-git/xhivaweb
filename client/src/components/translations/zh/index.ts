@@ -12,6 +12,8 @@ import { careersMaTranslations } from './careers';
 import { contactMaTranslations } from './contact';   
 import { seoMaTranslations } from './seo';
 import { taxMaTranslations } from './tax'; 
+import { faqMaTranslations } from './faq';
+  import { fa } from '../fa';
 
 export const zh = {
   ...commonMaTranslations,
@@ -26,4 +28,5 @@ export const zh = {
   ...contactMaTranslations,
   ...seoMaTranslations,
   ...taxMaTranslations,
+  ...faqMaTranslations,
 };

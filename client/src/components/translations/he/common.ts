@@ -16,6 +16,8 @@ export const commonHeTranslations = {
   'nav.protocol': 'פרוטוקול התקשרות',
   'nav.home': 'בית',
   'nav.tax': 'בניית מורשת',
+  'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'חברה',

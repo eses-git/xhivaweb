@@ -16,6 +16,7 @@ export const commonThTranslations = {
   'nav.protocol': 'ระเบียบการมีส่วนร่วม',
   'nav.home': 'หน้าหลัก',
   'nav.tax': 'การวางโครงสร้างมรดก',
+  'nav.faq': 'FAQ',
 
   // Footer Translations
   'footer.company': 'บริษัท',

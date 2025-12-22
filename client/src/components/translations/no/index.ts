@@ -12,6 +12,7 @@ import { careersNoTranslations } from './careers';
 import { contactNoTranslations } from './contact';
 import { seoNoTranslations } from './seo';
 import { taxNoTranslations } from './tax';
+import  { faqNoTranslations } from './faq';
 
 export const no = {
   ...commonNoTranslations,
@@ -26,4 +27,5 @@ export const no = {
   ...contactNoTranslations,
   ...seoNoTranslations,
   ...taxNoTranslations,
+  ...aboutNoTranslations
 };

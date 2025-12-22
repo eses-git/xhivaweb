@@ -16,6 +16,8 @@ export const commonPtTranslations = {
   'nav.protocol': 'Protocolo de Engajamento',
   'nav.home': 'Início',
   'nav.tax': 'Estruturação de Legado',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Empresa',

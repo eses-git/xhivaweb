@@ -12,6 +12,7 @@ import { careersNlTranslations } from './careers';
 import { contactNlTranslations } from './contact';
 import { seoNlTranslations } from './seo';
 import { taxNlTranslations } from './tax';
+import  { faqNlTranslations } from './faq';
 
 export const nl = {
   ...commonNlTranslations,
@@ -26,4 +27,5 @@ export const nl = {
   ...contactNlTranslations,
   ...seoNlTranslations,
   ...taxNlTranslations,
+  ...faqNlTranslations
 };

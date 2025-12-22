@@ -16,6 +16,8 @@ export const commonSwTranslations = {
   'nav.protocol': 'Itifaki Yetu ya Ushirikiano',
   'nav.home': 'Nyumbani',
   'nav.tax': 'Muundo wa Urithi',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Kampuni',

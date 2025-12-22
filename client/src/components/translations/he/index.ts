@@ -12,6 +12,7 @@ import { careersHeTranslations } from './careers';
 import { contactHeTranslations } from './contact';   
 import { seoHeTranslations } from './seo';
 import { taxHeTranslations } from './tax'; 
+import  { faqHeTranslations } from './faq';
 
 export const he = {
   ...commonHeTranslations,
@@ -26,4 +27,5 @@ export const he = {
   ...contactHeTranslations,
   ...seoHeTranslations,
   ...taxHeTranslations,
+  ...faqHeTranslations
 };

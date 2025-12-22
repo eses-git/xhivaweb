@@ -12,6 +12,7 @@ import { careersUrTranslations } from './careers';
 import { contactUrTranslations } from './contact';   
 import { seoUrTranslations } from './seo';
 import { taxUrTranslations } from './tax'; 
+import  { faqUrTranslations } from './faq'; 
 
 export const ur = {
   ...commonUrTranslations,
@@ -26,4 +27,5 @@ export const ur = {
   ...contactUrTranslations,
   ...seoUrTranslations,
   ...taxUrTranslations,
+  ...faqUrTranslations
 };

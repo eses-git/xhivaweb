@@ -16,6 +16,7 @@ export const commonArTranslations = {
   'nav.protocol': 'بروتوكول المشاركة',
   'nav.home': 'الرئيسية',
   'nav.tax': 'هيكلة الإرث',
+  'nav.faq': 'FAQ',
 
   // Footer Translations
   'footer.company': 'الشركة',

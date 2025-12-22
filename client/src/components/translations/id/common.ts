@@ -16,6 +16,8 @@ export const commonIdTranslations = {
   'nav.protocol': 'Protokol Keterlibatan',
   'nav.home': 'Beranda',
   'nav.tax': 'Penataan Warisan',
+    'nav.faq': 'FAQ',
+
 
   // Footer Translations
   'footer.company': 'Perusahaan',
